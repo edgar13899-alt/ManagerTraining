@@ -5,10 +5,12 @@ import os
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(
-    page_title="Entrenamiento de Gerentes de La Vaquita", 
+    page_title="Entrenamiento La Vaquita", 
+    page_icon="🥩",
     layout="centered"
 )
 
+# Ocultamos la marca de agua, pero DEJAMOS el header para que el botón del menú funcione
 hide_menu_style = """
     <style>
     #MainMenu {visibility: hidden;}
@@ -26,17 +28,19 @@ if not api_key:
 client = genai.Client(api_key=api_key)
 
 # --- MENÚ DE NAVEGACIÓN ---
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empty.png/120px-Empty.png", use_container_width=True) # Espacio para tu logo en el futuro
+st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empty.png/120px-Empty.png", use_container_width=True) 
 st.sidebar.title("Menú Principal")
+
+# Se quitaron los emojis de aquí para que el código no se confunda al leer las opciones
 menu_selection = st.sidebar.radio(
     "Selecciona un módulo:",
-    ["🏠 Inicio", "Simulador HEART", "Preguntas al Asesor"]
+    ["Inicio", "Simulador HEART", "Preguntas al Asesor"]
 )
 
 # ==========================================
 # MÓDULO 0: INICIO (Dashboard)
 # ==========================================
-if menu_selection == "🏠 Inicio":
+if menu_selection == "Inicio":
     st.title("🏠 Portal de Gerentes - La Vaquita")
     st.write("Bienvenido al centro de entrenamiento y operaciones de La Vaquita Meat Market.")
     
@@ -47,10 +51,10 @@ if menu_selection == "🏠 Inicio":
     col1, col2 = st.columns(2)
     
     with col1:
-        st.info("**Simulador HEART**\n\nPractica tus habilidades de servicio al cliente enfrentándote a escenarios realistas. Desde quejas simples hasta clientes difíciles, este simulador te preparará para el piso de ventas.")
+        st.info("🥩 **Simulador HEART**\n\nPractica tus habilidades de servicio al cliente enfrentándote a escenarios realistas. Desde quejas simples hasta clientes difíciles, este simulador te preparará para el piso de ventas.")
         
     with col2:
-        st.success("**Preguntas al Asesor**\n\n¿Tienes una duda operativa o sobre las políticas de la tienda? Pregúntale a tu asesor virtual experto, disponible en todo momento para apoyarte en tu turno.")
+        st.success("🧠 **Preguntas al Asesor**\n\n¿Tienes una duda operativa o sobre las políticas de la tienda? Pregúntale a tu asesor virtual experto, disponible en todo momento para apoyarte en tu turno.")
         
     st.divider()
     st.caption("👈 Usa el menú lateral de la izquierda para navegar entre los módulos en cualquier momento.")
@@ -59,7 +63,7 @@ if menu_selection == "🏠 Inicio":
 # MÓDULO 1: SIMULADOR HEART (Method Actor)
 # ==========================================
 elif menu_selection == "Simulador HEART":
-    st.title("Simulador de Entrenamiento")
+    st.title("🥩 Simulador de Entrenamiento")
 
     simulador_instrucciones = """
     Eres un simulador de rol interactivo para entrenar empleados y gerentes en La Vaquita Meat Market. 
@@ -151,8 +155,8 @@ elif menu_selection == "Simulador HEART":
 # ==========================================
 # MÓDULO 2: PREGUNTAS AL ASESOR
 # ==========================================
-elif menu_selection == "🧠 Preguntas al Asesor":
-    st.title("Asesoría para Gerentes")
+elif menu_selection == "Preguntas al Asesor":
+    st.title("🧠 Asesoría para Gerentes")
     st.write("¿Tienes dudas sobre cómo manejar una situación específica en la tienda? Pregúntale al asesor experto de La Vaquita.")
     
     asesor_instrucciones = """
