@@ -68,7 +68,8 @@ elif menu_selection == "Aprender HEART":
         
         **Las acciones clave durante esta etapa incluyen:**
         * **Guardar silencio:** Resiste el impulso de interrumpir, defenderte u ofrecer soluciones de inmediato.
-        * **Prestar atención :** Presta atención a los detalles específicos de su problema para no tener que pedirle que lo repita más tarde.
+        * **Tomar notas:** Presta atención a los detalles específicos de su problema para no tener que pedirle que lo repita más tarde.
+        * **Usar asentimientos verbales:** Si estás al teléfono, usa breves confirmaciones como "ya veo", "de acuerdo" o "continúe" para demostrar que sigues ahí y prestando atención.
         """)
 
     with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
@@ -115,6 +116,7 @@ elif menu_selection == "Aprender HEART":
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**")
     st.write("El cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.")
     st.write("✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'")
+    st.write("🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda. (Ej. *'Dado que no puede comunicarse con respeto, le voy a pedir que se retire de la tienda en este momento'*).")
 
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
@@ -205,17 +207,19 @@ elif menu_selection == "Simulador HEART":
     - MEDIO: Estás apurado y frustrado. Pon peros a su primera solución (ej. "Sí, pero ya perdí 20 minutos"). Haz preguntas difíciles. Cede solo si muestran buena empatía y una resolución verdaderamente útil.
     - DIFÍCIL: Estás furioso. Interrumpe al gerente. Haz un escándalo público. 
         * Curva de Reubicación: Si estás gritando y el gerente intenta resolver el problema en medio de la tienda sin sugerir que se muevan a otra área más adecuada, haz tu escándalo MÁS FUERTE y quéjate de que todos te están viendo.
-        * Límite de Abuso (Trampa): Ocasionalmente, cruza la línea con un insulto o actitud denigrante. Si el gerente solo se disculpa y acepta el abuso verbal, sé más agresivo. El gerente DEBE establecer un límite firme (ej. "Le pido que nos comuniquemos con respeto"). Si establecen el límite, cálmate un poco o retírate de la tienda.
+        * Límite de Abuso (Trampa): Ocasionalmente, cruza la línea con un insulto o actitud denigrante. Si el gerente solo se disculpa y acepta el abuso verbal, sé más agresivo. El gerente DEBE establecer un límite firme (ej. "Le pido que nos comuniquemos con respeto").
+        * Escalamiento Final: A veces, incluso cuando el gerente establece el límite, NO te calmes. Responde con más agresividad (ej. "¡Yo hablo como quiero, para eso pago!"). En este caso, el gerente DEBE terminar la interacción y pedirte explícitamente que te retires de la tienda.
 
     CÓMO TERMINAR LA SIMULACIÓN Y EVALUAR:
-    Mantente en tu personaje durante varios intercambios (3 a 6 mensajes), o hasta que el gerente resuelva el problema satisfactoriamente, o hasta que el gerente establezca un límite firme ante un insulto. 
+    Mantente en tu personaje durante varios intercambios (3 a 6 mensajes), o hasta que el gerente resuelva el problema satisfactoriamente, o hasta que el gerente te pida que te retires por comportamiento abusivo. 
     CUANDO LA INTERACCIÓN LLEGUE A SU FIN NATURAL, escribe en negritas "### [FIN DE LA SIMULACIÓN]" y sal de tu personaje. 
-    Inmediatamente después, proporciona una evaluación completa del desempeño del gerente utilizando el método HEART:
+    Inmediatamente después, proporciona una evaluación completa del desempeño del gerente utilizando el método HEART y las políticas de la tienda:
     - H (Hear): ¿Guardaron silencio y no te interrumpieron inicialmente?
     - E (Empathize): ¿Validaron tu frustración sin darte la razón absoluta?
     - A (Apologize): ¿Fue genuina su disculpa?
     - R (Resolve): ¿Te invitaron a moverte a una zona lógica y menos disruptiva para hablar y resolver el problema? ¿La solución fue buena sin regalar demasiado?
     - T (Thank): ¿Agradecieron tu paciencia?
+    - 🛑 Límites y Respeto: ¿Establecieron un límite firme ante tus insultos? Si continuaste siendo agresivo, ¿tuvieron el valor de pedirte que te retiraras de la tienda?
     """
 
     if "simulador_history" not in st.session_state:
@@ -294,7 +298,7 @@ elif menu_selection == "Preguntas al Asesor":
     Tus reglas:
     1. Da respuestas directas, prácticas y profesionales. No uses respuestas genéricas; adáptalas al entorno de un mercado hispano concurrido.
     2. Usa el método HEART como base para tus recomendaciones cuando aplique.
-    3. Ten en cuenta las reglas estrictas de la tienda: NUNCA tolerar el abuso a los empleados (los gerentes deben establecer límites profesionales) y SIEMPRE pedirles a los clientes ruidosos o conflictivos que se muevan a otra área para no afectar las ventas.
+    3. Ten en cuenta las reglas estrictas de la tienda: NUNCA tolerar el abuso a los empleados (los gerentes deben establecer límites profesionales y pedirles que se retiren si continúan) y SIEMPRE pedirles a los clientes ruidosos o conflictivos que se muevan a otra área para no afectar las ventas.
     4. Responde en español, con un tono alentador pero firme.
     """
 
