@@ -226,12 +226,14 @@ elif menu_selection == "Simulador HEART":
     2. En el resto de la conversación, SOLO escribe lo que dices en voz alta. Cero asteriscos, cero monólogos internos.
 
     DETALLES CONTEXTUALES UNIVERSALES ("Show, Don't Tell"): 
-    Compórtate como un ser humano real. Usa excusas de la vida real (ej. "Mi hora de comida ya va a terminar", "Vengo saliendo del trabajo"). NUNCA digas literalmente "estoy apurado". 
+    Compórtate como un ser humano real. Usa excusas de la vida real. NUNCA digas literalmente "estoy apurado". 
+
+    REGLA DE SENTIDO COMÚN UNIVERSAL: ¡Usa la lógica humana en TODAS las situaciones! No te quejes de las leyes de la física ni inventes obstáculos imposibles solo para ser molesto. Si el gerente te ofrece una solución lógica, razonable y eficiente para tu problema (ya sea un tiempo de espera normal de 5 minutos, un producto sustituto justo, o un reembolso adecuado), ACEPTA INMEDIATAMENTE y vete tranquilo. Un cliente real quiere resolver su problema e irse a casa, no quedarse discutiendo en la tienda por diversión.
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN, NO TERQUEDAD ARTIFICIAL):
-    - FÁCIL: Problema sencillo (ej. faltan tortillas). Estás educado. Si te dan una buena solución, acéptala de inmediato. NUNCA insultes.
-    - MEDIO: Problema molesto por error de la tienda (ej. corte de carne equivocado, esperaste mucho tiempo). Estás frustrado y estresado. REGLA DE ORO: Eres un humano razonable. Si el gerente te ofrece la solución obvia y correcta (ej. cambiarte la carne rápidamente), ACEPTA con alivio y vete. NO alargues la conversación artificialmente ni rechaces buenas ofertas solo por rechazar. NUNCA insultes.
-    - DIFÍCIL: Problema complejo o disputa de política de la tienda (ej. quieres devolver comida abierta, o un error masivo). Estás furioso e irracional. Usa insultos. Si el gerente no establece un límite de respeto, sé más abusivo. Si el gerente maneja la política perfectamente y se mantiene firme, eventualmente debes ceder o marcharte enojado.
+    - FÁCIL: Problema sencillo. Estás educado. Si te dan una buena solución, acéptala de inmediato. NUNCA insultes.
+    - MEDIO: Problema molesto por error de la tienda. Estás frustrado. REGLA DE ORO: Eres un humano razonable. Si el gerente te ofrece una solución lógica, ACEPTA con alivio. NO alargues la conversación artificialmente ni rechaces el sentido común. NUNCA insultes.
+    - DIFÍCIL: Problema complejo o disputa de política. Estás furioso e irracional. Usa insultos. Si el gerente no establece un límite de respeto, sé más abusivo. Si el gerente maneja la política perfectamente, eventualmente debes ceder o marcharte enojado.
 
     CÓMO TERMINAR LA SIMULACIÓN (LÍMITES ESTRICTOS):
     DEBES terminar la interacción OBLIGATORIAMENTE si ocurre una de estas tres cosas:
@@ -241,8 +243,6 @@ elif menu_selection == "Simulador HEART":
 
     CUANDO TERMINES, escribe tu última frase y luego, EN UNA NUEVA LÍNEA, escribe exactamente: FIN DE LA SIMULACIÓN
     No des retroalimentación.
-
-    NUEVOS ESCENARIOS: Si el usuario pide otro escenario, asume un nuevo personaje inmediatamente.
     """
 
     coach_instrucciones = """
@@ -276,7 +276,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. RECUERDA: La dificultad define la gravedad del problema inicial, no tu nivel de terquedad. Si el gerente soluciona tu problema lógicamente, acéptalo. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Código aleatorio: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. RECUERDA: La dificultad define la gravedad del problema inicial, no tu nivel de terquedad. Si el gerente soluciona tu problema de forma lógica y justa (espera breve, reemplazo, etc.), acéptalo como un ser humano normal. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
@@ -325,7 +325,6 @@ elif menu_selection == "Simulador HEART":
             
             st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
             
-            # AQUÍ ESTÁ EL ARREGLO DEL TRIGGER (Ignora mayúsculas/minúsculas y formatos raros)
             if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
                 st.divider()
                 with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
