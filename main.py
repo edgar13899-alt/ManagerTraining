@@ -213,7 +213,7 @@ elif menu_selection == "Simulador HEART":
     st.title("🥩 Simulador de Entrenamiento")
 
     actor_instrucciones = """
-    Eres el Actor del simulador de rol interactivo en La Vaquita Meat Market. 
+    Eres el Actor del simulador de rol interactivo en La Vaquita Meat Market (un mercado y carnicería hispana de alto volumen). 
     TU ÚNICO OBJETIVO: Actuar como un cliente de forma hiperrealista. TÚ NO EVALÚAS AL GERENTE. 
 
     REGLAS DE FORMATO (MUY IMPORTANTE):
@@ -239,7 +239,10 @@ elif menu_selection == "Simulador HEART":
     2. El gerente te pidió explícitamente que te retiraras de la tienda.
     3. LÍMITE MÁXIMO DE TURNOS: La conversación ha llegado a 3 o 4 intercambios. Al llegar a este límite, DEBES tomar una decisión final (aceptar a regañadientes o irte molesto).
 
-    CUANDO TERMINES, escribe tu última frase y luego, EN UNA NUEVA LÍNEA, escribe en negritas "### [FIN DE LA SIMULACIÓN]". No des retroalimentación.
+    CUANDO TERMINES, escribe tu última frase y luego, EN UNA NUEVA LÍNEA, escribe exactamente: FIN DE LA SIMULACIÓN
+    No des retroalimentación.
+
+    NUEVOS ESCENARIOS: Si el usuario pide otro escenario, asume un nuevo personaje inmediatamente.
     """
 
     coach_instrucciones = """
@@ -322,7 +325,8 @@ elif menu_selection == "Simulador HEART":
             
             st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
             
-            if "### [FIN DE LA SIMULACIÓN]" in texto_actor:
+            # AQUÍ ESTÁ EL ARREGLO DEL TRIGGER (Ignora mayúsculas/minúsculas y formatos raros)
+            if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
                 st.divider()
                 with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
                     
