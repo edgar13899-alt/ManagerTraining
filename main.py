@@ -62,31 +62,55 @@ elif menu_selection == "Aprender HEART":
     
     st.divider()
     
-    with st.expander("👂 H - Hear (Escuchar)", expanded=False):
-        st.write("**Escucha activamente y en silencio.**")
-        st.write("El primer paso es dejar que el cliente se desahogue completamente sin interrumpirlo. Mantén contacto visual, asiente con la cabeza y ten un lenguaje corporal abierto. Muchas veces, un cliente molesto solo necesita sentir que alguien lo está escuchando antes de calmarse. **No ofrezcas soluciones todavía.**")
+    with st.expander("👂 H - Hear (Escuchar activamente)", expanded=False):
+        st.markdown("""
+        Cuando un cliente molesto se comunica contigo, su necesidad principal es sentirse escuchado y comprendido. Este paso se centra en la escucha activa y en permitir que el cliente se desahogue por completo de su frustración antes de que intentes solucionar nada.
+        
+        **Las acciones clave durante esta etapa incluyen:**
+        * **Guardar silencio:** Resiste el impulso de interrumpir, defenderte u ofrecer soluciones de inmediato.
+        * **Tomar notas:** Presta atención a los detalles específicos de su problema para no tener que pedirle que lo repita más tarde.
+        * **Usar asentimientos verbales:** Si estás al teléfono, usa breves confirmaciones como "ya veo", "de acuerdo" o "continúe" para demostrar que sigues ahí y prestando atención.
+        """)
 
     with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
-        st.write("**Valida sus sentimientos sin darle la razón absoluta.**")
-        st.write("Demuestra que entiendes su frustración poniéndote en sus zapatos, pero no admitas que la tienda hizo algo malo si no tienes todos los hechos.")
-        st.write("✅ *Correcto:* 'Entiendo completamente por qué está frustrado con el tiempo de espera en su hora de comida.' (Validas su emoción).")
-        st.write("❌ *Incorrecto:* 'Tiene toda la razón, nuestra taquería es muy lenta hoy.' (Culpas a tu propio equipo).")
+        st.markdown("""
+        Una vez que el cliente ha contado su historia (y tú lo has Escuchado), la empatía construye un puente entre escuchar y resolver. Le demuestra al cliente que comprendes sus sentimientos y validas su frustración, incluso si aún no has determinado de quién es la culpa o cómo solucionarlo.
+        
+        **Las acciones clave para este paso incluyen:**
+        * **Reflejar su urgencia:** Ajusta tu tono para demostrar que te tomas el asunto tan en serio como ellos.
+        * **Validar sus emociones:** Usa frases que reconozcan sus sentimientos específicos (por ejemplo: frustración, decepción, pánico) en lugar de solo los hechos logísticos del problema.
+        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia. Empatizar no significa estar de acuerdo con ellos.
+        """)
 
-    with st.expander("🙏 A - Apologize (Disculparse)", expanded=False):
-        st.write("**Ofrece una disculpa sincera y asume la responsabilidad.**")
-        st.write("Incluso si el error no fue tuyo directamente, tú representas a La Vaquita. No pongas excusas ni le eches la culpa al proveedor, a otro cajero o al sistema.")
-        st.write("✅ *Correcto:* 'Le pido una sincera disculpa por este inconveniente. Sé que su tiempo es valioso.'")
+    with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
+        st.markdown("""
+        Ahora que has escuchado (Hear) y validado sus sentimientos (Empathize), es momento de ofrecer una disculpa sincera. Una disculpa genuina asume la responsabilidad del problema y el impacto específico que tuvo en el cliente, sin señalar a otros ni poner excusas.
+        
+        **Las acciones clave para este paso incluyen:**
+        * **Ser específico:** Discúlpate por el problema exacto en lugar de ofrecer un genérico "Lamento las molestias".
+        * **Asumir la responsabilidad:** Acepta la responsabilidad en nombre de la empresa. Usar frases como "Lo siento que le hayamos fallado" es mucho más efectivo que culpar a otro departamento o al servicio de entrega.
+        * **Evitar las disculpas falsas:** Mantente alejado de frases como "Lo siento que te sientas así" o "Lamento si esto causó un problema". Estas devuelven la culpa a la reacción del cliente y pueden aumentar su frustración.
+        """)
 
     with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
-        st.write("**Soluciona el problema y protege el piso de ventas.**")
-        st.write("🚨 **REGLA DE REUBICACIÓN:** Si un cliente está alterado, haciendo un escándalo o deteniendo la fila, tu PRIMERA acción antes de resolver el problema debe ser sugerir moverlo de lugar.")
-        st.write("Usa tu buen juicio como gerente para llevar al cliente a otra área más tranquila y adecuada (a un lado del mostrador, una mesa vacía, un pasillo menos concurrido, etc.) para evitar interrumpir a otros clientes.")
-        st.write("*Sobre los descuentos:* Un descuento o producto gratis es el último recurso. Intenta resolver el problema con un cambio o corrección primero.")
+        st.markdown("""
+        Después de escuchar, empatizar y disculparse, el cliente generalmente está listo para saber cómo solucionarás la situación. Este paso se trata de actuar y ser transparente sobre la solución.
+        
+        **Las acciones clave para este paso incluyen:**
+        * **Solucionar el problema:** Resuelve el problema de inmediato si puedes. Si no puedes, explica exactamente qué medidas estás tomando para solucionarlo.
+        * **Ofrecer opciones:** Dale alternativas al cliente siempre que sea posible. Esto le devuelve la sensación de control después de una experiencia frustrante.
+        * **Ser transparente:** Comunica claramente los plazos y qué pueden esperar a continuación. Evita hacer promesas que no puedas cumplir.
+        """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
-        st.write("**Agradece al cliente por su paciencia y por informarnos.**")
-        st.write("Termina la interacción con una nota positiva. Queremos que el cliente se vaya sintiendo que nos importa su opinión para que regrese.")
-        st.write("✅ *Correcto:* 'Le agradezco mucho su paciencia mientras resolvíamos esto, y gracias por informarnos para poder mejorar nuestro servicio.'")
+        st.markdown("""
+        Aunque pueda parecer contradictorio agradecer a alguien que se acaba de quejar, expresar gratitud es una manera poderosa de cerrar la conversación. Deja al cliente con una impresión final positiva y replantea su queja como comentarios valiosos que ayudan a la empresa a mejorar.
+        
+        **Las acciones clave para este paso incluyen:**
+        * **Agradecerles por sus comentarios:** Reconoce que se tomaron el tiempo de señalar un error, lo que te da la oportunidad de solucionarlo.
+        * **Apreciar su paciencia:** Reconoce el tiempo y el esfuerzo que dedicaron a resolver el problema contigo.
+        * **Reafirmar la relación:** Expresa que valoras que sean clientes y que esperas brindarles un mejor servicio la próxima vez.
+        """)
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**")
     st.write("El cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.")
