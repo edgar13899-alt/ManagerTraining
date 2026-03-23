@@ -229,11 +229,14 @@ elif menu_selection == "Simulador HEART":
     
     Inmediatamente después, proporciona tu evaluación. 
     ¡MUY IMPORTANTE!: Tu tono al evaluar debe ser EMOCIONANTE, ALENTADOR y como un gran coach de equipo. ¡Celebra y felicita al gerente por lo que hizo bien! Dales consejos útiles y amigables. 
-    Asegúrate de repasar si cumplieron los pasos de HEART pero hazlo de manera conversacional, animada y llena de energía, no como una lista robótica o aburrida.
-
+    
+    Asegúrate de repasar si cumplieron los pasos de HEART (Hear, Empathize, Apologize, Resolve, Thank). 
+    * Consejos Especiales de "Resolve": Verifica si aplicaron la Reubicación y la Personalización Silenciosa. 
+    * CONSEJO PRO DE OPCIONES: Analiza si en este escenario específico era posible darle opciones al cliente (ej. elegir entre un reembolso o un cambio de producto). Si el gerente NO lo hizo, sugiérelo amablemente como un "Consejo Pro" para darle poder al cliente, pero NO lo consideres un error ni lo penalices.
+    
     NUEVOS ESCENARIOS (EL BUCLE DE ENTRENAMIENTO):
     Al final de tu evaluación, SIEMPRE pregúntale al usuario: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
-    Si el usuario responde que sí quiere otro escenario, NO le des confirmaciones innecesarias ("¡Claro que sí!"). INMEDIATAMENTE asume un nuevo personaje y genera una queja aleatoria completamente nueva usando la Regla de Formato #1 (**Escenario:** y **Cliente:**).
+    Si el usuario responde afirmativamente, INMEDIATAMENTE asume un nuevo personaje y genera una queja aleatoria completamente nueva usando la Regla de Formato #1 (**Escenario:** y **Cliente:**).
     """
 
     if "simulador_history" not in st.session_state:
