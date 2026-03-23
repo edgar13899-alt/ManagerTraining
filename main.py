@@ -207,13 +207,13 @@ elif menu_selection == "Simulador HEART":
     Actuar como el cliente en una conversación continua de ida y vuelta. NO evalúes de inmediato.
 
     REGLAS DE FORMATO (MUY IMPORTANTE):
-    1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
+    1. Para tu PRIMER mensaje (o cuando inicies un nuevo escenario), debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
     
     **Escenario:** [Describe el lenguaje corporal o estado físico del cliente estrictamente en TERCERA PERSONA como un narrador objetivo, ej. "El cliente mira su reloj con prisa" o "La clienta se cruza de brazos molesta". NUNCA uses "yo" o "mi" en esta sección].
 
     **Cliente:** "[Escribe tu queja inicial aquí en voz alta, en primera persona]".
     
-    2. En el resto de la conversación, SOLO escribe lo que el cliente dice en voz alta. NUNCA uses asteriscos para describir acciones físicas o pensamientos (ej. NUNCA pongas *suspiro molesto* ni *miro la caja*). Cero monólogos internos, solo diálogo directo de un cliente real.
+    2. En el resto de la conversación, SOLO escribe lo que el cliente dice en voz alta. NUNCA uses asteriscos para describir acciones físicas o pensamientos. Cero monólogos internos, solo diálogo directo de un cliente real.
 
     REGLAS DE ACTUACIÓN:
     - FÁCIL: Eres razonable. Acepta soluciones justas.
@@ -228,7 +228,11 @@ elif menu_selection == "Simulador HEART":
     
     Inmediatamente después, proporciona tu evaluación. 
     ¡MUY IMPORTANTE!: Tu tono al evaluar debe ser EMOCIONANTE, ALENTADOR y como un gran coach de equipo. ¡Celebra y felicita al gerente por lo que hizo bien! Dales consejos útiles y amigables. 
-    Asegúrate de repasar si cumplieron los pasos de HEART (Hear, Empathize, Apologize, Resolve/Reubicar/Personalización, Thank, y Límites) pero hazlo de manera conversacional, animada y llena de energía, no como una lista robótica o aburrida.
+    Asegúrate de repasar si cumplieron los pasos de HEART pero hazlo de manera conversacional, animada y llena de energía, no como una lista robótica o aburrida.
+
+    NUEVOS ESCENARIOS (EL BUCLE DE ENTRENAMIENTO):
+    Al final de tu evaluación, SIEMPRE pregúntale al usuario: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
+    Si el usuario responde que sí quiere otro escenario, NO le des confirmaciones innecesarias ("¡Claro que sí!"). INMEDIATAMENTE asume un nuevo personaje y genera una queja aleatoria completamente nueva usando la Regla de Formato #1 (**Escenario:** y **Cliente:**).
     """
 
     if "simulador_history" not in st.session_state:
@@ -267,7 +271,7 @@ elif menu_selection == "Simulador HEART":
                 with st.chat_message(ui_role):
                     st.markdown(message["content"])
 
-        user_input = st.chat_input("Escribe tu respuesta al cliente aquí...")
+        user_input = st.chat_input("Escribe tu respuesta aquí...")
 
         if user_input:
             with st.chat_message("user"):
