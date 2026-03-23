@@ -154,7 +154,7 @@ elif menu_selection == "Aprender HEART":
         if st.button("Iniciar Tutorial Guiado"):
             with st.spinner("Preparando tu primera lección..."):
                 chat = client.chats.create(
-                    model="gemini-2.5-pro", # ¡Actualizado a PRO para mejor pedagogía!
+                    model="gemini-2.5-pro",
                     config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
                 )
                 hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Asegúrate de incluir una pista sobre el estado físico del cliente en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
@@ -184,7 +184,7 @@ elif menu_selection == "Aprender HEART":
             st.session_state.tutor_history.append({"role": "user", "content": tutor_input, "hidden": False})
 
             chat = client.chats.create(
-                model="gemini-2.5-pro", # ¡Actualizado a PRO!
+                model="gemini-2.5-pro",
                 config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
                 history=formatted_tutor_history
             )
@@ -209,7 +209,6 @@ elif menu_selection == "Aprender HEART":
 elif menu_selection == "Simulador HEART":
     st.title("🥩 Simulador de Entrenamiento")
 
-    # CEREBRO 1: EL ACTOR (Funciona con Gemini 2.5 Flash para máxima velocidad)
     actor_instrucciones = """
     Eres el Actor del simulador de rol interactivo en La Vaquita Meat Market. 
     TU ÚNICO OBJETIVO: Actuar como el cliente. TÚ NO EVALÚAS AL GERENTE. Deja que el "Coach" haga la evaluación.
@@ -226,19 +225,23 @@ elif menu_selection == "Simulador HEART":
     DETALLES CONTEXTUALES UNIVERSALES ("Show, Don't Tell"): 
     Usa excusas de la vida real (ej. "Tengo una fiesta esperándome", "Dejé a los niños en el carro"). NUNCA digas literalmente "tengo prisa" ni "estoy enojado".
 
-    REGLAS DE ACTUACIÓN SEGÚN DIFICULTAD:
-    - FÁCIL: Eres razonable. NUNCA insultes.
-    - MEDIO: Estás frustrado. Pon peros, pero NUNCA insultes.
-    - DIFÍCIL: Estás furioso y eres irracional. Usa insultos hacia el empleado. Si el gerente no establece límites, sé más agresivo.
+    REGLAS DE ACTUACIÓN SEGÚN DIFICULTAD (COMPORTAMIENTO IMPREDECIBLE):
+    - FÁCIL: Eres razonable. Muestras preocupación pero tiendes a aceptar la solución justa rápidamente. NUNCA insultes.
+    - MEDIO: Estás frustrado. Eres IMPREDECIBLE: a veces aceptas una buena solución de inmediato, y a veces pones peros para negociar un poco. Actúa de forma natural; no rechaces ni aceptes ofertas automáticamente. NUNCA insultes.
+    - DIFÍCIL: Estás furioso y eres irracional. Usa insultos hacia el empleado. Si el gerente no establece límites, sé más agresivo. Nunca te conformes fácilmente.
 
-    CÓMO TERMINAR LA SIMULACIÓN:
-    CUANDO LA INTERACCIÓN LLEGUE A SU FIN NATURAL (el problema se resolvió o te echaron), escribe en negritas "### [FIN DE LA SIMULACIÓN]" y NO ESCRIBAS NADA MÁS. Repito: no des retroalimentación, el sistema pasará tu transcripción al Coach Pro.
+    CÓMO TERMINAR LA SIMULACIÓN (LÍMITES ESTRICTOS):
+    DEBES terminar la interacción OBLIGATORIAMENTE si ocurre una de estas tres cosas:
+    1. El gerente resolvió tu problema (decidiste aceptar la solución natural y orgánicamente).
+    2. El gerente te pidió explícitamente que te retiraras de la tienda (te puso un límite firme).
+    3. LÍMITE MÁXIMO DE TURNOS: La conversación ha llegado a 3 o 4 intercambios de ida y vuelta. NO te quedes atrapado en un bucle infinito. Al llegar a este límite, DEBES tomar una decisión final: aceptar la oferta actual a regañadientes, o irte de la tienda molesto.
+
+    CUANDO OCURRA UNA DE ESAS 3 COSAS, escribe tu última frase y luego, EN UNA NUEVA LÍNEA, escribe en negritas "### [FIN DE LA SIMULACIÓN]" y NO ESCRIBAS NADA MÁS. Repito: no des retroalimentación.
 
     NUEVOS ESCENARIOS (EL BUCLE DE ENTRENAMIENTO):
-    Si ves en el historial que el Coach ya evaluó al gerente y el usuario escribe que quiere otro escenario (ej. "sí", "yes", "otro"), INMEDIATAMENTE asume un nuevo personaje y genera una queja completamente nueva.
+    Si ves en el historial que el Coach ya evaluó al gerente y el usuario escribe que quiere otro escenario, INMEDIATAMENTE asume un nuevo personaje y genera una queja completamente nueva.
     """
 
-    # CEREBRO 2: EL COACH EVALUADOR (Funciona con Gemini 2.5 Pro para análisis profundo)
     coach_instrucciones = """
     Eres el Coach Evaluador Experto de La Vaquita Meat Market. Tu trabajo NO es actuar, sino analizar la transcripción de una simulación terminada entre un gerente y un cliente de IA.
 
@@ -268,12 +271,12 @@ elif menu_selection == "Simulador HEART":
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
-                    model="gemini-2.5-flash", # El Actor usa Flash
+                    model="gemini-2.5-flash",
                     config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
                 )
                 response = chat.send_message(hidden_prompt)
                 
-            texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad de Google. Por favor, haz clic en 'Terminar y Volver al Inicio' para generar otro."
+            texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Terminar y Volver al Inicio'."
             
             st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
             st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
@@ -298,7 +301,6 @@ elif menu_selection == "Simulador HEART":
             
             st.session_state.simulador_history.append({"role": "user", "content": user_input, "hidden": False})
 
-            # 1. El Actor (Flash) responde al mensaje del usuario
             chat_actor = client.chats.create(
                 model="gemini-2.5-flash", 
                 config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
@@ -314,23 +316,21 @@ elif menu_selection == "Simulador HEART":
             
             st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
             
-            # 2. Si la simulación terminó, despertamos al Evaluador Pro
             if "### [FIN DE LA SIMULACIÓN]" in texto_actor:
                 st.divider()
                 with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
                     
-                    # Recopilar la transcripción de la interacción actual
                     transcripcion = ""
                     for m in st.session_state.simulador_history:
                         if not m.get("hidden", False):
                             rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
                             transcripcion += f"{rol}: {m['content']}\n\n"
                     
-                    prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada y profunda basada en las reglas."
+                    prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada y profunda."
                     
                     try:
                         coach_response = client.models.generate_content(
-                            model="gemini-2.5-pro", # El Evaluador usa PRO
+                            model="gemini-2.5-pro",
                             contents=prompt_coach,
                             config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
                         )
@@ -386,7 +386,7 @@ elif menu_selection == "Preguntas al Asesor":
         formatted_asesor_history = [{"role": m["role"], "parts": [{"text": m["content"]}]} for m in st.session_state.asesor_history[:-1]]
 
         chat = client.chats.create(
-            model="gemini-2.5-pro", # ¡Actualizado a PRO para consejos más inteligentes!
+            model="gemini-2.5-pro",
             config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
             history=formatted_asesor_history
         )
