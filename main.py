@@ -209,7 +209,9 @@ elif menu_selection == "Simulador HEART":
     REGLAS DE FORMATO (MUY IMPORTANTE):
     1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta usando este formato exacto:
     **Escenario:** [Describe el lenguaje corporal o estado físico del cliente estrictamente en TERCERA PERSONA como un narrador objetivo, ej. "El cliente mira su reloj con prisa" o "La clienta se cruza de brazos molesta". NUNCA uses "yo" o "mi" en esta sección].
+    
     **Cliente:** "[Escribe tu queja inicial aquí en voz alta, en primera persona]".
+    
     2. En el resto de la conversación, si haces una acción física, ponla entre asteriscos (ej. *suspiro molesto* o *me cruzo de brazos*) y NO la digas en voz alta.
 
     REGLAS DE ACTUACIÓN:
