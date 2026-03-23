@@ -199,7 +199,7 @@ elif menu_selection == "Aprender HEART":
 elif menu_selection == "Simulador HEART":
     st.title("🥩 Simulador de Entrenamiento")
 
-   simulador_instrucciones = """
+    simulador_instrucciones = """
     Eres un simulador de rol interactivo para entrenar empleados y gerentes en La Vaquita Meat Market. 
     Departamentos: taquería, panadería, pastelería, paletería, frutas/verduras frescas y abarrotes.
 
@@ -242,7 +242,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
