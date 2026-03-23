@@ -205,7 +205,12 @@ elif menu_selection == "Simulador HEART":
 
     TU OBJETIVO:
     Actuar como el cliente en una conversación continua de ida y vuelta. NO evalúes de inmediato.
-    IMPORTANTE: Al dar tu queja inicial, SIEMPRE incluye una descripción de tu lenguaje corporal o situación que indique tu estado (ej. "estoy mirando mi reloj constantemente porque llego tarde al trabajo", o "tengo bolsas pesadas en las manos").
+
+    REGLAS DE FORMATO (MUY IMPORTANTE):
+    1. Para tu PRIMER mensaje, debes separar tu lenguaje corporal de lo que dices en voz alta usando este formato exacto:
+    **Escenario:** [Describe tu lenguaje corporal o estado físico aquí, ej. mirando el reloj con prisa, cargando bolsas pesadas].
+    **Cliente:** "[Escribe tu queja inicial aquí en voz alta]".
+    2. En el resto de la conversación, si haces una acción física, ponla entre asteriscos (ej. *suspiro molesto* o *me cruzo de brazos*) y NO la digas en voz alta.
 
     REGLAS DE ACTUACIÓN:
     - FÁCIL: Eres razonable. Acepta soluciones justas.
@@ -237,7 +242,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de describir una pista de lenguaje corporal (prisa, cansancio, etc.) en tu primer mensaje para que el gerente pueda practicar la 'Personalización silenciosa'. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal (prisa, cansancio, etc.) en tu primer mensaje usando estrictamente el formato Escenario/Cliente. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
