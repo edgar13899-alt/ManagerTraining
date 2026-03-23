@@ -156,12 +156,10 @@ elif menu_selection == "Aprender HEART":
             st.session_state.tutor_history.append({"role": "model", "content": response.text, "hidden": False})
             st.rerun()
     else:
-        # Aquí pasamos la historia completa a la IA (sin filtrar) para no romper el orden de la API
         formatted_tutor_history = []
         for msg in st.session_state.tutor_history:
             formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
 
-        # Aquí solo mostramos en pantalla los mensajes visibles
         for msg in st.session_state.tutor_history:
             if not msg.get("hidden", False):
                 ui_role = "assistant" if msg["role"] == "model" else "user"
@@ -220,6 +218,7 @@ elif menu_selection == "Simulador HEART":
     - FÁCIL: Eres razonable. Acepta soluciones justas.
     - MEDIO: Estás apurado y frustrado. Pon peros a su primera solución.
     - DIFÍCIL: Estás furioso. Interrumpe al gerente. 
+    - DETALLES CONTEXTUALES ("Show, Don't Tell"): NUNCA digas literalmente tu estado físico o mental (ej. NO digas "tengo prisa", "estoy muy cansado", "estoy distraído"). Usa excusas o situaciones de la vida real para justificar tu actitud en tu diálogo (ej. "Tengo una fiesta esperándome", "Acabo de salir de un turno doble en el trabajo", "Mi bebé no ha dormido nada"). Haz que suene como un cliente real.
         * Curva de Reubicación: Si no te sugieren moverte de un área concurrida, haz tu escándalo más fuerte.
         * Límite de Abuso: Insulta al empleado. Si el gerente no establece un límite firme, sé más agresivo.
         * Escalamiento Final: A veces, responde con más agresividad ("¡Para eso pago!"). El gerente debe pedirte explícitamente que te retires.
@@ -250,7 +249,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Recuerda la regla de Detalles Contextuales: usa razones de la vida real para tu estado (trabajo, familia, tiempo) y NUNCA digas literalmente 'estoy apurado' o 'estoy cansado'. Eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
@@ -264,12 +263,10 @@ elif menu_selection == "Simulador HEART":
             st.rerun()
 
     else:
-        # Corrección del bug: Pasamos la historia completa a la IA (sin filtrar el hidden)
         formatted_history = []
         for msg in st.session_state.simulador_history:
             formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
 
-        # Solo ocultamos el mensaje en la pantalla del usuario
         for message in st.session_state.simulador_history:
             if not message.get("hidden", False):
                 ui_role = "assistant" if message["role"] == "model" else "user"
