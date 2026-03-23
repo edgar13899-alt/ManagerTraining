@@ -1,11 +1,4 @@
-import streamlit as st
-from google import genai
-from google.genai import types
-import os
-import random
 
-# --- CONFIGURACIÓN DE LA PÁGINA ---
-st.set_page_config(
     page_title="Entrenamiento La Vaquita", 
     page_icon="🥩",
     layout="centered"
