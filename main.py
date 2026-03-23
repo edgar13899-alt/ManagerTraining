@@ -10,7 +10,6 @@ st.set_page_config(
     layout="centered"
 )
 
-# Ocultamos la marca de agua, pero DEJAMOS el header para que el botón del menú funcione
 hide_menu_style = """
     <style>
     #MainMenu {visibility: hidden;}
@@ -31,10 +30,9 @@ client = genai.Client(api_key=api_key)
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empty.png/120px-Empty.png", use_container_width=True) 
 st.sidebar.title("Menú Principal")
 
-# Se quitaron los emojis de aquí para que el código no se confunda al leer las opciones
 menu_selection = st.sidebar.radio(
     "Selecciona un módulo:",
-    ["Inicio", "Simulador HEART", "Preguntas al Asesor"]
+    ["Inicio", "Aprender HEART", "Simulador HEART", "Preguntas al Asesor"]
 )
 
 # ==========================================
@@ -46,21 +44,61 @@ if menu_selection == "Inicio":
     
     st.divider()
     
-    st.subheader("Herramientas Disponibles:")
+    st.subheader("Ruta de Entrenamiento:")
     
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.info("🥩 **Simulador HEART**\n\nPractica tus habilidades de servicio al cliente enfrentándote a escenarios realistas. Desde quejas simples hasta clientes difíciles, este simulador te preparará para el piso de ventas.")
-        
-    with col2:
-        st.success("🧠 **Preguntas al Asesor**\n\n¿Tienes una duda operativa o sobre las políticas de la tienda? Pregúntale a tu asesor virtual experto, disponible en todo momento para apoyarte en tu turno.")
+    st.info("📖 **Paso 1: Aprender HEART**\n\nEstudia la metodología oficial de servicio al cliente y las reglas de reubicación específicas de nuestra tienda.")
+    st.warning("🥩 **Paso 2: Simulador HEART**\n\nPon a prueba tus conocimientos en un escenario interactivo con clientes difíciles. ¡El simulador evaluará tus respuestas!")
+    st.success("🧠 **Apoyo: Preguntas al Asesor**\n\nUsa esta herramienta en cualquier momento para hacerle preguntas al asesor virtual sobre cómo manejar situaciones reales en tu turno.")
         
     st.divider()
-    st.caption("👈 Usa el menú lateral de la izquierda para navegar entre los módulos en cualquier momento.")
+    st.caption("👈 Usa el menú lateral de la izquierda para comenzar tu entrenamiento.")
 
 # ==========================================
-# MÓDULO 1: SIMULADOR HEART (Method Actor)
+# MÓDULO 1: APRENDER HEART (Módulo de Estudio)
+# ==========================================
+elif menu_selection == "Aprender HEART":
+    st.title("📖 El Método HEART")
+    st.write("En La Vaquita Meat Market, el excelente servicio al cliente es nuestra prioridad. Estudia los 5 pasos del método HEART antes de pasar al simulador.")
+    
+    st.divider()
+    
+    with st.expander("👂 H - Hear (Escuchar)", expanded=True):
+        st.write("**Escucha activamente y en silencio.**")
+        st.write("Deja que el cliente se desahogue completamente sin interrumpirlo. Mantén contacto visual y un lenguaje corporal abierto. Muchas veces, los clientes solo quieren ser escuchados.")
+
+    with st.expander("🤝 E - Empathize (Empatizar)", expanded=True):
+        st.write("**Valida sus sentimientos sin darle la razón absoluta.**")
+        st.write("Demuestra que entiendes su frustración.")
+        st.write("✅ *Correcto:* 'Entiendo completamente por qué está frustrado con el tiempo de espera.'")
+        st.write("❌ *Incorrecto:* 'Tiene toda la razón, somos muy lentos.'")
+
+    with st.expander("🙏 A - Apologize (Disculparse)", expanded=True):
+        st.write("**Ofrece una disculpa sincera y asume la responsabilidad.**")
+        st.write("No pongas excusas ni culpes a otros empleados o departamentos. Una disculpa simple y directa es la más efectiva.")
+        st.write("*Ejemplo:* 'Le pido una sincera disculpa por este inconveniente.'")
+
+    with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=True):
+        st.write("**Soluciona el problema siguiendo las reglas de la tienda.**")
+        st.write("🚨 **REGLA DE REUBICACIÓN DE LA VAQUITA:** Si un cliente está alterado, haciendo un escándalo o deteniendo la fila, tu PRIMERA acción debe ser moverlo de lugar para proteger la experiencia de los demás clientes.")
+        st.markdown("""
+        * **Cajas Registradoras:** Muévelos al mostrador de servicio al cliente.
+        * **Taquería o Paletería:** Invítalos a sentarse en una mesa del área de comida.
+        * **Carnicería o Panadería:** Pídeles amablemente que se hagan a un lado del mostrador.
+        """)
+        st.write("*Nota sobre descuentos:* Solo ofrece descuentos si el problema es grave y la reubicación/solución básica no es suficiente.")
+
+    with st.expander("💖 T - Thank (Agradecer)", expanded=True):
+        st.write("**Agradece al cliente por su paciencia y por informarnos.**")
+        st.write("Termina la interacción con una nota positiva para asegurar que sigan comprando con nosotros.")
+        st.write("*Ejemplo:* 'Le agradezco mucho su paciencia mientras resolvíamos esto, y gracias por dejarnos saber para poder mejorar.'")
+        
+    st.divider()
+    st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**")
+    st.write("En La Vaquita, el cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente cruza la línea usando insultos, lenguaje inapropiado o denigrando a un empleado, DEBES establecer un límite firme y profesional. No toleres el abuso.")
+    st.write("*Ejemplo:* 'Señor, quiero ayudarle a resolver su problema, pero le pido que nos comuniquemos con respeto.'")
+
+# ==========================================
+# MÓDULO 2: SIMULADOR HEART (Method Actor)
 # ==========================================
 elif menu_selection == "Simulador HEART":
     st.title("🥩 Simulador de Entrenamiento")
@@ -153,7 +191,7 @@ elif menu_selection == "Simulador HEART":
             st.rerun()
 
 # ==========================================
-# MÓDULO 2: PREGUNTAS AL ASESOR
+# MÓDULO 3: PREGUNTAS AL ASESOR
 # ==========================================
 elif menu_selection == "Preguntas al Asesor":
     st.title("🧠 Asesoría para Gerentes")
