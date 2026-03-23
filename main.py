@@ -68,8 +68,7 @@ elif menu_selection == "Aprender HEART":
         
         **Las acciones clave durante esta etapa incluyen:**
         * **Guardar silencio:** Resiste el impulso de interrumpir, defenderte u ofrecer soluciones de inmediato.
-        * **Tomar notas:** Presta atención a los detalles específicos de su problema para no tener que pedirle que lo repita más tarde.
-        * **Usar asentimientos verbales:** Si estás al teléfono, usa breves confirmaciones como "ya veo", "de acuerdo" o "continúe" para demostrar que sigues ahí y prestando atención.
+        * **Prestar atención :** Presta atención a los detalles específicos de su problema para no tener que pedirle que lo repita más tarde.
         """)
 
     with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
