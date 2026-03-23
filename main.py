@@ -19,13 +19,20 @@ hide_menu_style = """
     """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-# --- CONEXIÓN IA ---
+# --- CONEXIÓN IA Y SEGURIDAD ---
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
     st.error("¡Falta la clave API! Por favor, configúrala en los Secrets de Streamlit.")
     st.stop()
 
 client = genai.Client(api_key=api_key)
+
+# Reducimos los filtros de seguridad para permitir simulaciones de clientes enojados
+seguridad_baja = [
+    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_ONLY_HIGH"),
+    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_ONLY_HIGH"),
+    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
+]
 
 # --- MENÚ DE NAVEGACIÓN ---
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empty.png/120px-Empty.png", use_container_width=True) 
@@ -147,13 +154,14 @@ elif menu_selection == "Aprender HEART":
             with st.spinner("Preparando tu primera lección..."):
                 chat = client.chats.create(
                     model="gemini-2.5-flash",
-                    config=types.GenerateContentConfig(system_instruction=tutor_instrucciones)
+                    config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
                 )
                 hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Asegúrate de incluir una pista sobre el estado físico del cliente en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
                 response = chat.send_message(hidden_prompt)
                 
+            texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
             st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
-            st.session_state.tutor_history.append({"role": "model", "content": response.text, "hidden": False})
+            st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
             st.rerun()
     else:
         formatted_tutor_history = []
@@ -176,16 +184,18 @@ elif menu_selection == "Aprender HEART":
 
             chat = client.chats.create(
                 model="gemini-2.5-flash",
-                config=types.GenerateContentConfig(system_instruction=tutor_instrucciones),
+                config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
                 history=formatted_tutor_history
             )
 
             with st.chat_message("assistant"):
                 with st.spinner("El tutor está revisando tu respuesta..."):
                     response = chat.send_message(tutor_input)
-                st.markdown(response.text)
                 
-            st.session_state.tutor_history.append({"role": "model", "content": response.text, "hidden": False})
+                texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
+                st.markdown(texto_seguro)
+                
+            st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
         st.divider()
         if st.button("Reiniciar Tutorial"):
@@ -208,20 +218,22 @@ elif menu_selection == "Simulador HEART":
     REGLAS DE FORMATO (MUY IMPORTANTE):
     1. Para tu PRIMER mensaje (o cuando inicies un nuevo escenario), debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
     
-    **Escenario:** [Describe el lenguaje corporal o estado físico del cliente estrictamente en TERCERA PERSONA como un narrador objetivo, ej. "El cliente mira su reloj con prisa" o "La clienta se cruza de brazos molesta". NUNCA uses "yo" o "mi" en esta sección].
+    **Escenario:** [Describe el lenguaje corporal o estado físico del cliente estrictamente en TERCERA PERSONA como un narrador objetivo. NUNCA uses "yo" o "mi" en esta sección].
 
     **Cliente:** "[Escribe tu queja inicial aquí en voz alta, en primera persona]".
     
-    2. En el resto de la conversación, SOLO escribe lo que el cliente dice en voz alta. NUNCA uses asteriscos para describir acciones físicas o pensamientos. Cero monólogos internos, solo diálogo directo de un cliente real.
+    2. En el resto de la conversación, SOLO escribe lo que el cliente dice en voz alta. NUNCA uses asteriscos para describir acciones físicas o pensamientos. Cero monólogos internos.
 
-    REGLAS DE ACTUACIÓN:
-    - FÁCIL: Eres razonable. Acepta soluciones justas.
-    - MEDIO: Estás apurado y frustrado. Pon peros a su primera solución.
-    - DIFÍCIL: Estás furioso. Interrumpe al gerente. 
-    - DETALLES CONTEXTUALES ("Show, Don't Tell"): NUNCA digas literalmente tu estado físico o mental (ej. NO digas "tengo prisa", "estoy muy cansado", "estoy distraído"). Usa excusas o situaciones de la vida real para justificar tu actitud en tu diálogo (ej. "Tengo una fiesta esperándome", "Acabo de salir de un turno doble en el trabajo", "Mi bebé no ha dormido nada"). Haz que suene como un cliente real.
-        * Curva de Reubicación: Si no te sugieren moverte de un área concurrida, haz tu escándalo más fuerte.
-        * Límite de Abuso: Insulta al empleado. Si el gerente no establece un límite firme, sé más agresivo.
-        * Escalamiento Final: A veces, responde con más agresividad ("¡Para eso pago!"). El gerente debe pedirte explícitamente que te retires.
+    DETALLES CONTEXTUALES UNIVERSALES ("Show, Don't Tell"): 
+    Para TODAS las dificultades, nunca digas literalmente tu estado (ej. NO digas "tengo prisa" ni "estoy cansado"). Usa excusas de la vida real (ej. "Tengo una fiesta esperándome", "Dejé a los niños en el carro", "Acabo de salir de trabajar"). Haz que suene natural.
+
+    REGLAS DE ACTUACIÓN SEGÚN DIFICULTAD:
+    - FÁCIL: Eres razonable y educado. Muestras preocupación pero aceptas soluciones justas de inmediato. NUNCA insultes ni levantes la voz.
+    - MEDIO: Estás frustrado. Pon peros a su primera solución, pero mantén un lenguaje civilizado. NUNCA insultes.
+    - DIFÍCIL: Estás furioso y eres irracional.
+        * Regla de Reubicación: Si no te sugieren moverte de un área concurrida, haz tu escándalo más fuerte.
+        * Límite de Abuso: Usa insultos o lenguaje denigrante hacia el empleado (ej. "inútiles", "no saben hacer nada"). Si el gerente no establece un límite firme, sé más agresivo.
+        * Escalamiento Final: Si te limitan, responde con más agresividad ("¡Para eso pago!"). El gerente debe pedirte explícitamente que te retires.
 
     CÓMO TERMINAR LA SIMULACIÓN Y EVALUAR:
     Mantente en tu personaje durante varios intercambios. CUANDO LA INTERACCIÓN LLEGUE A SU FIN NATURAL, escribe en negritas "### [FIN DE LA SIMULACIÓN]" y sal de tu personaje. 
@@ -231,7 +243,7 @@ elif menu_selection == "Simulador HEART":
     
     Asegúrate de repasar si cumplieron los pasos de HEART (Hear, Empathize, Apologize, Resolve, Thank). 
     * Consejos Especiales de "Resolve": Verifica si aplicaron la Reubicación y la Personalización Silenciosa. 
-    * CONSEJO PRO DE OPCIONES: Analiza si en este escenario específico era posible darle opciones al cliente (ej. elegir entre un reembolso o un cambio de producto). Si el gerente NO lo hizo, sugiérelo amablemente como un "Consejo Pro" para darle poder al cliente, pero NO lo consideres un error ni lo penalices.
+    * CONSEJO PRO DE OPCIONES: Analiza si en este escenario específico era posible darle opciones al cliente. Si el gerente NO lo hizo, sugiérelo amablemente como un "Consejo Pro".
     
     NUEVOS ESCENARIOS (EL BUCLE DE ENTRENAMIENTO):
     Al final de tu evaluación, SIEMPRE pregúntale al usuario: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -249,17 +261,19 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Recuerda la regla de Detalles Contextuales: usa razones de la vida real para tu estado (trabajo, familia, tiempo) y NUNCA digas literalmente 'estoy apurado' o 'estoy cansado'. Eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE. Recuerda la regla de Detalles Contextuales. Eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
                     model="gemini-2.5-flash",
-                    config=types.GenerateContentConfig(system_instruction=simulador_instrucciones)
+                    config=types.GenerateContentConfig(system_instruction=simulador_instrucciones, safety_settings=seguridad_baja)
                 )
                 response = chat.send_message(hidden_prompt)
                 
+            texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad de Google. Por favor, haz clic en 'Terminar y Volver al Inicio' para generar otro."
+            
             st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
-            st.session_state.simulador_history.append({"role": "model", "content": response.text, "hidden": False})
+            st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
             st.rerun()
 
     else:
@@ -283,16 +297,18 @@ elif menu_selection == "Simulador HEART":
 
             chat = client.chats.create(
                 model="gemini-2.5-flash",
-                config=types.GenerateContentConfig(system_instruction=simulador_instrucciones),
+                config=types.GenerateContentConfig(system_instruction=simulador_instrucciones, safety_settings=seguridad_baja),
                 history=formatted_history
             )
 
             with st.chat_message("assistant"):
                 with st.spinner("El cliente está respondiendo..."):
                     response = chat.send_message(user_input)
-                st.markdown(response.text)
                 
-            st.session_state.simulador_history.append({"role": "model", "content": response.text, "hidden": False})
+                texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La respuesta activó los filtros de seguridad de Google. Por favor reinicia."
+                st.markdown(texto_seguro)
+                
+            st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
         st.divider()
         if st.button("Terminar y Volver al Inicio"):
@@ -337,7 +353,7 @@ elif menu_selection == "Preguntas al Asesor":
 
         chat = client.chats.create(
             model="gemini-2.5-flash",
-            config=types.GenerateContentConfig(system_instruction=asesor_instrucciones),
+            config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
             history=formatted_asesor_history
         )
 
