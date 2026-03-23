@@ -46,56 +46,122 @@ if menu_selection == "Inicio":
     
     st.subheader("Ruta de Entrenamiento:")
     
-    st.info("📖 **Paso 1: Aprender HEART**\n\nEstudia la metodología oficial de servicio al cliente y las reglas de reubicación específicas de nuestra tienda.")
-    st.warning("🥩 **Paso 2: Simulador HEART**\n\nPon a prueba tus conocimientos en un escenario interactivo con clientes difíciles. ¡El simulador evaluará tus respuestas!")
+    st.info("📖 **Paso 1: Aprender HEART**\n\nEstudia la metodología oficial y completa el tutorial paso a paso guiado por nuestro instructor virtual.")
+    st.warning("🥩 **Paso 2: Simulador HEART**\n\nPon a prueba tus conocimientos en un escenario fluido y realista con clientes difíciles. ¡El simulador evaluará tus respuestas finales!")
     st.success("🧠 **Apoyo: Preguntas al Asesor**\n\nUsa esta herramienta en cualquier momento para hacerle preguntas al asesor virtual sobre cómo manejar situaciones reales en tu turno.")
         
     st.divider()
     st.caption("👈 Usa el menú lateral de la izquierda para comenzar tu entrenamiento.")
 
 # ==========================================
-# MÓDULO 1: APRENDER HEART (Módulo de Estudio)
+# MÓDULO 1: APRENDER HEART (Tutorial Guiado)
 # ==========================================
 elif menu_selection == "Aprender HEART":
     st.title("📖 El Método HEART")
-    st.write("En La Vaquita Meat Market, el excelente servicio al cliente es nuestra prioridad. Estudia los 5 pasos del método HEART antes de pasar al simulador.")
+    st.write("En La Vaquita Meat Market, el excelente servicio al cliente es nuestra prioridad. Estudia detalladamente los 5 pasos y luego baja para completar el Tutorial Guiado.")
     
     st.divider()
     
-    with st.expander("👂 H - Hear (Escuchar)", expanded=True):
+    with st.expander("👂 H - Hear (Escuchar)", expanded=False):
         st.write("**Escucha activamente y en silencio.**")
-        st.write("Deja que el cliente se desahogue completamente sin interrumpirlo. Mantén contacto visual y un lenguaje corporal abierto. Muchas veces, los clientes solo quieren ser escuchados.")
+        st.write("El primer paso es dejar que el cliente se desahogue completamente sin interrumpirlo. Mantén contacto visual, asiente con la cabeza y ten un lenguaje corporal abierto. Muchas veces, un cliente molesto solo necesita sentir que alguien lo está escuchando antes de calmarse. **No ofrezcas soluciones todavía.**")
 
-    with st.expander("🤝 E - Empathize (Empatizar)", expanded=True):
+    with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
         st.write("**Valida sus sentimientos sin darle la razón absoluta.**")
-        st.write("Demuestra que entiendes su frustración.")
-        st.write("✅ *Correcto:* 'Entiendo completamente por qué está frustrado con el tiempo de espera.'")
-        st.write("❌ *Incorrecto:* 'Tiene toda la razón, somos muy lentos.'")
+        st.write("Demuestra que entiendes su frustración poniéndote en sus zapatos, pero no admitas que la tienda hizo algo malo si no tienes todos los hechos.")
+        st.write("✅ *Correcto:* 'Entiendo completamente por qué está frustrado con el tiempo de espera en su hora de comida.' (Validas su emoción).")
+        st.write("❌ *Incorrecto:* 'Tiene toda la razón, nuestra taquería es muy lenta hoy.' (Culpas a tu propio equipo).")
 
-    with st.expander("🙏 A - Apologize (Disculparse)", expanded=True):
+    with st.expander("🙏 A - Apologize (Disculparse)", expanded=False):
         st.write("**Ofrece una disculpa sincera y asume la responsabilidad.**")
-        st.write("No pongas excusas ni culpes a otros empleados o departamentos. Una disculpa simple y directa es la más efectiva.")
-        st.write("*Ejemplo:* 'Le pido una sincera disculpa por este inconveniente.'")
+        st.write("Incluso si el error no fue tuyo directamente, tú representas a La Vaquita. No pongas excusas ni le eches la culpa al proveedor, a otro cajero o al sistema.")
+        st.write("✅ *Correcto:* 'Le pido una sincera disculpa por este inconveniente. Sé que su tiempo es valioso.'")
 
-    with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=True):
-        st.write("**Soluciona el problema siguiendo las reglas de la tienda.**")
-        st.write("🚨 **REGLA DE REUBICACIÓN DE LA VAQUITA:** Si un cliente está alterado, haciendo un escándalo o deteniendo la fila, tu PRIMERA acción debe ser moverlo de lugar para proteger la experiencia de los demás clientes.")
-        st.markdown("""
-        * **Cajas Registradoras:** Muévelos al mostrador de servicio al cliente.
-        * **Taquería o Paletería:** Invítalos a sentarse en una mesa del área de comida.
-        * **Carnicería o Panadería:** Pídeles amablemente que se hagan a un lado del mostrador.
-        """)
-        st.write("*Nota sobre descuentos:* Solo ofrece descuentos si el problema es grave y la reubicación/solución básica no es suficiente.")
+    with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
+        st.write("**Soluciona el problema y protege el piso de ventas.**")
+        st.write("🚨 **REGLA DE REUBICACIÓN:** Si un cliente está alterado, haciendo un escándalo o deteniendo la fila, tu PRIMERA acción antes de resolver el problema debe ser sugerir moverlo de lugar.")
+        st.write("Usa tu buen juicio como gerente para llevar al cliente a otra área más tranquila y adecuada (a un lado del mostrador, una mesa vacía, un pasillo menos concurrido, etc.) para evitar interrumpir a otros clientes.")
+        st.write("*Sobre los descuentos:* Un descuento o producto gratis es el último recurso. Intenta resolver el problema con un cambio o corrección primero.")
 
-    with st.expander("💖 T - Thank (Agradecer)", expanded=True):
+    with st.expander("💖 T - Thank (Agradecer)", expanded=False):
         st.write("**Agradece al cliente por su paciencia y por informarnos.**")
-        st.write("Termina la interacción con una nota positiva para asegurar que sigan comprando con nosotros.")
-        st.write("*Ejemplo:* 'Le agradezco mucho su paciencia mientras resolvíamos esto, y gracias por dejarnos saber para poder mejorar.'")
+        st.write("Termina la interacción con una nota positiva. Queremos que el cliente se vaya sintiendo que nos importa su opinión para que regrese.")
+        st.write("✅ *Correcto:* 'Le agradezco mucho su paciencia mientras resolvíamos esto, y gracias por informarnos para poder mejorar nuestro servicio.'")
         
-    st.divider()
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**")
-    st.write("En La Vaquita, el cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente cruza la línea usando insultos, lenguaje inapropiado o denigrando a un empleado, DEBES establecer un límite firme y profesional. No toleres el abuso.")
-    st.write("*Ejemplo:* 'Señor, quiero ayudarle a resolver su problema, pero le pido que nos comuniquemos con respeto.'")
+    st.write("El cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.")
+    st.write("✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'")
+
+    st.divider()
+    st.subheader("🎓 Tutor Paso a Paso")
+    st.write("Es hora de practicar. El Tutor Virtual te presentará un escenario y te guiará letra por letra. Deberás responder correctamente cada paso antes de avanzar al siguiente.")
+
+    tutor_instrucciones = """
+    Eres el Tutor de Entrenamiento de La Vaquita Meat Market. Tu trabajo es enseñar el método HEART paso a paso.
+    
+    INSTRUCCIONES DE TUTORÍA:
+    1. En tu primer mensaje, presenta un escenario conflictivo (ej. en la carnicería o cajas).
+    2. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?"
+    3. Espera su respuesta. Si es correcta (guardar silencio, escuchar activamente), felicítalo y pregúntale por el paso E (Empathize).
+    4. Si se equivoca o intenta saltarse pasos (ej. resolver el problema de inmediato), corrígelo amablemente y oblígalo a responder el paso actual correctamente.
+    5. Guíalo secuencialmente: H -> E -> A -> R -> T. 
+    6. Cuando lleguen a la R (Resolve), asegúrate de que apliquen la Regla de Reubicación. El gerente debe proponer mover al cliente a otra área. Evalúa lógicamente si el lugar que el usuario sugiere es una buena decisión para desescalar la situación sin interrumpir el flujo de la tienda.
+    7. Una vez que completen la T (Thank), felicítalos, diles que están listos para el Simulador, y da por terminado el tutorial.
+    """
+
+    if "tutor_history" not in st.session_state:
+        st.session_state.tutor_history = []
+
+    if len(st.session_state.tutor_history) == 0:
+        if st.button("Iniciar Tutorial Guiado"):
+            with st.spinner("Preparando tu primera lección..."):
+                chat = client.chats.create(
+                    model="gemini-2.5-flash",
+                    config=types.GenerateContentConfig(system_instruction=tutor_instrucciones)
+                )
+                hidden_prompt = "Hola. Preséntame un escenario en La Vaquita y pídeme que complete el primer paso (H). No me des las respuestas."
+                response = chat.send_message(hidden_prompt)
+                
+            st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
+            st.session_state.tutor_history.append({"role": "model", "content": response.text, "hidden": False})
+            st.rerun()
+    else:
+        formatted_tutor_history = []
+        for msg in st.session_state.tutor_history:
+            if not msg.get("hidden", False):
+                formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+
+        for msg in st.session_state.tutor_history:
+            if not msg.get("hidden", False):
+                ui_role = "assistant" if msg["role"] == "model" else "user"
+                with st.chat_message(ui_role):
+                    st.markdown(msg["content"])
+
+        tutor_input = st.chat_input("Escribe tu respuesta para el paso actual...")
+
+        if tutor_input:
+            with st.chat_message("user"):
+                st.markdown(tutor_input)
+            
+            st.session_state.tutor_history.append({"role": "user", "content": tutor_input, "hidden": False})
+
+            chat = client.chats.create(
+                model="gemini-2.5-flash",
+                config=types.GenerateContentConfig(system_instruction=tutor_instrucciones),
+                history=formatted_tutor_history
+            )
+
+            with st.chat_message("assistant"):
+                with st.spinner("El tutor está revisando tu respuesta..."):
+                    response = chat.send_message(tutor_input)
+                st.markdown(response.text)
+                
+            st.session_state.tutor_history.append({"role": "model", "content": response.text, "hidden": False})
+        
+        st.divider()
+        if st.button("Reiniciar Tutorial"):
+            st.session_state.tutor_history = []
+            st.rerun()
 
 # ==========================================
 # MÓDULO 2: SIMULADOR HEART (Method Actor)
@@ -114,7 +180,7 @@ elif menu_selection == "Simulador HEART":
     - FÁCIL: Eres razonable. Si el gerente es amable, escucha y ofrece una solución justa, acéptala rápidamente y sé agradecido.
     - MEDIO: Estás apurado y frustrado. Pon peros a su primera solución (ej. "Sí, pero ya perdí 20 minutos"). Haz preguntas difíciles. Cede solo si muestran buena empatía y una resolución verdaderamente útil.
     - DIFÍCIL: Estás furioso. Interrumpe al gerente. Haz un escándalo público. 
-        * Curva de Reubicación: Si estás gritando y el gerente intenta resolver el problema en medio de la tienda sin pedirte que te muevas a un área más privada (como el mostrador de servicio al cliente o una mesa), haz tu escándalo MÁS FUERTE y quéjate de que todos te están viendo.
+        * Curva de Reubicación: Si estás gritando y el gerente intenta resolver el problema en medio de la tienda sin sugerir que se muevan a otra área más adecuada, haz tu escándalo MÁS FUERTE y quéjate de que todos te están viendo.
         * Límite de Abuso (Trampa): Ocasionalmente, cruza la línea con un insulto o actitud denigrante. Si el gerente solo se disculpa y acepta el abuso verbal, sé más agresivo. El gerente DEBE establecer un límite firme (ej. "Le pido que nos comuniquemos con respeto"). Si establecen el límite, cálmate un poco o retírate de la tienda.
 
     CÓMO TERMINAR LA SIMULACIÓN Y EVALUAR:
@@ -124,7 +190,7 @@ elif menu_selection == "Simulador HEART":
     - H (Hear): ¿Guardaron silencio y no te interrumpieron inicialmente?
     - E (Empathize): ¿Validaron tu frustración sin darte la razón absoluta?
     - A (Apologize): ¿Fue genuina su disculpa?
-    - R (Resolve): ¿Te reubicaron correctamente según el departamento? ¿La solución fue buena sin regalar demasiado?
+    - R (Resolve): ¿Te invitaron a moverte a una zona lógica y menos disruptiva para hablar y resolver el problema? ¿La solución fue buena sin regalar demasiado?
     - T (Thank): ¿Agradecieron tu paciencia?
     """
 
@@ -204,7 +270,7 @@ elif menu_selection == "Preguntas al Asesor":
     Tus reglas:
     1. Da respuestas directas, prácticas y profesionales. No uses respuestas genéricas; adáptalas al entorno de un mercado hispano concurrido.
     2. Usa el método HEART como base para tus recomendaciones cuando aplique.
-    3. Ten en cuenta las reglas estrictas de la tienda: NUNCA tolerar el abuso a los empleados (los gerentes deben establecer límites profesionales) y SIEMPRE reubicar a los clientes ruidosos o conflictivos para no afectar las ventas.
+    3. Ten en cuenta las reglas estrictas de la tienda: NUNCA tolerar el abuso a los empleados (los gerentes deben establecer límites profesionales) y SIEMPRE pedirles a los clientes ruidosos o conflictivos que se muevan a otra área para no afectar las ventas.
     4. Responde en español, con un tono alentador pero firme.
     """
 
