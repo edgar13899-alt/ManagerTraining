@@ -101,7 +101,8 @@ elif menu_selection == "Aprender HEART":
         **Las acciones clave para este paso incluyen:**
         * **Solucionar el problema:** Resuelve el problema de inmediato si puedes. Si no puedes, explica exactamente qué medidas estás tomando para solucionarlo.
         * **Ofrecer opciones:** Dale alternativas al cliente siempre que sea posible. Esto le devuelve la sensación de control después de una experiencia frustrante.
-        * **Ser transparente:** Comunica claramente los plazos y qué pueden esperar a continuación. Evita hacer promesas que no puedas cumplir.
+        * **Ser transparente:** Comunica claramente los plazos (ej. *"su pedido estará listo en 15 minutos"*). Evita hacer promesas que no puedas cumplir.
+        * **Personalización silenciosa (Lectura del cliente):** Observa el lenguaje corporal del cliente y adapta tu solución a su situación sin señalar su estrés explícitamente. Por ejemplo, si notas que tienen prisa, no digas *"veo que tiene prisa"*, ya que eso aumenta su ansiedad. Usa frases como: *"Permítame cobrarle en esta otra caja para que pueda continuar con su día"*. Así pensarán: *"Qué bueno, porque llevo mucha prisa"*.
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
@@ -128,12 +129,14 @@ elif menu_selection == "Aprender HEART":
     
     INSTRUCCIONES DE TUTORÍA:
     1. En tu primer mensaje, presenta un escenario conflictivo (ej. en la carnicería o cajas).
-    2. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?"
-    3. Espera su respuesta. Si es correcta (guardar silencio, escuchar activamente), felicítalo y pregúntale por el paso E (Empathize).
-    4. Si se equivoca o intenta saltarse pasos (ej. resolver el problema de inmediato), corrígelo amablemente y oblígalo a responder el paso actual correctamente.
+    2. IMPORTANTE: Al describir el escenario, SIEMPRE incluye una pista clara sobre el lenguaje corporal o estado del cliente (ej. está mirando su reloj frenéticamente, lleva a un niño llorando, parece agotado físicamente).
+    3. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?"
+    4. Espera su respuesta. Si es correcta, felicítalo y pregúntale por el paso E (Empathize).
     5. Guíalo secuencialmente: H -> E -> A -> R -> T. 
-    6. Cuando lleguen a la R (Resolve), asegúrate de que apliquen la Regla de Reubicación. El gerente debe proponer mover al cliente a otra área. Evalúa lógicamente si el lugar que el usuario sugiere es una buena decisión para desescalar la situación sin interrumpir el flujo de la tienda.
-    7. Una vez que completen la T (Thank), felicítalos, diles que están listos para el Simulador, y da por terminado el tutorial.
+    6. Cuando lleguen a la R (Resolve), asegúrate de que apliquen dos cosas:
+        - La Regla de Reubicación (sugerir moverse a un área tranquila).
+        - La Personalización Silenciosa: El usuario debe ofrecer una solución que atienda la pista de lenguaje corporal (ej. ofrecer velocidad si tienen prisa) SIN decir explícitamente "veo que tiene prisa" o "veo que está cansado". Si el usuario señala el estrés explícitamente, corrígelo y dile que eso genera más ansiedad.
+    7. Una vez que completen la T (Thank), felicítalos y da por terminado el tutorial.
     """
 
     if "tutor_history" not in st.session_state:
@@ -146,7 +149,7 @@ elif menu_selection == "Aprender HEART":
                     model="gemini-2.5-flash",
                     config=types.GenerateContentConfig(system_instruction=tutor_instrucciones)
                 )
-                hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Alterna entre problemas comunes (ej. filas largas) y situaciones inusuales (ej. pedidos especiales arruinados). Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
+                hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Asegúrate de incluir una pista sobre mi estado (ej. mucha prisa, agotado, etc.). Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
                 response = chat.send_message(hidden_prompt)
                 
             st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
@@ -201,26 +204,26 @@ elif menu_selection == "Simulador HEART":
     Departamentos: taquería, panadería, pastelería, paletería, frutas/verduras frescas y abarrotes.
 
     TU OBJETIVO:
-    Actuar como el cliente en una conversación continua de ida y vuelta. NO evalúes de inmediato. Responde a lo que te diga el gerente, reacciona a su tono y pon a prueba sus habilidades antes de aceptar una solución.
+    Actuar como el cliente en una conversación continua de ida y vuelta. NO evalúes de inmediato.
+    IMPORTANTE: Al dar tu queja inicial, SIEMPRE incluye una descripción de tu lenguaje corporal o situación que indique tu estado (ej. "estoy mirando mi reloj constantemente porque llego tarde al trabajo", o "tengo bolsas pesadas en las manos").
 
-    REGLAS DE ACTUACIÓN (Dependiendo de la dificultad elegida):
-    - FÁCIL: Eres razonable. Si el gerente es amable, escucha y ofrece una solución justa, acéptala rápidamente y sé agradecido.
-    - MEDIO: Estás apurado y frustrado. Pon peros a su primera solución (ej. "Sí, pero ya perdí 20 minutos"). Haz preguntas difíciles. Cede solo si muestran buena empatía y una resolución verdaderamente útil.
-    - DIFÍCIL: Estás furioso. Interrumpe al gerente. Haz un escándalo público. 
-        * Curva de Reubicación: Si estás gritando y el gerente intenta resolver el problema en medio de la tienda sin sugerir que se muevan a otra área más adecuada, haz tu escándalo MÁS FUERTE y quéjate de que todos te están viendo.
-        * Límite de Abuso (Trampa): Ocasionalmente, cruza la línea con un insulto o actitud denigrante. Si el gerente solo se disculpa y acepta el abuso verbal, sé más agresivo. El gerente DEBE establecer un límite firme (ej. "Le pido que nos comuniquemos con respeto").
-        * Escalamiento Final: A veces, incluso cuando el gerente establece el límite, NO te calmes. Responde con más agresividad (ej. "¡Yo hablo como quiero, para eso pago!"). En este caso, el gerente DEBE terminar la interacción y pedirte explícitamente que te retires de la tienda.
+    REGLAS DE ACTUACIÓN:
+    - FÁCIL: Eres razonable. Acepta soluciones justas.
+    - MEDIO: Estás apurado y frustrado. Pon peros a su primera solución.
+    - DIFÍCIL: Estás furioso. Interrumpe al gerente. 
+        * Curva de Reubicación: Si no te sugieren moverte de un área concurrida, haz tu escándalo más fuerte.
+        * Límite de Abuso: Insulta al empleado. Si el gerente no establece un límite firme, sé más agresivo.
+        * Escalamiento Final: A veces, incluso cuando establecen el límite, responde con más agresividad ("¡Para eso pago!"). El gerente debe pedirte explícitamente que te retires.
 
     CÓMO TERMINAR LA SIMULACIÓN Y EVALUAR:
-    Mantente en tu personaje durante varios intercambios (3 a 6 mensajes), o hasta que el gerente resuelva el problema satisfactoriamente, o hasta que el gerente te pida que te retires por comportamiento abusivo. 
-    CUANDO LA INTERACCIÓN LLEGUE A SU FIN NATURAL, escribe en negritas "### [FIN DE LA SIMULACIÓN]" y sal de tu personaje. 
-    Inmediatamente después, proporciona una evaluación completa del desempeño del gerente utilizando el método HEART y las políticas de la tienda:
-    - H (Hear): ¿Guardaron silencio y no te interrumpieron inicialmente?
+    Mantente en tu personaje durante varios intercambios. CUANDO LA INTERACCIÓN LLEGUE A SU FIN NATURAL, escribe en negritas "### [FIN DE LA SIMULACIÓN]" y sal de tu personaje. 
+    Inmediatamente después, proporciona una evaluación utilizando el método HEART:
+    - H (Hear): ¿Guardaron silencio inicial?
     - E (Empathize): ¿Validaron tu frustración sin darte la razón absoluta?
-    - A (Apologize): ¿Fue genuina su disculpa?
-    - R (Resolve): ¿Te invitaron a moverte a una zona lógica y menos disruptiva para hablar y resolver el problema? ¿La solución fue buena sin regalar demasiado?
+    - A (Apologize): ¿Fue genuina la disculpa?
+    - R (Resolve): ¿Te reubicaron a una zona lógica? ADEMÁS: ¿Aplicaron la "Personalización silenciosa"? (¿Notaron tu lenguaje corporal, como tu prisa, y te ofrecieron una solución adaptada SIN decir explícitamente "veo que tiene prisa"?)
     - T (Thank): ¿Agradecieron tu paciencia?
-    - 🛑 Límites y Respeto: ¿Establecieron un límite firme ante tus insultos? Si continuaste siendo agresivo, ¿tuvieron el valor de pedirte que te retiraras de la tienda?
+    - 🛑 Límites y Respeto: ¿Establecieron un límite firme ante tus insultos (si aplica)?
     """
 
     if "simulador_history" not in st.session_state:
@@ -234,7 +237,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario completamente aleatorio para La Vaquita. Alterna entre problemas muy comunes (ej. filas largas, comida fría) y problemas específicos o inusuales (ej. un corte de carne mal rebanado, un accidente en el pasillo). ¡Sé creativo para no repetir escenarios! Presenta tu queja inicial en un solo párrafo. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio para forzar variación: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de describir una pista de lenguaje corporal (prisa, cansancio, etc.) en tu primer mensaje para que el gerente pueda practicar la 'Personalización silenciosa'. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
@@ -299,7 +302,7 @@ elif menu_selection == "Preguntas al Asesor":
     Tus reglas:
     1. Da respuestas directas, prácticas y profesionales. No uses respuestas genéricas; adáptalas al entorno de un mercado hispano concurrido.
     2. Usa el método HEART como base para tus recomendaciones cuando aplique.
-    3. Ten en cuenta las reglas estrictas de la tienda: NUNCA tolerar el abuso a los empleados (los gerentes deben establecer límites profesionales y pedirles que se retiren si continúan) y SIEMPRE pedirles a los clientes ruidosos o conflictivos que se muevan a otra área para no afectar las ventas.
+    3. Ten en cuenta las reglas estrictas de la tienda: NUNCA tolerar el abuso a los empleados y SIEMPRE pedirles a los clientes ruidosos que se muevan.
     4. Responde en español, con un tono alentador pero firme.
     """
 
