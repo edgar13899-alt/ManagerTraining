@@ -2,6 +2,7 @@ import streamlit as st
 from google import genai
 from google.genai import types
 import os
+import random
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(
@@ -145,7 +146,7 @@ elif menu_selection == "Aprender HEART":
                     model="gemini-2.5-flash",
                     config=types.GenerateContentConfig(system_instruction=tutor_instrucciones)
                 )
-                hidden_prompt = "Hola. Preséntame un escenario en La Vaquita y pídeme que complete el primer paso (H). No me des las respuestas."
+                hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Alterna entre problemas comunes (ej. filas largas) y situaciones inusuales (ej. pedidos especiales arruinados). Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
                 response = chat.send_message(hidden_prompt)
                 
             st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
@@ -233,7 +234,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Presenta tu queja inicial en un solo párrafo. Recuerda: eres el cliente, NO el evaluador todavía."
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario completamente aleatorio para La Vaquita. Alterna entre problemas muy comunes (ej. filas largas, comida fría) y problemas específicos o inusuales (ej. un corte de carne mal rebanado, un accidente en el pasillo). ¡Sé creativo para no repetir escenarios! Presenta tu queja inicial en un solo párrafo. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio para forzar variación: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
