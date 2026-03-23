@@ -156,11 +156,12 @@ elif menu_selection == "Aprender HEART":
             st.session_state.tutor_history.append({"role": "model", "content": response.text, "hidden": False})
             st.rerun()
     else:
+        # Aquí pasamos la historia completa a la IA (sin filtrar) para no romper el orden de la API
         formatted_tutor_history = []
         for msg in st.session_state.tutor_history:
-            if not msg.get("hidden", False):
-                formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+            formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
 
+        # Aquí solo mostramos en pantalla los mensajes visibles
         for msg in st.session_state.tutor_history:
             if not msg.get("hidden", False):
                 ui_role = "assistant" if msg["role"] == "model" else "user"
@@ -260,11 +261,12 @@ elif menu_selection == "Simulador HEART":
             st.rerun()
 
     else:
+        # Corrección del bug: Pasamos la historia completa a la IA (sin filtrar el hidden)
         formatted_history = []
         for msg in st.session_state.simulador_history:
-            if not msg.get("hidden", False):
-                formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+            formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
 
+        # Solo ocultamos el mensaje en la pantalla del usuario
         for message in st.session_state.simulador_history:
             if not message.get("hidden", False):
                 ui_role = "assistant" if message["role"] == "model" else "user"
