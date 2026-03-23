@@ -129,13 +129,13 @@ elif menu_selection == "Aprender HEART":
     
     INSTRUCCIONES DE TUTORÍA:
     1. En tu primer mensaje, presenta un escenario conflictivo (ej. en la carnicería o cajas).
-    2. IMPORTANTE: Al describir el escenario, SIEMPRE incluye una pista clara sobre el lenguaje corporal o estado del cliente (ej. está mirando su reloj frenéticamente, lleva a un niño llorando, parece agotado físicamente).
+    2. IMPORTANTE: Al describir el escenario, SIEMPRE incluye una pista clara sobre el lenguaje corporal o estado del cliente en TERCERA PERSONA (ej. el cliente está mirando su reloj frenéticamente, la clienta lleva a un niño llorando, el señor parece agotado físicamente).
     3. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?"
     4. Espera su respuesta. Si es correcta, felicítalo y pregúntale por el paso E (Empathize).
     5. Guíalo secuencialmente: H -> E -> A -> R -> T. 
     6. Cuando lleguen a la R (Resolve), asegúrate de que apliquen dos cosas:
         - La Regla de Reubicación (sugerir moverse a un área tranquila).
-        - La Personalización Silenciosa: El usuario debe ofrecer una solución que atienda la pista de lenguaje corporal (ej. ofrecer velocidad si tienen prisa) SIN decir explícitamente "veo que tiene prisa" o "veo que está cansado". Si el usuario señala el estrés explícitamente, corrígelo y dile que eso genera más ansiedad.
+        - La Personalización Silenciosa: El usuario debe ofrecer una solución que atienda la pista de lenguaje corporal (ej. ofrecer velocidad si tienen prisa) SIN decir explícitamente "veo que tiene prisa".
     7. Una vez que completen la T (Thank), felicítalos y da por terminado el tutorial.
     """
 
@@ -149,7 +149,7 @@ elif menu_selection == "Aprender HEART":
                     model="gemini-2.5-flash",
                     config=types.GenerateContentConfig(system_instruction=tutor_instrucciones)
                 )
-                hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Asegúrate de incluir una pista sobre mi estado (ej. mucha prisa, agotado, etc.). Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
+                hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Asegúrate de incluir una pista sobre el estado físico del cliente en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
                 response = chat.send_message(hidden_prompt)
                 
             st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
@@ -207,9 +207,9 @@ elif menu_selection == "Simulador HEART":
     Actuar como el cliente en una conversación continua de ida y vuelta. NO evalúes de inmediato.
 
     REGLAS DE FORMATO (MUY IMPORTANTE):
-    1. Para tu PRIMER mensaje, debes separar tu lenguaje corporal de lo que dices en voz alta usando este formato exacto:
-    **Escenario:** [Describe tu lenguaje corporal o estado físico aquí, ej. mirando el reloj con prisa, cargando bolsas pesadas].
-    **Cliente:** "[Escribe tu queja inicial aquí en voz alta]".
+    1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta usando este formato exacto:
+    **Escenario:** [Describe el lenguaje corporal o estado físico del cliente estrictamente en TERCERA PERSONA como un narrador objetivo, ej. "El cliente mira su reloj con prisa" o "La clienta se cruza de brazos molesta". NUNCA uses "yo" o "mi" en esta sección].
+    **Cliente:** "[Escribe tu queja inicial aquí en voz alta, en primera persona]".
     2. En el resto de la conversación, si haces una acción física, ponla entre asteriscos (ej. *suspiro molesto* o *me cruzo de brazos*) y NO la digas en voz alta.
 
     REGLAS DE ACTUACIÓN:
@@ -218,7 +218,7 @@ elif menu_selection == "Simulador HEART":
     - DIFÍCIL: Estás furioso. Interrumpe al gerente. 
         * Curva de Reubicación: Si no te sugieren moverte de un área concurrida, haz tu escándalo más fuerte.
         * Límite de Abuso: Insulta al empleado. Si el gerente no establece un límite firme, sé más agresivo.
-        * Escalamiento Final: A veces, incluso cuando establecen el límite, responde con más agresividad ("¡Para eso pago!"). El gerente debe pedirte explícitamente que te retires.
+        * Escalamiento Final: A veces, responde con más agresividad ("¡Para eso pago!"). El gerente debe pedirte explícitamente que te retires.
 
     CÓMO TERMINAR LA SIMULACIÓN Y EVALUAR:
     Mantente en tu personaje durante varios intercambios. CUANDO LA INTERACCIÓN LLEGUE A SU FIN NATURAL, escribe en negritas "### [FIN DE LA SIMULACIÓN]" y sal de tu personaje. 
@@ -242,7 +242,7 @@ elif menu_selection == "Simulador HEART":
         )
         
         if st.button("Comenzar Escenario"):
-            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal (prisa, cansancio, etc.) en tu primer mensaje usando estrictamente el formato Escenario/Cliente. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
+            hidden_prompt = f"Inicia la simulación. Entra en personaje como un cliente con dificultad {difficulty}. Genera un escenario aleatorio para La Vaquita. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario. Recuerda: eres el cliente, NO el evaluador todavía. Código aleatorio: {random.randint(1,10000)}"
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
