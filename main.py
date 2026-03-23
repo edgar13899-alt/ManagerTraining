@@ -78,8 +78,9 @@ elif menu_selection == "Aprender HEART":
         **Las acciones clave para este paso incluyen:**
         * **Reflejar su urgencia:** Ajusta tu tono para demostrar que te tomas el asunto tan en serio como ellos.
         * **Validar sus emociones:** Usa frases que reconozcan sus sentimientos específicos (por ejemplo: frustración, decepción, pánico) en lugar de solo los hechos logísticos del problema.
-        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia. Empatizar no significa estar de acuerdo con ellos.
-        """)
+        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia.
+        * <u>**Empatizar no significa estar de acuerdo con ellos.**</u>
+        """, unsafe_allow_html=True)
 
     with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
         st.markdown("""
