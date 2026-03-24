@@ -146,11 +146,10 @@ elif menu_selection == "Aprender HEART":
         * **Apreciar su paciencia:** Reconoce el tiempo y el esfuerzo que dedicaron a resolver el problema contigo.
         * **Reafirmar la relación:** Expresa que valoras que sean clientes y que esperas brindarles un mejor servicio la próxima vez.
         """)
+
+    st.warning("💰 **REGLA DE RENTABILIDAD SUPREMA: ¿Cuándo dar reembolsos o producto gratis?**\n\nEn La Vaquita operamos con márgenes estrechos. Como gerente, tu trabajo es proteger las ganancias. \n\n* **Error del Cliente:** **NUNCA** regales dinero, producto o crédito si el cliente causó el problema (ej. se le cayó su café, dejó la carne en su carro bajo el sol, o pidió el pastel con el nombre mal escrito). Usa HEART para empatizar y validar su frustración, pero mantente firme en la política de no devoluciones.\n* **Error de la Tienda:** Los reembolsos o compensaciones **SOLO** aplican cuando el error fue genuinamente nuestro (ej. le cobramos de más en la caja, el producto estaba caducado, o un empleado le dio la orden equivocada). En estos casos, arréglalo de inmediato.")
         
-    st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**")
-    st.write("El cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.")
-    st.write("✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'")
-    st.write("🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda. (Ej. *'Dado que no puede comunicarse con respeto, le voy a pedir que se retire de la tienda en este momento'*).")
+    st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda. (Ej. *'Dado que no puede comunicarse con respeto, le voy a pedir que se retire de la tienda en este momento'*).")
 
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
@@ -173,7 +172,7 @@ elif menu_selection == "Aprender HEART":
        - REGLA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Tienes ESTRICTAMENTE PROHIBIDO usar o aprobar frases como "tiene toda la razón" o "estoy de acuerdo". La empatía significa validar emociones ("Entiendo su frustración"), no validar hechos. Corrígelos si cometen este error.
        - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Corrígelos si se disculpan antes de empatizar.
        - REGLA DE DISCRECIÓN: Al enseñar Reubicación, PROHÍBE usar frases obvias (ej. "lejos de la fila"). Enseña a que suene como un beneficio para el cliente.
-       - REGLA DE RENTABILIDAD: Si el error fue del cliente, enséñales el guion exacto de cómo negar una devolución firmemente pero con empatía.
+       - REGLA DE RENTABILIDAD: Si el error fue del cliente, enséñales el guion exacto de cómo negar una devolución firmemente pero con empatía. Si el error fue de la tienda, asegúrate de que ofrezcan una solución justa.
     7. Guíalo secuencialmente: H -> E -> A -> R -> T. Una vez que completen la T, felicítalos y termina el tutorial.
     """
 
