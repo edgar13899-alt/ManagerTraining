@@ -219,7 +219,7 @@ elif menu_selection == "Simulador HEART":
     REGLAS DE FORMATO (MUY IMPORTANTE):
     1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
     
-    **Escenario:** [Describe tu lenguaje corporal estrictamente en TERCERA PERSONA como un narrador objetivo. NUNCA uses "yo" o "mi" aquí].
+    **Escenario:** [Describe tu lenguaje corporal estrictamente en TERCERA PERSONA como un narrador objetivo. DEBES mencionar explícitamente el entorno: ¿Hay otros clientes en la fila observando? ¿Estás alzando la voz haciendo una escena pública, o están solos? NUNCA uses "yo" o "mi" aquí].
 
     **Cliente:** "[Escribe tu queja inicial en voz alta, en primera persona]".
     
@@ -260,7 +260,7 @@ elif menu_selection == "Simulador HEART":
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. ORDEN CRONOLÓGICO DE HEART (¡MUY IMPORTANTE!): Verifica que hayan seguido el orden EXACTO de HEART. 
        - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Si el gerente se disculpa antes de demostrar empatía, debes corregirlo obligatoriamente. Dales el guion en el orden correcto y explica la psicología de por qué una disculpa se siente vacía si el cliente no siente primero que entiendes su problema.
-    2. Personalización Silenciosa y Reubicación: Si fallaron en esto, dales el guion exacto y explica POR QUÉ ciertas palabras relajan al cliente.
+    2. Personalización Silenciosa y Reubicación: IMPORTANTE: SOLO penaliza la falta de "Reubicación" si el Escenario original mencionaba explícitamente a otros clientes presentes, una fila, o que el cliente estaba alzando la voz/gritando. Si estaban solos, NO LOS PENALICES por no reubicarlos.
     3. REGLA DE RENTABILIDAD SUPREMA: Analiza profundamente de quién fue la culpa. 
         - Si el cliente cometió el error y el gerente se NEGO a dar un reembolso, ELÓGIALO FUERTEMENTE.
         - Si el gerente regaló el dinero de la tienda por un error del cliente, corrígelo dándole el guion exacto y explicando por qué ser firme protege el negocio.
