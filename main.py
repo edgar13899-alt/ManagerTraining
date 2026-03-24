@@ -34,6 +34,19 @@ seguridad_baja = [
     types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
 ]
 
+# --- VARIABLES COMPARTIDAS (LA MÁQUINA TRAGAMONEDAS Y BÓVEDA) ---
+departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
+problemas_comunes = ["un producto equivocado o faltante", "un tiempo de espera inaceptable", "un problema de calidad o frescura genérico", "un precio cobrado incorrectamente en el sistema", "un malentendido leve con un empleado", "un derrame o accidente menor en la tienda"]
+pesadillas_la_vaquita = [
+    "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
+    "un cliente que recoge un pastel de cumpleaños personalizado en la panadería y exige un reembolso completo más el pastel gratis porque el nombre está mal escrito, a pesar de que el gerente tiene la hoja de pedido donde el cliente mismo escribió mal el nombre",
+    "un cliente furioso que, después de recibir su pedido en el mostrador de la carnicería, hace un escándalo al enterarse de que no hay caja registradora ahí y se niega a hacer una segunda fila en las cajas principales para pagar",
+    "un cliente que tiene un carrito lleno con $200 dólares en mandado, pero el sistema de EBT/tarjetas de beneficios del gobierno se cae a nivel nacional. No tiene otra forma de pagar y se niega a dejar el carrito.",
+    "un cliente que trae un folleto de ofertas de otro mercado hispano (como La Michoacana) y exige a gritos que le igualen el precio en una venta masiva de fajitas que la tienda físicamente no puede permitirse igualar.",
+    "un cliente que le pide al carnicero que le corte de manera especial 15 libras de una carne cara. El carnicero la corta, la empaqueta, y cuando el cliente ve el precio impreso, dice 'siempre no lo quiero' y lo deja ahí, dejando a la tienda con producto mermado que no puede regresar a la vitrina.",
+    "una mujer que quiere devolver una sopa de pollo de la taquería argumentando agresivamente que está 'demasiado picante', a pesar de que la receta de la tienda NO lleva absolutamente nada de picante y nadie más se ha quejado de eso jamás."
+]
+
 # --- MENÚ DE NAVEGACIÓN ---
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empty.png/120px-Empty.png", use_container_width=True) 
 st.sidebar.title("Menú Principal")
@@ -139,15 +152,17 @@ elif menu_selection == "Aprender HEART":
     TU OBJETIVO: Enseñar el método HEART paso a paso a un gerente en entrenamiento con gran inteligencia emocional y perspicacia comercial.
 
     INSTRUCCIONES DE TUTORÍA:
-    1. En tu primer mensaje, presenta un escenario conflictivo hiperrealista.
+    1. En tu primer mensaje, presenta el escenario conflictivo.
     2. IMPORTANTE: SIEMPRE incluye una pista clara sobre el lenguaje corporal o estado del cliente en TERCERA PERSONA (ej. mira su reloj, parece agotado).
     3. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?"
-    4. Espera su respuesta. Evalúala con precisión. Si es correcta, felicítalo y pasa a la E (Empathize). Si es incorrecta o débil, dales un EJEMPLO EXACTO de lo que deberían haber dicho y EXPLICA POR QUÉ funciona mejor.
-    5. Guíalo secuencialmente: H -> E -> A -> R -> T. 
-    6. Cuando lleguen a la R (Resolve), aplica estas reglas comerciales estrictas:
-        - Si el usuario sugiere regalar mercancía o dar un descuento por un error DEL CLIENTE, CORRÍGELO INMEDIATAMENTE dando el guion correcto de cómo decir que no y explicando la psicología de cómo decirlo firmemente sin enojar al cliente.
-        - Asegúrate de que apliquen la Reubicación (sugerir moverse) y la Personalización Silenciosa.
-    7. Una vez que completen la T (Thank), felicítalos y da por terminado el tutorial.
+    4. Espera su respuesta. Evalúala con precisión. Si es correcta, felicítalo y pasa a la E (Empathize). Si es incorrecta o débil, dales un EJEMPLO EXACTO de lo que deberían haber dicho.
+    5. DESGLOSE PSICOLÓGICO: Inmediatamente después de dar tu sugerencia de guion, DEBES explicar *por qué* elegiste esas palabras.
+    6. REGLAS ESTRICTAS DE EVALUACIÓN (APLICAN A TODOS LOS PASOS):
+       - REGLA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Tienes ESTRICTAMENTE PROHIBIDO usar o aprobar frases como "tiene toda la razón" o "estoy de acuerdo". La empatía significa validar emociones ("Entiendo su frustración"), no validar hechos. Corrígelos si cometen este error.
+       - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Corrígelos si se disculpan antes de empatizar.
+       - REGLA DE DISCRECIÓN: Al enseñar Reubicación, PROHÍBE usar frases obvias (ej. "lejos de la fila"). Enseña a que suene como un beneficio para el cliente.
+       - REGLA DE RENTABILIDAD: Si el error fue del cliente, enséñales el guion exacto de cómo negar una devolución firmemente pero con empatía.
+    7. Guíalo secuencialmente: H -> E -> A -> R -> T. Una vez que completen la T, felicítalos y termina el tutorial.
     """
 
     if "tutor_history" not in st.session_state:
@@ -156,11 +171,21 @@ elif menu_selection == "Aprender HEART":
     if len(st.session_state.tutor_history) == 0:
         if st.button("Iniciar Tutorial Guiado"):
             with st.spinner("Preparando tu primera lección..."):
+                
+                tipo_escenario = random.choices(["comun", "pesadilla"], weights=[40, 60], k=1)[0]
+                if tipo_escenario == "comun":
+                    depto_elegido = random.choice(departamentos)
+                    problema_elegido = random.choice(problemas_comunes)
+                    descripcion_problema = f"El escenario DEBE ocurrir en {depto_elegido}. La queja trata sobre {problema_elegido}."
+                else:
+                    pesadilla_elegida = random.choice(pesadillas_la_vaquita)
+                    descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
+
                 chat = client.chats.create(
                     model="gemini-2.5-pro",
                     config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
                 )
-                hidden_prompt = f"Hola. Genera un escenario aleatorio y único en La Vaquita. Asegúrate de incluir una pista sobre el estado físico del cliente en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio para forzar variación: {random.randint(1,10000)}"
+                hidden_prompt = f"Hola. Genera el escenario inicial usando esta premisa: {descripcion_problema}. Asegúrate de incluir la pista física en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio: {random.randint(1,10000)}"
                 response = chat.send_message(hidden_prompt)
                 
             texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
@@ -235,7 +260,7 @@ elif menu_selection == "Simulador HEART":
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
     - FÁCIL: Problema sencillo. Estás educado. Si te dan una buena solución, acéptala y espera la despedida. NUNCA insultes.
     - MEDIO: Problema molesto por error de la tienda. Estás frustrado. REGLA DE ORO: Si el gerente te ofrece una solución rápida o justa, ACEPTA y espera la despedida. NO alargues la conversación artificialmente. NUNCA insultes.
-    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. REGLAS PROHIBIDAS: NO uses groserías o insultos directos. NO actúes como un villano de película (no sonrías de forma malévola, no seas caricaturesco). Tu enojo debe ser frío, impaciente y muy realista. Tratas de hacer sentir culpable al gerente ("están arruinando mi evento"), amenazas pasivamente ("me voy a encargar de que mi familia no vuelva"), y exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación, pero de forma realista.
+    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. REGLAS PROHIBIDAS: NO uses groserías o insultos directos. NO actúes como un villano de película. Tu enojo debe ser frío, impaciente y muy realista. Tratas de hacer sentir culpable al gerente, amenazas pasivamente, y exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación.
     - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos hacia el personal y la tienda ("incompetentes", "basura", "inútiles"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente tiene el valor de aplicar la "Regla Cero" (establecer un límite de respeto o pedirte que te vayas). Si el gerente te pide que te calmes sin establecer un ultimátum, síguelos insultando y no aceptes ninguna solución. Si te marcan un límite estricto o te piden que salgas, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
 
     CÓMO TERMINAR LA SIMULACIÓN (LA REGLA DEL PASO 'THANK'):
@@ -260,7 +285,7 @@ elif menu_selection == "Simulador HEART":
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. ORDEN CRONOLÓGICO DE HEART (¡MUY IMPORTANTE!): Verifica que hayan seguido el orden EXACTO de HEART. 
-       - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Si el gerente se disculpa antes de demostrar empatía, debes corregirlo obligatoriamente. Dales el guion en el orden correcto y explica la psicología de por qué una disculpa se siente vacía si el cliente no siente primero que entiendes su problema.
+       - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Si el gerente se disculpa antes de demostrar empatía, debes corregirlo obligatoriamente.
     2. REGLA ESTRICTA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Cuando sugieras guiones para el paso 'Empathize', TIENES ESTRICTAMENTE PROHIBIDO usar frases como "tiene toda la razón", "estoy de acuerdo con usted" o darle la razón al cliente sobre una política. La empatía significa validar sus emociones ("Entiendo por qué se siente frustrado"), NO validar sus argumentos ("Usted tiene razón, esta regla no tiene sentido"). Corrígelos si ceden ante el cliente usando la empatía como excusa.
     3. Personalización Silenciosa y Reubicación: IMPORTANTE: SOLO penaliza la falta de "Reubicación" si el Escenario original mencionaba explícitamente a otros clientes presentes, una fila, o que el cliente estaba alzando la voz/gritando. Si estaban solos, NO LOS PENALICES por no reubicarlos. REGLA ESTRICTA DE DISCRECIÓN: Cuando sugieras un guion de reubicación, TIENES PROHIBIDO sugerir frases obvias que revelen la intención (ej. NUNCA sugieras decir "lejos de la fila" o "para que no escuchen"). La sugerencia debe sonar como un beneficio para el cliente (ej. "por favor acompáñeme al mostrador para revisar esto a detalle" o "pase por aquí para atenderle más rápido").
     4. REGLA DE RENTABILIDAD SUPREMA: Analiza profundamente de quién fue la culpa. 
@@ -286,28 +311,13 @@ elif menu_selection == "Simulador HEART":
         
         if st.button("Comenzar Escenario"):
             
-            # --- LA MÁQUINA TRAGAMONEDAS HÍBRIDA (40% Común / 60% Pesadilla) ---
             tipo_escenario = random.choices(["comun", "pesadilla"], weights=[40, 60], k=1)[0]
             
             if tipo_escenario == "comun":
-                departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
-                problemas_comunes = ["un producto equivocado o faltante", "un tiempo de espera inaceptable", "un problema de calidad o frescura genérico", "un precio cobrado incorrectamente en el sistema", "un malentendido leve con un empleado", "un derrame o accidente menor en la tienda"]
-                
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_comunes)
-                
                 descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
-                
             else:
-                pesadillas_la_vaquita = [
-                    "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
-                    "un cliente que recoge un pastel de cumpleaños personalizado en la panadería y exige un reembolso completo más el pastel gratis porque el nombre está mal escrito, a pesar de que el gerente tiene la hoja de pedido donde el cliente mismo escribió mal el nombre",
-                    "un cliente furioso que, después de recibir su pedido en el mostrador de la carnicería, hace un escándalo al enterarse de que no hay caja registradora ahí y se niega a hacer una segunda fila en las cajas principales para pagar",
-                    "un cliente que tiene un carrito lleno con $200 dólares en mandado, pero el sistema de EBT/tarjetas de beneficios del gobierno se cae a nivel nacional. No tiene otra forma de pagar y se niega a dejar el carrito.",
-                    "un cliente que trae un folleto de ofertas de otro mercado hispano (como La Michoacana) y exige a gritos que le igualen el precio en una venta masiva de fajitas que la tienda físicamente no puede permitirse igualar.",
-                    "un cliente que le pide al carnicero que le corte de manera especial 15 libras de una carne cara. El carnicero la corta, la empaqueta, y cuando el cliente ve el precio impreso, dice 'siempre no lo quiero' y lo deja ahí, dejando a la tienda con producto mermado que no puede regresar a la vitrina.",
-                    "una mujer que quiere devolver una sopa de pollo de la taquería argumentando agresivamente que está 'demasiado picante', a pesar de que la receta de la tienda NO lleva absolutamente nada de picante y nadie más se ha quejado de eso jamás."
-                ]
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                 descripcion_problema = f"Este es un ESCENARIO DE PESADILLA ESPECÍFICO DE LA BOVEDA. La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
@@ -407,12 +417,14 @@ elif menu_selection == "Preguntas al Asesor":
 
     TU ROL: Dar consejos excepcionales, profundos y matizados a los gerentes de turno. Piensa como un dueño de negocio experimentado que protege a sus empleados y sus ganancias, pero que domina el servicio al cliente a través del método HEART.
 
-    REGLAS DE RESPUESTA:
+    REGLAS DE RESPUESTA (ESTRICTAS):
     1. Cero Respuestas Genéricas: No suenes como un manual de servicio al cliente corporativo. Habla como un mentor astuto y experimentado en el comercio minorista hispano.
     2. Usa HEART y Psicología: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Siempre que des un guion de ejemplo, explica la PSICOLOGÍA de por qué funcionan esas palabras.
-    3. REGLA SUPREMA DE RENTABILIDAD: Si un gerente pregunta sobre un error DEL CLIENTE, DEBES indicarle firmemente que NO ofrezca descuentos, mercancía gratis ni crédito. Dale el guion exacto de cómo negar la devolución.
-    4. Tolerancia Cero al Abuso: Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
-    5. Personalización y Reubicación: Aconseja frecuentemente a los gerentes que muevan las quejas ruidosas lejos de las áreas principales y que lean el lenguaje corporal.
+    3. REGLA ESTRICTA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Al sugerir cómo empatizar, TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo". Enseña a los gerentes a validar emociones sin validar argumentos falsos o darles la razón contra las políticas de la tienda.
+    4. REGLA ESTRICTA DE SECUENCIA: Aconseja siempre que la Empatía debe ir ANTES que la Disculpa.
+    5. REGLA DE RENTABILIDAD SUPREMA: Si un gerente pregunta sobre un error DEL CLIENTE, DEBES indicarle firmemente que NO ofrezca descuentos, mercancía gratis ni crédito. Dale el guion exacto de cómo negar la devolución.
+    6. REGLA DE DISCRECIÓN: Al aconsejar sobre Reubicación, NUNCA sugieras decir frases obvias como "vamos lejos de la fila". Enseña a enmascarar la reubicación como un beneficio VIP.
+    7. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
 
     if "asesor_history" not in st.session_state:
