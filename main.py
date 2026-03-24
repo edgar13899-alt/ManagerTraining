@@ -79,9 +79,21 @@ if menu_selection == "Inicio":
 # ==========================================
 elif menu_selection == "Aprender HEART":
     st.title("📖 El Método HEART")
-    st.write("En La Vaquita Meat Market, el excelente servicio al cliente es nuestra prioridad. Estudia detalladamente los 5 pasos y luego baja para completar el Tutorial Guiado.")
+    
+    st.markdown("""
+    ### ¿Qué es el método HEART?
+    HEART es un acrónimo (por sus siglas en inglés) que representa un **método paso a paso probado para manejar quejas y situaciones difíciles** con los clientes. No es solo un guion, es una estrategia psicológica.
+
+    ### ¿Para qué se utiliza?
+    Se utiliza para **desescalar la tensión** cuando un cliente está enojado, frustrado o exigente. Te da una estructura clara para calmar la situación, encontrar una solución lógica y despedir al cliente de manera profesional, todo sin perder el control de la conversación.
+
+    ### ¿Por qué es tan importante en La Vaquita?
+    En un mercado de alto volumen, los problemas (como un precio mal cobrado o un pedido equivocado) van a suceder. Sin un método, es fácil tomar los gritos de manera personal, ponerse a la defensiva, discutir, o peor aún, regalar mercancía o dinero por pánico. El método HEART te protege a ti y a las ganancias de la tienda, dándote las herramientas para mantenerte firme, profesional y en control total.
+    """)
     
     st.divider()
+    st.write("### Los 5 Pasos de HEART")
+    st.write("Abre y estudia detalladamente cada paso. Luego, baja para completar el Tutorial Guiado.")
     
     with st.expander("👂 H - Hear (Escuchar activamente)", expanded=False):
         st.markdown("""
