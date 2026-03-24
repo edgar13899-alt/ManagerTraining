@@ -142,10 +142,10 @@ elif menu_selection == "Aprender HEART":
     1. En tu primer mensaje, presenta un escenario conflictivo hiperrealista.
     2. IMPORTANTE: SIEMPRE incluye una pista clara sobre el lenguaje corporal o estado del cliente en TERCERA PERSONA (ej. mira su reloj, parece agotado).
     3. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?"
-    4. Espera su respuesta. Evalúala con precisión. Si es correcta, felicítalo y pasa a la E (Empathize).
+    4. Espera su respuesta. Evalúala con precisión. Si es correcta, felicítalo y pasa a la E (Empathize). Si es incorrecta o débil, dales un EJEMPLO EXACTO de lo que deberían haber dicho.
     5. Guíalo secuencialmente: H -> E -> A -> R -> T. 
     6. Cuando lleguen a la R (Resolve), aplica estas reglas comerciales estrictas:
-        - Si el usuario sugiere regalar mercancía o dar un descuento por un error DEL CLIENTE, CORRÍGELO INMEDIATAMENTE. Enséñale que las políticas de salubridad prohíben devoluciones de comida abierta y que no regalamos el margen de la tienda por errores del cliente.
+        - Si el usuario sugiere regalar mercancía o dar un descuento por un error DEL CLIENTE, CORRÍGELO INMEDIATAMENTE dando el guion correcto de cómo decir que no.
         - Asegúrate de que apliquen la Reubicación (sugerir moverse) y la Personalización Silenciosa (adaptarse a la pista física sin mencionarla explícitamente).
     7. Una vez que completen la T (Thank), felicítalos y da por terminado el tutorial.
     """
@@ -254,14 +254,17 @@ elif menu_selection == "Simulador HEART":
 
     Tu trabajo es analizar la transcripción de la simulación y evaluar al gerente usando el método HEART con una visión comercial implacable pero un tono EMOCIONANTE y ALENTADOR de coach. 
     
+    REGLA DE REESCRITURA (MUY IMPORTANTE - CÓMO ENSEÑAR):
+    Nunca te limites a decir "te faltó empatía" o "no lo hiciste bien". SIEMPRE debes ofrecer ejemplos exactos de guiones de lo que el gerente debió decir. 
+    Usa este formato en tu retroalimentación: "En lugar de decir [Cita lo que dijeron], intenta decir: [Tu sugerencia de guion aplicando HEART]". Muestra exactamente cómo reescribir sus frases para que suenen más profesionales, empáticas o firmes frente a las políticas de la tienda.
+
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
-    1. ¿Siguieron HEART (Hear, Empathize, Apologize, Resolve, Thank)?
-    2. Personalización Silenciosa: ¿Resolvieron la urgencia física del cliente sin mencionarla torpemente?
-    3. Reubicación: Si el cliente estaba haciendo una escena, ¿lo movieron a un lugar tranquilo?
-    4. REGLA DE RENTABILIDAD SUPREMA: Analiza profundamente de quién fue la culpa. 
-        - Si el cliente cometió el error y el gerente se NEGO a dar un reembolso, ELÓGIALO FUERTEMENTE por proteger el margen. 
-        - Si el gerente regaló el dinero de la tienda por un error del cliente, corrígelo amablemente.
-    5. LÍMITES: Si el cliente usó insultos (Dificultad Difícil) y el gerente no lo detuvo, recuérdale la Regla Cero.
+    1. ¿Siguieron HEART (Hear, Empathize, Apologize, Resolve, Thank)? (Da ejemplos de cómo mejorar su fraseo).
+    2. Personalización Silenciosa y Reubicación: Si no lo hicieron, dales el guion exacto de cómo debieron haber invitado al cliente a moverse a un lugar tranquilo o atender su lenguaje corporal.
+    3. REGLA DE RENTABILIDAD SUPREMA: Analiza profundamente de quién fue la culpa. 
+        - Si el cliente cometió el error y el gerente se NEGO a dar un reembolso, ELÓGIALO FUERTEMENTE.
+        - Si el gerente regaló el dinero de la tienda por un error del cliente, corrígelo dándole el guion exacto de cómo negar un reembolso con firmeza pero amabilidad.
+    4. LÍMITES: Si el cliente usó insultos (Dificultad Difícil) y el gerente no lo detuvo, dale el guion exacto para establecer un límite (Regla Cero).
 
     AL FINAL DE TU EVALUACIÓN:
     SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -337,7 +340,7 @@ elif menu_selection == "Simulador HEART":
                             rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
                             transcripcion += f"{rol}: {m['content']}\n\n"
                     
-                    prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada y profunda."
+                    prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda, y asegúrate de dar ejemplos exactos de guiones (qué debieron haber dicho en su lugar) basándote en tus instrucciones."
                     
                     try:
                         coach_response = client.models.generate_content(
@@ -376,10 +379,10 @@ elif menu_selection == "Preguntas al Asesor":
 
     REGLAS DE RESPUESTA:
     1. Cero Respuestas Genéricas: No suenes como un manual de servicio al cliente corporativo. Habla como un mentor astuto y experimentado en el comercio minorista hispano.
-    2. Usa HEART: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank.
-    3. REGLA SUPREMA DE RENTABILIDAD: Si un gerente pregunta sobre un error DEL CLIENTE (ej. "el cliente compró la crema equivocada, la abrió y quiere un reembolso"), DEBES indicarle firmemente que NO ofrezca descuentos, mercancía gratis ni crédito en la tienda. Empatiza, pero haz cumplir la política. Conserva el margen de la tienda.
-    4. Tolerancia Cero al Abuso: Si se menciona a un cliente que insulta o grita, aconseja al gerente que establezca un límite firme inmediatamente y le pida que se retire si continúa. Protegemos a nuestro personal.
-    5. Personalización y Reubicación: Aconseja frecuentemente a los gerentes que muevan las quejas ruidosas lejos de las áreas principales y que lean el lenguaje corporal del cliente para adaptar las soluciones (sin señalarlo directamente).
+    2. Usa HEART: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Muestra ejemplos de diálogos.
+    3. REGLA SUPREMA DE RENTABILIDAD: Si un gerente pregunta sobre un error DEL CLIENTE, DEBES indicarle firmemente que NO ofrezca descuentos, mercancía gratis ni crédito. Dale el guion exacto de cómo negar la devolución.
+    4. Tolerancia Cero al Abuso: Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    5. Personalización y Reubicación: Aconseja frecuentemente a los gerentes que muevan las quejas ruidosas lejos de las áreas principales y que lean el lenguaje corporal.
     """
 
     if "asesor_history" not in st.session_state:
