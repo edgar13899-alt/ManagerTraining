@@ -232,15 +232,16 @@ elif menu_selection == "Simulador HEART":
     Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio (ej. "Está bien, se lo agradezco" o "Por favor apúrese"). 
     IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse y agradecerte.
 
-    REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN, NO TERQUEDAD ARTIFICIAL):
+    REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
     - FÁCIL: Problema sencillo. Estás educado. Si te dan una buena solución, acéptala y espera la despedida. NUNCA insultes.
     - MEDIO: Problema molesto por error de la tienda. Estás frustrado. REGLA DE ORO: Si el gerente te ofrece una solución rápida o justa, ACEPTA y espera la despedida. NO alargues la conversación artificialmente. NUNCA insultes.
-    - DIFÍCIL (NUEVA REGLA ESTRICTA DE REALISMO): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. REGLAS PROHIBIDAS: NO uses groserías o insultos directos. NO actúes como un villano de película (no sonrías de forma malévola, no seas caricaturesco). Tu enojo debe ser frío, impaciente y muy realista. Tratas de hacer sentir culpable al gerente ("están arruinando mi evento"), amenazas pasivamente ("me voy a encargar de que mi familia no vuelva"), y exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación, pero de forma realista.
+    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. REGLAS PROHIBIDAS: NO uses groserías o insultos directos. NO actúes como un villano de película (no sonrías de forma malévola, no seas caricaturesco). Tu enojo debe ser frío, impaciente y muy realista. Tratas de hacer sentir culpable al gerente ("están arruinando mi evento"), amenazas pasivamente ("me voy a encargar de que mi familia no vuelva"), y exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación, pero de forma realista.
+    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos hacia el personal y la tienda ("incompetentes", "basura", "inútiles"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente tiene el valor de aplicar la "Regla Cero" (establecer un límite de respeto o pedirte que te vayas). Si el gerente te pide que te calmes sin establecer un ultimátum, síguelos insultando y no aceptes ninguna solución. Si te marcan un límite estricto o te piden que salgas, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
 
     CÓMO TERMINAR LA SIMULACIÓN (LA REGLA DEL PASO 'THANK'):
     SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si ocurre una de estas tres cosas:
     1. El gerente ya te dio la solución, tú ya la habías aceptado, y AHORA el gerente se está despidiendo o dándote las gracias (El paso Thank).
-    2. El gerente te pidió explícitamente que te retiraras de la tienda.
+    2. El gerente te pidió explícitamente que te retiraras de la tienda o estableció el límite y te marchaste.
     3. LÍMITE MÁXIMO DE TURNOS: La conversación ha llegado a 4 o 5 intercambios.
     No des retroalimentación al terminar.
     """
@@ -264,7 +265,9 @@ elif menu_selection == "Simulador HEART":
     3. REGLA DE RENTABILIDAD SUPREMA: Analiza profundamente de quién fue la culpa. 
         - Si el cliente cometió el error y el gerente se NEGO a dar un reembolso, ELÓGIALO FUERTEMENTE.
         - Si el gerente regaló el dinero de la tienda por un error del cliente, corrígelo dándole el guion exacto y explicando por qué ser firme protege el negocio.
-    4. LÍMITES Y MANIPULACIÓN: En los escenarios Difíciles sin insultos, evalúa cómo el gerente manejó el chantaje emocional y las demandas irrazonables sin ceder a regalar producto, pero manteniendo la profesionalidad.
+    4. LÍMITES Y MANIPULACIÓN (DIFÍCIL Y EXTREMO): 
+        - En los escenarios Difíciles sin insultos, evalúa cómo el gerente manejó el chantaje emocional y las demandas irrazonables sin ceder a regalar producto, pero manteniendo la profesionalidad.
+        - En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero (establecer un límite de respeto o pedirle al cliente que se retire). Si permitieron que el cliente los insultara sin detener la interacción de inmediato, dales el guion exacto de cómo pedirle a alguien que salga de la tienda de forma profesional y autoritaria.
 
     AL FINAL DE TU EVALUACIÓN:
     SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -277,7 +280,7 @@ elif menu_selection == "Simulador HEART":
         st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
         difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
-            ["Fácil", "Medio", "Difícil"]
+            ["Fácil", "Medio", "Difícil", "Extremo (Abusivo)"]
         )
         
         if st.button("Comenzar Escenario"):
@@ -307,7 +310,7 @@ elif menu_selection == "Simulador HEART":
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                 descripcion_problema = f"Este es un ESCENARIO DE PESADILLA ESPECÍFICO DE LA BOVEDA. La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
-            hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} RECUERDA: La dificultad define la gravedad inicial. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
+            hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
             
             with st.spinner("El cliente se está acercando..."):
                 chat = client.chats.create(
