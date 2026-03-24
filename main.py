@@ -147,7 +147,7 @@ elif menu_selection == "Aprender HEART":
         * **Reafirmar la relación:** Expresa que valoras que sean clientes y que esperas brindarles un mejor servicio la próxima vez.
         """)
 
-    st.warning("💰 **REGLA DE RENTABILIDAD SUPREMA: ¿Cuándo dar reembolsos o producto gratis?**\n\nEn La Vaquita operamos con márgenes estrechos. Como gerente, tu trabajo es proteger las ganancias. \n\n* **Error del Cliente:** **NUNCA** regales dinero, producto o crédito si el cliente causó el problema (ej. se le cayó su café, dejó la carne en su carro bajo el sol, o pidió el pastel con el nombre mal escrito). Usa HEART para empatizar y validar su frustración, pero mantente firme en la política de no devoluciones.\n* **Error de la Tienda:** Los reembolsos o compensaciones **SOLO** aplican cuando el error fue genuinamente nuestro (ej. le cobramos de más en la caja, el producto estaba caducado, o un empleado le dio la orden equivocada). En estos casos, arréglalo de inmediato.")
+    st.warning("💰 **REGLA DE RENTABILIDAD SUPREMA: ¿Cuándo dar producto gratis?**\n\nEn La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.\n\n* **Error del Cliente:** NUNCA regales dinero o reembolsos si el cliente causó el problema (ej. dejó la carne en su carro, pidió el pastel mal). Mantente firme.\n* **Error Mayor de la Tienda:** Si cobramos de más o dimos producto caducado, reembolsa y arréglalo de inmediato.\n* **El Poder de la Cortesía de Bajo Costo:** Si el cliente sufre una demora prolongada o un inconveniente de servicio (ej. su orden de tacos va a tardar 15 minutos más de lo prometido), **ofrécele un artículo de bajo costo para la tienda pero de alto valor para él**, como un vaso de agua fresca o un pan dulce mientras espera. Esto calma el enojo, los hace sentir como VIPs, y salva la experiencia del cliente sin destruir nuestra rentabilidad.")
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda. (Ej. *'Dado que no puede comunicarse con respeto, le voy a pedir que se retire de la tienda en este momento'*).")
 
@@ -169,10 +169,10 @@ elif menu_selection == "Aprender HEART":
     4. Espera su respuesta. Evalúala con precisión. Si es correcta, felicítalo y pasa a la E (Empathize). Si es incorrecta o débil, dales un EJEMPLO EXACTO de lo que deberían haber dicho.
     5. DESGLOSE PSICOLÓGICO: Inmediatamente después de dar tu sugerencia de guion, DEBES explicar *por qué* elegiste esas palabras.
     6. REGLAS ESTRICTAS DE EVALUACIÓN (APLICAN A TODOS LOS PASOS):
-       - REGLA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Tienes ESTRICTAMENTE PROHIBIDO usar o aprobar frases como "tiene toda la razón" o "estoy de acuerdo". La empatía significa validar emociones ("Entiendo su frustración"), no validar hechos. Corrígelos si cometen este error.
-       - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Corrígelos si se disculpan antes de empatizar.
-       - REGLA DE DISCRECIÓN: Al enseñar Reubicación, PROHÍBE usar frases obvias (ej. "lejos de la fila"). Enseña a que suene como un beneficio para el cliente.
-       - REGLA DE RENTABILIDAD: Si el error fue del cliente, enséñales el guion exacto de cómo negar una devolución firmemente pero con empatía. Si el error fue de la tienda, asegúrate de que ofrezcan una solución justa.
+       - REGLA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Tienes ESTRICTAMENTE PROHIBIDO usar o aprobar frases como "tiene toda la razón" o "estoy de acuerdo". La empatía significa validar emociones ("Entiendo su frustración"), no validar hechos.
+       - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A).
+       - REGLA DE DISCRECIÓN: Al enseñar Reubicación, PROHÍBE usar frases obvias (ej. "lejos de la fila").
+       - REGLA DE RENTABILIDAD Y CORTESÍA DE BAJO COSTO: Si el error fue del cliente, enséñales a negar devoluciones firmemente. PERO, si el cliente está molesto por una demora (ej. tiempo de espera largo) o un inconveniente menor, enséñales activamente a ofrecer una "Cortesía de bajo costo" (ej. ofrecer un agua fresca o un pan dulce mientras esperan). Elogia al usuario si ellos mismos sugieren usar un agua fresca o un pan para calmar al cliente.
     7. Guíalo secuencialmente: H -> E -> A -> R -> T. Una vez que completen la T, felicítalos y termina el tutorial.
     """
 
@@ -265,7 +265,7 @@ elif menu_selection == "Simulador HEART":
     Compórtate como un ser humano real. Usa excusas de la vida real. NUNCA digas literalmente "estoy apurado". 
 
     REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
-    Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio (ej. "Está bien, se lo agradezco" o "Por favor apúrese"). 
+    Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio (ej. "Está bien, se lo agradezco" o "Por favor apúrese"). Si el gerente te ofrece una "Cortesía de bajo costo" (ej. un agua fresca o un pan mientras esperas una orden retrasada), acéptalo y relaja tu actitud inmediatamente.
     IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse y agradecerte.
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
@@ -285,7 +285,7 @@ elif menu_selection == "Simulador HEART":
     coach_instrucciones = """
     Eres el Coach Evaluador Maestro de La Vaquita Meat Market. 
     
-    CONTEXTO DE LA TIENDA: Somos un mercado hispano con carnicería y taquería. Los márgenes son estrechos. Comprendes perfectamente la diferencia entre un error genuino de la tienda y un cliente que intenta aprovecharse.
+    CONTEXTO DE LA TIENDA: Somos un mercado hispano con carnicería y taquería. Los márgenes son estrechos. Comprendes perfectamente la diferencia entre un error genuino de la tienda y un cliente que intenta aprovecharse. Entiendes profundamente el uso de "Cortesías de Bajo Costo" (aguas frescas, pan dulce) para calmar clientes impacientes.
 
     Tu trabajo es analizar la transcripción de la simulación y evaluar al gerente usando el método HEART con una visión comercial implacable pero un tono EMOCIONANTE y ALENTADOR de coach. 
     
@@ -297,14 +297,14 @@ elif menu_selection == "Simulador HEART":
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. ORDEN CRONOLÓGICO DE HEART (¡MUY IMPORTANTE!): Verifica que hayan seguido el orden EXACTO de HEART. 
        - REGLA ESTRICTA DE SECUENCIA: La Empatía (E) DEBE venir ANTES de la Disculpa (A). Si el gerente se disculpa antes de demostrar empatía, debes corregirlo obligatoriamente.
-    2. REGLA ESTRICTA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Cuando sugieras guiones para el paso 'Empathize', TIENES ESTRICTAMENTE PROHIBIDO usar frases como "tiene toda la razón", "estoy de acuerdo con usted" o darle la razón al cliente sobre una política. La empatía significa validar sus emociones ("Entiendo por qué se siente frustrado"), NO validar sus argumentos ("Usted tiene razón, esta regla no tiene sentido"). Corrígelos si ceden ante el cliente usando la empatía como excusa.
-    3. Personalización Silenciosa y Reubicación: IMPORTANTE: SOLO penaliza la falta de "Reubicación" si el Escenario original mencionaba explícitamente a otros clientes presentes, una fila, o que el cliente estaba alzando la voz/gritando. Si estaban solos, NO LOS PENALICES por no reubicarlos. REGLA ESTRICTA DE DISCRECIÓN: Cuando sugieras un guion de reubicación, TIENES PROHIBIDO sugerir frases obvias que revelen la intención (ej. NUNCA sugieras decir "lejos de la fila" o "para que no escuchen"). La sugerencia debe sonar como un beneficio para el cliente (ej. "por favor acompáñeme al mostrador para revisar esto a detalle" o "pase por aquí para atenderle más rápido").
-    4. REGLA DE RENTABILIDAD SUPREMA: Analiza profundamente de quién fue la culpa. 
-        - Si el cliente cometió el error y el gerente se NEGO a dar un reembolso, ELÓGIALO FUERTEMENTE.
-        - Si el gerente regaló el dinero de la tienda por un error del cliente, corrígelo dándole el guion exacto y explicando por qué ser firme protege el negocio.
+    2. REGLA ESTRICTA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Cuando sugieras guiones para el paso 'Empathize', TIENES ESTRICTAMENTE PROHIBIDO usar frases como "tiene toda la razón", "estoy de acuerdo con usted" o darle la razón al cliente sobre una política. La empatía significa validar sus emociones, NO validar sus argumentos falsos.
+    3. Personalización Silenciosa y Reubicación: IMPORTANTE: SOLO penaliza la falta de "Reubicación" si el Escenario original mencionaba explícitamente a otros clientes presentes, una fila, o que el cliente estaba alzando la voz/gritando. REGLA ESTRICTA DE DISCRECIÓN: Al sugerir un guion de reubicación, TIENES PROHIBIDO sugerir frases obvias (ej. "lejos de la fila"). La sugerencia debe sonar como un beneficio VIP.
+    4. REGLA DE RENTABILIDAD Y CORTESÍAS DE BAJO COSTO:
+        - Si el cliente cometió el error, elogia al gerente si negó devoluciones. Corrígelo si regaló dinero de la tienda.
+        - Si el problema era una demora (ej. tiempo de espera largo, orden retrasada), evalúa si el gerente ofreció una "Cortesía de Bajo Costo" (ej. un agua fresca o un pan dulce) para calmar al cliente mientras esperaba. Si no lo hizo, enséñale este truco en tu evaluación, explicando que cuesta muy poco pero tiene un alto valor psicológico para el cliente.
     5. LÍMITES Y MANIPULACIÓN (DIFÍCIL Y EXTREMO): 
-        - En los escenarios Difíciles sin insultos, evalúa cómo el gerente manejó el chantaje emocional y las demandas irrazonables sin ceder a regalar producto, pero manteniendo la profesionalidad.
-        - En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero (establecer un límite de respeto o pedirle al cliente que se retire). Si permitieron que el cliente los insultara sin detener la interacción de inmediato, dales el guion exacto de cómo pedirle a alguien que salga de la tienda de forma profesional y autoritaria.
+        - En los escenarios Difíciles sin insultos, evalúa cómo el gerente manejó el chantaje emocional sin ceder.
+        - En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero. Si permitieron que el cliente los insultara, dales el guion exacto de cómo pedirle a alguien que salga de la tienda de forma profesional y autoritaria.
 
     AL FINAL DE TU EVALUACIÓN:
     SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -433,7 +433,9 @@ elif menu_selection == "Preguntas al Asesor":
     2. Usa HEART y Psicología: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Siempre que des un guion de ejemplo, explica la PSICOLOGÍA de por qué funcionan esas palabras.
     3. REGLA ESTRICTA DE EMPATÍA (NUNCA ESTÉS DE ACUERDO): Al sugerir cómo empatizar, TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo". Enseña a los gerentes a validar emociones sin validar argumentos falsos o darles la razón contra las políticas de la tienda.
     4. REGLA ESTRICTA DE SECUENCIA: Aconseja siempre que la Empatía debe ir ANTES que la Disculpa.
-    5. REGLA DE RENTABILIDAD SUPREMA: Si un gerente pregunta sobre un error DEL CLIENTE, DEBES indicarle firmemente que NO ofrezca descuentos, mercancía gratis ni crédito. Dale el guion exacto de cómo negar la devolución.
+    5. REGLA DE RENTABILIDAD SUPREMA Y CORTESÍAS DE BAJO COSTO: 
+        - Si un gerente pregunta sobre un error DEL CLIENTE, indícale firmemente que NO ofrezca descuentos, mercancía gratis ni crédito. Dale el guion exacto de cómo negar la devolución.
+        - Si el gerente busca desescalar una situación tensa por tiempos de espera o errores menores de la tienda, aconséjale encarecidamente usar "Cortesías de Bajo Costo" (ofrecer un agua fresca o un pan dulce). Explica que esto calma a la gente sin dañar los márgenes de ganancia.
     6. REGLA DE DISCRECIÓN: Al aconsejar sobre Reubicación, NUNCA sugieras decir frases obvias como "vamos lejos de la fila". Enseña a enmascarar la reubicación como un beneficio VIP.
     7. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
