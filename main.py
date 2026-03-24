@@ -36,7 +36,14 @@ seguridad_baja = [
 
 # --- VARIABLES COMPARTIDAS (LA MÁQUINA TRAGAMONEDAS Y BÓVEDA) ---
 departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
-problemas_comunes = ["un producto equivocado o faltante", "un tiempo de espera inaceptable", "un problema de calidad o frescura genérico", "un precio cobrado incorrectamente en el sistema", "un malentendido leve con un empleado", "un derrame o accidente menor en la tienda"]
+problemas_comunes = [
+    "un producto equivocado o faltante", 
+    "un tiempo de espera inaceptable", 
+    "un problema de calidad o frescura genérico", 
+    "un precio cobrado incorrectamente en el sistema", 
+    "un derrame o accidente menor en la tienda",
+    "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud"
+]
 pesadillas_la_vaquita = [
     "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
     "un cliente que recoge un pastel de cumpleaños personalizado en la panadería y exige un reembolso completo más el pastel gratis porque el nombre está mal escrito, a pesar de que el gerente tiene la hoja de pedido donde el cliente mismo escribió mal el nombre",
@@ -44,7 +51,9 @@ pesadillas_la_vaquita = [
     "un cliente que tiene un carrito lleno con $200 dólares en mandado, pero el sistema de EBT/tarjetas de beneficios del gobierno se cae a nivel nacional. No tiene otra forma de pagar y se niega a dejar el carrito.",
     "un cliente que trae un folleto de ofertas de otro mercado hispano (como La Michoacana) y exige a gritos que le igualen el precio en una venta masiva de fajitas que la tienda físicamente no puede permitirse igualar.",
     "un cliente que le pide al carnicero que le corte de manera especial 15 libras de una carne cara. El carnicero la corta, la empaqueta, y cuando el cliente ve el precio impreso, dice 'siempre no lo quiero' y lo deja ahí, dejando a la tienda con producto mermado que no puede regresar a la vitrina.",
-    "una mujer que quiere devolver una sopa de pollo de la taquería argumentando agresivamente que está 'demasiado picante', a pesar de que la receta de la tienda NO lleva absolutamente nada de picante y nadie más se ha quejado de eso jamás."
+    "una mujer que quiere devolver una sopa de pollo de la taquería argumentando agresivamente que está 'demasiado picante', a pesar de que la receta de la tienda NO lleva absolutamente nada de picante y nadie más se ha quejado de eso jamás.",
+    "un cliente se queja furioso de que un empleado fue grosero al pedirle ayuda (lo ignoró, no hizo contacto visual y solo señaló con el dedo). El cliente exige que lo despidan o lo castiguen frente a él, PERO el gerente sabe que el familiar de ese empleado acaba de fallecer, está pasando por un duelo terrible, y solo vino a trabajar porque necesitaba el dinero.",
+    "un cliente acusa a una cajera de darle un pésimo servicio y aventarle el recibo, exigiendo hablar con el gerente para que la regañe frente a todos, PERO el gerente sabe que la cajera acaba de ser insultada cruelmente por el cliente anterior y está al borde de las lágrimas tratando de mantener la compostura."
 ]
 
 # --- MENÚ DE NAVEGACIÓN ---
@@ -305,6 +314,7 @@ elif menu_selection == "Simulador HEART":
     5. LÍMITES Y MANIPULACIÓN (DIFÍCIL Y EXTREMO): 
         - En los escenarios Difíciles sin insultos, evalúa cómo el gerente manejó el chantaje emocional sin ceder.
         - En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero. Si permitieron que el cliente los insultara, dales el guion exacto de cómo pedirle a alguien que salga de la tienda de forma profesional y autoritaria.
+    6. QUEJAS DE EMPLEADOS: Si la queja es sobre la actitud de un empleado, el gerente NUNCA debe admitir la culpa del empleado o reprenderlo frente al cliente. Debe empatizar con la percepción del cliente ("Entiendo que se haya sentido ignorado") y prometer investigar internamente.
 
     AL FINAL DE TU EVALUACIÓN:
     SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -438,6 +448,7 @@ elif menu_selection == "Preguntas al Asesor":
         - Si el gerente busca desescalar una situación tensa por tiempos de espera o errores menores de la tienda, aconséjale encarecidamente usar "Cortesías de Bajo Costo" (ofrecer un agua fresca o un pan dulce). Explica que esto calma a la gente sin dañar los márgenes de ganancia.
     6. REGLA DE DISCRECIÓN: Al aconsejar sobre Reubicación, NUNCA sugieras decir frases obvias como "vamos lejos de la fila". Enseña a enmascarar la reubicación como un beneficio VIP.
     7. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    8. QUEJAS DE EMPLEADOS: Aconseja al gerente que NUNCA admita la culpa del empleado frente al cliente antes de investigar. Deben validar la emoción del cliente ("Entiendo que se haya sentido ignorado") y prometer una investigación interna, sin castigar al empleado en público.
     """
 
     if "asesor_history" not in st.session_state:
