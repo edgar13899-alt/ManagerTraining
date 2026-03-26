@@ -42,7 +42,8 @@ problemas_comunes = [
     "un problema de calidad o frescura genérico", 
     "un precio cobrado incorrectamente en el sistema", 
     "un derrame o accidente menor en la tienda",
-    "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud"
+    "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud",
+    "un cliente que quiere cambiar un producto básico y cerrado (como unas papas o refresco) pero no tiene el recibo de compra"
 ]
 pesadillas_la_vaquita = [
     "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
@@ -53,7 +54,8 @@ pesadillas_la_vaquita = [
     "un cliente que le pide al carnicero que le corte de manera especial 15 libras de una carne cara. El carnicero la corta, la empaqueta, y cuando el cliente ve el precio impreso, dice 'siempre no lo quiero' y lo deja ahí, dejando a la tienda con producto mermado que no puede regresar a la vitrina.",
     "una mujer que quiere devolver una sopa de pollo de la taquería argumentando agresivamente que está 'demasiado picante', a pesar de que la receta de la tienda NO lleva absolutamente nada de picante y nadie más se ha quejado de eso jamás.",
     "un cliente se queja furioso de que un empleado fue grosero al pedirle ayuda (lo ignoró, no hizo contacto visual y solo señaló con el dedo). El cliente exige que lo despidan o lo castiguen frente a él, PERO el gerente sabe que el familiar de ese empleado acaba de fallecer, está pasando por un duelo terrible, y solo vino a trabajar porque necesitaba el dinero.",
-    "un cliente acusa a una cajera de darle un pésimo servicio y aventarle el recibo, exigiendo hablar con el gerente para que la regañe frente a todos, PERO el gerente sabe que la cajera acaba de ser insultada cruelmente por el cliente anterior y está al borde de las lágrimas tratando de mantener la compostura."
+    "un cliente acusa a una cajera de darle un pésimo servicio y aventarle el recibo, exigiendo hablar con el gerente para que la regañe frente a todos, PERO el gerente sabe que la cajera acaba de ser insultada cruelmente por el cliente anterior y está al borde de las lágrimas tratando de mantener la compostura.",
+    "un cliente que llega con $50 dólares en cortes caros de carne, no tiene ningún recibo de compra, y exige agresivamente un reembolso en efectivo, amenazando con hacer un escándalo monumental si el gerente se niega a darle el dinero."
 ]
 
 # --- MENÚ DE NAVEGACIÓN ---
@@ -445,7 +447,7 @@ elif menu_selection == "Preguntas al Asesor":
     4. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
     5. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: En el paso de Empatía (E), valida la emoción pero NUNCA uses disculpas ('lo siento', 'perdón'). El estándar de oro absoluto para la empatía que DEBES usar como ejemplo principal es: "Escucho lo que dice y de verdad entiendo lo frustrante que es tener una preocupación con la comida, especialmente con un pedido tan grande."
     6. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente. Dales el guion exacto usando las políticas de salubridad como un escudo neutral y firme.
-    7. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). Si el gerente busca desescalar una demora, aconséjale usar "Cortesías de Bajo Costo" (solo un agua fresca o un pan dulce). Los DESCUENTOS (porcentaje de la compra) SOLO se deben recomendar para ERRORES MAYORES de la tienda.
+    7. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). Si el gerente busca desescalar una demora o pequeño error nuestro, aconséjale usar "Cortesías de Bajo Costo" (solo un agua fresca o un pan dulce). Los DESCUENTOS (porcentaje de la compra) SOLO se deben recomendar para ERRORES MAYORES de la tienda.
     8. REGLA DE DISCRECIÓN: Al aconsejar sobre Reubicación, NUNCA sugieras decir frases obvias como "vamos lejos de la fila". 
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     10. QUEJAS DE EMPLEADOS: Aconseja al gerente que NUNCA admita la culpa del empleado frente al cliente antes de investigar.
