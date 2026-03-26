@@ -36,15 +36,23 @@ seguridad_baja = [
 # --- BÓVEDA DE ESCENARIOS ---
 departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
 
+# CATEGORÍA 1: Errores de la tienda (HEART COMPLETO)
 problemas_comunes = [
     "un cliente que YA PAGÓ y llegó a su casa, pero tuvo que regresar muy molesto porque descubrió que le dieron el producto equivocado o le falta un artículo en sus bolsas", 
     "un error en la cocina que causó que una orden previa para recoger se retrasara 20 minutos más de lo prometido, y el cliente está impaciente", 
     "un cliente que YA PAGÓ y revisando su recibo nota que se le cobró de más por un error en el sistema o un letrero confuso, exigiendo la diferencia", 
     "un cliente frustrado que intenta devolver un producto argumentando que salió de mala calidad o echado a perder, PERO NO TIENE SU RECIBO DE COMPRA",
-    "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud al cliente",
-    "un cliente que por error agarró el producto equivocado (ej. papas picantes en lugar de regulares) y quiere cambiarlo, sintiéndose un poco a la defensiva o avergonzado por su propio error"
+    "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud al cliente"
 ]
 
+# CATEGORÍA 2: Casos Especiales (ERRORES DEL CLIENTE - OMITIR LA 'A' Y USAR EMPATÍA NEUTRAL)
+errores_cliente = [
+    "un cliente que por error agarró el producto equivocado (ej. papas picantes en lugar de regulares) y quiere cambiarlo, sintiéndose un poco a la defensiva o avergonzado por su propio error",
+    "un cliente que accidentalmente tiró y rompió un frasco de vidrio que ya había pagado antes de salir de la tienda, y pregunta un poco apenado si le pueden dar otro gratis",
+    "un cliente que exige un descuento porque leyó mal un letrero de oferta que estaba claramente marcado para otro producto diferente, sintiéndose frustrado"
+]
+
+# CATEGORÍA 3: Casos Extremos
 pesadillas_la_vaquita = [
     "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
     "un cliente que recoge un pastel de cumpleaños personalizado en la panadería y exige un reembolso completo más el pastel gratis porque el nombre está mal escrito, a pesar de que el gerente tiene la hoja de pedido donde el cliente mismo escribió mal el nombre",
@@ -93,13 +101,7 @@ elif menu_selection == "Aprender HEART":
     
     st.markdown("""
     ### ¿Qué es el método HEART?
-    HEART es un acrónimo (por sus siglas en inglés) que representa un **método paso a paso probado para manejar quejas y situaciones difíciles** con los clientes. No es solo un guion, es una estrategia psicológica.
-
-    ### ¿Para qué se utiliza?
-    Se utiliza para **desescalar la tensión** cuando un cliente está enojado, frustrado o exigente. Te da una estructura clara para calmar la situación, encontrar una solución lógica y despedir al cliente de manera profesional, todo sin perder el control de la conversación.
-
-    ### ¿Por qué es tan importante en La Vaquita?
-    En un mercado de alto volumen, los problemas (como un precio mal cobrado o un pedido equivocado) van a suceder. Sin un método, es fácil tomar los gritos de manera personal, ponerse a la defensiva, discutir, o peor aún, regalar mercancía o dinero por pánico. El método HEART te protege a ti y a las ganancias de la tienda, dándote las herramientas para mantenerte firme, profesional y en control total.
+    HEART es un acrónimo que representa un **método paso a paso probado para manejar quejas y situaciones difíciles**. No es solo un guion, es una estrategia psicológica. Te da una estructura clara para calmar la situación, encontrar una solución lógica y despedir al cliente de manera profesional.
     """)
     
     st.divider()
@@ -110,108 +112,69 @@ elif menu_selection == "Aprender HEART":
         st.markdown("""
         Cuando un cliente molesto se comunica contigo, su necesidad principal es sentirse escuchado y comprendido. Sin embargo, **existen dos formas de Escuchar, dependiendo de la situación:**
         
-        **1. Escucha Silenciosa (Para el 90% de las quejas comunes):** Si el cliente está molesto por una larga fila, un empleado rudo, o un error menor, tu trabajo es **guardar silencio absoluto**. Deja que se desahogue por completo. Interrumpir para hacer preguntas aquí solo los hará enojar más porque sentirán que los estás interrogando o apresurando. Usa solo asentimientos verbales ("ya veo", "entiendo").
+        **1. Escucha Silenciosa (Para el 90% de las quejas comunes):** Si el cliente está molesto por una larga fila o error menor, guarda silencio absoluto. Deja que se desahogue. Interrumpir para hacer preguntas aquí solo los hará enojar más. Usa solo asentimientos verbales ("ya veo", "entiendo").
         
-        **2. Escucha Investigativa (Para problemas graves de comida o reembolsos sin recibo):**
-        Si el cliente hace una acusación grave (ej. "la carne estaba echada a perder") o pide un reembolso pero no tiene su recibo, no puedes solo quedarte callado. Debes hacer **preguntas de investigación neutrales** para armar el rompecabezas *antes* de que termine su historia. 
-        *Ejemplo de Comida:* "¿A qué hora recogió el pedido?", "¿Cómo lo transportó?", "¿Todo lo demás en su orden estuvo bien?".
+        **2. Escucha Investigativa (Para problemas graves o reembolsos sin recibo):**
+        Si el cliente hace una acusación grave o pide un reembolso sin recibo, debes hacer **preguntas de investigación neutrales** *antes* de que termine su historia. 
         *Ejemplo Sin Recibo:* "¿Pagó con tarjeta o en efectivo?". El objetivo es buscar la transacción en el sistema.
-        
-        **Reglas de Oro de esta etapa:**
-        * **No te defiendas:** Resiste el impulso de interrumpir para dar excusas de la tienda.
-        * **Toma notas:** Presta atención a los detalles específicos para no tener que pedirle que lo repita.
         """)
 
     with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
         st.markdown("""
-        Una vez que el cliente ha contado su historia (y tú lo has Escuchado), la empatía construye un puente entre escuchar y resolver. Le demuestra al cliente que comprendes sus sentimientos y validas su frustración, incluso si aún no has determinado de quién es la culpa o cómo solucionarlo.
+        Una vez que el cliente ha contado su historia, la empatía construye un puente. Le demuestra al cliente que comprendes sus sentimientos y validas su frustración.
         
-        **Las acciones clave para este paso incluyen:**
-        * **Reflejar su urgencia:** Ajusta tu tono para demostrar que te tomas el asunto tan en serio como ellos.
-        * **Validar sus emociones:** Usa frases que reconozcan sus sentimientos específicos (por ejemplo: frustración, decepción, pánico) en lugar de solo los hechos logísticos del problema.
-        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia.
+        * **Validar sus emociones:** Usa frases que reconozcan sus sentimientos específicos (frustración, decepción).
+        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas.
         * <u>**Empatizar no significa estar de acuerdo con ellos.**</u>
         """, unsafe_allow_html=True)
 
-    with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
+    with st.expander("🙏 A - Apologize (Ofrecer disculpas) *¡CUIDADO!*", expanded=False):
         st.markdown("""
-        Ahora que has escuchado (Hear) y validado sus sentimientos (Empathize), es momento de ofrecer una disculpa sincera. Una disculpa genuina asume la responsabilidad del problema y el impacto específico que tuvo en el cliente, sin señalar a otros ni poner excusas.
-        
-        **Las acciones clave para este paso incluyen:**
-        * **Ser específico:** Discúlpate por el problema exacto en lugar de ofrecer un genérico "Lamento las molestias".
-        * **Asumir la responsabilidad:** Acepta la responsabilidad en nombre de la empresa. Usar frases como "Lo siento que le hayamos fallado" es mucho más efectivo que culpar a otro departamento o al servicio de entrega.
+        Si el problema es culpa de la tienda, asume la responsabilidad en nombre de la empresa. Usar frases como "Lo siento que le hayamos fallado" es mucho más efectivo que culpar a otro departamento.
         
         🚨 **LA TRAMPA DE LA DISCULPA (Errores del Cliente):**
-        Si el problema fue causado por el propio cliente (ej. agarró el producto equivocado, tiró sus propios huevos al piso), **OMITE ESTE PASO. NO TE DISCULPES.**
-        Disculparte por el error del cliente admite responsabilidad de la tienda y suena antinatural. En su lugar, usa una **"Empatía para Salvar el Ego"** en el paso anterior (*"¡Odio cuando me pasa eso, las bolsas son casi idénticas!"*) para normalizar su error y que no se sientan tontos o se pongan a la defensiva, y luego pasa directamente a Resolver (R).
+        Si el problema fue causado por el propio cliente (ej. agarró el producto equivocado, tiró sus propios huevos, leyó mal un letrero), **OMITE ESTE PASO. NO TE DISCULPES.** Disculparte por el error del cliente admite responsabilidad de la tienda y te quita autoridad. Decir "Siento la confusión" es una disculpa disfrazada que también admite culpa. 
+        
+        En su lugar, usa una **"Empatía Neutral para Salvar el Ego"** en el paso anterior. 
+        ❌ *Incorrecto (Culpar a la tienda o asumir):* "Nuestros letreros están muy juntos" o "Seguro venía con prisa".
+        ✅ *Correcto (Neutral):* "Entiendo perfectamente la confusión, es un error muy común que a todos nos pasa. Solo para aclarar, el precio correcto es..." y pasa directamente a Resolver (R).
         """)
 
     with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
         st.markdown("""
-        Después de escuchar, empatizar y disculparse (si aplica), el cliente generalmente está listo para saber cómo solucionarás la situación. Este paso se trata de actuar y ser transparente sobre la solución.
-        
-        **Las acciones clave para este paso incluyen:**
-        * **Solucionar el problema:** Resuelve el problema de inmediato si puedes. Si no puedes, explica exactamente qué medidas estás tomando para solucionarlo.
-        * **Ofrecer opciones:** Dale alternativas al cliente siempre que sea posible. Esto le devuelve la sensación de control después de una experiencia frustrante.
-        * **Ser transparente:** Comunica claramente los plazos (ej. *"su pedido estará listo en 15 minutos"*). Evita hacer promesas que no puedas cumplir.
-        * **Personalización silenciosa (Lectura del cliente):** Observa el lenguaje corporal del cliente y adapta tu solución a su situación sin señalar su estrés explícitamente. Por ejemplo, si notas que tienen prisa, no digas *"veo que tiene prisa"*, ya que eso aumenta su ansiedad. Usa frases como: *"Permítame cobrarle en esta otra caja para que pueda continuar con su día"*. Así pensarán: *"Qué bueno, porque llevo mucha prisa"*.
+        Después de escuchar y empatizar, este paso se trata de actuar y ser transparente sobre la solución. Resuelve el problema de inmediato si puedes, u ofrece opciones para devolverle al cliente la sensación de control.
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
         st.markdown("""
-        Aunque pueda parecer contradictorio agradecer a alguien que se acaba de quejar, expresar gratitud es una manera poderosa de cerrar la conversación. Deja al cliente con una impresión final positiva y replantea su queja como comentarios valiosos que ayudan a la empresa a mejorar.
-        
-        **Las acciones clave para este paso incluyen:**
-        * **Agradecerles por sus comentarios:** Reconoce que se tomaron el tiempo de señalar un error, lo que te da la oportunidad de solucionarlo.
-        * **Apreciar su paciencia:** Reconoce el tiempo y el esfuerzo que dedicaron a resolver el problema contigo.
-        * **Reafirmar la relación:** Expresa que valoras que sean clientes y que esperas brindarles un mejor servicio la próxima vez.
+        Agradecer es una manera poderosa de cerrar la conversación. Agradece su paciencia y reafirma la relación expresando que valoras que sean clientes.
         """)
 
     st.warning("""💰 **REGLA DE RENTABILIDAD SUPREMA Y PROCEDIMIENTOS**
 
-En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.
-
-* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Pregunta cómo pagaron. Si fue con **Tarjeta**, pídeles revisar su app. Si fue en **Efectivo**, haz preguntas para acotar la búsqueda. **SI LA BÚSQUEDA FALLA:** Usa el sistema como escudo. Di: *'Revisé minuciosamente y al no aparecer la transacción, no me es posible autorizar un reembolso.'* NUNCA entregues efectivo si no hay registro.
-* **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos monetarios si el cliente causó el problema. Si quieren cambiar un producto equivalente cerrado, haz el cambio pero NO te disculpes.
-* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores (ej. vender producto caducado o cobrar doble).
-* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
-
-🥤 **EL PODER DE LA CORTESÍA DE BAJO COSTO (Agua Fresca / Pan Dulce)**
-Regalar un artículo de bajo costo es una gran herramienta para calmar a un cliente enojado sin destruir nuestra rentabilidad, **PERO DEBE USARSE CORRECTAMENTE:**
-
-✅ **CUÁNDO SÍ DAR UNA CORTESÍA:**
-* **La cocina cometió un error:** (Ej. Se nos quemó o cayó su orden y tenemos que hacerla de nuevo, retrasándolos 15 minutos).
-* **Falla del sistema:** (Ej. La terminal falló y estuvieron atrapados en la caja mientras lo reiniciábamos).
-* **Órdenes previas retrasadas:** (Ej. Ordenaron barbacoa para las 12:00 PM, llegaron a tiempo, pero la orden no estuvo lista hasta las 12:30 PM).
-
-❌ **CUÁNDO NO DAR UNA CORTESÍA (Prohibido):**
-* **Fila regular larga:** (Ej. Es domingo a mediodía, la tienda está a reventar y el cliente se queja de la espera en la línea de la Taquería). *Regalar producto por el éxito y volumen de la tienda destruye las ganancias. Aquí solo debes empatizar y agradecer su paciencia.*
-* **El cliente llegó temprano:** (Ej. Ordenó para las 3:00 PM, llegó a las 2:30 PM y se queja de que no está listo).
+* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Pregunta cómo pagaron. Si fue con Tarjeta, pídeles revisar su app. Si fue en Efectivo, haz preguntas para acotar la búsqueda. **SI LA BÚSQUEDA FALLA:** Usa el sistema como escudo. Di: *'Revisé minuciosamente y al no aparecer la transacción, no me es posible autorizar un reembolso.'* * **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos monetarios si el cliente causó el problema.
+* **Cortesía de Bajo Costo (Agua Fresca / Pan Dulce):** SÍ dar cortesía cuando la cocina comete un error o hay falla del sistema. NO dar cortesía cuando es una fila regular larga en un día ocupado. Regalar producto por el éxito de la tienda destruye las ganancias.
 """)
         
-    st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda.")
+    st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\nEl respeto hacia ti y tu equipo es innegociable. Si un cliente usa insultos, establece un límite profesional de inmediato. Si continúa, pídele explícitamente que abandone la tienda.")
 
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
-    st.write("Es hora de practicar. El Tutor Virtual te presentará un escenario y te guiará letra por letra. Deberás responder correctamente cada paso antes de avanzar al siguiente.")
+    st.write("El Tutor Virtual te presentará un escenario y te guiará letra por letra.")
 
     tutor_instrucciones = """
     Eres el Tutor Maestro de La Vaquita Meat Market. 
     
-    CONTEXTO DE LA TIENDA: La Vaquita es un mercado hispano de alto volumen. Los márgenes de supermercado son estrechos.
-    
-    TU OBJETIVO: Enseñar el método HEART paso a paso a un gerente en entrenamiento.
-
     INSTRUCCIONES DE TUTORÍA:
-    1. En tu primer mensaje, presenta el escenario conflictivo con una pista clara sobre el lenguaje corporal en TERCERA PERSONA.
-    2. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?" y guíalo secuencialmente (H -> E -> A -> R -> T).
+    1. Presenta el escenario conflictivo con una pista en TERCERA PERSONA.
+    2. Pregunta: "¿Qué harías para el paso H (Hear)?" y guía secuencialmente (H -> E -> A -> R -> T).
     3. REGLAS ESTRICTAS DE EVALUACIÓN:
-       - PROTOCOLO SIN RECIBO: Si el cliente no tiene recibo, el gerente DEBE preguntar cómo pagaron en la etapa (H) para buscarlo en el sistema POS. 
-       - REGLA DEL GAME MASTER: Si el gerente dice que revisará el sistema o las cámaras, asume el rol del sistema e infórmale el resultado (ej. "Revisas el sistema y efectivamente encuentras la transacción") ANTES de pedirle que siga con el paso Resolve (R).
-       - LA TRAMPA DE LA DISCULPA (Error del cliente): Si el cliente causó el problema (ej. agarró el producto equivocado), el gerente DEBE saltarse la disculpa (A). Su trabajo en la Empatía (E) es "salvar el ego" del cliente normalizando el error ("a todos nos pasa, los empaques son iguales"). Si el gerente se disculpa por un error del cliente, penalízalo y corrígelo, explicándole la psicología de por qué no debemos admitir culpa cuando no la hay.
-       - SEPARACIÓN DE ETAPAS (H y E): Las preguntas investigativas pertenecen a la etapa Hear (H). ESTRICTAMENTE PROHIBIDO mezclar empatía ("entiendo su preocupación") dentro de la etapa Hear.
-       - EMPATÍA VS. ACUERDO: Tienes prohibido aprobar frases como "tiene toda la razón".
-       - REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Si hay una demora POR ERROR DE LA TIENDA (ej. orden olvidada), el gerente debe ofrecer una "Cortesía de bajo costo" (agua fresca/pan dulce). PERO, si la queja es por una fila normal en un día ocupado, TIENES ESTRICTAMENTE PROHIBIDO sugerir o aprobar que se regalen cortesías.
+       - PROTOCOLO SIN RECIBO: Si el cliente no tiene recibo, DEBEN preguntar cómo pagaron en (H).
+       - REGLA DEL GAME MASTER: Si el gerente revisará el sistema, asume el rol del sistema e infórmale el resultado ANTES de pedirle que siga con (R).
+       - LA TRAMPA DE LA DISCULPA (Error del cliente): Si el cliente causó el problema (ej. leyó mal un letrero, tiró algo), el gerente DEBE SALTARSE la disculpa (A). Su trabajo en Empatía (E) es usar una "Empatía Neutral para salvar el ego" ("Entiendo la confusión, a todos nos pasa"). ESTÁ PROHIBIDO usar disculpas suaves ("siento la confusión"), culpar a la tienda ("los letreros están juntos") o asumir ("venía con prisa"). Penalízalo si lo hace.
+       - SEPARACIÓN DE ETAPAS: Empatía va SOLO en la etapa (E).
+       - EMPATÍA VS. ACUERDO: Prohibido aprobar "tiene toda la razón".
+       - REGLA DE CORTESÍAS: Cortesías solo para errores de tienda, nunca para filas normales.
     """
 
     if "tutor_history" not in st.session_state:
@@ -220,17 +183,19 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
     if len(st.session_state.tutor_history) == 0:
         if st.button("Iniciar Tutorial Guiado"):
             with st.spinner("Preparando tu primera lección..."):
-                
-                tipo_escenario = random.choices(["comun", "pesadilla"], weights=[40, 60], k=1)[0]
+                tipo_escenario = random.choices(["comun", "pesadilla", "especial"], weights=[50, 30, 20], k=1)[0]
                 if tipo_escenario == "comun":
                     depto_elegido = random.choice(departamentos)
                     problema_elegido = random.choice(problemas_comunes)
-                    descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti (el gerente) en las Cajas Principales / Servicio al Cliente (o en el mostrador de {depto_elegido} si es una orden activa). NUNCA pongas al cliente deambulando por los pasillos si ya pagó o viene a hacer un reclamo post-compra."
+                    descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti (el gerente) en las Cajas Principales."
+                elif tipo_escenario == "especial":
+                    problema_elegido = random.choice(errores_cliente)
+                    descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. {problema_elegido}. El cliente se acerca a Cajas."
                 else:
                     pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                     descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
-                hidden_prompt = f"Hola. Genera el escenario inicial usando esta premisa: {descripcion_problema}. Asegúrate de incluir la pista física en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio: {random.randint(1,10000)}"
+                hidden_prompt = f"Hola. Genera el escenario inicial usando esta premisa: {descripcion_problema}. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio: {random.randint(1,10000)}"
                 
                 try:
                     chat = client.chats.create(
@@ -238,12 +203,12 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
                         config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
                     )
                     response = chat.send_message(hidden_prompt)
-                    texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
+                    texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
                     st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
                     st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
                     st.rerun()
                 except Exception as e:
-                    st.error("⚠️ Servidores ocupados (Error 503). Por favor, intenta de nuevo en unos segundos.")
+                    st.error("⚠️ Servidores ocupados (Error 503). Por favor, intenta de nuevo.")
     else:
         chat_container = st.container()
         
@@ -277,7 +242,6 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
                     with st.chat_message("assistant"):
                         with st.spinner("El tutor está revisando tu respuesta..."):
                             response = chat.send_message(tutor_input)
-                        
                         texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
                         st.markdown(texto_seguro)
                         
@@ -311,80 +275,69 @@ elif menu_selection == "Simulador HEART":
     Eres el Actor del simulador de rol interactivo en La Vaquita Meat Market. 
     TU ÚNICO OBJETIVO: Actuar como un cliente de forma hiperrealista. TÚ NO EVALÚAS AL GERENTE. 
 
-    REGLAS DE FORMATO (MUY IMPORTANTE):
-    1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
-    
-    **Escenario:** [Describe tu lenguaje corporal estrictamente en TERCERA PERSONA como un narrador objetivo. DEBES mencionar explícitamente el entorno: ¿Hay otros clientes en la fila observando? ¿Estás alzando la voz haciendo una escena pública, o están solos? NUNCA uses "yo" o "mi" aquí].
-
-    **Cliente:** "[Escribe tu queja inicial en voz alta, en primera persona]".
-    
-    2. En el resto de la conversación, SOLO escribe lo que dices en voz alta. Cero asteriscos, cero monólogos internos.
+    REGLAS DE FORMATO:
+    1. Para tu PRIMER mensaje:
+    **Escenario:** [Describe tu lenguaje corporal estrictamente en TERCERA PERSONA].
+    **Cliente:** "[Escribe tu queja inicial en voz alta]".
+    2. Cero asteriscos después del primer mensaje.
 
     NUEVA REGLA DEL GAME MASTER (CÁMARAS Y SISTEMA): 
-    Si el gerente te dice que va a revisar las cámaras, el recibo o el sistema POS, debes salir brevemente de tu personaje para darle el resultado de su búsqueda. 
-    Añade una línea al principio de tu respuesta que diga: "[Sistema: Revisa la cámara/sistema y efectivamente encuentras el recibo / la transacción]". Luego, responde como cliente (ej. "¿Pudo encontrarlo?"). Si la dificultad es Difícil/Extrema, a veces el sistema NO encuentra la transacción para hacer la situación más tensa.
+    Si el gerente te dice que va a revisar las cámaras, recibo o sistema POS, sal brevemente de personaje. Añade una línea al principio: "[Sistema: Revisa la cámara/sistema y efectivamente encuentras el recibo / la transacción]". Luego, responde como cliente.
 
     DETALLES CONTEXTUALES UNIVERSALES: 
-    Compórtate como un ser humano real. Usa excusas de la vida real. Si perdiste tu recibo y te preguntan cómo pagaste, inventa si fue con tarjeta o efectivo. Si dices efectivo, a menudo confúndete ligeramente con la hora exacta de la compra. Si es un error Tuyo (ej. agarrar mal producto), muéstrate un poco a la defensiva o apenado para salvar tu orgullo.
+    Usa excusas de la vida real. Si es un error Tuyo (ej. agarrar mal producto, romper algo), muéstrate un poco a la defensiva o apenado para salvar tu orgullo.
 
-    REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
-    Si el gerente ofrece arreglar tu problema rápido, te ayuda a buscar tu transacción, o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo", acéptalo y relaja tu actitud inmediatamente. NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse y agradecerte.
+    REGLA DE SENTIDO COMÚN: 
+    Si el gerente te ayuda o te da una solución justa, acéptalo con alivio. NO termines la simulación en ese mismo mensaje. Solo acepta y espera a que el gerente se despida.
 
-    REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
-    - FÁCIL: Problema sencillo. Estás educado.
-    - MEDIO: Problema molesto. Estás frustrado. REGLA DE ORO: Si el gerente te ofrece una solución rápida o justa, ACEPTA y espera la despedida. NUNCA insultes.
-    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. Eres un muro de piedra. 
-    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos. TU OBJETIVO PRINCIPAL es probar si el gerente tiene el valor de aplicar la "Regla Cero". Si te marcan un límite estricto o te piden que salgas, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
+    REGLAS DE DIFICULTAD:
+    - FÁCIL: Educado.
+    - MEDIO: Frustrado. Si dan solución justa, ACEPTA. NUNCA insultes.
+    - DIFÍCIL: Pasivo-agresivo y terco. Eres un muro de piedra. 
+    - EXTREMO (ABUSIVO): Furioso e insultos. TU OBJETIVO PRINCIPAL es probar si aplican la "Regla Cero". Si te marcan límite estricto, reacciona y vete (escribe FIN DE LA SIMULACIÓN).
 
     CÓMO TERMINAR LA SIMULACIÓN:
-    SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si el gerente completó la interacción y se despidió (El paso Thank), o si te pidió explícitamente que te retiraras de la tienda.
+    SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si el gerente completó la interacción y se despidió (El paso Thank), o si te pidió que te retiraras.
     """
 
     coach_instrucciones = """
     Eres el Coach Evaluador Maestro de La Vaquita Meat Market. 
-    
-    CONTEXTO DE LA TIENDA: Somos un mercado hispano con carnicería y taquería. Los márgenes son estrechos. Comprendes perfectamente la diferencia entre un error genuino de la tienda y un cliente que intenta aprovecharse.
-
     Tu trabajo es analizar la transcripción de la simulación y evaluar al gerente usando el método HEART con una visión comercial implacable.
     
     REGLA DE REESCRITURA Y PSICOLOGÍA:
-    Nunca te limites a decir "te faltó empatía" o "no lo hiciste bien". SIEMPRE debes ofrecer ejemplos exactos de guiones de lo que el gerente debió decir. 
-    1. Usa este formato: "En lugar de decir [Cita], intenta decir: [Tu sugerencia]". 
-    2. DESGLOSE PSICOLÓGICO: Explica *por qué* elegiste esas palabras.
+    Ofrece ejemplos exactos de guiones. "En lugar de decir [Cita], intenta decir: [Tu sugerencia]". Explica la psicología de por qué elegiste esas palabras.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
-    1. PROTOCOLO SIN RECIBO: Si el cliente no tenía recibo, verifica si el gerente preguntó el método de pago para intentar buscarlo. Si la búsqueda falló, el gerente DEBIÓ usar el sistema como escudo para decir no.
-    2. LA TRAMPA DE LA DISCULPA (Error del cliente): Si el cliente causó el problema (ej. agarró el producto equivocado o se le cayó algo), verifica si el gerente se disculpó. Si se disculparon ("lo siento"), PENALÍZALOS y explícales que nunca deben admitir culpa de la tienda por errores del cliente. Elógialos si usaron "Empatía para salvar el ego" ("A todos nos pasa, las bolsas son iguales") y saltaron directamente al paso Resolve.
-    3. SEPARACIÓN DE ETAPAS (H y E): La empatía va SOLO en la etapa E, no al principio en la etapa Hear.
-    4. EMPATÍA VS ACUERDO: ESTRICTAMENTE PROHIBIDO usar frases como "tiene toda la razón".
-    5. REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Si el gerente regaló producto a un cliente que SOLO se quejaba de una fila regular larga, CORRÍGELO CON SEVERIDAD. Las cortesías son solo para demoras por errores de la tienda.
-    6. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
+    1. PROTOCOLO SIN RECIBO: Si la búsqueda falló, el gerente DEBIÓ usar el sistema como escudo para decir no.
+    2. LA TRAMPA DE LA DISCULPA (Saber cuándo omitir la 'A'): Si el problema fue causado por el CLIENTE (ej. leyó mal un precio, tiró algo), verifica si el gerente se disculpó ("lo siento", "siento la confusión"). Si lo hizo, PENALÍZALOS. También penalízalos si culpan a la tienda ("los letreros están juntos") o asumen cosas del cliente ("estaba apurado"). Exígeles usar una "Empatía Neutral para salvar el ego" ("Entiendo la confusión, es un error muy común. Solo para aclarar, el precio es...").
+    3. SEPARACIÓN DE ETAPAS (H y E): La empatía va SOLO en la etapa E.
+    4. REGLA DE RENTABILIDAD Y CORTESÍAS: Cortesías solo para errores de la tienda.
+    5. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
-    SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Reiniciar Simulador?"
+    SIEMPRE pregunta: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Reiniciar Simulador?"
     """
 
-    # --- INICIO DEL SIMULADOR ---
     if len(st.session_state.simulador_history) == 0 and not st.session_state.simulador_concluido:
-        st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
+        st.info("Selecciona la dificultad de la situación para comenzar la simulación.")
         difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
-            ["Fácil", "Medio", "Difícil", "Extremo (Abusivo)"]
+            ["Fácil", "Medio", "Difícil", "Extremo (Abusivo)", "Casos Especiales (Errores del Cliente)"]
         )
         
         if st.button("Comenzar Escenario"):
-            
-            tipo_escenario = random.choices(["comun", "pesadilla"], weights=[40, 60], k=1)[0]
-            
-            if tipo_escenario == "comun":
+            if difficulty in ["Fácil", "Medio"]:
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_comunes)
-                descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti (el gerente) en las Cajas Principales / Servicio al Cliente. NUNCA pongas al cliente deambulando por los pasillos si ya pagó o viene a hacer un reclamo post-compra."
+                descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti en las Cajas Principales."
+            elif difficulty == "Casos Especiales (Errores del Cliente)":
+                problema_elegido = random.choice(errores_cliente)
+                descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en Cajas Principales."
             else:
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
-                descripcion_problema = f"Este es un ESCENARIO DE PESADILLA ESPECÍFICO DE LA BOVEDA. La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
+                descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
-            hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
+            hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad '{difficulty}'. {descripcion_problema}. ASEGÚRATE de incluir la pista de lenguaje corporal."
             
             with st.spinner("El cliente se está acercando..."):
                 try:
@@ -393,14 +346,13 @@ elif menu_selection == "Simulador HEART":
                         config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
                     )
                     response = chat.send_message(hidden_prompt)
-                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Reiniciar Simulador'."
+                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** Filtro activado."
                     st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
                     st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
                     st.rerun()
                 except Exception as e:
-                    st.error("⚠️ Los servidores de Google están experimentando alta demanda (Error 503). Por favor, intenta de nuevo en unos segundos.")
+                    st.error("⚠️ Error 503. Por favor, intenta de nuevo en unos segundos.")
 
-    # --- DESARROLLO DEL SIMULADOR ---
     elif not st.session_state.simulador_concluido:
         chat_container = st.container()
 
@@ -434,8 +386,7 @@ elif menu_selection == "Simulador HEART":
                     with st.chat_message("assistant"):
                         with st.spinner("El cliente está respondiendo..."):
                             response_actor = chat_actor.send_message(user_input)
-                        
-                        texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** La respuesta activó los filtros de seguridad de Google."
+                        texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** Filtro activado."
                         st.markdown(texto_actor)
                     
                     st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
@@ -445,7 +396,7 @@ elif menu_selection == "Simulador HEART":
                         st.rerun()
                 except Exception as e:
                     st.session_state.simulador_history.pop()
-                    st.error("⚠️ El servidor de Google tuvo un problema de conexión (Error 503). Por favor, vuelve a enviar tu mensaje.")
+                    st.error("⚠️ Error 503. Por favor, vuelve a enviar tu mensaje.")
 
         st.divider()
         st.caption("¿Resolviste el problema? Haz clic abajo para ser evaluado por el Coach.")
@@ -453,7 +404,6 @@ elif menu_selection == "Simulador HEART":
             st.session_state.simulador_concluido = True
             st.rerun()
 
-    # --- RESULTADOS DEL SIMULADOR ---
     if st.session_state.simulador_concluido:
         for message in st.session_state.simulador_history:
             if not message.get("hidden", False):
@@ -472,7 +422,7 @@ elif menu_selection == "Simulador HEART":
                         rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
                         transcripcion += f"{rol}: {m['content']}\n\n"
                 
-                prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
+                prompt_coach = f"La simulación ha terminado. Transcripción:\n\n{transcripcion}\n\nProporciona tu evaluación detallada."
                 
                 try:
                     coach_response = client.models.generate_content(
@@ -480,13 +430,13 @@ elif menu_selection == "Simulador HEART":
                         contents=prompt_coach,
                         config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
                     )
-                    st.session_state.coach_feedback = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
+                    st.session_state.coach_feedback = coach_response.text if coach_response.text else "⚠️ *Filtro de seguridad.*"
                     st.session_state.api_error = False
                 except Exception as e:
                     st.session_state.api_error = True
 
         if st.session_state.api_error:
-            st.error("⚠️ Los servidores de Google están experimentando alta demanda (Error 503). No hemos podido generar tu evaluación.")
+            st.error("⚠️ Error 503. No hemos podido generar tu evaluación.")
             if st.button("🔄 Reintentar Evaluación"):
                 st.session_state.coach_feedback = ""
                 st.session_state.api_error = False
@@ -514,16 +464,14 @@ elif menu_selection == "Preguntas al Asesor":
     Eres el Consultor Experto en Operaciones de Retail y Mentor Senior de La Vaquita Meat Market.
     
     CONTEXTO DE LA TIENDA (TU BIBLIA): 
-    La Vaquita no es un mercado genérico; es de alto volumen. Entiendes que operamos con márgenes estrechos.
-
-    TU ROL: Dar consejos excepcionales, profundos y matizados a los gerentes de turno. 
+    La Vaquita es de alto volumen. Operamos con márgenes estrechos.
 
     REGLAS DE RESPUESTA (ESTRICTAS):
     1. Cero Respuestas Genéricas: Habla como un mentor astuto en retail hispano.
-    2. PROTOCOLO SIN RECIBO: Enséñales a investigar primero. Si la búsqueda falla, usar el escudo del sistema para negar la devolución.
-    3. LA TRAMPA DE LA DISCULPA (Error del cliente): Aconseja estrictamente a los gerentes que NUNCA se disculpen cuando el cliente causó el problema (ej. agarró el producto equivocado). Disculparse admite culpa de la tienda. Enséñales a usar "Empatía para salvar el ego" ("A todos nos pasa, los empaques son iguales") y saltar directamente a Resolver la situación.
-    4. REGLA CERO TARJETAS DE REGALO Y CORTESÍAS: Advierte explícitamente a los gerentes que NO REGALEN cortesías de bajo costo solo porque un cliente se queja de una fila larga regular en la tienda.
-    5. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    2. PROTOCOLO SIN RECIBO: Investigar primero, usar escudo del sistema después si la búsqueda falla.
+    3. LA TRAMPA DE LA DISCULPA (Error del cliente): Aconseja estrictamente a los gerentes que NUNCA se disculpen cuando el cliente causó el problema (ej. leyó mal un letrero, tiró un frasco). Enséñales a usar "Empatía Neutral para salvar el ego" ("Entiendo la confusión, a todos nos pasa"). Adviérteles que NUNCA usen disculpas suaves ("siento la confusión"), NUNCA culpen a la tienda ("nuestros letreros están confusos"), y NUNCA asuman el estado del cliente ("venía apurado").
+    4. REGLA CERO TARJETAS DE REGALO Y CORTESÍAS: Advierte explícitamente a los gerentes que NO REGALEN cortesías de bajo costo solo por filas regulares en la tienda.
+    5. Tolerancia Cero al Abuso: Aconseja al gerente que establezca límites firmes inmediatamente si hay insultos.
     """
 
     if "asesor_history" not in st.session_state:
@@ -534,7 +482,7 @@ elif menu_selection == "Preguntas al Asesor":
         with st.chat_message(ui_role):
             st.markdown(msg["content"])
 
-    pregunta_usuario = st.chat_input("Ej: ¿Qué hago si un cliente no está de acuerdo con la política de devoluciones?")
+    pregunta_usuario = st.chat_input("Ej: ¿Qué hago si un cliente lee mal un letrero?")
 
     if pregunta_usuario:
         st.session_state.asesor_history.append({"role": "user", "content": pregunta_usuario})
@@ -555,7 +503,7 @@ elif menu_selection == "Preguntas al Asesor":
                     response = chat.send_message(pregunta_usuario)
                     texto_asesor = response.text
                 except Exception as e:
-                    texto_asesor = "⚠️ *Ups, el servidor de Google tuvo un pequeño hipo de conexión (ServerError). Por favor, intenta preguntar de nuevo en unos segundos.*"
+                    texto_asesor = "⚠️ *Error 503. Intenta preguntar de nuevo.*"
                     st.session_state.asesor_history.pop() 
             st.markdown(texto_asesor)
             
