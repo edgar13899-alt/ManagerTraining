@@ -27,17 +27,15 @@ if not api_key:
 
 client = genai.Client(api_key=api_key)
 
-# Reducimos los filtros de seguridad para permitir simulaciones de clientes enojados
 seguridad_baja = [
     types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_ONLY_HIGH"),
     types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_ONLY_HIGH"),
     types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
 ]
 
-# --- VARIABLES COMPARTIDAS (LA MÁQUINA TRAGAMONEDAS Y BÓVEDA) ---
+# --- BÓVEDA DE ESCENARIOS ---
 departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
 
-# ACTUALIZADO: Forzamos a que sean quejas POST-COMPRA o de FRUSTRACIÓN REAL.
 problemas_comunes = [
     "un cliente que YA PAGÓ y llegó a su casa, pero tuvo que regresar muy molesto porque descubrió que le dieron el producto equivocado o le falta un artículo en sus bolsas", 
     "un error en la cocina que causó que una orden previa para recoger se retrasara 20 minutos más de lo prometido, y el cliente está impaciente", 
@@ -205,7 +203,8 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
     1. En tu primer mensaje, presenta el escenario conflictivo con una pista clara sobre el lenguaje corporal en TERCERA PERSONA.
     2. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?" y guíalo secuencialmente (H -> E -> A -> R -> T).
     3. REGLAS ESTRICTAS DE EVALUACIÓN:
-       - PROTOCOLO SIN RECIBO: Si el cliente no tiene recibo, el gerente DEBE preguntar cómo pagaron en la etapa (H) para buscarlo en el sistema POS. Si no aparece, enseñar a usar el "Escudo del Sistema" en la etapa Resolve (R).
+       - PROTOCOLO SIN RECIBO: Si el cliente no tiene recibo, el gerente DEBE preguntar cómo pagaron en la etapa (H) para buscarlo en el sistema POS. 
+       - REGLA DEL GAME MASTER: Si el gerente dice que revisará el sistema o las cámaras, asume el rol del sistema e infórmale el resultado (ej. "Revisas el sistema y efectivamente encuentras la transacción") ANTES de pedirle que siga con el paso Resolve (R).
        - SEPARACIÓN DE ETAPAS (H y E): Las preguntas investigativas pertenecen a la etapa Hear (H). ESTRICTAMENTE PROHIBIDO mezclar empatía ("entiendo su preocupación") dentro de la etapa Hear.
        - EMPATÍA VS. ACUERDO: Tienes prohibido aprobar frases como "tiene toda la razón".
        - SEPARACIÓN DE VOCABULARIO: En Empatía (E), NUNCA uses disculpas ("lo siento"). El estándar de oro de Empatía es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
@@ -224,56 +223,66 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
                 if tipo_escenario == "comun":
                     depto_elegido = random.choice(departamentos)
                     problema_elegido = random.choice(problemas_comunes)
-                    # EL ARREGLO: Instrucciones estrictas de ubicación
                     descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti (el gerente) en las Cajas Principales / Servicio al Cliente (o en el mostrador de {depto_elegido} si es una orden activa). NUNCA pongas al cliente deambulando por los pasillos si ya pagó o viene a hacer un reclamo post-compra."
                 else:
                     pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                     descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
-                chat = client.chats.create(
-                    model="gemini-2.5-pro",
-                    config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
-                )
                 hidden_prompt = f"Hola. Genera el escenario inicial usando esta premisa: {descripcion_problema}. Asegúrate de incluir la pista física en tercera persona. Preséntamelo y pídeme que complete el primer paso (H). No me des las respuestas. Código aleatorio: {random.randint(1,10000)}"
-                response = chat.send_message(hidden_prompt)
                 
-            texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
-            st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
-            st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
-            st.rerun()
+                try:
+                    chat = client.chats.create(
+                        model="gemini-2.5-pro",
+                        config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
+                    )
+                    response = chat.send_message(hidden_prompt)
+                    texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
+                    st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
+                    st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
+                    st.rerun()
+                except Exception as e:
+                    st.error("⚠️ Servidores ocupados (Error 503). Por favor, intenta de nuevo en unos segundos.")
     else:
-        formatted_tutor_history = []
-        for msg in st.session_state.tutor_history:
-            formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
-
-        for msg in st.session_state.tutor_history:
-            if not msg.get("hidden", False):
-                ui_role = "assistant" if msg["role"] == "model" else "user"
-                with st.chat_message(ui_role):
-                    st.markdown(msg["content"])
+        chat_container = st.container()
+        
+        with chat_container:
+            for msg in st.session_state.tutor_history:
+                if not msg.get("hidden", False):
+                    ui_role = "assistant" if msg["role"] == "model" else "user"
+                    with st.chat_message(ui_role):
+                        st.markdown(msg["content"])
 
         tutor_input = st.chat_input("Escribe tu respuesta para el paso actual...")
 
         if tutor_input:
-            with st.chat_message("user"):
-                st.markdown(tutor_input)
-            
             st.session_state.tutor_history.append({"role": "user", "content": tutor_input, "hidden": False})
 
-            chat = client.chats.create(
-                model="gemini-2.5-pro",
-                config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
-                history=formatted_tutor_history
-            )
+            with chat_container:
+                with st.chat_message("user"):
+                    st.markdown(tutor_input)
 
-            with st.chat_message("assistant"):
-                with st.spinner("El tutor está revisando tu respuesta..."):
-                    response = chat.send_message(tutor_input)
-                
-                texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
-                st.markdown(texto_seguro)
-                
-            st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
+                formatted_tutor_history = []
+                for msg in st.session_state.tutor_history[:-1]:
+                    formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+
+                try:
+                    chat = client.chats.create(
+                        model="gemini-2.5-pro",
+                        config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
+                        history=formatted_tutor_history
+                    )
+
+                    with st.chat_message("assistant"):
+                        with st.spinner("El tutor está revisando tu respuesta..."):
+                            response = chat.send_message(tutor_input)
+                        
+                        texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
+                        st.markdown(texto_seguro)
+                        
+                    st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
+                except Exception as e:
+                    st.session_state.tutor_history.pop()
+                    st.error("⚠️ Error 503: Servidor ocupado. Vuelve a enviar tu respuesta.")
         
         st.divider()
         if st.button("Reiniciar Tutorial"):
@@ -285,6 +294,16 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
 # ==========================================
 elif menu_selection == "Simulador HEART":
     st.title("🥩 Simulador de Entrenamiento")
+    st.write("Practica tus habilidades. Cuando termines, presiona 'Terminar y Evaluar' para recibir feedback del Coach.")
+
+    if "simulador_history" not in st.session_state:
+        st.session_state.simulador_history = []
+    if "simulador_concluido" not in st.session_state:
+        st.session_state.simulador_concluido = False
+    if "coach_feedback" not in st.session_state:
+        st.session_state.coach_feedback = ""
+    if "api_error" not in st.session_state:
+        st.session_state.api_error = False
 
     actor_instrucciones = """
     Eres el Actor del simulador de rol interactivo en La Vaquita Meat Market. 
@@ -299,6 +318,10 @@ elif menu_selection == "Simulador HEART":
     
     2. En el resto de la conversación, SOLO escribe lo que dices en voz alta. Cero asteriscos, cero monólogos internos.
 
+    NUEVA REGLA DEL GAME MASTER (CÁMARAS Y SISTEMA): 
+    Si el gerente te dice que va a revisar las cámaras, el recibo o el sistema POS, debes salir brevemente de tu personaje para darle el resultado de su búsqueda. 
+    Añade una línea al principio de tu respuesta que diga: "[Sistema: Revisa la cámara/sistema y efectivamente el cajero cometió un error / encuentras la transacción]". Luego, responde como cliente (ej. "¿Pudo encontrarlo?"). Si la dificultad es Difícil/Extrema, a veces el sistema NO encuentra la transacción para hacer la situación más tensa.
+
     DETALLES CONTEXTUALES UNIVERSALES: 
     Compórtate como un ser humano real. Usa excusas de la vida real. Si perdiste tu recibo y te preguntan cómo pagaste, inventa si fue con tarjeta o efectivo. Si dices efectivo, a menudo confúndete ligeramente con la hora exacta de la compra. Si la queja es por una fila larga, quejate de que llevas mucho tiempo esperando.
 
@@ -308,15 +331,15 @@ elif menu_selection == "Simulador HEART":
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
     - FÁCIL: Problema sencillo. Estás educado. Si te dan una buena solución, acéptala y espera la despedida. NUNCA insultes.
-    - MEDIO: Problema molesto por error de la tienda. Estás frustrado. REGLA DE ORO: Si el gerente te ofrece una solución rápida o justa, ACEPTA y espera la despedida. NO alargues la conversación artificialmente. NUNCA insultes.
-    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. REGLAS PROHIBIDAS: NO uses groserías o insultos directos. NO actúes como un villano de película. Tu enojo debe ser frío, impaciente y muy realista. Tratas de hacer sentir culpable al gerente, amenazas pasivamente, y exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación.
-    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos hacia el personal y la tienda ("incompetentes", "basura", "inútiles"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente tiene el valor de aplicar la "Regla Cero" (establecer un límite de respeto o pedirte que te vayas). Si el gerente te pide que te calmes sin establecer un ultimátum, síguelos insultando y no aceptes ninguna solución. Si te marcan un límite estricto o te piden que salgas, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
+    - MEDIO: Problema molesto por error de la tienda. Estás frustrado. REGLA DE ORO: Si el gerente te ofrece una solución rápida o justa, ACEPTA y espera la despedida. NUNCA insultes.
+    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación.
+    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos hacia el personal y la tienda ("incompetentes", "basura", "inútiles"). TU OBJETIVO PRINCIPAL es probar si el gerente tiene el valor de aplicar la "Regla Cero" (establecer un límite de respeto o pedirte que te vayas). Si te marcan un límite estricto o te piden que salgas, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
 
     CÓMO TERMINAR LA SIMULACIÓN (LA REGLA DEL PASO 'THANK'):
     SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si ocurre una de estas tres cosas:
     1. El gerente ya te dio la solución, tú ya la habías aceptado, y AHORA el gerente se está despidiendo o dándote las gracias (El paso Thank).
     2. El gerente te pidió explícitamente que te retiraras de la tienda o estableció el límite y te marchaste.
-    3. LÍMITE MÁXIMO DE TURNOS: La conversación ha llegado a 4 o 5 intercambios.
+    3. LÍMITE MÁXIMO DE TURNOS: La conversación ha llegado a 5 intercambios.
     No des retroalimentación al terminar.
     """
 
@@ -344,13 +367,11 @@ elif menu_selection == "Simulador HEART":
     9. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
-    SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
+    SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Reiniciar Simulador?"
     """
 
-    if "simulador_history" not in st.session_state:
-        st.session_state.simulador_history = []
-
-    if len(st.session_state.simulador_history) == 0:
+    # --- INICIO DEL SIMULADOR ---
+    if len(st.session_state.simulador_history) == 0 and not st.session_state.simulador_concluido:
         st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
         difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
@@ -364,7 +385,6 @@ elif menu_selection == "Simulador HEART":
             if tipo_escenario == "comun":
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_comunes)
-                # EL ARREGLO: Instrucciones estrictas de ubicación para el simulador también
                 descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti (el gerente) en las Cajas Principales / Servicio al Cliente (o en el mostrador de {depto_elegido} si es una orden activa). NUNCA pongas al cliente deambulando por los pasillos si ya pagó o viene a hacer un reclamo post-compra."
             else:
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
@@ -379,14 +399,15 @@ elif menu_selection == "Simulador HEART":
                         config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
                     )
                     response = chat.send_message(hidden_prompt)
-                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Terminar y Volver al Inicio'."
+                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Reiniciar Simulador'."
                     st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
                     st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
                     st.rerun()
                 except Exception as e:
                     st.error("⚠️ Los servidores de Google están experimentando alta demanda (Error 503). Por favor, intenta de nuevo en unos segundos.")
 
-    else:
+    # --- DESARROLLO DEL SIMULADOR ---
+    elif not st.session_state.simulador_concluido:
         chat_container = st.container()
 
         with chat_container:
@@ -426,39 +447,67 @@ elif menu_selection == "Simulador HEART":
                     st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
                     
                     if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
-                        st.divider()
-                        with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
-                            transcripcion = ""
-                            for m in st.session_state.simulador_history:
-                                if not m.get("hidden", False):
-                                    rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
-                                    transcripcion += f"{rol}: {m['content']}\n\n"
-                            
-                            prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
-                            
-                            try:
-                                coach_response = client.models.generate_content(
-                                    model="gemini-2.5-pro",
-                                    contents=prompt_coach,
-                                    config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
-                                )
-                                texto_coach = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
-                            except Exception as e:
-                                texto_coach = f"⚠️ *Error al contactar al Evaluador Pro: {e}*"
-                            
-                        with st.chat_message("assistant"):
-                            st.markdown(texto_coach)
-                        
-                        st.session_state.simulador_history.append({"role": "model", "content": texto_coach, "hidden": False})
+                        st.session_state.simulador_concluido = True
+                        st.rerun()
                 except Exception as e:
                     st.session_state.simulador_history.pop()
                     st.error("⚠️ El servidor de Google tuvo un problema de conexión (Error 503). Por favor, vuelve a enviar tu mensaje.")
 
-                
         st.divider()
-        if st.button("Terminar y Volver al Inicio"):
-            st.session_state.simulador_history = []
+        st.caption("¿Resolviste el problema? Haz clic abajo para ser evaluado por el Coach.")
+        if st.button("Terminar y Evaluar"):
+            st.session_state.simulador_concluido = True
             st.rerun()
+
+    # --- RESULTADOS DEL SIMULADOR ---
+    if st.session_state.simulador_concluido:
+        for message in st.session_state.simulador_history:
+            if not message.get("hidden", False):
+                ui_role = "assistant" if message["role"] == "model" else "user"
+                with st.chat_message(ui_role):
+                    st.markdown(message["content"])
+                    
+        st.divider()
+        st.subheader("🛑 SIMULACIÓN TERMINADA.")
+        
+        if not st.session_state.coach_feedback:
+            with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
+                transcripcion = ""
+                for m in st.session_state.simulador_history:
+                    if not m.get("hidden", False):
+                        rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
+                        transcripcion += f"{rol}: {m['content']}\n\n"
+                
+                prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
+                
+                try:
+                    coach_response = client.models.generate_content(
+                        model="gemini-2.5-pro",
+                        contents=prompt_coach,
+                        config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
+                    )
+                    st.session_state.coach_feedback = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
+                    st.session_state.api_error = False
+                except Exception as e:
+                    st.session_state.api_error = True
+
+        if st.session_state.api_error:
+            st.error("⚠️ Los servidores de Google están experimentando alta demanda (Error 503). No hemos podido generar tu evaluación.")
+            if st.button("🔄 Reintentar Evaluación"):
+                st.session_state.coach_feedback = ""
+                st.session_state.api_error = False
+                st.rerun()
+        else:
+            with st.chat_message("assistant", avatar="🧠"):
+                st.markdown(st.session_state.coach_feedback)
+                
+            st.divider()
+            if st.button("Reiniciar Simulador"):
+                st.session_state.simulador_history = []
+                st.session_state.simulador_concluido = False
+                st.session_state.coach_feedback = ""
+                st.session_state.api_error = False
+                st.rerun()
 
 # ==========================================
 # MÓDULO 3: PREGUNTAS AL ASESOR
@@ -513,7 +562,7 @@ elif menu_selection == "Preguntas al Asesor":
                     texto_asesor = response.text
                 except Exception as e:
                     texto_asesor = "⚠️ *Ups, el servidor de Google tuvo un pequeño hipo de conexión (ServerError). Por favor, intenta preguntar de nuevo en unos segundos.*"
-                    st.session_state.asesor_history.pop() # Remove the user input so they can retry easily
+                    st.session_state.asesor_history.pop() 
             st.markdown(texto_asesor)
             
         if texto_asesor and "⚠️" not in texto_asesor:
