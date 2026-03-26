@@ -107,7 +107,7 @@ elif menu_selection == "Aprender HEART":
     Se utiliza para **desescalar la tensión** cuando un cliente está enojado, frustrado o exigente. Te da una estructura clara para calmar la situación, encontrar una solución lógica y despedir al cliente de manera profesional, todo sin perder el control de la conversación.
 
     ### ¿Por qué es tan importante en La Vaquita?
-    En un mercado de alto volumen, los problemas (como un precio mal cobrado o un pedido equivocado) van a suceder. Sin un método, es fácil tomar los gritos de manera personal, ponerse a la defensiva, discutir, o peor aún, regalar mercancía o dinero por pánico. El método HEART te protege a ti y a las ganancias de la tienda, dándote las herramientas para mantenerte firme, profesional y en control total.
+    En un mercado de alto volumen, los problemas van a suceder. Sin un método, es fácil tomar los gritos de manera personal, ponerse a la defensiva, discutir, o peor aún, regalar mercancía o dinero por pánico. El método HEART te protege a ti y a las ganancias de la tienda, dándote las herramientas para mantenerte firme, profesional y en control total.
     """)
     
     st.divider()
@@ -118,11 +118,10 @@ elif menu_selection == "Aprender HEART":
         st.markdown("""
         Cuando un cliente molesto se comunica contigo, su necesidad principal es sentirse escuchado y comprendido. Sin embargo, **existen dos formas de Escuchar, dependiendo de la situación:**
         
-        **1. Escucha Silenciosa (Para quejas sobre empleados, filas, o errores menores):** Si el cliente está molesto por una larga fila, o porque un empleado supuestamente fue rudo, tu trabajo es **guardar silencio absoluto**. Deja que se desahogue por completo. NUNCA interrumpas para hacer preguntas aquí; el cliente se sentirá interrogado y pensará que defiendes al empleado. Usa solo asentimientos verbales ("ya veo", "entiendo").
+        **1. Escucha Silenciosa (Para quejas sobre empleados, filas, o errores menores):** Si el cliente está molesto por una experiencia en la tienda, o porque un empleado supuestamente fue rudo, tu trabajo es **guardar silencio absoluto**. Deja que se desahogue por completo. NUNCA interrumpas para hacer preguntas aquí; el cliente se sentirá interrogado y pensará que defiendes al empleado. Usa solo asentimientos verbales ("ya veo", "entiendo").
         
         **2. Escucha Investigativa (SOLO para problemas graves de transacciones, como comida o reembolsos sin recibo):**
-        Si el cliente pide un reembolso pero no tiene su recibo, no puedes solo quedarte callado. Debes hacer **preguntas de investigación neutrales** *antes* de que termine su historia. 
-        *Ejemplo Sin Recibo:* "¿Pagó con tarjeta o en efectivo?". El objetivo es buscar la transacción en el sistema.
+        Si el cliente pide un reembolso pero no tiene su recibo, no puedes solo quedarte callado. Debes hacer **preguntas de investigación neutrales** *antes* de que termine su historia para buscar la transacción en el sistema ("¿Pagó con tarjeta o en efectivo?").
         """)
 
     with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
@@ -131,14 +130,14 @@ elif menu_selection == "Aprender HEART":
         
         **Las acciones clave para este paso incluyen:**
         * **Reflejar su urgencia:** Ajusta tu tono para demostrar que te tomas el asunto tan en serio como ellos.
-        * **Validar sus emociones:** Usa frases que reconozcan sus sentimientos específicos (por ejemplo: frustración, decepción, pánico) en lugar de solo los hechos logísticos del problema.
-        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia.
+        * **Validar sus emociones:** Usa frases que reconozcan sus sentimientos específicos (por ejemplo: frustración, decepción, pánico).
+        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas.
         * <u>**Empatizar no significa estar de acuerdo con ellos.**</u>
         """, unsafe_allow_html=True)
 
     with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
         st.markdown("""
-        Si el problema es un error comprobado de la tienda (ej. comida en mal estado, cobro doble), asume la responsabilidad en nombre de la empresa con una disculpa clara ("Lo siento que le hayamos fallado con este producto").
+        Si el problema es un error comprobado de la tienda (ej. comida en mal estado, cobro doble, sistema caído), asume la responsabilidad en nombre de la empresa con una disculpa clara ("Lo siento que le hayamos fallado con este producto").
         
         🚨 **REGLA PARA QUEJAS DE EMPLEADOS (La Disculpa de Experiencia):**
         Si el cliente se queja de un empleado, NUNCA admitas la culpa del empleado frente al cliente ("Siento que ella fuera grosera"). En su lugar, discúlpate por la **experiencia**: *"Lo siento mucho por la mala experiencia y la frustración que esto le causó."*
@@ -175,20 +174,19 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
 
 * **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Pregunta cómo pagaron. Si fue con **Tarjeta**, pídeles revisar su app. Si fue en **Efectivo**, haz preguntas para acotar la búsqueda. **SI LA BÚSQUEDA FALLA:** Usa el sistema como escudo. Di: *'Revisé minuciosamente y al no aparecer la transacción, no me es posible autorizar un reembolso.'* NUNCA entregues efectivo si no hay registro.
 * **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema.
-* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores (ej. vender producto caducado o cobrar doble).
+* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores de la tienda (ej. vender producto caducado o cobrar doble).
 * **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
 
 🥤 **EL PODER DE LA CORTESÍA DE BAJO COSTO (Agua Fresca / Pan Dulce)**
-Regalar un artículo de bajo costo es una gran herramienta para calmar a un cliente enojado sin destruir nuestra rentabilidad, **PERO DEBE USARSE CORRECTAMENTE:**
+Regalar un artículo de bajo costo es una gran herramienta para calmar a un cliente enojado sin destruir nuestra rentabilidad, **PERO DEBE USARSE CORRECTAMENTE Y EXCLUSIVAMENTE PARA ERRORES DE LA TIENDA:**
 
 ✅ **CUÁNDO SÍ DAR UNA CORTESÍA:**
 * **La cocina cometió un error:** (Ej. Se nos quemó o cayó su orden y tenemos que hacerla de nuevo, retrasándolos 15 minutos).
 * **Falla del sistema:** (Ej. La terminal falló y estuvieron atrapados en la caja mientras lo reiniciábamos).
-* **Órdenes previas retrasadas:** (Ej. Ordenaron barbacoa para las 12:00 PM, llegaron a tiempo, pero la orden no estuvo lista hasta las 12:30 PM).
+* **Órdenes previas retrasadas por culpa de la tienda:** (Ej. Ordenaron barbacoa para las 12:00 PM, llegaron a tiempo, pero no estuvo lista hasta las 12:30 PM).
 
-❌ **CUÁNDO NO DAR UNA CORTESÍA (Prohibido):**
-* **Fila regular larga:** (Ej. Es domingo a mediodía, la tienda está a reventar y el cliente se queja de la espera en la línea de la Taquería). *Regalar producto por el éxito y volumen de la tienda destruye las ganancias. Aquí solo debes empatizar y agradecer su paciencia.*
-* **El cliente llegó temprano:** (Ej. Ordenó para las 3:00 PM, llegó a las 2:30 PM y se queja de que no está listo).
+❌ **CUÁNDO NO DAR UNA CORTESÍA (Totalmente Prohibido):**
+* **Para CUALQUIER experiencia normal de compra:** Esto incluye filas largas regulares (incluso si la tienda está muy llena), un producto que se agotó normalmente, el estacionamiento lleno, ruido en la tienda, o si el cliente llegó antes de la hora de su pedido. *Regalar producto por las fricciones normales del éxito y volumen de la tienda destruye las ganancias y acostumbra mal al cliente. Aquí solo debes empatizar y agradecer su paciencia.*
 """)
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda.")
@@ -214,7 +212,7 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
        - QUEJAS SOBRE EMPLEADOS: En H (Hear), el gerente DEBE escuchar en silencio, sin interrumpir. En A (Apologize), DEBE disculparse por la mala *experiencia*, pero NO admitir culpa del empleado ("Lo siento por la mala experiencia"). En R (Resolve), es cuando DEBE hacer preguntas para investigar ("¿Qué le dijo exactamente?") y prometer revisión interna. Si el gerente interrumpe en H, o admite la culpa del empleado en A, penalízalo.
        - SEPARACIÓN DE ETAPAS (H y E): Las preguntas investigativas pertenecen a la etapa Hear (H), excepto en quejas de empleados donde van en (R). ESTRICTAMENTE PROHIBIDO mezclar empatía ("entiendo su preocupación") dentro de la etapa Hear.
        - SEPARACIÓN DE VOCABULARIO: En Empatía (E), NUNCA uses disculpas ("lo siento"). 
-       - REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Si hay una demora POR ERROR DE LA TIENDA, el gerente debe ofrecer una "Cortesía de bajo costo" (agua fresca/pan dulce). PERO, si la queja es por una fila normal en un día ocupado, TIENES ESTRICTAMENTE PROHIBIDO sugerir o aprobar que se regalen cortesías.
+       - REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Las "Cortesías de bajo costo" (agua fresca/pan dulce) son EXCLUSIVAMENTE para errores comprobados de la tienda (demoras por cocina, caídas del sistema). ESTÁ ESTRICTAMENTE PROHIBIDO sugerir o aprobar regalar producto por CUALQUIER experiencia normal de compra (filas regulares largas, tienda llena, productos agotados). Si el gerente regala algo por una experiencia normal, PENALÍZALO severamente.
     """
 
     if "tutor_history" not in st.session_state:
@@ -370,7 +368,7 @@ elif menu_selection == "Simulador HEART":
     4. SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación (para cosas sin recibo) pertenecen a Hear (H). ESTÁ ESTRICTAMENTE PROHIBIDO sugerir guiones donde se mezcle empatía ("entiendo su molestia") en la etapa Hear. La empatía va SOLO en la etapa E.
     5. EMPATÍA VS ACUERDO: TIENES ESTRICTAMENTE PROHIBIDO usar o sugerir frases como "tiene toda la razón".
     6. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: Al dar retroalimentación sobre la Empatía (E), elimina las disculpas ("lo siento"). El estándar de oro absoluto que debes enseñarle al gerente es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
-    7. REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Si la queja es por un ERROR de la tienda (ej. orden olvidada), el gerente debió dar una "Cortesía de bajo costo" (agua/pan). PERO, si el gerente regaló producto a un cliente que SOLO se quejaba de una fila regular larga, CORRÍGELO CON SEVERIDAD. Enséñale que regalar cortesías por el éxito de la tienda destruye los márgenes.
+    7. REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Las cortesías de bajo costo son EXCLUSIVAMENTE para errores comprobados de la tienda (demoras por cocina, caídas del sistema). ESTÁ ESTRICTAMENTE PROHIBIDO regalar producto por cualquier queja sobre una 'experiencia normal' (ej. filas regulares, tienda llena, productos agotados). Si el gerente regala algo por una experiencia normal, PENALÍZALO severamente.
     8. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
@@ -537,7 +535,7 @@ elif menu_selection == "Preguntas al Asesor":
     2. QUEJAS SOBRE EMPLEADOS: Aconseja estrictamente que NUNCA interrumpan al cliente en la fase (H) Hear para investigar. Deben dejarlo desahogarse. En la fase (A) Apologize, deben disculparse por la mala *experiencia*, pero NO admitir culpa del empleado. Las preguntas de investigación se hacen hasta la fase (R) Resolve.
     3. LA TRAMPA DE LA DISCULPA (Error del cliente): Aconseja estrictamente a los gerentes que NUNCA se disculpen cuando el cliente causó el problema (ej. leyó mal un letrero, tiró un frasco). Enséñales a usar "Empatía Neutral para salvar el ego" ("Entiendo la confusión, a todos nos pasa"). Adviérteles que NUNCA usen disculpas suaves ("siento la confusión"), NUNCA culpen a la tienda ("nuestros letreros están confusos"), y NUNCA asuman el estado del cliente ("venía apurado").
     4. PROTOCOLO SIN RECIBO: Enséñales a investigar primero. Si la búsqueda falla, usar el escudo del sistema para negar la devolución.
-    5. REGLA CERO TARJETAS DE REGALO Y CORTESÍAS: Advierte explícitamente a los gerentes que NO REGALEN cortesías de bajo costo (ni nada) solo porque un cliente se queja de una fila larga regular en la tienda (ej. domingo al mediodía). Aclara que regalar producto por el éxito de la tienda destruye las ganancias. Las cortesías son SOLO para demoras causadas por errores de nuestro equipo (ej. olvidamos su orden). 
+    5. REGLA CERO TARJETAS DE REGALO Y CORTESÍAS: Advierte explícitamente a los gerentes que NO REGALEN cortesías de bajo costo por NINGUNA experiencia normal de compra (ej. tienda llena, filas regulares, productos agotados). Aclara que regalar producto por las fricciones normales de la tienda destruye las ganancias. Las cortesías son EXCLUSIVAMENTE para demoras causadas por errores comprobados de nuestro equipo (ej. olvidamos su orden). 
     6. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: En el paso de Empatía (E), valida la emoción pero NUNCA uses disculpas ('lo siento', 'perdón'). El estándar de oro: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
     7. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
