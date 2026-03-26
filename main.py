@@ -224,7 +224,8 @@ Regalar un artículo de bajo costo es una gran herramienta para calmar a un clie
                 if tipo_escenario == "comun":
                     depto_elegido = random.choice(departamentos)
                     problema_elegido = random.choice(problemas_comunes)
-                    descripcion_problema = f"El escenario DEBE ocurrir en {depto_elegido}. La queja trata sobre {problema_elegido}."
+                    # EL ARREGLO: Instrucciones estrictas de ubicación
+                    descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti (el gerente) en las Cajas Principales / Servicio al Cliente (o en el mostrador de {depto_elegido} si es una orden activa). NUNCA pongas al cliente deambulando por los pasillos si ya pagó o viene a hacer un reclamo post-compra."
                 else:
                     pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                     descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
@@ -363,7 +364,8 @@ elif menu_selection == "Simulador HEART":
             if tipo_escenario == "comun":
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_comunes)
-                descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
+                # EL ARREGLO: Instrucciones estrictas de ubicación para el simulador también
+                descripcion_problema = f"La queja trata sobre {problema_elegido}. FÍSICAMENTE: El cliente se acerca directamente a ti (el gerente) en las Cajas Principales / Servicio al Cliente (o en el mostrador de {depto_elegido} si es una orden activa). NUNCA pongas al cliente deambulando por los pasillos si ya pagó o viene a hacer un reclamo post-compra."
             else:
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                 descripcion_problema = f"Este es un ESCENARIO DE PESADILLA ESPECÍFICO DE LA BOVEDA. La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
@@ -371,78 +373,87 @@ elif menu_selection == "Simulador HEART":
             hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
             
             with st.spinner("El cliente se está acercando..."):
-                chat = client.chats.create(
-                    model="gemini-2.5-flash",
-                    config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
-                )
-                response = chat.send_message(hidden_prompt)
-                
-            texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Terminar y Volver al Inicio'."
-            
-            st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
-            st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
-            st.rerun()
+                try:
+                    chat = client.chats.create(
+                        model="gemini-2.5-flash",
+                        config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
+                    )
+                    response = chat.send_message(hidden_prompt)
+                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Terminar y Volver al Inicio'."
+                    st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
+                    st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
+                    st.rerun()
+                except Exception as e:
+                    st.error("⚠️ Los servidores de Google están experimentando alta demanda (Error 503). Por favor, intenta de nuevo en unos segundos.")
 
     else:
-        formatted_history = []
-        for msg in st.session_state.simulador_history:
-            formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+        chat_container = st.container()
 
-        for message in st.session_state.simulador_history:
-            if not message.get("hidden", False):
-                ui_role = "assistant" if message["role"] == "model" else "user"
-                with st.chat_message(ui_role):
-                    st.markdown(message["content"])
+        with chat_container:
+            for message in st.session_state.simulador_history:
+                if not message.get("hidden", False):
+                    ui_role = "assistant" if message["role"] == "model" else "user"
+                    with st.chat_message(ui_role):
+                        st.markdown(message["content"])
 
         user_input = st.chat_input("Escribe tu respuesta aquí...")
 
         if user_input:
-            with st.chat_message("user"):
-                st.markdown(user_input)
-            
             st.session_state.simulador_history.append({"role": "user", "content": user_input, "hidden": False})
 
-            chat_actor = client.chats.create(
-                model="gemini-2.5-flash", 
-                config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
-                history=formatted_history
-            )
+            with chat_container:
+                with st.chat_message("user"):
+                    st.markdown(user_input)
 
-            with st.chat_message("assistant"):
-                with st.spinner("El cliente está respondiendo..."):
-                    response_actor = chat_actor.send_message(user_input)
-                
-                texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** La respuesta activó los filtros de seguridad de Google."
-                st.markdown(texto_actor)
-            
-            st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
-            
-            if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
-                st.divider()
-                with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
+                formatted_history = []
+                for msg in st.session_state.simulador_history[:-1]:
+                    formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+
+                try:
+                    chat_actor = client.chats.create(
+                        model="gemini-2.5-flash", 
+                        config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
+                        history=formatted_history
+                    )
+
+                    with st.chat_message("assistant"):
+                        with st.spinner("El cliente está respondiendo..."):
+                            response_actor = chat_actor.send_message(user_input)
+                        
+                        texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** La respuesta activó los filtros de seguridad de Google."
+                        st.markdown(texto_actor)
                     
-                    transcripcion = ""
-                    for m in st.session_state.simulador_history:
-                        if not m.get("hidden", False):
-                            rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
-                            transcripcion += f"{rol}: {m['content']}\n\n"
+                    st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
                     
-                    prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
-                    
-                    try:
-                        coach_response = client.models.generate_content(
-                            model="gemini-2.5-pro",
-                            contents=prompt_coach,
-                            config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
-                        )
-                        texto_coach = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
-                    except Exception as e:
-                        texto_coach = f"⚠️ *Error al contactar al Evaluador Pro: {e}*"
-                    
-                with st.chat_message("assistant"):
-                    st.markdown(texto_coach)
-                
-                st.session_state.simulador_history.append({"role": "model", "content": texto_coach, "hidden": False})
+                    if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
+                        st.divider()
+                        with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
+                            transcripcion = ""
+                            for m in st.session_state.simulador_history:
+                                if not m.get("hidden", False):
+                                    rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
+                                    transcripcion += f"{rol}: {m['content']}\n\n"
+                            
+                            prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
+                            
+                            try:
+                                coach_response = client.models.generate_content(
+                                    model="gemini-2.5-pro",
+                                    contents=prompt_coach,
+                                    config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
+                                )
+                                texto_coach = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
+                            except Exception as e:
+                                texto_coach = f"⚠️ *Error al contactar al Evaluador Pro: {e}*"
+                            
+                        with st.chat_message("assistant"):
+                            st.markdown(texto_coach)
+                        
+                        st.session_state.simulador_history.append({"role": "model", "content": texto_coach, "hidden": False})
+                except Exception as e:
+                    st.session_state.simulador_history.pop()
+                    st.error("⚠️ El servidor de Google tuvo un problema de conexión (Error 503). Por favor, vuelve a enviar tu mensaje.")
+
                 
         st.divider()
         if st.button("Terminar y Volver al Inicio"):
@@ -483,29 +494,30 @@ elif menu_selection == "Preguntas al Asesor":
     pregunta_usuario = st.chat_input("Ej: ¿Qué hago si un cliente no está de acuerdo con la política de devoluciones?")
 
     if pregunta_usuario:
+        st.session_state.asesor_history.append({"role": "user", "content": pregunta_usuario})
+        
         with st.chat_message("user"):
             st.markdown(pregunta_usuario)
-        
-        st.session_state.asesor_history.append({"role": "user", "content": pregunta_usuario})
 
         formatted_asesor_history = [{"role": m["role"], "parts": [{"text": m["content"]}]} for m in st.session_state.asesor_history[:-1]]
-
-        chat = client.chats.create(
-            model="gemini-2.5-pro",
-            config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
-            history=formatted_asesor_history
-        )
 
         with st.chat_message("assistant"):
             with st.spinner("Buscando la mejor solución..."):
                 try:
+                    chat = client.chats.create(
+                        model="gemini-2.5-pro",
+                        config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
+                        history=formatted_asesor_history
+                    )
                     response = chat.send_message(pregunta_usuario)
                     texto_asesor = response.text
                 except Exception as e:
                     texto_asesor = "⚠️ *Ups, el servidor de Google tuvo un pequeño hipo de conexión (ServerError). Por favor, intenta preguntar de nuevo en unos segundos.*"
+                    st.session_state.asesor_history.pop() # Remove the user input so they can retry easily
             st.markdown(texto_asesor)
             
-        st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
+        if texto_asesor and "⚠️" not in texto_asesor:
+             st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
         
     if len(st.session_state.asesor_history) > 0:
         st.divider()
