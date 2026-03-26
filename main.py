@@ -165,7 +165,27 @@ elif menu_selection == "Aprender HEART":
         * **Reafirmar la relación:** Expresa que valoras que sean clientes y que esperas brindarles un mejor servicio la próxima vez.
         """)
 
-    st.warning("💰 **REGLA DE RENTABILIDAD SUPREMA Y PROCEDIMIENTOS**\n\nEn La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.\n\n* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Pregunta cómo pagaron. Si fue con **Tarjeta**, pídeles que revisen la app de su banco para darte la hora exacta. Si fue en **Efectivo**, haz preguntas para acotar la búsqueda (ej. '¿En qué caja pagó?'). **SI LA BÚSQUEDA FALLA Y NO ENCUENTRAS LA TRANSACCIÓN:** Usa el sistema como tu escudo neutral. Di firmemente: *'Revisé minuciosamente las cajas en ese horario, y al no aparecer la transacción en el sistema, no me es posible autorizar un reembolso.'*\n* **Error del Cliente:** NUNCA regales dinero o descuentos si el cliente causó el problema. Mantente firme.\n* **El Poder de la Cortesía de Bajo Costo (Regla de la Fila Larga):** Si cometimos un error y un pedido previo está retrasado, ofrécele un vaso de agua fresca o pan dulce. **SIN EMBARGO, NUNCA regales cortesías solo porque hay una fila regular larga.** Si es domingo y la tienda está llena, es un tiempo de espera normal; regalar producto por el éxito de la tienda destruye la rentabilidad. Solo empatiza y agradece su paciencia.\n* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores de la Tienda (ej. vender producto caducado). NUNCA des un descuento de porcentaje por un retraso.\n* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.")
+    st.warning("""💰 **REGLA DE RENTABILIDAD SUPREMA Y PROCEDIMIENTOS**
+
+En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.
+
+* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Pregunta cómo pagaron. Si fue con **Tarjeta**, pídeles revisar su app. Si fue en **Efectivo**, haz preguntas para acotar la búsqueda. **SI LA BÚSQUEDA FALLA:** Usa el sistema como escudo. Di: *'Revisé minuciosamente y al no aparecer la transacción, no me es posible autorizar un reembolso.'* NUNCA entregues efectivo si no hay registro.
+* **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema (ej. dejó la carne en su carro). Mantente firme.
+* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores (ej. vender producto caducado o cobrar doble).
+* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
+
+🥤 **EL PODER DE LA CORTESÍA DE BAJO COSTO (Agua Fresca / Pan Dulce)**
+Regalar un artículo de bajo costo es una gran herramienta para calmar a un cliente enojado sin destruir nuestra rentabilidad, **PERO DEBE USARSE CORRECTAMENTE:**
+
+✅ **CUÁNDO SÍ DAR UNA CORTESÍA:**
+* **La cocina cometió un error:** (Ej. Se nos quemó o cayó su orden y tenemos que hacerla de nuevo, retrasándolos 15 minutos).
+* **Falla del sistema:** (Ej. La terminal falló y estuvieron atrapados en la caja mientras lo reiniciábamos).
+* **Órdenes previas retrasadas:** (Ej. Ordenaron barbacoa para las 12:00 PM, llegaron a tiempo, pero la orden no estuvo lista hasta las 12:30 PM).
+
+❌ **CUÁNDO NO DAR UNA CORTESÍA (Prohibido):**
+* **Fila regular larga:** (Ej. Es domingo a mediodía, la tienda está a reventar y el cliente se queja de la espera en la línea de la Taquería). *Regalar producto por el éxito y volumen de la tienda destruye las ganancias. Aquí solo debes empatizar y agradecer su paciencia.*
+* **El cliente llegó temprano:** (Ej. Ordenó para las 3:00 PM, llegó a las 2:30 PM y se queja de que no está listo).
+""")
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda.")
 
@@ -187,8 +207,9 @@ elif menu_selection == "Aprender HEART":
        - PROTOCOLO SIN RECIBO: Si el cliente no tiene recibo, el gerente DEBE preguntar cómo pagaron en la etapa (H) para buscarlo en el sistema POS. Si no aparece, enseñar a usar el "Escudo del Sistema" en la etapa Resolve (R).
        - SEPARACIÓN DE ETAPAS (H y E): Las preguntas investigativas pertenecen a la etapa Hear (H). ESTRICTAMENTE PROHIBIDO mezclar empatía ("entiendo su preocupación") dentro de la etapa Hear.
        - EMPATÍA VS. ACUERDO: Tienes prohibido aprobar frases como "tiene toda la razón".
-       - SEPARACIÓN DE VOCABULARIO: En Empatía (E), NUNCA uses disculpas ("lo siento"). 
-       - REGLA DE RENTABILIDAD Y FILAS LARGAS: Si hay una demora POR ERROR DE LA TIENDA (ej. orden olvidada), el gerente debe ofrecer una "Cortesía de bajo costo". PERO, si la queja es por una fila normal en un día ocupado (ej. un domingo lleno), TIENES ESTRICTAMENTE PROHIBIDO sugerir o aprobar que se regalen cortesías. El gerente solo debe empatizar y agradecer la paciencia.
+       - SEPARACIÓN DE VOCABULARIO: En Empatía (E), NUNCA uses disculpas ("lo siento"). El estándar de oro de Empatía es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
+       - REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Al llegar al paso de Resolver (R), el gerente debe usar la información de su investigación solo para su confianza interna. TIENES PROHIBIDO sugerir guiones donde el gerente acuse al cliente. Usa una POLÍTICA NEUTRAL de salubridad o del sistema como escudo.
+       - REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Si hay una demora POR ERROR DE LA TIENDA (ej. orden olvidada o sistema caído), el gerente debe ofrecer una "Cortesía de bajo costo" (agua fresca/pan dulce). PERO, si la queja es por una fila normal en un día ocupado (ej. un domingo lleno), TIENES ESTRICTAMENTE PROHIBIDO sugerir o aprobar que se regalen cortesías. El gerente solo debe empatizar y agradecer la paciencia.
     """
 
     if "tutor_history" not in st.session_state:
@@ -280,35 +301,48 @@ elif menu_selection == "Simulador HEART":
     Compórtate como un ser humano real. Usa excusas de la vida real. Si perdiste tu recibo y te preguntan cómo pagaste, inventa si fue con tarjeta o efectivo. Si dices efectivo, a menudo confúndete ligeramente con la hora exacta de la compra. Si la queja es por una fila larga, quejate de que llevas mucho tiempo esperando.
 
     REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
-    Si el gerente ofrece arreglar tu problema, te ayuda a buscar tu transacción, o te da una explicación amable, acéptalo. IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse.
+    Si el gerente ofrece arreglar tu problema rápido, te ayuda a buscar tu transacción en el sistema de manera amable, o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. un agua fresca o un pan mientras esperas una orden retrasada), acéptalo y relaja tu actitud inmediatamente.
+    IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse y agradecerte.
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
-    - FÁCIL: Problema sencillo. Estás educado. 
-    - MEDIO: Problema molesto. Estás frustrado pero razonable.
-    - DIFÍCIL (MANIPULADOR): Pasivo-agresivo, manipulador y terco. No insultos directos, pero te quejas mucho.
-    - EXTREMO (ABUSIVO): Furioso, irracional y usas insultos. Tu objetivo es ver si el gerente aplica la Regla Cero.
+    - FÁCIL: Problema sencillo. Estás educado. Si te dan una buena solución, acéptala y espera la despedida. NUNCA insultes.
+    - MEDIO: Problema molesto por error de la tienda. Estás frustrado. REGLA DE ORO: Si el gerente te ofrece una solución rápida o justa, ACEPTA y espera la despedida. NO alargues la conversación artificialmente. NUNCA insultes.
+    - DIFÍCIL (MANIPULADOR): Eres el cliente más difícil: pasivo-agresivo, manipulador y terco. REGLAS PROHIBIDAS: NO uses groserías o insultos directos. NO actúes como un villano de película. Tu enojo debe ser frío, impaciente y muy realista. Tratas de hacer sentir culpable al gerente, amenazas pasivamente, y exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente se mantiene firme, eventualmente te rindes con mucha indignación.
+    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos hacia el personal y la tienda ("incompetentes", "basura", "inútiles"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente tiene el valor de aplicar la "Regla Cero" (establecer un límite de respeto o pedirte que te vayas). Si el gerente te pide que te calmes sin establecer un ultimátum, síguelos insultando y no aceptes ninguna solución. Si te marcan un límite estricto o te piden que salgas, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
 
-    CÓMO TERMINAR LA SIMULACIÓN:
-    SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si el gerente completó la interacción y se despide, o si te marca un límite de respeto firme.
+    CÓMO TERMINAR LA SIMULACIÓN (LA REGLA DEL PASO 'THANK'):
+    SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si ocurre una de estas tres cosas:
+    1. El gerente ya te dio la solución, tú ya la habías aceptado, y AHORA el gerente se está despidiendo o dándote las gracias (El paso Thank).
+    2. El gerente te pidió explícitamente que te retiraras de la tienda o estableció el límite y te marchaste.
+    3. LÍMITE MÁXIMO DE TURNOS: La conversación ha llegado a 4 o 5 intercambios.
+    No des retroalimentación al terminar.
     """
 
     coach_instrucciones = """
     Eres el Coach Evaluador Maestro de La Vaquita Meat Market. 
     
-    CONTEXTO DE LA TIENDA: Somos un mercado hispano con carnicería y taquería. Los márgenes son estrechos. 
+    CONTEXTO DE LA TIENDA: Somos un mercado hispano con carnicería y taquería. Los márgenes son estrechos. Comprendes perfectamente la diferencia entre un error genuino de la tienda y un cliente que intenta aprovecharse.
 
-    Tu trabajo es analizar la transcripción de la simulación y evaluar al gerente usando el método HEART.
+    Tu trabajo es analizar la transcripción de la simulación y evaluar al gerente usando el método HEART con una visión comercial implacable pero un tono EMOCIONANTE y ALENTADOR de coach. 
     
+    REGLA DE REESCRITURA Y PSICOLOGÍA:
+    Nunca te limites a decir "te faltó empatía" o "no lo hiciste bien". SIEMPRE debes ofrecer ejemplos exactos de guiones de lo que el gerente debió decir. 
+    1. Usa este formato: "En lugar de decir [Cita lo que dijeron], intenta decir: [Tu sugerencia de guion aplicando HEART]". 
+    2. DESGLOSE PSICOLÓGICO: Inmediatamente después de dar tu sugerencia de guion, DEBES explicar *por qué* elegiste esas palabras. Analiza tu propia sugerencia.
+
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
-    1. PROTOCOLO SIN RECIBO: Si el cliente no tenía recibo, verifica si el gerente intentó buscarlo en el POS preguntando el método de pago. Si no lo encontraron, el gerente DEBIÓ usar el sistema como escudo para decir no.
-    2. SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación lógicas pertenecen a la etapa Hear (H). La empatía va SOLO en la etapa E.
+    1. PROTOCOLO SIN RECIBO: Si el cliente no tenía recibo, verifica si el gerente preguntó el método de pago para intentar buscarlo. Si la transacción no se pudo verificar (porque el cliente no recordaba o no aparecía), el gerente DEBIÓ usar el sistema como escudo para decir no ("Revisé minuciosamente y al no aparecer en el sistema, no me es posible autorizarlo"). Si el gerente regaló el dinero sin encontrarlo, corrígelo con severidad.
+    2. SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación lógicas pertenecen a la etapa Hear (H). ESTÁ ESTRICTAMENTE PROHIBIDO sugerir guiones donde se mezcle empatía ("entiendo su molestia") en la etapa Hear. La empatía va SOLO en la etapa E.
     3. ORDEN CRONOLÓGICO DE HEART: La Empatía (E) DEBE venir ANTES de la Disculpa (A). 
-    4. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: Elimina las disculpas ("lo siento") de la empatía. El estándar de oro es: "Escucho lo que dice y entiendo lo frustrante que es..."
-    5. REGLA DE RENTABILIDAD Y FILAS LARGAS: Presta MUCHA ATENCIÓN a esto. Si el gerente regaló mercancía (incluso una "cortesía de bajo costo" como un agua) a un cliente que solo se quejaba de una fila larga normal en la tienda, CORRÍGELO CON SEVERIDAD. Enséñale que las cortesías son solo para demoras por errores de la tienda (ej. perder su ticket). No se regala producto por el éxito de la tienda.
-    6. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
+    4. EMPATÍA VS ACUERDO: TIENES ESTRICTAMENTE PROHIBIDO usar o sugerir frases como "tiene toda la razón".
+    5. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: Al dar retroalimentación sobre la Empatía (E), elimina las disculpas ("lo siento"). El estándar de oro absoluto que debes enseñarle al gerente es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
+    6. Personalización Silenciosa y Reubicación: SOLO penaliza la falta de "Reubicación" si había otros clientes presentes. 
+    7. REGLA DE RENTABILIDAD Y CORTESÍAS (SÍ vs NO): Si la queja es por un ERROR de la tienda (ej. orden olvidada), el gerente debió dar una "Cortesía de bajo costo" (agua/pan). PERO, si el gerente regaló producto a un cliente que SOLO se quejaba de una fila regular larga (ej. un domingo ocupado), CORRÍGELO CON SEVERIDAD. Enséñale que regalar cortesías por el éxito de la tienda destruye los márgenes; para filas largas normales solo se empatiza y agradece la paciencia.
+    8. QUEJAS DE EMPLEADOS: Si la queja es sobre un empleado, el gerente NUNCA debe admitir la culpa del empleado frente al cliente antes de investigar.
+    9. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
-    SIEMPRE pregúntale al usuario: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
+    SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
     """
 
     if "simulador_history" not in st.session_state:
@@ -432,7 +466,7 @@ elif menu_selection == "Preguntas al Asesor":
     REGLAS DE RESPUESTA (ESTRICTAS):
     1. Cero Respuestas Genéricas: Habla como un mentor astuto en retail hispano.
     2. PROTOCOLO SIN RECIBO: Enséñales a investigar primero. Si la búsqueda falla, usar el escudo del sistema para negar la devolución.
-    3. REGLA CERO TARJETAS DE REGALO Y FILAS LARGAS: Advierte explícitamente a los gerentes que NO REGALEN cortesías de bajo costo solo porque un cliente se queja de una fila larga normal en la tienda. Aclara que regalar producto por el éxito y volumen de la tienda destruye las ganancias. Las cortesías son SOLO para demoras causadas por errores de nuestro equipo. Tampoco sugieras jamás tarjetas de regalo.
+    3. REGLA CERO TARJETAS DE REGALO Y CORTESÍAS: Advierte explícitamente a los gerentes que NO REGALEN cortesías de bajo costo (ni nada) solo porque un cliente se queja de una fila larga regular en la tienda (ej. domingo al mediodía). Aclara que regalar producto por el éxito de la tienda destruye las ganancias. Las cortesías son SOLO para demoras causadas por errores de nuestro equipo (ej. olvidamos su orden). 
     4. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: En el paso de Empatía (E), valida la emoción pero NUNCA uses disculpas ('lo siento', 'perdón'). El estándar de oro: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
     5. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
