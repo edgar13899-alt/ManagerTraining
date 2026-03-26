@@ -112,9 +112,10 @@ elif menu_selection == "Aprender HEART":
         
         **1. Escucha Silenciosa (Para el 90% de las quejas comunes):** Si el cliente está molesto por una larga fila, un empleado rudo, o un error menor, tu trabajo es **guardar silencio absoluto**. Deja que se desahogue por completo. Interrumpir para hacer preguntas aquí solo los hará enojar más porque sentirán que los estás interrogando o apresurando. Usa solo asentimientos verbales ("ya veo", "entiendo").
         
-        **2. Escucha Investigativa (Para problemas graves de comida o reembolsos grandes):**
-        Si el cliente hace una acusación grave (ej. "la carne estaba echada a perder" o exige que le devuelvas $200 dólares), no puedes solo quedarte callado. Debes hacer **preguntas de investigación neutrales** para armar el rompecabezas *antes* de que termine su historia. 
-        *Ejemplo:* "¿A qué hora recogió el pedido?", "¿Cómo lo transportó?", "¿Todo lo demás en su orden estuvo bien?". Esto le demuestra al cliente que tomas su problema muy en serio, y a ti te da las pistas necesarias para saber de quién fue realmente la culpa.
+        **2. Escucha Investigativa (Para problemas graves de comida o reembolsos sin recibo):**
+        Si el cliente hace una acusación grave (ej. "la carne estaba echada a perder") o pide un reembolso pero no tiene su recibo, no puedes solo quedarte callado. Debes hacer **preguntas de investigación neutrales** para armar el rompecabezas *antes* de que termine su historia. 
+        *Ejemplo de Comida:* "¿A qué hora recogió el pedido?", "¿Cómo lo transportó?", "¿Todo lo demás en su orden estuvo bien?".
+        *Ejemplo Sin Recibo:* "¿Pagó con tarjeta o en efectivo?". El objetivo es buscar la transacción en el sistema.
         
         **Reglas de Oro de esta etapa:**
         * **No te defiendas:** Resiste el impulso de interrumpir para dar excusas de la tienda.
@@ -163,7 +164,7 @@ elif menu_selection == "Aprender HEART":
         * **Reafirmar la relación:** Expresa que valoras que sean clientes y que esperas brindarles un mejor servicio la próxima vez.
         """)
 
-    st.warning("💰 **REGLA DE RENTABILIDAD SUPREMA: ¿Cuándo dar producto gratis o descuentos?**\n\nEn La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.\n\n* **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema (ej. dejó la carne en su carro, pidió el pastel mal). Mantente firme.\n* **El Poder de la Cortesía de Bajo Costo (Para demoras o errores menores):** Si el cliente sufre una demora prolongada o un pequeño inconveniente de servicio, **ofrécele un artículo de bajo costo para la tienda pero de alto valor para él**, como un vaso de agua fresca o un pan dulce mientras espera. Esto calma el enojo sin destruir nuestra rentabilidad.\n* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores de la Tienda (ej. vender producto caducado o un cobro doble grave). NUNCA des un descuento de porcentaje por una simple demora.\n* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'. No somos una mega-cadena corporativa.")
+    st.warning("💰 **REGLA DE RENTABILIDAD SUPREMA Y PROCEDIMIENTOS**\n\nEn La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.\n\n* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Pregunta cómo pagaron. Si fue con **Tarjeta**, pídeles que revisen la app de su banco para darte la hora exacta. Si fue en **Efectivo**, SÍ ES POSIBLE dar el reembolso, pero ten en cuenta que **los clientes suelen recordar mal la fecha y casi siempre se equivocan en la hora.** Haz preguntas para acotar la búsqueda (ej. '¿Recuerda en qué caja pagó?', '¿Llevaba algún otro artículo?'). **SI LA BÚSQUEDA FALLA Y NO ENCUENTRAS LA TRANSACCIÓN:** Usa el sistema como tu escudo neutral. Di firmemente: *'Revisé minuciosamente las cajas en ese horario, y al no aparecer la transacción en el sistema, no me es posible autorizar un reembolso.'* NUNCA entregues efectivo si no encuentras el registro.\n* **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema (ej. dejó la carne en su carro, pidió el pastel mal). Mantente firme.\n* **El Poder de la Cortesía de Bajo Costo:** Si el cliente sufre una demora o pequeño inconveniente de la tienda, **ofrécele un vaso de agua fresca o un pan dulce** mientras espera. Esto calma el enojo sin destruir nuestra rentabilidad.\n* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores de la Tienda (ej. vender producto caducado). NUNCA des un descuento de porcentaje por una simple demora.\n* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'. No somos una mega-cadena corporativa.")
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda. (Ej. *'Dado que no puede comunicarse con respeto, le voy a pedir que se retire de la tienda en este momento'*).")
 
@@ -182,11 +183,12 @@ elif menu_selection == "Aprender HEART":
     1. En tu primer mensaje, presenta el escenario conflictivo con una pista clara sobre el lenguaje corporal en TERCERA PERSONA.
     2. Luego, pregúntale al usuario: "¿Qué harías para el paso H (Hear)?" y guíalo secuencialmente (H -> E -> A -> R -> T).
     3. REGLAS ESTRICTAS DE EVALUACIÓN:
-       - SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación lógicas ("¿A qué hora recogió el pedido?", "¿Todo lo demás estuvo bien?") PERTENECEN a la etapa Hear (H). SIN EMBARGO, tienes ESTRICTAMENTE PROHIBIDO mezclar frases de empatía (como "entiendo su preocupación") dentro de la etapa Hear. Mantén la etapa H puramente para escuchar y recolectar hechos neutrales. Deja TODA la empatía para la etapa (E).
+       - PROTOCOLO SIN RECIBO: Si el cliente no tiene recibo, el gerente DEBE preguntar cómo pagaron en la etapa (H) para buscarlo en el sistema POS. Si después de buscar (o si el cliente no sabe nada) la transacción NO APARECE, enseña al gerente a usar el "Escudo del Sistema" en la etapa Resolve (R): "Revisé las cajas y al no aparecer en el sistema, no me es posible autorizar el reembolso." NO permitas que regalen el dinero si la búsqueda falla.
+       - SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación lógicas pertenecen a la etapa Hear (H). ESTRICTAMENTE PROHIBIDO mezclar frases de empatía ("entiendo su preocupación") dentro de la etapa Hear. Deja TODA la empatía para la etapa (E).
        - EMPATÍA VS. ACUERDO: Tienes prohibido aprobar frases como "tiene toda la razón".
-       - SEPARACIÓN DE VOCABULARIO: En el paso de Empatía (E), NUNCA uses disculpas ("lo siento"). El estándar de oro de Empatía es: "Escucho lo que dice y de verdad entiendo lo frustrante que es tener una preocupación con la comida, especialmente con un pedido tan grande."
-       - REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Al llegar al paso de Resolver (R), el gerente debe usar la información de su investigación solo para su confianza interna. TIENES PROHIBIDO sugerir guiones donde el gerente acuse al cliente. Usa una POLÍTICA NEUTRAL de salubridad como escudo.
-       - REGLA DE RENTABILIDAD, CORTESÍA Y DESCUENTOS: Si el error fue del cliente, niega devoluciones. Si hay demoras, ofrece una "Cortesía de bajo costo" (agua fresca/pan dulce). Descuentos de porcentaje SOLO para ERRORES MAYORES. PROHIBIDO sugerir tarjetas de regalo.
+       - SEPARACIÓN DE VOCABULARIO: En el paso de Empatía (E), NUNCA uses disculpas ("lo siento"). El estándar de oro de Empatía es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
+       - REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Al llegar al paso de Resolver (R), el gerente debe usar la información de su investigación solo para su confianza interna. TIENES PROHIBIDO sugerir guiones donde el gerente acuse al cliente. Usa una POLÍTICA NEUTRAL de salubridad o del sistema como escudo.
+       - REGLA DE RENTABILIDAD, CORTESÍA Y DESCUENTOS: Si hay demoras, ofrece una "Cortesía de bajo costo" (agua fresca/pan dulce). Descuentos de porcentaje SOLO para ERRORES MAYORES. PROHIBIDO sugerir tarjetas de regalo.
     """
 
     if "tutor_history" not in st.session_state:
@@ -275,10 +277,10 @@ elif menu_selection == "Simulador HEART":
     2. En el resto de la conversación, SOLO escribe lo que dices en voz alta. Cero asteriscos, cero monólogos internos.
 
     DETALLES CONTEXTUALES UNIVERSALES: 
-    Compórtate como un ser humano real. Usa excusas de la vida real. NUNCA digas literalmente "estoy apurado". 
+    Compórtate como un ser humano real. Usa excusas de la vida real. NUNCA digas literalmente "estoy apurado". Si perdiste tu recibo y te preguntan cómo pagaste, inventa si fue con tarjeta o efectivo. Si dices efectivo, a menudo confúndete ligeramente con la hora exacta de la compra (ej. "fue como a mediodía" cuando en realidad no estás seguro). Si el gerente busca la transacción y te dice que NO aparece, te frustrarás, pero si se mantienen firmes con las reglas, eventualmente te rendirás.
 
     REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
-    Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio (ej. "Está bien, se lo agradezco" o "Por favor apúrese"). Si el gerente te ofrece una "Cortesía de bajo costo" (ej. un agua fresca o un pan mientras esperas una orden retrasada), acéptalo y relaja tu actitud inmediatamente.
+    Si el gerente ofrece arreglar tu problema rápido, te ayuda a buscar tu transacción en el sistema de manera amable, o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. un agua fresca o un pan mientras esperas una orden retrasada), acéptalo y relaja tu actitud inmediatamente.
     IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse y agradecerte.
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
@@ -308,15 +310,16 @@ elif menu_selection == "Simulador HEART":
     2. DESGLOSE PSICOLÓGICO: Inmediatamente después de dar tu sugerencia de guion, DEBES explicar *por qué* elegiste esas palabras. Analiza tu propia sugerencia.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
-    1. SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación lógicas pertenecen a la etapa Hear (H). ESTÁ ESTRICTAMENTE PROHIBIDO sugerir guiones donde se mezcle empatía ("entiendo su molestia") en la etapa Hear. La empatía va SOLO en la etapa E.
-    2. ORDEN CRONOLÓGICO DE HEART: La Empatía (E) DEBE venir ANTES de la Disculpa (A). 
-    3. EMPATÍA VS ACUERDO: TIENES ESTRICTAMENTE PROHIBIDO usar o sugerir frases como "tiene toda la razón".
-    4. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: Al dar retroalimentación sobre la Empatía (E), elimina las disculpas ("lo siento"). El estándar de oro absoluto que debes enseñarle al gerente es: "Escucho lo que dice y de verdad entiendo lo frustrante que es tener una preocupación con la comida, especialmente con un pedido tan grande." Enséñales esta estructura.
-    5. Personalización Silenciosa y Reubicación: SOLO penaliza la falta de "Reubicación" si había otros clientes presentes. 
-    6. REGLA DE NO ACUSAR Y RENTABILIDAD: Si el cliente cometió el error, elogia al gerente si negó devoluciones. NUNCA sugieras usar pistas de la investigación para acusar al cliente frontalmente. Corrígelo con severidad si el gerente regala dinero de la tienda. TIENES ESTRICTAMENTE PROHIBIDO sugerir ofrecer tarjetas de regalo (gift cards). Los DESCUENTOS de porcentaje SOLO se justifican en ERRORES MAYORES de la tienda.
-    7. CORTESÍAS DE BAJO COSTO: Si el problema era una demora o error menor, evalúa si el gerente ofreció una "Cortesía de Bajo Costo" (ej. agua fresca/pan dulce). Si ofreció un descuento en lugar de una cortesía por un error menor, corrígelo.
-    8. QUEJAS DE EMPLEADOS: Si la queja es sobre un empleado, el gerente NUNCA debe admitir la culpa del empleado frente al cliente antes de investigar.
-    9. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
+    1. PROTOCOLO SIN RECIBO: Si el cliente no tenía recibo, verifica si el gerente preguntó el método de pago para intentar buscarlo. Si la transacción no se pudo verificar (porque el cliente no recordaba o no aparecía), el gerente DEBIÓ usar el sistema como escudo para decir no ("Revisé minuciosamente y al no aparecer en el sistema, no me es posible autorizarlo"). Si el gerente regaló el dinero sin encontrarlo, corrígelo con severidad.
+    2. SEPARACIÓN DE ETAPAS (H y E): Las preguntas de investigación lógicas pertenecen a la etapa Hear (H). ESTÁ ESTRICTAMENTE PROHIBIDO sugerir guiones donde se mezcle empatía ("entiendo su molestia") en la etapa Hear. La empatía va SOLO en la etapa E.
+    3. ORDEN CRONOLÓGICO DE HEART: La Empatía (E) DEBE venir ANTES de la Disculpa (A). 
+    4. EMPATÍA VS ACUERDO: TIENES ESTRICTAMENTE PROHIBIDO usar o sugerir frases como "tiene toda la razón".
+    5. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: Al dar retroalimentación sobre la Empatía (E), elimina las disculpas ("lo siento"). El estándar de oro absoluto que debes enseñarle al gerente es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
+    6. Personalización Silenciosa y Reubicación: SOLO penaliza la falta de "Reubicación" si había otros clientes presentes. 
+    7. REGLA DE NO ACUSAR Y RENTABILIDAD: Si el cliente cometió el error, elogia al gerente si negó devoluciones. NUNCA sugieras usar pistas de la investigación para acusar al cliente frontalmente. Corrígelo con severidad si el gerente regala dinero de la tienda. TIENES ESTRICTAMENTE PROHIBIDO sugerir ofrecer tarjetas de regalo (gift cards). Los DESCUENTOS de porcentaje SOLO se justifican en ERRORES MAYORES de la tienda.
+    8. CORTESÍAS DE BAJO COSTO: Si el problema era una demora o error menor, evalúa si el gerente ofreció una "Cortesía de Bajo Costo" (ej. agua fresca/pan dulce). Si ofreció un descuento en lugar de una cortesía por un error menor, corrígelo.
+    9. QUEJAS DE EMPLEADOS: Si la queja es sobre un empleado, el gerente NUNCA debe admitir la culpa del empleado frente al cliente antes de investigar.
+    10. LÍMITES Y MANIPULACIÓN: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
     SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -442,15 +445,16 @@ elif menu_selection == "Preguntas al Asesor":
 
     REGLAS DE RESPUESTA (ESTRICTAS):
     1. Cero Respuestas Genéricas: Habla como un mentor astuto y experimentado en el comercio minorista hispano.
-    2. SEPARACIÓN DE ETAPAS (H y E): Al sugerir preguntas de investigación (ej. "¿Todo lo demás estuvo bien?"), ubícalas claramente en la etapa Hear (H). TIENES ESTRICTAMENTE PROHIBIDO mezclar frases de empatía (como "entiendo su frustración") dentro de tus ejemplos de la etapa Hear. Mantén la etapa H puramente para recolectar hechos neutrales. Deja la empatía para la etapa E.
-    3. Usa HEART y Psicología: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Siempre explica la PSICOLOGÍA.
-    4. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
-    5. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: En el paso de Empatía (E), valida la emoción pero NUNCA uses disculpas ('lo siento', 'perdón'). El estándar de oro absoluto para la empatía que DEBES usar como ejemplo principal es: "Escucho lo que dice y de verdad entiendo lo frustrante que es tener una preocupación con la comida, especialmente con un pedido tan grande."
-    6. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente. Dales el guion exacto usando las políticas de salubridad como un escudo neutral y firme.
-    7. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). Si el gerente busca desescalar una demora o pequeño error nuestro, aconséjale usar "Cortesías de Bajo Costo" (solo un agua fresca o un pan dulce). Los DESCUENTOS (porcentaje de la compra) SOLO se deben recomendar para ERRORES MAYORES de la tienda.
-    8. REGLA DE DISCRECIÓN: Al aconsejar sobre Reubicación, NUNCA sugieras decir frases obvias como "vamos lejos de la fila". 
-    9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
-    10. QUEJAS DE EMPLEADOS: Aconseja al gerente que NUNCA admita la culpa del empleado frente al cliente antes de investigar.
+    2. PROTOCOLO SIN RECIBO Y BÚSQUEDA FALLIDA: Enséñales a investigar (tarjeta vs efectivo). Advierte que con efectivo los clientes suelen errar la hora. MUY IMPORTANTE: Si la búsqueda en el sistema falla y no encuentran la transacción, aconseja al gerente usar el sistema como escudo neutral para decir NO ("Revisé y al no aparecer en el sistema, no puedo autorizar el reembolso"). Nunca deben ceder el dinero si no hay registro.
+    3. SEPARACIÓN DE ETAPAS (H y E): Al sugerir preguntas de investigación, ubícalas claramente en la etapa Hear (H). TIENES ESTRICTAMENTE PROHIBIDO mezclar frases de empatía (como "entiendo su frustración") dentro de tus ejemplos de la etapa Hear. 
+    4. Usa HEART y Psicología: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Siempre explica la PSICOLOGÍA.
+    5. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
+    6. SEPARACIÓN DE VOCABULARIO Y EMPATÍA MAGISTRAL: En el paso de Empatía (E), valida la emoción pero NUNCA uses disculpas ('lo siento', 'perdón'). El estándar de oro absoluto para la empatía que DEBES usar como ejemplo principal es: "Escucho lo que dice y de verdad entiendo lo frustrante que es..."
+    7. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente. Dales el guion exacto usando las políticas de salubridad o limitaciones del sistema como un escudo neutral y firme.
+    8. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). Si el gerente busca desescalar una demora o pequeño error nuestro, aconséjale usar "Cortesías de Bajo Costo" (solo un agua fresca o un pan dulce). Los DESCUENTOS (porcentaje de la compra) SOLO se deben recomendar para ERRORES MAYORES de la tienda.
+    9. REGLA DE DISCRECIÓN: Al aconsejar sobre Reubicación, NUNCA sugieras decir frases obvias como "vamos lejos de la fila". 
+    10. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    11. QUEJAS DE EMPLEADOS: Aconseja al gerente que NUNCA admita la culpa del empleado frente al cliente antes de investigar.
     """
 
     if "asesor_history" not in st.session_state:
