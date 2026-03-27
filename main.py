@@ -435,7 +435,7 @@ elif menu_selection == "Simulador HEART":
                         )
                         texto_coach = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
                     except Exception as e:
-                    texto_asesor = f"⚠️ *Error exacto de Google:* {e}"
+                        texto_asesor = f"⚠️ *Error exacto de Google:* {e}"
                     
                 with st.chat_message("assistant"):
                     st.markdown(texto_coach)
