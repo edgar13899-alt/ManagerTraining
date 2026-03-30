@@ -34,13 +34,16 @@ seguridad_baja = [
     types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
 ]
 
-# --- VARIABLES COMPARTIDAS (LA MÁQUINA TRAGAMONEDAS Y BÓVEDA) ---
+# --- BÓVEDA DE ESCENARIOS SEPARADA POR DIFICULTAD ---
 departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
 
-problemas_comunes = [
+problemas_faciles = [
     "un cliente que YA PAGÓ y llegó a su casa, pero tuvo que regresar muy molesto porque descubrió que le dieron el producto equivocado o le falta un artículo en sus bolsas", 
     "un error en la cocina que causó que una orden previa para recoger se retrasara 20 minutos más de lo prometido, y el cliente está impaciente", 
-    "un cliente que YA PAGÓ y revisando su recibo nota que se le cobró de más por un error en el sistema o un letrero confuso, exigiendo la diferencia", 
+    "un cliente que YA PAGÓ y revisando su recibo nota que se le cobró de más por un error en el sistema o un letrero confuso, exigiendo la diferencia"
+]
+
+problemas_medios = [
     "un cliente frustrado que intenta devolver un producto básico (como pan o fruta) argumentando que salió de mala calidad o echado a perder",
     "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud al cliente",
     "un cliente que quiere cambiar un producto básico y cerrado (como unas papas o refresco) pero no tiene el recibo de compra"
@@ -212,7 +215,7 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
                 tipo_escenario = random.choices(["comun", "pesadilla", "especial"], weights=[50, 30, 20], k=1)[0]
                 if tipo_escenario == "comun":
                     depto_elegido = random.choice(departamentos)
-                    problema_elegido = random.choice(problemas_comunes)
+                    problema_elegido = random.choice(problemas_faciles + problemas_medios)
                     descripcion_problema = f"El escenario DEBE ocurrir en {depto_elegido}. La queja trata sobre {problema_elegido}."
                 elif tipo_escenario == "especial":
                     problema_elegido = random.choice(errores_cliente)
@@ -259,12 +262,16 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
 
             with st.chat_message("assistant"):
                 with st.spinner("El tutor está revisando tu respuesta..."):
-                    response = chat.send_message(tutor_input)
-                
-                texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
+                    try:
+                        response = chat.send_message(tutor_input)
+                        texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
+                    except Exception as e:
+                        texto_seguro = "⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a enviar tu respuesta.*"
+                        st.session_state.tutor_history.pop()
                 st.markdown(texto_seguro)
                 
-            st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
+            if "⚠️" not in texto_seguro:
+                st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
         st.divider()
         if st.button("Reiniciar Tutorial"):
@@ -353,11 +360,13 @@ elif menu_selection == "Simulador HEART":
         
         if st.button("Comenzar Escenario"):
             
-            tipo_escenario = random.choices(["comun", "pesadilla", "especial"], weights=[50, 30, 20], k=1)[0]
-            
-            if difficulty in ["Fácil", "Medio"]:
+            if difficulty == "Fácil":
                 depto_elegido = random.choice(departamentos)
-                problema_elegido = random.choice(problemas_comunes)
+                problema_elegido = random.choice(problemas_faciles)
+                descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
+            elif difficulty == "Medio":
+                depto_elegido = random.choice(departamentos)
+                problema_elegido = random.choice(problemas_medios)
                 descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
             elif difficulty == "Casos Especiales (Errores del Cliente)":
                 problema_elegido = random.choice(errores_cliente)
@@ -369,17 +378,18 @@ elif menu_selection == "Simulador HEART":
             hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
             
             with st.spinner("El cliente se está acercando..."):
-                chat = client.chats.create(
-                    model="gemini-2.5-flash",
-                    config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
-                )
-                response = chat.send_message(hidden_prompt)
-                
-            texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** La IA generó un escenario que activó los filtros de seguridad. Por favor, haz clic en 'Terminar y Volver al Inicio'."
-            
-            st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
-            st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
-            st.rerun()
+                try:
+                    chat = client.chats.create(
+                        model="gemini-2.5-flash",
+                        config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
+                    )
+                    response = chat.send_message(hidden_prompt)
+                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** Filtros de seguridad activados."
+                    st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
+                    st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
+                    st.rerun()
+                except Exception as e:
+                    st.error("⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a presionar el botón.*")
 
     else:
         formatted_history = []
@@ -408,17 +418,20 @@ elif menu_selection == "Simulador HEART":
 
             with st.chat_message("assistant"):
                 with st.spinner("El cliente está respondiendo..."):
-                    response_actor = chat_actor.send_message(user_input)
-                
-                texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** La respuesta activó los filtros de seguridad de Google."
+                    try:
+                        response_actor = chat_actor.send_message(user_input)
+                        texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** Filtros de seguridad activados."
+                    except Exception as e:
+                        texto_actor = "⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a enviar tu mensaje.*"
+                        st.session_state.simulador_history.pop()
                 st.markdown(texto_actor)
             
-            st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
+            if "⚠️" not in texto_actor:
+                st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
             
             if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
                 st.divider()
                 with st.spinner("🧠 El Evaluador Pro está analizando tu desempeño con gran detalle..."):
-                    
                     transcripcion = ""
                     for m in st.session_state.simulador_history:
                         if not m.get("hidden", False):
@@ -435,7 +448,7 @@ elif menu_selection == "Simulador HEART":
                         )
                         texto_coach = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
                     except Exception as e:
-                        texto_asesor = f"⚠️ *Error exacto de Google:* {e}"
+                        texto_coach = "⚠️ *Ups, el servidor del Evaluador está un poco saturado en este momento. Por favor, haz clic en 'Terminar y Volver al Inicio' y revisa tu interacción manualmente.*"
                     
                 with st.chat_message("assistant"):
                     st.markdown(texto_coach)
@@ -505,9 +518,11 @@ elif menu_selection == "Preguntas al Asesor":
                     texto_asesor = response.text
                 except Exception as e:
                     texto_asesor = "⚠️ *Ups, el servidor de Google tuvo un pequeño hipo de conexión (ServerError). Por favor, intenta preguntar de nuevo en unos segundos.*"
+                    st.session_state.asesor_history.pop()
             st.markdown(texto_asesor)
             
-        st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
+        if "⚠️" not in texto_asesor:
+            st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
         
     if len(st.session_state.asesor_history) > 0:
         st.divider()
