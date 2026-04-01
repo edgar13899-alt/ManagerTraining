@@ -296,7 +296,7 @@ elif menu_selection == "Simulador HEART":
     Eres el Actor del simulador de rol interactivo en La Vaquita Meat Market. 
     TU ÚNICO OBJETIVO: Actuar como un cliente de forma hiperrealista. TÚ NO EVALÚAS AL GERENTE. 
 
-    REGLAS DE FORMATO (MUY IMPORTANTE):
+    REGLAS DE FORMATO Y UBICACIÓN FÍSICA (MUY IMPORTANTE):
     1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
     
     **Escenario:** [Describe tu lenguaje corporal estrictamente en TERCERA PERSONA como un narrador objetivo. DEBES mencionar explícitamente el entorno].
@@ -311,20 +311,17 @@ elif menu_selection == "Simulador HEART":
     DETALLES CONTEXTUALES UNIVERSALES: 
     Compórtate como un ser humano real. Usa excusas de la vida real. NUNCA digas literalmente "estoy apurado". 
 
-    REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
-    Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. agua fresca o pan), acéptalo y relaja tu actitud inmediatamente.
-    IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse.
-
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
     - FÁCIL: Problema sencillo. Estás educado. NUNCA insultes. Sigue estrictamente la regla de que NO has salido de la tienda.
     - MEDIO: Problema molesto por error de la tienda. Estás frustrado. Si te ofrecen solución justa, ACEPTA. NO alargues la conversación. NUNCA insultes.
     - DIFÍCIL (MANIPULADOR): Eres pasivo-agresivo, manipulador y terco. NO uses insultos directos. Amenazas pasivamente, exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente es firme, te rindes con indignación.
-    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete (escribe FIN DE LA SIMULACIÓN).
+    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
 
-    CÓMO TERMINAR LA SIMULACIÓN:
-    SOLO DEBES escribir la frase "FIN DE LA SIMULACIÓN" en una línea nueva si:
-    1. El gerente ya te dio la solución, tú aceptaste, y AHORA el gerente se está despidiendo (Thank).
-    2. El gerente te pidió explícitamente que te retiraras.
+    CÓMO TERMINAR LA SIMULACIÓN (¡REGLA ESTRICTA DE DESPEDIDA!):
+    NUNCA termines la simulación en el mismo mensaje en el que aceptas la solución del gerente. Debes darle la oportunidad al gerente de hacer el último paso (Agradecer/Despedirse).
+    SOLO escribe "FIN DE LA SIMULACIÓN" en una línea nueva si:
+    1. El gerente ya te dio la solución, tú la aceptaste en un turno anterior, y AHORA el gerente se está despidiendo o finalizando el trato.
+    2. El gerente te pidió explícitamente que te retiraras (Regla Cero).
     3. La conversación ha llegado a 4 o 5 intercambios.
     No des retroalimentación al terminar.
     """
@@ -358,8 +355,12 @@ elif menu_selection == "Simulador HEART":
 
     if "simulador_history" not in st.session_state:
         st.session_state.simulador_history = []
+    if "scenario_concluido" not in st.session_state:
+        st.session_state.scenario_concluido = False
+    if "coach_feedback" not in st.session_state:
+        st.session_state.coach_feedback = ""
 
-    if len(st.session_state.simulador_history) == 0:
+    if len(st.session_state.simulador_history) == 0 and not st.session_state.scenario_concluido:
         st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
         difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
@@ -399,7 +400,7 @@ elif menu_selection == "Simulador HEART":
                 except Exception as e:
                     st.error("⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a presionar el botón.*")
 
-    else:
+    elif not st.session_state.scenario_concluido:
         formatted_history = []
         for msg in st.session_state.simulador_history:
             formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
@@ -438,35 +439,58 @@ elif menu_selection == "Simulador HEART":
                 st.session_state.simulador_history.append({"role": "model", "content": texto_actor, "hidden": False})
             
             if "FIN DE LA SIMULACIÓN" in texto_actor.upper():
-                st.divider()
-                with st.spinner("🧠 El Coach Pro está analizando tu desempeño con gran detalle..."):
-                    transcripcion = ""
-                    for m in st.session_state.simulador_history:
-                        if not m.get("hidden", False):
-                            rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
-                            transcripcion += f"{rol}: {m['content']}\n\n"
-                    
-                    prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
-                    
-                    try:
-                        coach_response = client.models.generate_content(
-                            model="gemini-2.5-pro",
-                            contents=prompt_coach,
-                            config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
-                        )
-                        texto_coach = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
-                    except Exception as e:
-                        texto_coach = "⚠️ *Ups, el servidor del Coach está un poco saturado en este momento. Por favor, haz clic en 'Terminar y Volver al Inicio' y revisa tu interacción manualmente.*"
-                    
-                with st.chat_message("assistant"):
-                    st.markdown(texto_coach)
-                
-                st.session_state.simulador_history.append({"role": "model", "content": texto_coach, "hidden": False})
-                
+                st.session_state.scenario_concluido = True
+                st.rerun()
+
         st.divider()
-        if st.button("Terminar y Volver al Inicio"):
-            st.session_state.simulador_history = []
+        if st.button("Terminar Interacción Manualmente"):
+            st.session_state.scenario_concluido = True
             st.rerun()
+
+    elif st.session_state.scenario_concluido:
+        for message in st.session_state.simulador_history:
+            if not message.get("hidden", False):
+                ui_role = "assistant" if message["role"] == "model" else "user"
+                with st.chat_message(ui_role):
+                    st.markdown(message["content"])
+                    
+        st.divider()
+        st.subheader("🛑 SIMULACIÓN CONCLUIDA.")
+
+        if not st.session_state.coach_feedback:
+            with st.spinner("🧠 El Coach Pro está analizando tu desempeño con gran detalle..."):
+                transcripcion = ""
+                for m in st.session_state.simulador_history:
+                    if not m.get("hidden", False):
+                        rol = "Sistema/Cliente" if m["role"] == "model" else "Gerente"
+                        transcripcion += f"{rol}: {m['content']}\n\n"
+                
+                prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
+                
+                try:
+                    coach_response = client.models.generate_content(
+                        model="gemini-2.5-pro",
+                        contents=prompt_coach,
+                        config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
+                    )
+                    st.session_state.coach_feedback = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
+                except Exception as e:
+                    st.error("⚠️ *Ups, el servidor del Coach está un poco saturado debido a alta demanda. No recargues la página.*")
+        
+        if st.session_state.coach_feedback:
+            with st.chat_message("assistant"):
+                st.markdown(st.session_state.coach_feedback)
+            
+            st.divider()
+            if st.button("Terminar y Volver al Inicio"):
+                st.session_state.simulador_history = []
+                st.session_state.scenario_concluido = False
+                st.session_state.coach_feedback = ""
+                st.rerun()
+        else:
+            if st.button("🔄 Reintentar Evaluación"):
+                st.rerun()
+
 
 # ==========================================
 # MÓDULO 3: PREGUNTAS AL ASESOR
