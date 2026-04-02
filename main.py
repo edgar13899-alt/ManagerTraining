@@ -144,8 +144,11 @@ elif menu_selection == "Aprender HEART":
         
         🧠 **ESTRATEGIA AVANZADA: Empatía Neutral para Salvar el Ego**
         * **Cuándo usarla:** Cuando el **cliente cometió el error** (ej. leyó mal un letrero de oferta, agarró el producto equivocado).
-        * **Cómo funciona:** Si el cliente cometió un error, a menudo se sentirá avergonzado o a la defensiva. En lugar de decirle "Usted se equivocó" (lo cual genera conflicto), "salvas su ego" normalizando el error. 
-        * **Ejemplo:** *"Entiendo perfectamente la confusión, esos empaques son casi idénticos, es un error que a todos nos pasa."* Esto desarma su actitud defensiva y prepara el terreno para usar **Cero Disculpas** en el siguiente paso.
+        * **Cómo funciona:** Si el cliente se equivoca, a menudo se pondrá a la defensiva o sentirá vergüenza. En lugar de decirle "Usted se equivocó", "salvas su ego" normalizando el error para que no se sientan atacados.
+        * **LA TRAMPA DE MERCHANDISING (Lo que NO debes decir):** *"Entiendo la confusión, esos empaques son casi idénticos."* ❌ ¡NUNCA digas esto! Si culpas a los empaques o a los letreros de la tienda para hacer sentir bien al cliente, le estás dando una excusa para exigir un descuento por publicidad engañosa.
+        * **Ejemplos Correctos (100% Neutrales):** * ✅ *"Entiendo perfectamente la confusión, es un detalle muy fácil de pasar por alto al hacer el mandado."*
+            * ✅ *"Comprendo la confusión, de hecho es algo que nos pasa muy seguido aquí en cajas."*
+        * **LÍMITE ESTRICTO DEL TUTOR:** En los entrenamientos paso a paso, termina tu oración ahí. NO ofrezcas la solución (ej. "Déjeme cambiárselo") en esta etapa. Eso pertenece a la etapa Resolve (R).
         """, unsafe_allow_html=True)
 
     with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
@@ -178,7 +181,7 @@ elif menu_selection == "Aprender HEART":
         *Aquí* es donde finalmente haces tus preguntas de investigación ("Para ayudarle a resolver esto, ¿podría prestarme su recibo?", "¿Recuerda exactamente qué le dijo el empleado?"). Al hacer las preguntas aquí, no suenas como un interrogador, sino como un aliado tratando de solucionar el problema.
         
         **Las acciones clave para este paso incluyen:**
-        * **Solucionar el problema:** Resuelve el problema de inmediato si puedes.
+        * **Solucionar el problema:** Resuelve el problema de inmediato si puedes (ej. *"Permítame cambiarle ese producto ahora mismo"*).
         * **Ofrecer opciones:** Dale alternativas al cliente siempre que sea posible. Esto le devuelve la sensación de control.
         * **Personalización silenciosa (Lectura del cliente):** Observa el lenguaje corporal del cliente y adapta tu solución a su situación sin señalar su estrés explícitamente.
         """)
@@ -218,15 +221,15 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
     - Los guiones que sugieras deben ser breves y sonar como una persona real. 
     
     REGLAS ESTRICTAS DE EVALUACIÓN:
-    1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es 100% ESCUCHA SILENCIOSA para TODOS los escenarios. El gerente NO DEBE escribir NADA en esta etapa en el simulador. Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). NUNCA pidas o sugieras frases donde el gerente haga preguntas en la etapa Hear.
-    2. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si el gerente necesita pedir un recibo, buscar en el sistema POS, o preguntar los detalles de qué hizo un empleado, DEBEN hacerlo exclusivamente en la etapa Resolve (R).
-    3. REGLA DEL GAME MASTER: Si el gerente dice que revisará el sistema, infórmale el resultado ANTES de pedirle que siga con (R).
-    4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Cuando evalúes la disculpa del gerente, debes corregirlos o felicitarlos usando EXACTAMENTE esta terminología:
-       - 'Disculpa Operativa': Para errores comprobados de la tienda (comida fría, carne equivocada).
-       - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
-       - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
-       - 'Cero Disculpas': Para errores del cliente (leyó mal letreros). Requiere que usen 'Empatía Neutral para Salvar el Ego' en el paso previo.
-    5. CERO DESCUENTOS POR ERRORES MENORES: Si es un error de mostrador de fácil arreglo (comida fría, carne equivocada), corrige al gerente si ofrece descuentos. La solución es solo cambiar el producto. Los descuentos son SOLO para errores mayores (cobro doble, comida podrida).
+    1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es 100% ESCUCHA SILENCIOSA. Empieza guiando al usuario directamente desde la Empatía (E). 
+    2. LA REGLA DE EMPATÍA (E) VS RESOLUCIÓN (R) - MODO AISLADO: Como este es un tutor PASO A PASO, evalúa ESTRICTAMENTE la separación. Durante la etapa de Empatía (E), el gerente NO DEBE escribir la solución. La solución pertenece EXCLUSIVAMENTE a la etapa Resolve (R).
+    3. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Si el gerente usa la 'Empatía Neutral' para errores del cliente, corrígelo severamente si culpa a la tienda (ej. "los empaques son idénticos" o "los letreros confunden"). Deben usar excusas neutrales.
+    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si el gerente necesita pedir un recibo o buscar en el sistema, DEBEN hacerlo exclusivamente en la etapa Resolve (R).
+    5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'):
+       - 'Disculpa Operativa': Para errores comprobados.
+       - 'Disculpa de Experiencia': Para actitudes de empleados.
+       - 'Disculpa de Cortesía': Para fricciones normales.
+       - 'Cero Disculpas': Para errores del cliente.
     """
 
     if "tutor_history" not in st.session_state:
@@ -358,16 +361,16 @@ elif menu_selection == "Simulador HEART":
     2. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
-    1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Por lo tanto, en este simulador, omite la evaluación de la "H". Empieza a evaluar directamente en "E - Empathize". ESTÁ ESTRICTAMENTE PROHIBIDO penalizar al gerente por no hacer preguntas de investigación en la etapa Hear. 
-    2. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si el gerente hizo preguntas de investigación (pedir recibos, preguntar qué dijo un empleado), verifica que lo haya hecho en la etapa Resolve (R) DESPUÉS de haber empatizado. Si interrogó al cliente al principio de la conversación, penalízalo.
-    3. ORDEN CRONOLÓGICO DE HEART: La Empatía (E) DEBE venir ANTES de la Disculpa (A). 
-    4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Debes evaluar la disculpa del gerente usando EXACTAMENTE esta terminología oficial y corregirlos si usan la equivocada:
-       - 'Disculpa Operativa': Para errores comprobados de la tienda (comida fría, carne equivocada). Aquí SI deben admitir el error.
-       - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
-       - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
-       - 'Cero Disculpas / Empatía Neutral': Para errores del cliente (leyó mal letreros). Requiere el uso de 'Empatía Neutral para Salvar el Ego'.
-    5. CERO DESCUENTOS POR ERRORES MENORES: Si es un error de mostrador de rápido arreglo (comida fría, carne equivocada), la solución es una Disculpa Operativa y cambiar el producto. CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por esto. Los descuentos son SOLO para errores mayores (cobro doble, comida echada a perder).
-    6. CORTESÍAS DE BAJO COSTO: Las cortesías (agua/pan) son EXCLUSIVAS para errores de la tienda o demoras inusuales. ESTÁ ESTRICTAMENTE PROHIBIDO sugerir o aprobar regalar producto por experiencias normales (filas regulares, tienda llena).
+    1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Empieza a evaluar directamente en "E - Empathize". 
+    2. ORDEN CRONOLÓGICO Y FLUIDEZ (LA REGLA DEL PÁRRAFO): En una conversación real, un gerente combinará E, A y R en un solo párrafo. ¡Eso es correcto! No los penalices por incluir la solución en el mismo mensaje. LO QUE DEBES EVALUAR ES EL ORDEN CRONOLÓGICO. La Empatía (E) y la Disculpa (A) deben ir ANTES de la solución (R) dentro de ese mismo mensaje. Si lanzan la solución o la disculpa en su primera oración antes de validar los sentimientos, penalízalos.
+    3. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Si el gerente usa Empatía Neutral para errores del cliente, penalízalos severamente si culpan a la tienda, los empaques o los letreros.
+    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si interrogan al cliente al principio de la conversación, penalízalos.
+    5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial y corrígelos si usan la equivocada:
+       - 'Disculpa Operativa': Errores de la tienda (comida fría).
+       - 'Disculpa de Experiencia': Quejas de actitud (NUNCA admitir culpa del empleado).
+       - 'Disculpa de Cortesía': Fricciones normales (filas largas).
+       - 'Cero Disculpas / Empatía Neutral': Errores del cliente. 
+    6. CERO DESCUENTOS POR ERRORES MENORES: Si es un error de mostrador de rápido arreglo, CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual. 
     7. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
@@ -397,7 +400,7 @@ elif menu_selection == "Simulador HEART":
             elif difficulty == "Medio":
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_medios)
-                descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
+                descripcion_problema = f"El escenario DEBE ocurrir specifically en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
             elif difficulty == "Casos Especiales (Errores del Cliente)":
                 problema_elegido = random.choice(errores_cliente)
                 descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en las Cajas Principales."
@@ -530,18 +533,16 @@ elif menu_selection == "Preguntas al Asesor":
 
     REGLAS DE RESPUESTA (ESTRICTAS):
     1. Cero Respuestas Genéricas: Habla como un mentor astuto y experimentado en el comercio minorista hispano. Usa lenguaje natural y humano en tus guiones.
-    2. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja a los gerentes que la etapa H (Hear) es 100% escucha silenciosa. Todas las preguntas de investigación (recibos, detalles de quejas) DEBEN hacerse en la etapa Resolve (R) DESPUÉS de empatizar. Si un gerente pregunta cómo investigar, diles que lo hagan en Resolve.
-    3. Usa HEART y Psicología: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Siempre explica la PSICOLOGÍA detrás de los guiones que sugieres.
+    2. ORDEN CRONOLÓGICO DE HEART: Aconseja a los gerentes que en una respuesta real a un cliente, la Empatía (E) siempre debe ir ANTES que la Disculpa (A) o la Resolución (R).
+    3. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja a los gerentes que la etapa H (Hear) es 100% escucha silenciosa. Todas las preguntas de investigación DEBEN hacerse en la etapa Resolve (R).
     4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial al aconsejar:
-       - 'Disculpa Operativa': Para errores comprobados de la tienda (comida fría, carne equivocada). Aquí SI deben admitir el error.
+       - 'Disculpa Operativa': Para errores comprobados de la tienda.
        - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
-       - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
-       - 'Cero Disculpas / Empatía Neutral': Para errores del cliente (leyó mal letreros). Requiere el uso previo de 'Empatía Neutral para Salvar el Ego'.
-    5. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador (comida fría, carne equivocada), aconseja estrictamente EN CONTRA. La solución es cambiar el producto. Los descuentos de porcentaje son SOLO para errores mayores.
-    6. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
-    7. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente.
-    8. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). ESTÁ ESTRICTAMENTE PROHIBIDO regalar cortesías (agua/pan) por experiencias normales de compra (filas regulares, tienda llena). Las cortesías son EXCLUSIVAMENTE para errores de la tienda.
-    9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+       - 'Disculpa de Cortesía': Para fricciones normales.
+       - 'Cero Disculpas / Empatía Neutral': Para errores del cliente.
+    5. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Advierte explícitamente a los gerentes que NUNCA culpen a la tienda, los empaques o los letreros cuando intentan salvar el ego del cliente. Deben usar excusas neutrales ("es fácil pasarlo por alto").
+    6. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
+    7. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
 
     if "asesor_history" not in st.session_state:
