@@ -170,36 +170,42 @@ elif menu_selection == "Aprender HEART":
 
     with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
         st.markdown("""
-        Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema utilizando 3 técnicas clave:
+        Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema. No recites guiones como robot; entiende la **psicología** de estas 3 técnicas clave:
         
         **1. El Giro de Investigación (The Investigative Pivot)**
         * **Qué es:** Cómo hacer preguntas de investigación sin sonar como un interrogador.
-        * **Cómo hacerlo:** Usa una frase de alianza. En lugar de decir secamente *"¿Tiene su recibo?"*, di: *"Para poder ayudarle a solucionar esto de inmediato, ¿me permite ver su recibo?"*
+        * **Cómo hacerlo:** Usa una frase de alianza. *"Para poder ayudarle a solucionar esto de inmediato, ¿me permite ver su recibo?"*
+        * **🧠 Por qué funciona:** Evita que el cliente se ponga a la defensiva. Al presentarte como un aliado que necesita una herramienta (el recibo) para poder hacer su trabajo, cambias la dinámica de "policía" a "socio".
         
         **2. La Ilusión de Control (The Illusion of Choice)**
-        * **Qué es:** Darle alternativas al cliente para bajar su nivel de enojo y devolverles el sentido de poder.
-        * **Cómo hacerlo:** En lugar de dictar una solución (*"Le voy a dar otra carne"*), ofréceles opciones: *"¿Prefiere que le cambie el paquete por las fajitas correctas en este momento, o prefiere que le haga el reembolso a su tarjeta?"*
+        * **Qué es:** Darle alternativas al cliente para bajar su nivel de enojo.
+        * **Cómo hacerlo:** *"¿Prefiere que le cambie el paquete por las fajitas correctas en este momento, o prefiere que le haga el reembolso a su tarjeta?"*
+        * **🧠 Por qué funciona:** Cuando una persona está muy enojada, siente que ha perdido el control. Al darle a elegir entre dos opciones que son aceptables para la tienda, obligas a su cerebro a dejar de pelear y empezar a evaluar opciones, devolviéndole el sentido de poder.
         
         **3. El Escudo del Sistema (The System Shield)**
-        * **Qué es:** Cómo negar un reembolso o una petición irracional sin crear un conflicto personal.
-        * **Cómo hacerlo:** Nunca digas *"Yo no le puedo dar el dinero"*. Usa el sistema como la autoridad final: *"Revisé minuciosamente en el sistema, y al no aparecer la transacción, el sistema no me permite autorizar el reembolso en efectivo."*
+        * **Qué es:** Cómo negar un reembolso o petición irracional sin crear conflicto personal.
+        * **Cómo hacerlo:** *"Revisé minuciosamente en el sistema, y al no aparecer la transacción, el sistema no me permite autorizar el reembolso en efectivo."*
+        * **🧠 Por qué funciona:** Despersonaliza el rechazo. En lugar de ser "tú contra el cliente", se convierte en "tú y el cliente contra la computadora". Evita que te vean como el villano.
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
         st.markdown("""
-        La forma en que terminas la interacción determina lo que el cliente recordará. Un simple "gracias" genérico no es suficiente para situaciones difíciles. Domina estas 3 técnicas de cierre:
+        La forma en que terminas la interacción determina lo que el cliente recordará. Un simple "gracias" genérico no es suficiente. Entiende la **psicología** de estas 3 técnicas de cierre:
 
         **1. El Reenfoque de Retroalimentación (The Feedback Frame)**
         * **Cuándo usarlo:** Para quejas sobre errores de la tienda o actitudes de empleados.
-        * **Cómo funciona:** Acaricias su ego convirtiéndolos en un "consultor útil". *"Le agradezco mucho que me haya avisado de esto. Gracias a usted, puedo ir a hablar con la cocina para asegurar que no le pase a nadie más."*
+        * **Cómo hacerlo:** *"Le agradezco mucho que me haya avisado de esto. Gracias a usted, puedo ir a hablar con la cocina para asegurar que no le pase a nadie más."*
+        * **🧠 Por qué funciona:** Acaricia su ego. Transforma al cliente de un "quejumbroso molesto" a un "consultor valioso" que acaba de ayudar a la tienda a mejorar.
 
         **2. El Refuerzo de Paciencia (The Patience Reward)**
-        * **Cuándo usarlo:** Para situaciones que requirieron investigación en el sistema o una espera prolongada (filas).
-        * **Cómo funciona:** Refuerzas el comportamiento que *quieres* ver, incluso si no fueron pacientes. *"Agradezco muchísimo su paciencia y comprensión mientras le resolvíamos este detalle. Que tenga un excelente día."*
+        * **Cuándo usarlo:** Para situaciones que requirieron investigación en el sistema o una espera prolongada.
+        * **Cómo hacerlo:** *"Agradezco muchísimo su paciencia y comprensión mientras le resolvíamos este detalle. Que tenga un excelente día."*
+        * **🧠 Por qué funciona:** Es psicología inversa. Al agradecerles por una virtud (paciencia) que tal vez ni siquiera mostraron, a menudo ajustan inconscientemente su comportamiento para estar a la altura de ese cumplido mientras se van.
 
         **3. La Despedida Firme (Regla Cero / The Boundary Exit)**
         * **Cuándo usarlo:** Cuando un cliente es abusivo o se le pide que abandone la tienda.
-        * **Cómo funciona:** Una despedida estéril y ultra-profesional que no deja espacio para debate y te protege en caso de revisión de cámaras. *"Le agradezco su visita, pero debido a las faltas de respeto, le pido que se retire de la tienda en este momento."*
+        * **Cómo hacerlo:** *"Le agradezco su visita, pero debido a las faltas de respeto, le pido que se retire de la tienda en este momento."*
+        * **🧠 Por qué funciona:** Es profesional, fría e indiscutible. Mantiene a la tienda y al gerente en el terreno moral alto (especialmente en caso de que haya cámaras grabando), cerrando la puerta a cualquier debate adicional.
         """)
 
     st.warning("""💰 **REGLA DE RENTABILIDAD SUPREMA: ¿Cuándo dar producto gratis o descuentos?**
@@ -235,10 +241,10 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
     1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). 
     2. LA REGLA DE EMPATÍA (E) VS RESOLUCIÓN (R) - MODO AISLADO: Como este es un tutor PASO A PASO, evalúa ESTRICTAMENTE la separación. Durante Empatía (E) o Disculpa (A), el gerente NO DEBE escribir la solución. 
     3. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Si el gerente usa la 'Empatía Neutral' para errores del cliente, corrígelo severamente si culpa a la tienda, los empaques o los letreros. Deben usar excusas neutrales ("es fácil pasarlo por alto").
-    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Deben usar un 'Giro de Investigación' (ej. "Para poder ayudarle, ¿me permite su recibo?").
+    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Deben usar un 'Giro de Investigación' (ej. "Para poder ayudarle, ¿me permite su recibo?"). Si preguntan secamente, corrígelos explicando la psicología detrás del giro.
     5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Corrige/felicita usando la terminología oficial: 'Disculpa Operativa', 'Disculpa de Experiencia', 'Disculpa de Cortesía', o 'Cero Disculpas'.
-    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' o 'El Escudo del Sistema' en la retroalimentación.
-    7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Cuando evalúes el paso final (Thank), debes corregirlos o felicitarlos usando EXACTAMENTE esta terminología:
+    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' (dar opciones) o 'El Escudo del Sistema' (culpar al sistema) en la retroalimentación y explica brevemente por qué funcionan psicológicamente.
+    7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Cuando evalúes el paso final (Thank), debes corregirlos o felicitarlos usando EXACTAMENTE esta terminología y recordando la psicología:
        - 'Reenfoque de Retroalimentación': Agradecer por avisar del error.
        - 'Refuerzo de Paciencia': Agradecer el tiempo esperado.
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
@@ -376,11 +382,15 @@ elif menu_selection == "Simulador HEART":
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Por lo tanto, en este simulador, omite la evaluación de la "H". Empieza a evaluar directamente en "E - Empathize". ESTÁ ESTRICTAMENTE PROHIBIDO penalizar al gerente por no hacer preguntas de investigación en la etapa Hear. 
     2. ORDEN CRONOLÓGICO Y FLUIDEZ (LA REGLA DEL PÁRRAFO): En una conversación real, un gerente combinará E, A y R en un solo párrafo. ¡Eso es correcto! LO QUE DEBES EVALUAR ES EL ORDEN CRONOLÓGICO. La Empatía (E) y la Disculpa (A) deben ir ANTES de la solución (R) dentro de ese mismo mensaje. Si lanzan la solución o la disculpa en su primera oración antes de validar los sentimientos, penalízalos.
     3. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Si el gerente usa Empatía Neutral para errores del cliente, penalízalos severamente si culpan a la tienda, los empaques o los letreros.
-    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja usar un 'Giro de Investigación' ("Para ayudarle mejor, ¿me permite ver su recibo?").
-    5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial y corrígelos si usan la equivocada: 'Disculpa Operativa', 'Disculpa de Experiencia', 'Disculpa de Cortesía', o 'Cero Disculpas / Empatía Neutral'.
-    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' o 'El Escudo del Sistema' cuando evalúes sus soluciones.
+    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si interrogan al cliente al principio de la conversación, penalízalos. Aconseja usar un 'Giro de Investigación' ("Para ayudarle mejor, ¿me permite ver su recibo?").
+    5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial y corrígelos si usan la equivocada:
+       - 'Disculpa Operativa': Errores de la tienda (comida fría).
+       - 'Disculpa de Experiencia': Quejas de actitud (NUNCA admitir culpa del empleado).
+       - 'Disculpa de Cortesía': Fricciones normales (filas largas).
+       - 'Cero Disculpas / Empatía Neutral': Errores del cliente. 
+    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' o 'El Escudo del Sistema' cuando evalúes sus soluciones. Explica brevemente la psicología de por qué funcionan.
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Evalúa el cierre usando la terminología oficial: 'Reenfoque de Retroalimentación', 'Refuerzo de Paciencia', o 'Despedida Firme'. Corrígelos si dan un gracias genérico en una situación difícil.
-    8. CERO DESCUENTOS POR ERRORES MENORES: CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por un error de mostrador. 
+    8. CERO DESCUENTOS POR ERRORES MENORES: Si es un error de mostrador de rápido arreglo, CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual. 
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
@@ -410,7 +420,7 @@ elif menu_selection == "Simulador HEART":
             elif difficulty == "Medio":
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_medios)
-                descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
+                descripcion_problema = f"El escenario DEBE ocurrir specifically en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
             elif difficulty == "Casos Especiales (Errores del Cliente)":
                 problema_elegido = random.choice(errores_cliente)
                 descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en las Cajas Principales."
@@ -544,11 +554,11 @@ elif menu_selection == "Preguntas al Asesor":
     REGLAS DE RESPUESTA (ESTRICTAS):
     1. Cero Respuestas Genéricas: Habla como un mentor astuto y experimentado. Usa lenguaje natural y humano en tus guiones.
     2. ORDEN CRONOLÓGICO DE HEART: Aconseja a los gerentes que en una respuesta real, la Empatía (E) siempre debe ir ANTES que la Disculpa (A) o la Resolución (R).
-    3. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja usar un 'Giro de Investigación' (ej. "Para ayudarle mejor, ¿me permite su recibo?").
+    3. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja usar un 'Giro de Investigación' (ej. "Para ayudarle mejor, ¿me permite su recibo?"). Explica brevemente por qué funciona psicológicamente.
     4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial al aconsejar: 'Disculpa Operativa', 'Disculpa de Experiencia', 'Disculpa de Cortesía', o 'Cero Disculpas / Empatía Neutral'.
     5. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Advierte explícitamente a los gerentes que NUNCA culpen a la tienda, los empaques o los letreros cuando intentan salvar el ego del cliente.
-    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Aconseja usar 'La Ilusión de Control' (dar opciones) y 'El Escudo del Sistema' (culpar al sistema) para mantener el control.
-    7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones).
+    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Aconseja usar 'La Ilusión de Control' (dar opciones) y 'El Escudo del Sistema' (culpar al sistema) para mantener el control. Explica la psicología.
+    7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
