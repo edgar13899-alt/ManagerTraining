@@ -511,7 +511,6 @@ elif menu_selection == "Simulador HEART":
             if st.button("🔄 Reintentar Evaluación"):
                 st.rerun()
 
-
 # ==========================================
 # MÓDULO 3: PREGUNTAS AL ASESOR
 # ==========================================
