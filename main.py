@@ -141,6 +141,11 @@ elif menu_selection == "Aprender HEART":
         * **Validar sus emociones:** Usa frases naturales que reconozcan sus sentimientos específicos (por ejemplo: frustración, decepción). Habla como un ser humano real ("Entiendo perfectamente la molestia").
         * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia.
         * <u>**Empatizar no significa estar de acuerdo con ellos.**</u>
+        
+        🧠 **ESTRATEGIA AVANZADA: Empatía Neutral para Salvar el Ego**
+        * **Cuándo usarla:** Cuando el **cliente cometió el error** (ej. leyó mal un letrero de oferta, agarró el producto equivocado).
+        * **Cómo funciona:** Si el cliente cometió un error, a menudo se sentirá avergonzado o a la defensiva. En lugar de decirle "Usted se equivocó" (lo cual genera conflicto), "salvas su ego" normalizando el error. 
+        * **Ejemplo:** *"Entiendo perfectamente la confusión, esos empaques son casi idénticos, es un error que a todos nos pasa."* Esto desarma su actitud defensiva y prepara el terreno para usar **Cero Disculpas** en el siguiente paso.
         """, unsafe_allow_html=True)
 
     with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
@@ -162,7 +167,7 @@ elif menu_selection == "Aprender HEART":
         **4. CERO DISCULPAS (La Trampa de la Disculpa)**
         * **Cuándo usarla:** El cliente causó el problema (ej. leyó mal un letrero de oferta, agarró las papas equivocadas, rompió un frasco).
         * **Por qué:** Si el cliente se equivocó y tú dices "Lo siento", accidentalmente asumes la culpa por su error y pierdes autoridad. 
-        * **Qué hacer en su lugar:** Usa "Empatía Neutral" en el paso anterior. (Ej: *"Entiendo la confusión, es un error común. El precio correcto es..."*).
+        * **Qué hacer en su lugar:** Omite la disculpa por completo. Apóyate únicamente en la "Empatía Neutral para Salvar el Ego" que usaste en el paso anterior y pasa directamente a resolver.
         """)
 
     with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
@@ -215,9 +220,12 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
     1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es 100% ESCUCHA SILENCIOSA para TODOS los escenarios. El gerente NO DEBE escribir NADA en esta etapa en el simulador. Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). NUNCA pidas o sugieras frases donde el gerente haga preguntas en la etapa Hear.
     2. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si el gerente necesita pedir un recibo, buscar en el sistema POS, o preguntar los detalles de qué hizo un empleado, DEBEN hacerlo exclusivamente en la etapa Resolve (R).
     3. REGLA DEL GAME MASTER: Si el gerente dice que revisará el sistema, infórmale el resultado ANTES de pedirle que siga con (R).
-    4. LA TRAMPA DE LA DISCULPA (Error del cliente): Si el cliente causó el problema, SALTARSE la disculpa (A). Su trabajo en Empatía (E) es "Empatía Neutral" ("Entiendo la confusión").
-    5. QUEJAS DE ACTITUD DE EMPLEADOS: En A (Apologize), si se quejan de la *actitud* de un empleado, no admitir culpa del empleado. SIN EMBARGO, si es un ERROR OPERATIVO EVIDENTE (carne equivocada, comida fría), el gerente DEBE asumir responsabilidad y disculparse.
-    6. REGLA DE RENTABILIDAD Y CORTESÍAS: Cortesías SOLO para errores comprobados de la tienda. NUNCA por experiencias normales de compra (filas, etc).
+    4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Cuando evalúes la disculpa del gerente, debes corregirlos o felicitarlos usando EXACTAMENTE esta terminología:
+       - 'Disculpa Operativa': Para errores comprobados de la tienda (comida fría, carne equivocada).
+       - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
+       - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
+       - 'Cero Disculpas': Para errores del cliente (leyó mal letreros). Requiere que usen 'Empatía Neutral para Salvar el Ego' en el paso previo.
+    5. REGLA DE RENTABILIDAD Y CORTESÍAS: Cortesías SOLO para errores comprobados de la tienda. NUNCA por experiencias normales de compra (filas, etc).
     """
 
     if "tutor_history" not in st.session_state:
@@ -320,7 +328,6 @@ elif menu_selection == "Simulador HEART":
 
     REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
     Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. agua fresca o pan), acéptalo y relaja tu actitud inmediatamente.
-    IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse.
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
     - FÁCIL: Problema sencillo. Estás educado. NUNCA insultes. Sigue estrictamente la regla de que NO has salido de la tienda.
@@ -353,12 +360,14 @@ elif menu_selection == "Simulador HEART":
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Por lo tanto, en este simulador, omite la evaluación de la "H". Empieza a evaluar directamente en "E - Empathize". ESTÁ ESTRICTAMENTE PROHIBIDO penalizar al gerente por no hacer preguntas de investigación en la etapa Hear. 
     2. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si el gerente hizo preguntas de investigación (pedir recibos, preguntar qué dijo un empleado), verifica que lo haya hecho en la etapa Resolve (R) DESPUÉS de haber empatizado. Si interrogó al cliente al principio de la conversación, penalízalo.
     3. ORDEN CRONOLÓGICO DE HEART: La Empatía (E) DEBE venir ANTES de la Disculpa (A). 
-    4. EMPATÍA VS ACUERDO: ESTRICTAMENTE PROHIBIDO usar frases como "tiene toda la razón".
-    5. LA TRAMPA DE LA DISCULPA (Error del cliente): Si el cliente causó el problema (ej. leyó mal un letrero, tiró algo), el gerente NO debe disculparse. Exígeles usar "Empatía Neutral".
-    6. QUEJAS DE ACTITUD DE EMPLEADOS: Si la queja es sobre la ACTITUD de un empleado, el gerente NUNCA debe admitir culpa del empleado antes de investigar. SIN EMBARGO, si es un ERROR OPERATIVO EVIDENTE (carne equivocada, comida fría en mostrador), el gerente DEBE asumir la responsabilidad y disculparse. ¡No penalices por disculparse ante errores operativos evidentes!
-    7. REGLA DE NO ACUSAR Y RENTABILIDAD: Si el cliente cometió el error, elogia al gerente si negó devoluciones. NUNCA sugieras acusar al cliente frontalmente. Corrígelo con severidad si el gerente regala dinero de la tienda o sugiere "gift cards". Descuentos de porcentaje SOLO para ERRORES MAYORES.
-    8. CORTESÍAS DE BAJO COSTO: Las cortesías (agua/pan) son EXCLUSIVAS para errores de la tienda. ESTÁ ESTRICTAMENTE PROHIBIDO sugerir o aprobar regalar producto por experiencias normales (filas regulares, tienda llena).
-    9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
+    4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Debes evaluar la disculpa del gerente usando EXACTAMENTE esta terminología oficial y corregirlos si usan la equivocada:
+       - 'Disculpa Operativa': Para errores comprobados de la tienda (comida fría, carne equivocada). Aquí SI deben admitir el error.
+       - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
+       - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
+       - 'Cero Disculpas / Empatía Neutral': Para errores del cliente (leyó mal letreros). Requiere el uso de 'Empatía Neutral para Salvar el Ego'.
+    5. REGLA DE NO ACUSAR Y RENTABILIDAD: Si el cliente cometió el error, elogia al gerente si negó devoluciones. NUNCA sugieras acusar al cliente frontalmente. Corrígelo con severidad si el gerente regala dinero de la tienda o sugiere "gift cards". Descuentos de porcentaje SOLO para ERRORES MAYORES.
+    6. CORTESÍAS DE BAJO COSTO: Las cortesías (agua/pan) son EXCLUSIVAS para errores de la tienda. ESTÁ ESTRICTAMENTE PROHIBIDO sugerir o aprobar regalar producto por experiencias normales (filas regulares, tienda llena).
+    7. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
     SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
@@ -522,12 +531,15 @@ elif menu_selection == "Preguntas al Asesor":
     1. Cero Respuestas Genéricas: Habla como un mentor astuto y experimentado en el comercio minorista hispano. Usa lenguaje natural y humano en tus guiones.
     2. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja a los gerentes que la etapa H (Hear) es 100% escucha silenciosa. Todas las preguntas de investigación (recibos, detalles de quejas) DEBEN hacerse en la etapa Resolve (R) DESPUÉS de empatizar. Si un gerente pregunta cómo investigar, diles que lo hagan en Resolve.
     3. Usa HEART y Psicología: Basa tus estrategias de desescalada en Hear, Empathize, Apologize, Resolve y Thank. Siempre explica la PSICOLOGÍA detrás de los guiones que sugieres.
-    4. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
-    5. LA TRAMPA DE LA DISCULPA (Error del cliente): Aconseja estrictamente a los gerentes que NUNCA se disculpen cuando el cliente causó el problema. Enséñales a usar "Empatía Neutral para salvar el ego".
-    6. QUEJAS DE ACTITUD DE EMPLEADOS: Aconseja al gerente que NUNCA admita la culpa del empleado frente al cliente antes de investigar una queja de mala actitud. SIN EMBARGO, si es un error operativo evidente de la tienda (ej. comida fría, carne equivocada), deben disculparse directamente.
-    7. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente.
-    8. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). ESTÁ ESTRICTAMENTE PROHIBIDO regalar cortesías (agua/pan) por experiencias normales de compra (filas regulares, tienda llena). Las cortesías son EXCLUSIVAMENTE para errores de la tienda.
-    9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial al aconsejar:
+       - 'Disculpa Operativa': Para errores comprobados de la tienda (comida fría, carne equivocada). Aquí SI deben admitir el error.
+       - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
+       - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
+       - 'Cero Disculpas / Empatía Neutral': Para errores del cliente (leyó mal letreros). Requiere el uso previo de 'Empatía Neutral para Salvar el Ego'.
+    5. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
+    6. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente.
+    7. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). ESTÁ ESTRICTAMENTE PROHIBIDO regalar cortesías (agua/pan) por experiencias normales de compra (filas regulares, tienda llena). Las cortesías son EXCLUSIVAMENTE para errores de la tienda.
+    8. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
 
     if "asesor_history" not in st.session_state:
