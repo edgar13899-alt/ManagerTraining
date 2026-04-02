@@ -145,17 +145,24 @@ elif menu_selection == "Aprender HEART":
 
     with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
         st.markdown("""
-        Si el problema es un error comprobado de la tienda (ej. comida en mal estado, cobro doble, sistema caído), asume la responsabilidad en nombre de la empresa con una disculpa clara.
+        Saber **cómo y cuándo** disculparse es la parte más crítica del método HEART. En La Vaquita, usamos 4 tipos diferentes de disculpas dependiendo de quién causó el problema:
+
+        **1. La Disculpa Operativa ("Lamento la equivocación con su pedido")**
+        * **Cuándo usarla:** Hay un error comprobado y evidente de la tienda (ej. comida fría, le dieron bistec en vez de fajita, leche caducada).
+        * **Por qué:** No necesitas investigar lo evidente. Asumir la culpa de inmediato demuestra competencia y construye confianza.
+
+        **2. La Disculpa de Experiencia ("Lamento mucho su mala experiencia hoy")**
+        * **Cuándo usarla:** Quejas sobre la **ACTITUD** de un empleado (ej. "el carnicero me ignoró", "la cajera me hizo mala cara").
+        * **Por qué:** NUNCA debes admitir la culpa del empleado frente al cliente antes de revisar las cámaras. Disculparte por su "mala experiencia" valida los sentimientos del cliente, pero protege profesionalmente a tu equipo hasta que investigues.
+
+        **3. La Disculpa de Cortesía ("Lamento el inconveniente de la espera")**
+        * **Cuándo usarla:** Fricciones normales de una tienda exitosa (ej. fila de 15 minutos, se acabó su pan dulce favorito).
+        * **Por qué:** Vender todo tu producto no es un error, es éxito. Usas esta disculpa como "pegamento social" para mostrar respeto por su tiempo perdido, sin admitir incompetencia.
         
-        🚨 **REGLA PARA QUEJAS DE EMPLEADOS (La Disculpa de Experiencia):**
-        Si el cliente se queja de un empleado, NUNCA admitas la culpa del empleado frente al cliente antes de investigar. En su lugar, discúlpate por la **experiencia**: *"Lamento mucho la frustración que esto le causó hoy."*
-        
-        🚨 **LA TRAMPA DE LA DISCULPA (Errores del Cliente):**
-        Si el problema fue causado por el propio cliente (ej. agarró el producto equivocado, tiró un artículo, leyó mal un letrero), **OMITE ESTE PASO. NO TE DISCULPES.** Disculparte por el error del cliente admite responsabilidad de la tienda y te quita autoridad. Decir "Siento la confusión" es una disculpa disfrazada que también admite culpa. 
-        
-        En su lugar, usa una **"Empatía Neutral para Salvar el Ego"** en el paso anterior. 
-        ❌ *Incorrecto (Culpar a la tienda o asumir):* "Nuestros letreros están muy juntos" o "Seguro venía con prisa".
-        ✅ *Correcto (Neutral):* "Entiendo perfectamente la confusión, es un error muy común que a todos nos pasa. Solo para aclarar, el precio correcto es..." y pasa directamente a Resolver (R).
+        **4. CERO DISCULPAS (La Trampa de la Disculpa)**
+        * **Cuándo usarla:** El cliente causó el problema (ej. leyó mal un letrero de oferta, agarró las papas equivocadas, rompió un frasco).
+        * **Por qué:** Si el cliente se equivocó y tú dices "Lo siento", accidentalmente asumes la culpa por su error y pierdes autoridad. 
+        * **Qué hacer en su lugar:** Usa "Empatía Neutral" en el paso anterior. (Ej: *"Entiendo la confusión, es un error común. El precio correcto es..."*).
         """)
 
     with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
@@ -310,6 +317,10 @@ elif menu_selection == "Simulador HEART":
 
     DETALLES CONTEXTUALES UNIVERSALES: 
     Compórtate como un ser humano real. Usa excusas de la vida real. NUNCA digas literalmente "estoy apurado". 
+
+    REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
+    Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. agua fresca o pan), acéptalo y relaja tu actitud inmediatamente.
+    IMPORTANTE: NO termines la simulación en ese mismo mensaje. Solo acepta la solución y espera a que el gerente responda de nuevo para despedirse.
 
     REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
     - FÁCIL: Problema sencillo. Estás educado. NUNCA insultes. Sigue estrictamente la regla de que NO has salido de la tienda.
