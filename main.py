@@ -192,11 +192,12 @@ elif menu_selection == "Aprender HEART":
 
 En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.
 
-* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Haz preguntas (en la fase Resolve) para acotar la búsqueda en el sistema. **SI LA BÚSQUEDA FALLA:** Usa el sistema como escudo. Di: *'Revisé minuciosamente y al no aparecer la transacción, no me es posible autorizar un reembolso.'* NUNCA entregues efectivo si no hay registro.
+* **Cero Descuentos por Errores Menores:** Si el error es una equivocación operativa que se puede arreglar en un par de minutos en el mostrador (ej. le empaquetaron la carne equivocada, los tacos están fríos, el café está aguado), la solución es una Disculpa Operativa y cambiar el producto de inmediato. **NUNCA** ofrezcas un descuento porcentual a su cuenta por un error menor.
+* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total (ej. 10% de descuento) SOLO están permitidos para Errores Mayores que impactan severamente al cliente (ej. un cobro doble en su tarjeta, vender comida echada a perder, o arruinar un pedido grande de catering).
+* **El Poder de la Cortesía de Bajo Costo:** Las cortesías (agua fresca/pan dulce) son **EXCLUSIVAMENTE** para demoras inusuales causadas por la tienda. ESTÁ PROHIBIDO regalar producto por experiencias normales de compra, incluyendo filas regulares largas o productos agotados. Regalar por el éxito de la tienda destruye ganancias.
+* **Devoluciones Sin Recibo:** ¡No digas 'no' inmediatamente! Haz preguntas para acotar la búsqueda en el sistema. **SI LA BÚSQUEDA FALLA:** Usa el sistema como escudo. Di: *'Revisé minuciosamente y al no aparecer la transacción, no me es posible autorizar un reembolso.'* NUNCA entregues efectivo si no hay registro.
 * **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema. Mantente firme.
-* **El Poder de la Cortesía de Bajo Costo:** Las cortesías (agua fresca/pan dulce) son **EXCLUSIVAMENTE** para errores o demoras causadas por la tienda (ej. se quemó su comida). **ESTÁ PROHIBIDO** regalar producto por experiencias normales de compra, incluyendo filas regulares largas, tienda llena o productos agotados. Regalar por el éxito de la tienda destruye ganancias.
-* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total SOLO están permitidos para Errores Mayores de la Tienda (ej. cobrar doble). NUNCA des un descuento por una simple demora.
-* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'. No somos una mega-cadena corporativa.
+* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
 """)
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y pedirle explícitamente que abandone la tienda.")
@@ -225,7 +226,7 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
        - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
        - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
        - 'Cero Disculpas': Para errores del cliente (leyó mal letreros). Requiere que usen 'Empatía Neutral para Salvar el Ego' en el paso previo.
-    5. REGLA DE RENTABILIDAD Y CORTESÍAS: Cortesías SOLO para errores comprobados de la tienda. NUNCA por experiencias normales de compra (filas, etc).
+    5. CERO DESCUENTOS POR ERRORES MENORES: Si es un error de mostrador de fácil arreglo (comida fría, carne equivocada), corrige al gerente si ofrece descuentos. La solución es solo cambiar el producto. Los descuentos son SOLO para errores mayores (cobro doble, comida podrida).
     """
 
     if "tutor_history" not in st.session_state:
@@ -365,8 +366,8 @@ elif menu_selection == "Simulador HEART":
        - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
        - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
        - 'Cero Disculpas / Empatía Neutral': Para errores del cliente (leyó mal letreros). Requiere el uso de 'Empatía Neutral para Salvar el Ego'.
-    5. REGLA DE NO ACUSAR Y RENTABILIDAD: Si el cliente cometió el error, elogia al gerente si negó devoluciones. NUNCA sugieras acusar al cliente frontalmente. Corrígelo con severidad si el gerente regala dinero de la tienda o sugiere "gift cards". Descuentos de porcentaje SOLO para ERRORES MAYORES.
-    6. CORTESÍAS DE BAJO COSTO: Las cortesías (agua/pan) son EXCLUSIVAS para errores de la tienda. ESTÁ ESTRICTAMENTE PROHIBIDO sugerir o aprobar regalar producto por experiencias normales (filas regulares, tienda llena).
+    5. CERO DESCUENTOS POR ERRORES MENORES: Si es un error de mostrador de rápido arreglo (comida fría, carne equivocada), la solución es una Disculpa Operativa y cambiar el producto. CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por esto. Los descuentos son SOLO para errores mayores (cobro doble, comida echada a perder).
+    6. CORTESÍAS DE BAJO COSTO: Las cortesías (agua/pan) son EXCLUSIVAS para errores de la tienda o demoras inusuales. ESTÁ ESTRICTAMENTE PROHIBIDO sugerir o aprobar regalar producto por experiencias normales (filas regulares, tienda llena).
     7. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
@@ -511,6 +512,7 @@ elif menu_selection == "Simulador HEART":
             if st.button("🔄 Reintentar Evaluación"):
                 st.rerun()
 
+
 # ==========================================
 # MÓDULO 3: PREGUNTAS AL ASESOR
 # ==========================================
@@ -535,10 +537,11 @@ elif menu_selection == "Preguntas al Asesor":
        - 'Disculpa de Experiencia': Para quejas de actitud de empleados. NUNCA admitir culpa del empleado.
        - 'Disculpa de Cortesía': Para fricciones normales (filas largas, agotados).
        - 'Cero Disculpas / Empatía Neutral': Para errores del cliente (leyó mal letreros). Requiere el uso previo de 'Empatía Neutral para Salvar el Ego'.
-    5. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
-    6. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente.
-    7. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). ESTÁ ESTRICTAMENTE PROHIBIDO regalar cortesías (agua/pan) por experiencias normales de compra (filas regulares, tienda llena). Las cortesías son EXCLUSIVAMENTE para errores de la tienda.
-    8. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    5. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador (comida fría, carne equivocada), aconseja estrictamente EN CONTRA. La solución es cambiar el producto. Los descuentos de porcentaje son SOLO para errores mayores.
+    6. EMPATÍA VS ACUERDO: TIENES PROHIBIDO recomendar frases como "tiene toda la razón" o "estoy de acuerdo".
+    7. REGLA DE NO ACUSAR (SIN DEBATE JUDICIAL): Si aconsejas al gerente negar un reembolso, adviértele que NO DEBE usar las pistas de su investigación para debatir o acusar al cliente.
+    8. REGLA CERO TARJETAS DE REGALO Y RENTABILIDAD SUPREMA: TIENES ESTRICTAMENTE PROHIBIDO sugerir regalar tarjetas de regalo (gift cards). ESTÁ ESTRICTAMENTE PROHIBIDO regalar cortesías (agua/pan) por experiencias normales de compra (filas regulares, tienda llena). Las cortesías son EXCLUSIVAMENTE para errores de la tienda.
+    9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     """
 
     if "asesor_history" not in st.session_state:
