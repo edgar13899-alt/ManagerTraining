@@ -149,7 +149,6 @@ elif menu_selection == "Aprender HEART":
         * **El Truco de la 'Humanidad Compartida' y la 'Neutralidad':** La mejor forma de salvar el ego de un cliente es decirle que a ti te pasa lo mismo, o culpar al ajetreo de hacer compras.
         * **Ejemplos Correctos (Humanos y Neutrales):** * ✅ *"Entiendo la confusión, a mí también se me pasa por alto al hacer el mandado."* (Humanidad Compartida)
             * ✅ *"Comprendo perfectamente, con tantas cosas en la cabeza es muy fácil confundir un artículo con otro."* (Shopper Distraído)
-        * **LÍMITE ESTRICTO DEL TUTOR:** En los entrenamientos, termina tu oración ahí. NO ofrezcas la solución (ej. "Déjeme cambiárselo") en esta etapa. Eso pertenece a Resolve (R).
         """, unsafe_allow_html=True)
 
     with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
@@ -382,7 +381,7 @@ elif menu_selection == "Simulador HEART":
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Por lo tanto, en este simulador, omite la evaluación de la "H". Empieza a evaluar directamente en "E - Empathize". ESTÁ ESTRICTAMENTE PROHIBIDO penalizar al gerente por no hacer preguntas de investigación en la etapa Hear. 
     2. ORDEN CRONOLÓGICO Y FLUIDEZ (LA REGLA DEL PÁRRAFO): En una conversación real, un gerente combinará E, A y R en un solo párrafo. ¡Eso es correcto! LO QUE DEBES EVALUAR ES EL ORDEN CRONOLÓGICO. La Empatía (E) y la Disculpa (A) deben ir ANTES de la solución (R) dentro de ese mismo mensaje. Si lanzan la solución o la disculpa en su primera oración antes de validar los sentimientos, penalízalos.
-    3. TRAMPA DE MERCHANDISING Y HUMANIDAD COMPARTIDA EN EL 'EGO SAVE': Si el gerente usa Empatía Neutral para errores del cliente, penalízalos severamente si culpan a la tienda, los empaques o dicen que pasa seguido en la tienda. Sugiéreles usar la técnica de humanidad compartida ("a mí también me pasa al hacer el mandado").
+    3. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Si el gerente usa Empatía Neutral para errores del cliente, penalízalos severamente si culpan a la tienda, los empaques o los letreros. Sugiéreles usar la técnica de humanidad compartida ("a mí también me pasa").
     4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si interrogan al cliente al principio de la conversación, penalízalos. Aconseja usar un 'Giro de Investigación' ("Para ayudarle mejor, ¿me permite ver su recibo?").
     5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial y corrígelos si usan la equivocada:
        - 'Disculpa Operativa': Errores de la tienda (comida fría).
@@ -557,7 +556,7 @@ elif menu_selection == "Preguntas al Asesor":
     2. ORDEN CRONOLÓGICO DE HEART: Aconseja a los gerentes que en una respuesta real, la Empatía (E) siempre debe ir ANTES que la Disculpa (A) o la Resolución (R).
     3. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja usar un 'Giro de Investigación' (ej. "Para ayudarle mejor, ¿me permite su recibo?"). Explica brevemente por qué funciona psicológicamente.
     4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial al aconsejar: 'Disculpa Operativa', 'Disculpa de Experiencia', 'Disculpa de Cortesía', o 'Cero Disculpas / Empatía Neutral'.
-    5. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Advierte explícitamente a los gerentes que NUNCA culpen a la tienda, los empaques o digan que pasa muy seguido. Sugiere usar la humanidad compartida ("a mí también me pasa al hacer el mandado").
+    5. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Advierte explícitamente a los gerentes que NUNCA culpen a la tienda, los empaques o los letreros cuando intentan salvar el ego del cliente. Sugiere usar la humanidad compartida ("a mí también me pasa").
     6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Aconseja usar 'La Ilusión de Control' (dar opciones) y 'El Escudo del Sistema' (culpar al sistema) para mantener el control. Explica la psicología.
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
