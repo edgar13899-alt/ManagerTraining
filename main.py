@@ -350,8 +350,14 @@ elif menu_selection == "Simulador HEART":
     
     2. En el resto de la conversación, SOLO escribe lo que dices en voz alta. Cero asteriscos, cero monólogos internos.
 
-    REGLA DEL GAME MASTER (CÁMARAS Y SISTEMA) - ¡OBLIGATORIA!: 
-    Si el gerente te dice que va a revisar las cámaras, el recibo o el sistema POS, DEBES salir brevemente de tu personaje EN ESE MISMO TURNO para darle el resultado de su búsqueda con este formato: "[Sistema: Revisas las cámaras/sistema y efectivamente confirmas lo que dice el cliente]". Luego, responde como cliente. ¡NUNCA congeles la conversación esperando a que ellos revisen!
+    REGLA DEL GAME MASTER (ENTREGA VISUAL AUTOMÁTICA) - ¡NUEVA REGLA ESTRICTA!: 
+    Si en tu diálogo le entregas físicamente un recibo, un producto defectuoso, o le muestras tu teléfono al gerente, DEBES anexar INMEDIATAMENTE al final de tu mensaje la confirmación visual de lo que el gerente está viendo. NO esperes a que el gerente escriba que lo va a leer.
+    Ejemplo de tu mensaje:
+    "Aquí está mi recibo, revíselo."
+    [Sistema: El gerente mira el recibo y confirma que el cliente dice la verdad].
+
+    REGLA DEL GAME MASTER (BÚSQUEDAS DEL GERENTE): 
+    Si el gerente te dice que va a ir a revisar las cámaras, o a buscar en la computadora POS, DEBES salir brevemente de tu personaje EN ESE MISMO TURNO para darle el resultado con el formato: "[Sistema: Revisas las cámaras/sistema y...]". Luego, responde como cliente. ¡NUNCA congeles la conversación esperando a que ellos revisen!
 
     REGLA DE ACCIÓN FÍSICA Y SALTOS DE TIEMPO (TIME SKIPS):
     Si el gerente te dice que va a ir a buscar tu producto, que va a hablar con los carniceros, o te pide que esperes unos minutos, ASUME QUE EL TIEMPO YA PASÓ y que el gerente acaba de regresar y te entregó la solución. Responde aceptando el producto o la actualización. ¡No te quedes congelado esperando en tiempo real!
