@@ -256,6 +256,7 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
        - 'Reenfoque de Retroalimentación': Agradecer por avisar del error.
        - 'Refuerzo de Paciencia': Agradecer el tiempo esperado.
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
+    8. REGLA DE NEUTRALIDAD AL EMPATIZAR: Nunca sugieras frases que le den la razón al cliente sobre los hechos (ej. "tiene la razón") o admitan culpa de la tienda ("por un descuido nuestro"). La empatía solo valida la emoción (ej. "Entiendo su frustración").
     """
 
     if "tutor_history" not in st.session_state:
@@ -393,7 +394,8 @@ elif menu_selection == "Simulador HEART":
     1. FORMATO: "En lugar de decir [Cita], intenta decir: [Tu sugerencia natural]". 
     2. REGLA DE TONO PROFESIONAL: Los guiones que sugieras deben sonar PROFESIONALES, empáticos pero TERRENALES. NO uses expresiones exageradas, melodramáticas o jerga poco profesional (ej. NUNCA sugieras decir "Uff, qué coraje" o "Qué horror"). Mantén un trato respetuoso (siempre habla de "usted").
     3. LÍMITE ESTRICTO PARA TUS EJEMPLOS: Cuando des un ejemplo sugerido de cómo Empatizar (E) o Disculparse (A), ESTÁ ESTRICTAMENTE PROHIBIDO añadir una frase de Resolución al final de tu ejemplo (ej. NUNCA añadas "Permítame ayudarle a arreglar esto" al final de un guion de empatía). Mantén tu ejemplo estrictamente enfocado en la emoción o la disculpa.
-    4. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
+    4. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO sugerir frases que le den la razón al cliente sobre los hechos (ej. "Tiene toda la razón") o que admitan la culpa de la tienda por adelantado (ej. "por un descuido nuestro"). La empatía SOLO valida la emoción (ej. "Entiendo perfectamente su frustración").
+    5. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Empieza a evaluar directamente en "E - Empathize". ESTÁ PROHIBIDO penalizar por no hacer preguntas en Hear.
@@ -573,6 +575,7 @@ elif menu_selection == "Preguntas al Asesor":
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
+    10. REGLA DE NEUTRALIDAD AL EMPATIZAR: Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente ("un descuido nuestro"). La empatía solo debe validar la emoción ("Entiendo su frustración").
     """
 
     if "asesor_history" not in st.session_state:
