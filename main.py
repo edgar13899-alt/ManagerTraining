@@ -96,8 +96,8 @@ if menu_selection == "Inicio":
     
     st.subheader("Ruta de Entrenamiento:")
     
-    st.info("📖 **Paso 1: Aprender HEART**\n\nEstudia la metodología oficial y completa el tutorial paso a paso guiado por nuestro instructor virtual.")
-    st.warning("🥩 **Paso 2: Simulador HEART**\n\nPon a prueba tus conocimientos en un escenario fluido y realista con clientes difíciles. ¡El simulador evaluará tus respuestas finales!")
+    st.info("📖 **Paso 1: Aprender HEART**\n\nEstudia la metodología oficial y los matices psicológicos de cada paso.")
+    st.warning("🥩 **Paso 2: Simulador HEART**\n\nPon a prueba tus conocimientos en un escenario realista con clientes difíciles. ¡El simulador evaluará tus respuestas finales!")
     st.success("🧠 **Apoyo: Preguntas al Asesor**\n\nUsa esta herramienta en cualquier momento para hacerle preguntas al asesor virtual sobre cómo manejar situaciones reales en tu turno.")
         
     st.divider()
@@ -121,16 +121,24 @@ elif menu_selection == "Aprender HEART":
     """)
     
     st.divider()
-    st.write("### Los 5 Pasos de HEART")
+    st.write("### Los 5 Pasos y sus Matices Psicológicos")
     st.write("Abre y estudia detalladamente cada paso. Luego, baja para completar el Tutorial Guiado.")
     
     with st.expander("👂 H - Hear (Escuchar activamente)", expanded=False):
         st.markdown("""
-        Cuando un cliente molesto se acerca a ti, su necesidad principal es desahogarse.
+        Cuando un cliente molesto se acerca a ti, su necesidad principal es desahogarse. Tu único trabajo es **guardar silencio absoluto**. Deja que el cliente hable sin interrupciones.
         
-        **El Poder del Silencio:** Tu único trabajo en esta etapa es **guardar silencio absoluto**. Deja que el cliente hable sin interrupciones. Usa solo asentimientos verbales y contacto visual. 
+        🚨 **REGLA DE ORO:** NUNCA interrumpas al cliente para hacerle preguntas de investigación (ej. "¿Tiene su recibo?"). Hacer preguntas inmediatas se siente como un interrogatorio y pone al cliente a la defensiva.
         
-        🚨 **REGLA DE ORO:** NUNCA interrumpas al cliente para hacerle preguntas de investigación (ej. "¿Tiene su recibo?", "¿Qué le dijo el empleado?"). Hacer preguntas inmediatas se siente como un interrogatorio y pone al cliente a la defensiva antes de que hayas podido conectar con ellos. Déjalos terminar su historia primero.
+        **1. El Pico de Desahogo (The Venting Peak)**
+        * **Qué es:** El momento físico en que la adrenalina del cliente baja después de explicar su problema. A menudo repetirán su queja varias veces porque su cerebro necesita liberar presión.
+        * **Cómo manejarlo:** No intentes hablar en cuanto tomen aire. Espera a que sus hombros bajen, suelten un suspiro largo o te hagan una pregunta directa (*"¿Qué van a hacer al respecto?"*).
+        * **🧠 Por qué funciona:** Si interrumpes antes del 'pico', el cliente sentirá que no lo escuchaste y volverá a subir su nivel de agresión, reiniciando el ciclo.
+        
+        **2. La Postura de Aliado (The Collaborative Stance)**
+        * **Qué es:** Tu posición física frente al cliente.
+        * **Cómo hacerlo:** Nunca te pares 'pecho a pecho' frente a ellos. Párate en un ángulo de 45 grados (Postura en L), mirando juntos hacia el producto o el recibo.
+        * **🧠 Por qué funciona:** Pararse de frente se lee inconscientemente como 'combate'. Pararse de lado se lee como 'colaboración'. Le dice al cerebro del cliente: *"Estamos juntos mirando el problema,"* en lugar de *"Estamos peleando."*
         """)
 
     with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
@@ -146,7 +154,7 @@ elif menu_selection == "Aprender HEART":
         * **Cuándo usarla:** Cuando el **cliente cometió el error** (ej. leyó mal un letrero, agarró el producto equivocado).
         * **Cómo funciona:** En lugar de decirle "Usted se equivocó", "salvas su ego" normalizando el error para que no se sientan atacados.
         * **LA TRAMPA DE MERCHANDISING (Lo que NO debes decir):** *"Entiendo la confusión, esos empaques son casi idénticos"* o *"es algo que nos pasa muy seguido aquí en cajas"*. ❌ ¡NUNCA digas esto! Si culpas a los empaques de la tienda, le estás dando una excusa para exigir un descuento. Si dices que pasa seguido, admites que la tienda tiene un problema grave.
-        * **El Truco de la 'Humanidad Compartida' y la 'Neutralidad':** La mejor forma de salvar el ego de un cliente es decirle que a ti te pasa lo mismo, o culpar al ajetreo de hacer compras.
+        * **El Truco de la 'Humanidad Compartida':** La mejor forma de salvar el ego de un cliente es decirle que a ti te pasa lo mismo. 
         * **Ejemplos Correctos (Humanos y Neutrales):** * ✅ *"Entiendo la confusión, a mí también se me pasa por alto al hacer el mandado."* (Humanidad Compartida)
             * ✅ *"Comprendo perfectamente, con tantas cosas en la cabeza es muy fácil confundir un artículo con otro."* (Shopper Distraído)
         """, unsafe_allow_html=True)
@@ -238,9 +246,9 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
     - Los guiones que sugieras deben ser breves y sonar como una persona real. 
     
     REGLAS ESTRICTAS DE EVALUACIÓN:
-    1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). 
+    1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). Recuerda al usuario usar la 'Postura de Aliado' y esperar el 'Pico de Desahogo'.
     2. LA REGLA DE EMPATÍA (E) VS RESOLUCIÓN (R) - MODO AISLADO: Como este es un tutor PASO A PASO, evalúa ESTRICTAMENTE la separación. Durante Empatía (E) o Disculpa (A), el gerente NO DEBE escribir la solución. 
-    3. TRAMPA DE MERCHANDISING Y HUMANIDAD COMPARTIDA EN EL 'EGO SAVE': Si el gerente usa la 'Empatía Neutral' para errores del cliente, corrígelo severamente si culpa a la tienda, los empaques o insinúa que pasa muy seguido. Deben usar la técnica de humanidad compartida (ej. "A mí también se me pasa por alto al hacer el mandado").
+    3. TRAMPA DE MERCHANDISING Y HUMANIDAD COMPARTIDA EN EL 'EGO SAVE': Si el gerente usa la 'Empatía Neutral' para errores del cliente, corrígelo severamente si culpa a la tienda o insinúa que pasa muy seguido. Deben usar la técnica de humanidad compartida (ej. "A mí también se me pasa por alto al hacer el mandado").
     4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Deben usar un 'Giro de Investigación' (ej. "Para poder ayudarle, ¿me permite su recibo?"). Si preguntan secamente, corrígelos explicando la psicología detrás del giro.
     5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Corrige/felicita usando la terminología oficial: 'Disculpa Operativa', 'Disculpa de Experiencia', 'Disculpa de Cortesía', o 'Cero Disculpas'.
     6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' (dar opciones) o 'El Escudo del Sistema' (culpar al sistema) en la retroalimentación y explica brevemente por qué funcionan psicológicamente.
@@ -379,7 +387,7 @@ elif menu_selection == "Simulador HEART":
     2. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
-    1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Por lo tanto, en este simulador, omite la evaluación de la "H". Empieza a evaluar directamente en "E - Empathize". ESTÁ ESTRICTAMENTE PROHIBIDO penalizar al gerente por no hacer preguntas de investigación en la etapa Hear. 
+    1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Empieza a evaluar directamente en "E - Empathize". 
     2. ORDEN CRONOLÓGICO Y FLUIDEZ (LA REGLA DEL PÁRRAFO): En una conversación real, un gerente combinará E, A y R en un solo párrafo. ¡Eso es correcto! LO QUE DEBES EVALUAR ES EL ORDEN CRONOLÓGICO. La Empatía (E) y la Disculpa (A) deben ir ANTES de la solución (R) dentro de ese mismo mensaje. Si lanzan la solución o la disculpa en su primera oración antes de validar los sentimientos, penalízalos.
     3. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Si el gerente usa Empatía Neutral para errores del cliente, penalízalos severamente si culpan a la tienda, los empaques o los letreros. Sugiéreles usar la técnica de humanidad compartida ("a mí también me pasa").
     4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Si interrogan al cliente al principio de la conversación, penalízalos. Aconseja usar un 'Giro de Investigación' ("Para ayudarle mejor, ¿me permite ver su recibo?").
@@ -534,7 +542,6 @@ elif menu_selection == "Simulador HEART":
         else:
             if st.button("🔄 Reintentar Evaluación"):
                 st.rerun()
-
 
 # ==========================================
 # MÓDULO 3: PREGUNTAS AL ASESOR
