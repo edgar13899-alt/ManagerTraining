@@ -248,14 +248,12 @@ Aplica un **Micro-Loop (Empatía + Resolución Pivotada):**
 1. **Micro-Empatía:** Valida su nueva restricción de forma neutral y sin absolutos. (ej. *"Entiendo la preocupación de irse sin un pastel a esta hora"*).
 2. **Resolución Pivotada:** Ofrece inmediatamente una *nueva* Ilusión de Control que ataque el nuevo problema. (ej. *"Le doy dos alternativas rápidas: ¿Prefiere que arregle este pastel en 15 minutos, o llevarse uno de la vitrina con descuento?"*).""")
 
-    st.success("""✨ **EL ENFOQUE POSITIVO: Cambiando Estrés por Alivio**
+    st.success("""✨ **EL ENFOQUE POSITIVO: Manejo de Clientes con Prisa**
 
-Si un cliente está estresado, **NUNCA repitas su problema como un espejo** (ej. "sé que lleva prisa", "sé que arruinamos su cena", "sé que es molesto dar doble vuelta"). Eso solo refleja su ansiedad y la empeora.
+Si un cliente expresa que tiene prisa o está estresado por el tiempo, **NUNCA le digas "veo que tiene prisa" o "sé que está apurado".** Eso solo refleja su ansiedad y la empeora.
 
 En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y la *solución*.
-* **Si tiene prisa:** ✅ *"Lo arreglaré de inmediato para que pueda seguir con su día."*
-* **Si dio doble vuelta:** ✅ *"Vamos a resolver esto rápido para que ya pueda irse a descansar a casa."*
-* **Si se arruinó un plan:** ✅ *"Para asegurar que su familia disfrute la cena como esperaban..."*""")
+✅ *Correcto:* "Lo arreglaré de inmediato **para que pueda seguir con su día**" o "**para que llegue a tiempo a su evento**".""")
 
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
@@ -285,7 +283,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
     8. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "tiene razón en que su orden está mal") o admitan culpa prematuramente ("un descuido nuestro"). La empatía solo observa la *experiencia*, el *tiempo perdido* o la *prioridad* (ej. "Entiendo la preocupación de irse sin pastel" o "Comprendo que su prioridad es resolver esto rápido").
     9. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
-    10. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
+    10. EL ENFOQUE POSITIVO: Si el cliente menciona tener prisa o estar estresado por el tiempo, enseña al gerente a NO decir "veo que tiene prisa" (lo cual aumenta la ansiedad). En su lugar, enséñales a usar un enfoque positivo enfocado en el alivio, como "para que pueda seguir con su día" o "para que llegue a tiempo a su evento".
     """
 
     if "tutor_history" not in st.session_state:
@@ -437,7 +435,7 @@ elif menu_selection == "Simulador HEART":
     8. CERO DESCUENTOS POR ERRORES MENORES: CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por un error operativo de mostrador. 
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
     10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
-    11. EL ENFOQUE POSITIVO (ALIVIO VS ESTRÉS): Si el gerente refleja la ansiedad del cliente repitiendo el problema (ej. "veo que tiene prisa", "sé que es molesto dar doble vuelta"), penaliza levemente. Elogia o sugiere el uso del "Enfoque Positivo", que centra la frase en el alivio y la meta del cliente (ej. "para que pueda seguir con su día" o "para que su evento sea un éxito").
+    11. EL ENFOQUE POSITIVO (TIEMPO Y PRISA): Si el cliente expresa prisa o ansiedad por el tiempo, penaliza levemente si el gerente refleja esa ansiedad (ej. "veo que tiene prisa"). Elogia o sugiere encarecidamente el uso del "Enfoque Positivo", que centra la frase en el alivio (ej. "para que pueda seguir con su día" o "para no quitarle más tiempo").
 
     AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
@@ -617,7 +615,7 @@ elif menu_selection == "Preguntas al Asesor":
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     10. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente. La empatía solo debe validar la emoción, el tiempo o la prioridad ("Entiendo la molestia de la vuelta extra").
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción y pivotar hacia NUEVAS opciones de resolución.
-    12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
+    12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo tratar a clientes con prisa, aconséjale que NUNCA diga "veo que tiene prisa" porque aumenta la ansiedad. Sugiérele usar frases enfocadas en el alivio como "para que pueda seguir con su día".
     """
 
     if "asesor_history" not in st.session_state:
