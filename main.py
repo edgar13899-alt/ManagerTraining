@@ -259,7 +259,7 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
     1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). Recuerda al usuario usar la 'Postura de Aliado' y esperar el 'Pico de Desahogo'.
     2. LA REGLA DE EMPATÍA (E) VS RESOLUCIÓN (R) - MODO AISLADO: Como este es un tutor PASO A PASO, evalúa ESTRICTAMENTE la separación. Durante Empatía (E) o Disculpa (A), el gerente NO DEBE escribir la solución. 
     3. TRAMPA DE MERCHANDISING Y HUMANIDAD COMPARTIDA EN EL 'EGO SAVE': Si el gerente usa la 'Empatía Neutral' para errores del cliente, corrígelo severamente si culpa a la tienda o insinúa que pasa muy seguido. Deben usar la técnica de humanidad compartida (ej. "A mí también se me pasa por alto al hacer el mandado").
-    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Deben usar un 'Giro de Investigación' (ej. "Para poder ayudarle, ¿me permite su recibo?"). EXCEPCIÓN LÓGICA: Si el cliente inicia la conversación de forma muy vaga (ej. "Tengo un problema"), el gerente DEBE preguntar qué pasó. ESTÁ PROHIBIDO penalizar por hacer esta pregunta lógica inicial.
+    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Deben usar un 'Giro de Investigación' (ej. "Para poder ayudarle, ¿me permite su recibo?"). EXCEPCIÓN LÓGICA: Si el cliente inicia la conversación de forma muy vaga (ej. "Tengo un problema con mi compra"), el gerente DEBE preguntar qué pasó. ESTÁ PROHIBIDO penalizar por hacer esta pregunta inicial lógica; la investigación detallada solo aplica después de conocer el problema.
     5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Corrige/felicita usando la terminología oficial: 'Disculpa Operativa' (errores de tienda/producto), 'Disculpa de Experiencia' (SOLO para quejas de actitud de empleados), 'Disculpa de Cortesía', o 'Cero Disculpas'. ¡Penaliza si usan "de Experiencia" para un error de producto!
     6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' (dar opciones) o 'El Escudo del Sistema' (culpar al sistema) en la retroalimentación y explica brevemente por qué funcionan psicológicamente.
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Cuando evalúes el paso final (Thank), debes corregirlos o felicitarlos usando EXACTAMENTE esta terminología y recordando la psicología:
@@ -419,7 +419,7 @@ elif menu_selection == "Simulador HEART":
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
 
     AL FINAL DE TU EVALUACIÓN:
-    SIEMPRE pregúntale al usuario exactamente esto: "¿Te gustaría intentar otro escenario o prefieres hacer clic en Terminar y Volver al Inicio?"
+    Muestra los botones de reinicio en pantalla. No hagas preguntas abiertas esperando respuesta escrita del usuario.
     """
 
     if "simulador_history" not in st.session_state:
@@ -547,15 +547,24 @@ elif menu_selection == "Simulador HEART":
                     st.error("⚠️ *Ups, el servidor del Coach está un poco saturado debido a alta demanda. No recargues la página.*")
         
         if st.session_state.coach_feedback:
-            with st.chat_message("assistant"):
+            with st.chat_message("assistant", avatar="🎓"):
                 st.markdown(st.session_state.coach_feedback)
             
             st.divider()
-            if st.button("Terminar y Volver al Inicio"):
-                st.session_state.simulador_history = []
-                st.session_state.scenario_concluido = False
-                st.session_state.coach_feedback = ""
-                st.rerun()
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("🔄 Intentar Otro Escenario"):
+                    st.session_state.simulador_history = []
+                    st.session_state.scenario_concluido = False
+                    st.session_state.coach_feedback = ""
+                    st.rerun()
+            with col2:
+                if st.button("🏠 Limpiar y Terminar"):
+                    st.session_state.simulador_history = []
+                    st.session_state.scenario_concluido = False
+                    st.session_state.coach_feedback = ""
+                    st.rerun()
         else:
             if st.button("🔄 Reintentar Evaluación"):
                 st.rerun()
