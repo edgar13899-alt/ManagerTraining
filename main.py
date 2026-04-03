@@ -155,10 +155,10 @@ elif menu_selection == "Aprender HEART":
         
         🧠 **ESTRATEGIA AVANZADA 1: Validar la Experiencia, NO el Hecho**
         * **El Problema:** Si dices *"Entiendo que su orden está mal"*, estás admitiendo culpa legal/operativa de la tienda *antes* de revisar el recibo.
-        * **La Solución:** Valida la *situación* o el *tiempo perdido*, no el error en sí.
+        * **La Solución:** Valida la *situación* o el *tiempo perdido*, no el error en sí. Está estrictamente prohibido usar términos absolutos como *"definitivamente"* o *"absolutamente"*.
         * **Ejemplos Correctos (Neutrales):**
           * ✅ *"Entiendo perfectamente la molestia de tener que dar una vuelta extra."* (Validas el viaje, que es un hecho innegable).
-          * ✅ *"Comprendo lo frustrante que es llegar a casa y no tener lo que esperaba para la cena."* (Validas su expectativa).
+          * ✅ *"Entiendo la preocupación de irse sin un pastel a esta hora."* (Observación de su estado de ánimo).
           * ✅ *"Lo que me describe suena muy frustrante..."* (Te mantienes como aliado sin convertirte en acusado).
         
         🧠 **ESTRATEGIA AVANZADA 2: Empatía Neutral para Salvar el Ego**
@@ -240,6 +240,14 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
         
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y usar la 'Despedida Firme'.")
 
+    st.info("""🔄 **EL 'MICRO-LOOP': ¿Qué hacer si el cliente rechaza tu solución?**
+
+Si ya ofreciste una solución y el cliente vuelve a expresar frustración o te da una nueva restricción (ej. '¡No tengo tiempo para esperar!'), **NUNCA repitas mecánicamente la misma solución.**
+
+Aplica un **Micro-Loop (Empatía + Resolución Pivotada):**
+1. **Micro-Empatía:** Valida su nueva restricción de forma neutral y sin absolutos. (ej. *"Entiendo la preocupación de irse sin un pastel a esta hora"*).
+2. **Resolución Pivotada:** Ofrece inmediatamente una *nueva* Ilusión de Control que ataque el nuevo problema. (ej. *"Le doy dos alternativas rápidas: ¿Prefiere que arregle este pastel en 15 minutos, o llevarse uno de la vitrina con descuento?"*).""")
+
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
     st.write("Es hora de practicar. El Tutor Virtual te presentará un escenario y te guiará letra por letra. Deberás responder correctamente cada paso antes de avanzar al siguiente.")
@@ -266,7 +274,8 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
        - 'Reenfoque de Retroalimentación': Agradecer por avisar del error.
        - 'Refuerzo de Paciencia': Agradecer el tiempo esperado.
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
-    8. REGLA DE NEUTRALIDAD AL EMPATIZAR: NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "tiene razón en que su orden está mal") o admitan culpa de la tienda prematuramente ("por un descuido nuestro"). La empatía solo valida la *experiencia* o el *tiempo perdido* (ej. "Entiendo perfectamente la molestia de tener que dar una vuelta extra" o "Comprendo que no era lo que esperaba para la cena").
+    8. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "tiene razón en que su orden está mal") o admitan culpa prematuramente ("un descuido nuestro"). La empatía solo observa la *experiencia*, el *tiempo perdido* o la *prioridad* (ej. "Entiendo la preocupación de irse sin pastel" o "Comprendo que su prioridad es resolver esto rápido").
+    9. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
     """
 
     if "tutor_history" not in st.session_state:
@@ -404,7 +413,7 @@ elif menu_selection == "Simulador HEART":
     1. FORMATO: "En lugar de decir [Cita], intenta decir: [Tu sugerencia natural]". 
     2. REGLA DE TONO PROFESIONAL: Los guiones que sugieras deben sonar PROFESIONALES, empáticos pero TERRENALES. NO uses expresiones exageradas, melodramáticas o jerga poco profesional (ej. NUNCA sugieras decir "Uff, qué coraje" o "Qué horror"). Mantén un trato respetuoso (siempre habla de "usted").
     3. LÍMITE ESTRICTO PARA TUS EJEMPLOS: Cuando des un ejemplo sugerido de cómo Empatizar (E) o Disculparse (A), ESTÁ ESTRICTAMENTE PROHIBIDO añadir una frase de Resolución al final de tu ejemplo (ej. NUNCA añadas "Permítame ayudarle a arreglar esto" al final de un guion de empatía). Mantén tu ejemplo estrictamente enfocado en la emoción o la disculpa.
-    4. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO sugerir frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "Tiene razón en que su orden está mal") o que admitan la culpa de la tienda por adelantado (ej. "por un descuido nuestro"). La empatía SOLO valida la *experiencia* o el *tiempo perdido* (ej. "Entiendo perfectamente la molestia de tener que dar una vuelta extra" o "Comprendo lo frustrante que es no tener lo que esperaba").
+    4. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "Tiene razón en que su orden está mal") o que admitan la culpa de la tienda por adelantado. La empatía SOLO valida observaciones como la *experiencia*, el *tiempo perdido* o la *prioridad* (ej. "Entiendo la preocupación de irse sin pastel a esta hora").
     5. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
@@ -417,6 +426,7 @@ elif menu_selection == "Simulador HEART":
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Evalúa el cierre usando: 'Reenfoque de Retroalimentación', 'Refuerzo de Paciencia', o 'Despedida Firme'. Corrígelos explicando la psicología si dan un gracias genérico.
     8. CERO DESCUENTOS POR ERRORES MENORES: CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por un error operativo de mostrador. 
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
+    10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
 
     AL FINAL DE TU EVALUACIÓN:
     Muestra los botones de reinicio en pantalla. No hagas preguntas abiertas esperando respuesta escrita del usuario.
@@ -594,7 +604,8 @@ elif menu_selection == "Preguntas al Asesor":
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
-    10. REGLA DE NEUTRALIDAD AL EMPATIZAR: Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente ("un descuido nuestro"). La empatía solo debe validar la emoción o el tiempo perdido ("Entiendo la molestia de la vuelta extra").
+    10. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente. La empatía solo debe validar la emoción, el tiempo o la prioridad ("Entiendo la molestia de la vuelta extra").
+    11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción y pivotar hacia NUEVAS opciones de resolución.
     """
 
     if "asesor_history" not in st.session_state:
