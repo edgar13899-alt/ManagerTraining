@@ -248,12 +248,14 @@ Aplica un **Micro-Loop (Empatía + Resolución Pivotada):**
 1. **Micro-Empatía:** Valida su nueva restricción de forma neutral y sin absolutos. (ej. *"Entiendo la preocupación de irse sin un pastel a esta hora"*).
 2. **Resolución Pivotada:** Ofrece inmediatamente una *nueva* Ilusión de Control que ataque el nuevo problema. (ej. *"Le doy dos alternativas rápidas: ¿Prefiere que arregle este pastel en 15 minutos, o llevarse uno de la vitrina con descuento?"*).""")
 
-    st.success("""✨ **EL ENFOQUE POSITIVO: Manejo de Clientes con Prisa**
+    st.success("""✨ **EL ENFOQUE POSITIVO: Cambiando Estrés por Alivio**
 
-Si un cliente expresa que tiene prisa o está estresado por el tiempo, **NUNCA le digas "veo que tiene prisa" o "sé que está apurado".** Eso solo refleja su ansiedad y la empeora.
+Si un cliente está estresado, **NUNCA repitas su problema como un espejo** (ej. "sé que lleva prisa", "sé que arruinamos su cena", "sé que es molesto dar doble vuelta"). Eso solo refleja su ansiedad y la empeora.
 
 En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y la *solución*.
-✅ *Correcto:* "Lo arreglaré de inmediato **para que pueda seguir con su día**" o "**para que llegue a tiempo a su evento**".""")
+* **Si tiene prisa:** ✅ *"Lo arreglaré de inmediato para que pueda seguir con su día."*
+* **Si dio doble vuelta:** ✅ *"Vamos a resolver esto rápido para que ya pueda irse a descansar a casa."*
+* **Si se arruinó un plan:** ✅ *"Para asegurar que su familia disfrute la cena como esperaban..."*""")
 
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
