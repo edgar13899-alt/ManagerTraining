@@ -230,127 +230,6 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
 * **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
 """)
         
-    st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema c    st.title("📖 El Método HEART")
-    
-    st.markdown("""
-    ### ¿Qué es el método HEART?
-    HEART es un acrónimo (por sus siglas en inglés) que representa un **método paso a paso probado para manejar quejas y situaciones difíciles** con los clientes. No es solo un guion, es una estrategia psicológica.
-
-    ### ¿Para qué se utiliza?
-    Se utiliza para **desescalar la tensión** cuando un cliente está enojado, frustrado o exigente. Te da una estructura clara para calmar la situación, encontrar una solución lógica y despedir al cliente de manera profesional, todo sin perder el control de la conversación.
-
-    ### ¿Por qué es tan importante en La Vaquita?
-    En un mercado de alto volumen, los problemas van a suceder. El método HEART te protege a ti y a las ganancias de la tienda, dándote las herramientas para mantenerte firme, profesional y en control total.
-    """)
-    
-    st.divider()
-    st.write("### Los 5 Pasos y sus Matices Psicológicos")
-    st.write("Abre y estudia detalladamente cada paso. Luego, baja para completar el Tutorial Guiado.")
-    
-    with st.expander("👂 H - Hear (Escuchar activamente)", expanded=False):
-        st.markdown("""
-        Cuando un cliente molesto se acerca a ti, su necesidad principal es desahogarse. Tu único trabajo es **guardar silencio absoluto**. Deja que el cliente hable sin interrupciones.
-        
-        🚨 **REGLA DE ORO:** NUNCA interrumpas al cliente para hacerle preguntas de investigación (ej. "¿Tiene su recibo?"). Hacer preguntas inmediatas se siente como un interrogatorio y pone al cliente a la defensiva.
-        
-        **1. El Pico de Desahogo (The Venting Peak)**
-        * **Qué es:** El momento físico en que la adrenalina del cliente baja después de explicar su problema. A menudo repetirán su queja varias veces porque su cerebro necesita liberar presión.
-        * **Cómo manejarlo:** No intentes hablar en cuanto tomen aire. Espera a que sus hombros bajen, suelten un suspiro largo o te hagan una pregunta directa (*"¿Qué van a hacer al respecto?"*).
-        * **🧠 Por qué funciona:** Si interrumpes antes del 'pico', el cliente sentirá que no lo escuchaste y volverá a subir su nivel de agresión, reiniciando el ciclo.
-        
-        **2. La Postura de Aliado (The Collaborative Stance)**
-        * **Qué es:** Tu posición física frente al cliente.
-        * **Cómo hacerlo:** Nunca te pares 'pecho a pecho' frente a ellos. Párate en un ángulo de 45 grados (Postura en L), mirando juntos hacia el producto o el recibo.
-        * **🧠 Por qué funciona:** Pararse de frente se lee inconscientemente como 'combate'. Pararse de lado se lee como 'colaboración'. Le dice al cerebro del cliente: *"Estamos juntos mirando el problema,"* en lugar de *"Estamos peleando."*
-        """)
-
-    with st.expander("🤝 E - Empathize (Empatizar)", expanded=False):
-        st.markdown("""
-        Una vez que el cliente ha contado su historia, la empatía construye un puente. Le demuestra al cliente que comprendes sus sentimientos y validas su frustración.
-        
-        **Las acciones clave para este paso incluyen:**
-        * **Validar sus emociones:** Usa frases naturales que reconozcan sus sentimientos específicos. Habla como un ser humano real ("Entiendo perfectamente la molestia").
-        * **Evitar ponerse a la defensiva:** Mantente alejado de citar políticas de la empresa o poner excusas, lo cual invalida de inmediato su experiencia.
-        * <u>**Empatizar no significa estar de acuerdo con ellos.**</u>
-        
-        🧠 **ESTRATEGIA AVANZADA: Empatía Neutral para Salvar el Ego**
-        * **Cuándo usarla:** Cuando el **cliente cometió el error** (ej. leyó mal un letrero, agarró el producto equivocado).
-        * **Cómo funciona:** En lugar de decirle "Usted se equivocó", "salvas su ego" normalizando el error para que no se sientan atacados.
-        * **LA TRAMPA DE MERCHANDISING (Lo que NO debes decir):** *"Entiendo la confusión, esos empaques son casi idénticos"* o *"es algo que nos pasa muy seguido aquí en cajas"*. ❌ ¡NUNCA digas esto! Si culpas a los empaques de la tienda, le estás dando una excusa para exigir un descuento. Si dices que pasa seguido, admites que la tienda tiene un problema grave.
-        * **El Truco de la 'Humanidad Compartida':** La mejor forma de salvar el ego de un cliente es decirle que a ti te pasa lo mismo. 
-        * **Ejemplos Correctos (Humanos y Neutrales):** * ✅ *"Entiendo la confusión, a mí también se me pasa por alto al hacer el mandado."* (Humanidad Compartida)
-            * ✅ *"Comprendo perfectamente, con tantas cosas en la cabeza es muy fácil confundir un artículo con otro."* (Shopper Distraído)
-        """, unsafe_allow_html=True)
-
-    with st.expander("🙏 A - Apologize (Ofrecer disculpas)", expanded=False):
-        st.markdown("""
-        Saber **cómo y cuándo** disculparse es la parte más crítica del método HEART. En La Vaquita, usamos 4 tipos diferentes de disculpas dependiendo de quién causó el problema:
-
-        **1. La Disculpa Operativa ("Lamento la equivocación con su pedido")**
-        * **Cuándo usarla:** Hay un error comprobado y evidente de la tienda (ej. comida fría, carne equivocada). Asume la culpa de inmediato, demuestra competencia y construye confianza.
-
-        **2. La Disculpa de Experiencia ("Lamento mucho su mala experiencia hoy")**
-        * **Cuándo usarla:** Quejas sobre la **ACTITUD** de un empleado. NUNCA debes admitir la culpa del empleado frente al cliente antes de revisar las cámaras. Disculparte por su "mala experiencia" valida los sentimientos del cliente, pero protege a tu equipo.
-
-        **3. La Disculpa de Cortesía ("Lamento el inconveniente de la espera")**
-        * **Cuándo usarla:** Fricciones normales de una tienda exitosa (ej. fila larga, agotados). Vender producto no es un error, es éxito. Muestra respeto por su tiempo perdido, sin admitir incompetencia.
-        
-        **4. CERO DISCULPAS (La Trampa de la Disculpa)**
-        * **Cuándo usarla:** El cliente causó el problema (ej. leyó mal un letrero). Si dices "Lo siento", accidentalmente asumes la culpa por su error y pierdes autoridad. Apóyate únicamente en la "Empatía Neutral para Salvar el Ego" del paso anterior.
-        """)
-
-    with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
-        st.markdown("""
-        Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema. No recites guiones como robot; entiende la **psicología** de estas 3 técnicas clave:
-        
-        **1. El Giro de Investigación (The Investigative Pivot)**
-        * **Qué es:** Cómo hacer preguntas de investigación sin sonar como un interrogador.
-        * **Cómo hacerlo:** Usa una frase de alianza. *"Para poder ayudarle a solucionar esto de inmediato, ¿me permite ver su recibo?"*
-        * **🧠 Por qué funciona:** Evita que el cliente se ponga a la defensiva. Al presentarte como un aliado que necesita una herramienta (el recibo) para poder hacer su trabajo, cambias la dinámica de "policía" a "socio".
-        
-        **2. La Ilusión de Control (The Illusion of Choice)**
-        * **Qué es:** Darle alternativas al cliente para bajar su nivel de enojo.
-        * **Cómo hacerlo:** *"¿Prefiere que le cambie el paquete por las fajitas correctas en este momento, o prefiere que a completemos la diferencia en la caja?"*
-        * **🧠 Por qué funciona:** Cuando una persona está muy enojada, siente que ha perdido el control. Al darle a elegir entre dos opciones que son aceptables para la tienda, obligas a su cerebro a dejar de pelear y empezar a evaluar opciones, devolviéndole el sentido de poder.
-        
-        **3. El Escudo del Sistema (The System Shield)**
-        * **Qué es:** Cómo negar un reembolso o petición irracional sin crear conflicto personal.
-        * **Cómo hacerlo:** *"Revisé minuciosamente en el sistema, y al no aparecer la transacción, el sistema no me permite autorizar el reembolso en efectivo."*
-        * **🧠 Por qué funciona:** Despersonaliza el rechazo. En lugar de ser "tú contra el cliente", se convierte en "tú y el cliente contra la computadora". Evita que te vean como el villano.
-        """)
-
-    with st.expander("💖 T - Thank (Agradecer)", expanded=False):
-        st.markdown("""
-        La forma en que terminas la interacción determina lo que el cliente recordará. Un simple "gracias" genérico no es suficiente. Entiende la **psicología** de estas 3 técnicas de cierre:
-
-        **1. El Reenfoque de Retroalimentación (The Feedback Frame)**
-        * **Cuándo usarlo:** Para quejas sobre errores de la tienda o actitudes de empleados.
-        * **Cómo hacerlo:** *"Le agradezco mucho que me haya avisado de esto. Gracias a usted, puedo ir a hablar con la cocina para asegurar que no le pase a nadie más."*
-        * **🧠 Por qué funciona:** Acaricia su ego. Transforma al cliente de un "quejumbroso molesto" a un "consultor valioso" que acaba de ayudar a la tienda a mejorar.
-
-        **2. El Refuerzo de Paciencia (The Patience Reward)**
-        * **Cuándo usarlo:** Para situaciones que requirieron investigación en el sistema o una espera prolongada.
-        * **Cómo hacerlo:** *"Agradezco muchísimo su paciencia y comprensión mientras le resolvíamos este detalle. Que tenga un excelente día."*
-        * **🧠 Por qué funciona:** Es psicología inversa. Al agradecerles por una virtud (paciencia) que tal vez ni siquiera mostraron, a menudo ajustan inconscientemente su comportamiento para estar a la altura de ese cumplido mientras se van.
-
-        **3. La Despedida Firme (Regla Cero / The Boundary Exit)**
-        * **Cuándo usarlo:** Cuando un cliente es abusivo o se le pide que abandone la tienda.
-        * **Cómo hacerlo:** *"Le agradezco su visita, pero debido a las faltas de respeto, le pido que se retire de la tienda en este momento."*
-        * **🧠 Por qué funciona:** Es profesional, fría e indiscutible. Mantiene a la tienda y al gerente en el terreno moral alto (especialmente en caso de que haya cámaras grabando), cerrando la puerta a cualquier debate adicional.
-        """)
-
-    st.warning("""💰 **REGLA DE RENTABILIDAD SUPREMA: ¿Cuándo dar producto gratis o descuentos?**
-
-En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.
-
-* **Cero Descuentos por Errores Menores:** Si el error es una equivocación operativa que se puede arreglar en un par de minutos en el mostrador (ej. le empaquetaron la carne equivocada, los tacos están fríos, el café está aguado), la solución es una Disculpa Operativa y cambiar el producto de inmediato. **NUNCA** ofrezcas un descuento porcentual a su cuenta por un error menor.
-* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total (ej. 10% de descuento) SOLO están permitidos para Errores Mayores que impactan severamente al cliente (ej. un cobro doble en su tarjeta, vender comida echada a perder, o arruinar un pedido grande de catering).
-* **El Poder de la Cortesía de Bajo Costo:** Las cortesías (agua fresca/pan dulce) son **EXCLUSIVAMENTE** para demoras inusuales causadas por la tienda. ESTÁ PROHIBIDO regalar producto por experiencias normales de compra, incluyendo filas regulares largas o productos agotados. Regalar por el éxito de la tienda destruye ganancias.
-* **Devoluciones Sin Recibo:** Usa el 'Escudo del Sistema'.
-* **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema. Mantente firme.
-* **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
-""")
-        
     st.error("🛑 **REGLA CERO: ESTABLECER LÍMITES**\n\nEl cliente es importante, pero **el respeto hacia ti y tu equipo es innegociable.** Si un cliente usa insultos, lenguaje vulgar o denigra a un empleado, DEBES establecer un límite profesional de inmediato. No toleres el abuso verbal solo por cerrar una venta.\n\n✅ *Correcto:* 'Señor, quiero ayudarle a resolver su problema con su pedido, pero le pido que nos comuniquemos con respeto o no podré seguir asistiéndole.'\n\n🚨 **Si el cliente continúa siendo abusivo después de establecer el límite:** Debes dar por terminada la interacción y usar la 'Despedida Firme'.")
 
     st.divider()
@@ -379,7 +258,7 @@ En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganan
        - 'Reenfoque de Retroalimentación': Agradecer por avisar del error.
        - 'Refuerzo de Paciencia': Agradecer el tiempo esperado.
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
-    8. REGLA DE NEUTRALIDAD AL EMPATIZAR: Nunca sugieras frases que le den la razón al cliente sobre los hechos (ej. "tiene la razón") o admitan culpa de la tienda ("por un descuido nuestro"). La empatía solo valida la emoción (ej. "Entiendo su frustración").
+    8. REGLA DE NEUTRALIDAD AL EMPATIZAR: NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "tiene razón en que su orden está mal") o admitan culpa de la tienda prematuramente ("por un descuido nuestro"). La empatía solo valida la *experiencia* o el *tiempo perdido* (ej. "Entiendo perfectamente la molestia de tener que dar una vuelta extra" o "Comprendo que no era lo que esperaba para la cena").
     """
 
     if "tutor_history" not in st.session_state:
@@ -517,7 +396,7 @@ elif menu_selection == "Simulador HEART":
     1. FORMATO: "En lugar de decir [Cita], intenta decir: [Tu sugerencia natural]". 
     2. REGLA DE TONO PROFESIONAL: Los guiones que sugieras deben sonar PROFESIONALES, empáticos pero TERRENALES. NO uses expresiones exageradas, melodramáticas o jerga poco profesional (ej. NUNCA sugieras decir "Uff, qué coraje" o "Qué horror"). Mantén un trato respetuoso (siempre habla de "usted").
     3. LÍMITE ESTRICTO PARA TUS EJEMPLOS: Cuando des un ejemplo sugerido de cómo Empatizar (E) o Disculparse (A), ESTÁ ESTRICTAMENTE PROHIBIDO añadir una frase de Resolución al final de tu ejemplo (ej. NUNCA añadas "Permítame ayudarle a arreglar esto" al final de un guion de empatía). Mantén tu ejemplo estrictamente enfocado en la emoción o la disculpa.
-    4. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO sugerir frases que le den la razón al cliente sobre los hechos (ej. "Tiene toda la razón") o que admitan la culpa de la tienda por adelantado (ej. "por un descuido nuestro"). La empatía SOLO valida la emoción (ej. "Entiendo perfectamente su frustración").
+    4. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO sugerir frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "Tiene razón en que su orden está mal") o que admitan la culpa de la tienda por adelantado (ej. "por un descuido nuestro"). La empatía SOLO valida la *experiencia* o el *tiempo perdido* (ej. "Entiendo perfectamente la molestia de tener que dar una vuelta extra" o "Comprendo lo frustrante que es no tener lo que esperaba").
     5. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
@@ -698,7 +577,7 @@ elif menu_selection == "Preguntas al Asesor":
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
-    10. REGLA DE NEUTRALIDAD AL EMPATIZAR: Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente ("un descuido nuestro"). La empatía solo debe validar la emoción ("Entiendo su frustración").
+    10. REGLA DE NEUTRALIDAD AL EMPATIZAR: Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente ("un descuido nuestro"). La empatía solo debe validar la emoción o el tiempo perdido ("Entiendo la molestia de la vuelta extra").
     """
 
     if "asesor_history" not in st.session_state:
