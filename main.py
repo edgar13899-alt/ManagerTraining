@@ -50,7 +50,15 @@ problemas_medios = [
     "un cliente frustrado que intenta devolver un producto básico (como pan o fruta) argumentando que salió de mala calidad o echado a perder",
     "un empleado que supuestamente le dio un mal trato, lo ignoró o le habló con mala actitud al cliente",
     "un cliente que quiere cambiar un producto básico y cerrado (como unas papas o refresco) pero no tiene el recibo de compra",
-    "un cliente que YA PAGÓ y llegó a su casa, pero tuvo que regresar muy molesto porque descubrió que le dieron el producto equivocado o le falta un artículo en sus bolsas"
+    "un cliente que YA PAGÓ y llegó a su casa, pero tuvo que regresar muy molesto porque descubrió que le dieron el producto equivocado o le falta un artículo en sus bolsas",
+    "un cliente que se queja de que el precio que le cobraron en la caja por un artículo de abarrotes no coincide con la etiqueta de oferta que vio en el pasillo",
+    "un cliente en la taquería que se queja de que en su platillo combinado le pusieron arroz en lugar de frijoles como había pedido, y ya está sentado en la mesa a punto de comer",
+    "un cliente molesto porque compró carne marinada, la cocinó en casa y afirma que estaba demasiado salada, exigiendo un cambio aunque ya consumió la mitad",
+    "un cliente frustrado porque solo lleva 3 artículos pero todas las cajas rápidas están cerradas y tiene que hacer la fila normal",
+    "un cliente que compró un galón de leche, se dio cuenta en el estacionamiento de que caduca mañana, y quiere cambiarlo rápido pero dejó su recibo con la cajera",
+    "un cliente que apartó un pastel en la panadería y está molesto porque los colores del decorado no son exactamente del tono que imaginaba, aunque el sabor y el nombre están correctos",
+    "un cliente que intenta usar un cupón o descuento digital de la tienda que expiró ayer, y se frustra porque el sistema en caja no se lo acepta",
+    "un cliente que se queja de que no hay carritos de mandado disponibles en la entrada y tuvo que cargar una sandía pesada por toda la tienda"
 ]
 
 # CASOS ESPECIALES: Trampa de la Disculpa
@@ -573,7 +581,7 @@ elif menu_selection == "Preguntas al Asesor":
     3. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Aconseja usar un 'Giro de Investigación' (ej. "Para ayudarle mejor, ¿me permite su recibo?"). Explica brevemente por qué funciona psicológicamente.
     4. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial al aconsejar: 'Disculpa Operativa', 'Disculpa de Experiencia', 'Disculpa de Cortesía', o 'Cero Disculpas / Empatía Neutral'.
     5. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Advierte explícitamente a los gerentes que NUNCA culpen a la tienda, los empaques o los letreros cuando intentan salvar el ego del cliente. Sugiere usar la humanidad compartida ("a mí también me pasa").
-    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Aconseja usar 'La Ilusión de Control' (dar opciones) y 'El Escudo del Sistema' (culpar al sistema) para mantener el control. Explica la psicología.
+    6. TÉCNICAS DE RESOLRESOLUTION (ETAPA 'R'): Aconseja usar 'La Ilusión de Control' (dar opciones) y 'El Escudo del Sistema' (culpar al sistema) para mantener el control. Explica la psicología.
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
