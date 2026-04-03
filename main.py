@@ -248,6 +248,13 @@ Aplica un **Micro-Loop (Empatía + Resolución Pivotada):**
 1. **Micro-Empatía:** Valida su nueva restricción de forma neutral y sin absolutos. (ej. *"Entiendo la preocupación de irse sin un pastel a esta hora"*).
 2. **Resolución Pivotada:** Ofrece inmediatamente una *nueva* Ilusión de Control que ataque el nuevo problema. (ej. *"Le doy dos alternativas rápidas: ¿Prefiere que arregle este pastel en 15 minutos, o llevarse uno de la vitrina con descuento?"*).""")
 
+    st.success("""✨ **EL ENFOQUE POSITIVO: Manejo de Clientes con Prisa**
+
+Si un cliente expresa que tiene prisa o está estresado por el tiempo, **NUNCA le digas "veo que tiene prisa" o "sé que está apurado".** Eso solo refleja su ansiedad y la empeora.
+
+En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y la *solución*.
+✅ *Correcto:* "Lo arreglaré de inmediato **para que pueda seguir con su día**" o "**para que llegue a tiempo a su evento**".""")
+
     st.divider()
     st.subheader("🎓 Tutor Paso a Paso")
     st.write("Es hora de practicar. El Tutor Virtual te presentará un escenario y te guiará letra por letra. Deberás responder correctamente cada paso antes de avanzar al siguiente.")
@@ -276,6 +283,7 @@ Aplica un **Micro-Loop (Empatía + Resolución Pivotada):**
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
     8. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "tiene razón en que su orden está mal") o admitan culpa prematuramente ("un descuido nuestro"). La empatía solo observa la *experiencia*, el *tiempo perdido* o la *prioridad* (ej. "Entiendo la preocupación de irse sin pastel" o "Comprendo que su prioridad es resolver esto rápido").
     9. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
+    10. EL ENFOQUE POSITIVO: Si el cliente menciona tener prisa o estar estresado por el tiempo, enseña al gerente a NO decir "veo que tiene prisa" (lo cual aumenta la ansiedad). En su lugar, enséñales a usar un enfoque positivo enfocado en el alivio, como "para que pueda seguir con su día" o "para que llegue a tiempo a su evento".
     """
 
     if "tutor_history" not in st.session_state:
@@ -395,9 +403,9 @@ elif menu_selection == "Simulador HEART":
     - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
 
     CÓMO TERMINAR LA SIMULACIÓN (¡REGLA ESTRICTA DE DESPEDIDA!):
-    NUNCA cortes la simulación de forma abrupta. 
-    Si el gerente ya resolvió el problema y se está despidiendo (o si te corren de la tienda), DEBES decir tu frase final de cierre como cliente (ej. "Muchas gracias, hasta luego", o "Me voy, pésimo servicio"). 
-    LUEGO de decir tu frase, da un salto de línea y escribe "FIN DE LA SIMULACIÓN".
+    ¡NUNCA termines la simulación prematuramente! 
+    Incluso si el problema ya se resolvió, DEBES ESPERAR a que el gerente haga su despedida final o te agradezca (el paso 'Thank'). 
+    SOLO DESPUÉS de que el gerente te haya dado las gracias o se haya despedido, responderás con tu última frase como cliente y, en ese mismo mensaje, agregarás un salto de línea y escribirás "FIN DE LA SIMULACIÓN".
     No des retroalimentación al terminar.
     """
 
@@ -427,8 +435,9 @@ elif menu_selection == "Simulador HEART":
     8. CERO DESCUENTOS POR ERRORES MENORES: CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por un error operativo de mostrador. 
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
     10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
+    11. EL ENFOQUE POSITIVO (TIEMPO Y PRISA): Si el cliente expresa prisa o ansiedad por el tiempo, penaliza levemente si el gerente refleja esa ansiedad (ej. "veo que tiene prisa"). Elogia o sugiere encarecidamente el uso del "Enfoque Positivo", que centra la frase en el alivio (ej. "para que pueda seguir con su día" o "para no quitarle más tiempo").
 
-   AL FINAL DE TU EVALUACIÓN:
+    AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
     """
 
@@ -606,6 +615,7 @@ elif menu_selection == "Preguntas al Asesor":
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
     10. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente. La empatía solo debe validar la emoción, el tiempo o la prioridad ("Entiendo la molestia de la vuelta extra").
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción y pivotar hacia NUEVAS opciones de resolución.
+    12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo tratar a clientes con prisa, aconséjale que NUNCA diga "veo que tiene prisa" porque aumenta la ansiedad. Sugiérele usar frases enfocadas en el alivio como "para que pueda seguir con su día".
     """
 
     if "asesor_history" not in st.session_state:
