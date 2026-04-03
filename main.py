@@ -428,8 +428,8 @@ elif menu_selection == "Simulador HEART":
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
     10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
 
-    AL FINAL DE TU EVALUACIÓN:
-    Muestra los botones de reinicio en pantalla. No hagas preguntas abiertas esperando respuesta escrita del usuario.
+   AL FINAL DE TU EVALUACIÓN:
+    Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
     """
 
     if "simulador_history" not in st.session_state:
