@@ -34,7 +34,7 @@ seguridad_baja = [
     types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
 ]
 
-# --- BÓVEDA DE ESCENARIOS SEPARADA POR DIFICULTAD (SINCRONIZADA CON EXAMEN) ---
+# --- BÓVEDA DE ESCENARIOS SEPARADA POR DIFICULTAD ---
 
 # FÁCIL: Errores indiscutibles de la tienda EN EL MOSTRADOR.
 problemas_faciles = [
@@ -197,7 +197,7 @@ elif menu_selection == "Aprender HEART":
         
         **2. La Ilusión de Control (The Illusion of Choice)**
         * **Qué es:** Darle alternativas al cliente para bajar su nivel de enojo.
-        * **Cómo hacerlo:** *"¿Prefiere que le cambie el paquete por las fajitas correctas en este momento, o prefiere que a completemos la diferencia en la caja?"*
+        * **Cómo hacerlo:** *"¿Prefiere que le cambie el paquete por las fajitas correctas en este momento, o prefiere que completemos la diferencia en la caja?"*
         * **🧠 Por qué funciona:** Cuando una persona está muy enojada, siente que ha perdido el control. Al darle a elegir entre dos opciones que son aceptables para la tienda, obligas a su cerebro a dejar de pelear y empezar a evaluar opciones, devolviéndole el sentido de poder.
         
         **3. El Escudo del Sistema (The System Shield)**
@@ -230,10 +230,9 @@ elif menu_selection == "Aprender HEART":
 
 En La Vaquita operamos con márgenes estrechos. Tu trabajo es proteger las ganancias, pero también salvar la relación con el cliente.
 
-* **Cero Descuentos por Errores Menores:** Si el error es una equivocación operativa que se puede arreglar en un par de minutos en el mostrador (ej. le empaquetaron la carne equivocada, los tacos están fríos, el café está aguado), la solución es una Disculpa Operativa y cambiar el producto de inmediato. **NUNCA** ofrezcas un descuento porcentual a su cuenta por un error menor.
-* **Descuentos (Solo Errores Mayores):** Los descuentos a la cuenta total (ej. 10% de descuento) SOLO están permitidos para Errores Mayores que impactan severamente al cliente (ej. un cobro doble en su tarjeta, vender comida echada a perder, o arruinar un pedido grande de catering).
-* **El Poder de la Cortesía de Bajo Costo:** Las cortesías (agua fresca/pan dulce) son **EXCLUSIVAMENTE** para demoras inusuales causadas por la tienda. ESTÁ PROHIBIDO regalar producto por experiencias normales de compra, incluyendo filas regulares largas o productos agotados. Regalar por el éxito de la tienda destruye ganancias.
-* **Devoluciones Sin Recibo:** Usa el 'Escudo del Sistema'.
+* **Error en Mostrador:** NUNCA des descuentos ni regales nada si el error se detectó antes de que el cliente saliera de la tienda (ej. le empaquetaron la carne equivocada o los tacos están fríos). La solución es una Disculpa Operativa y cambiar el producto de inmediato.
+* **Doble Vuelta (Time Tax):** Si el cliente tuvo que manejar de regreso a la tienda por un error nuestro, ofrece una 'Cortesía de bajo costo' (agua fresca o pan dulce de mostrador) para compensar su tiempo y gasolina.
+* **Sobre-compensación:** NUNCA regales artículos de 'alto valor percibido' o que requieran preparación (como rebanadas de pastel, comidas o cortes de carne), incluso si regresaron de casa. Eso destruye ganancias y fomenta las quejas.
 * **Error del Cliente:** NUNCA regales dinero, ofrezcas descuentos ni reembolsos si el cliente causó el problema. Mantente firme.
 * **CERO Tarjetas de Regalo:** Jamás ofrezcas 'gift cards' o 'store credit'.
 """)
@@ -283,9 +282,10 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
        - 'Reenfoque de Retroalimentación': Agradecer por avisar del error.
        - 'Refuerzo de Paciencia': Agradecer el tiempo esperado.
        - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
-    8. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "tiene razón en que su orden está mal") o admitan culpa prematuramente ("un descuido nuestro"). La empatía solo observa la *experiencia*, el *tiempo perdido* o la *prioridad* (ej. "Entiendo la preocupación de irse sin pastel" o "Comprendo que su prioridad es resolver esto rápido").
-    9. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
-    10. EL ENFOQUE POSITIVO: Si el cliente menciona tener prisa o estar estresado por el tiempo, enseña al gerente a NO decir "veo que tiene prisa" (lo cual aumenta la ansiedad). En su lugar, enséñales a usar un enfoque positivo enfocado en el alivio, como "para que pueda seguir con su día" o "para que llegue a tiempo a su evento".
+    8. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado durante la etapa de Empatía. Tu objetivo es validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente (ej. "Entiendo la tremenda frustración", "Comprendo que su plan se complicó"). NO uses NINGUNA frase, sinónimo o expresión que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "qué terrible", "es inaceptable", "tiene toda la razón", "nuestro error"). Mantén a la tienda y al empleado 100% libres de culpa; limítate a observar la emoción del cliente.
+    9. RENTABILIDAD Y TIME TAX: Enseña que NUNCA se regala nada si el error se detectó en el mostrador. Si el cliente tuvo que regresar de su casa (doble vuelta), enseña que SOLO se permite una 'Cortesía de Bajo Costo' (agua fresca/pan dulce), NUNCA productos caros (pastel/carnes) ni descuentos porcentuales.
+    10. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
+    11. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
     """
 
     if "tutor_history" not in st.session_state:
@@ -423,7 +423,7 @@ elif menu_selection == "Simulador HEART":
     1. FORMATO: "En lugar de decir [Cita], intenta decir: [Tu sugerencia natural]". 
     2. REGLA DE TONO PROFESIONAL: Los guiones que sugieras deben sonar PROFESIONALES, empáticos pero TERRENALES. NO uses expresiones exageradas, melodramáticas o jerga poco profesional (ej. NUNCA sugieras decir "Uff, qué coraje" o "Qué horror"). Mantén un trato respetuoso (siempre habla de "usted").
     3. LÍMITE ESTRICTO PARA TUS EJEMPLOS: Cuando des un ejemplo sugerido de cómo Empatizar (E) o Disculparse (A), ESTÁ ESTRICTAMENTE PROHIBIDO añadir una frase de Resolución al final de tu ejemplo (ej. NUNCA añadas "Permítame ayudarle a arreglar esto" al final de un guion de empatía). Mantén tu ejemplo estrictamente enfocado en la emoción o la disculpa.
-    4. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". NUNCA sugieras frases que le den la razón al cliente sobre los hechos antes de investigar (ej. "Tiene razón en que su orden está mal") o que admitan la culpa de la tienda por adelantado. La empatía SOLO valida observaciones como la *experiencia*, el *tiempo perdido* o la *prioridad* (ej. "Entiendo la preocupación de irse sin pastel a esta hora").
+    4. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado durante la etapa de Empatía. Tu objetivo es validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente (ej. "Entiendo la tremenda frustración", "Comprendo que su plan se complicó"). NO uses NINGUNA frase, sinónimo o expresión que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "qué terrible", "es inaceptable", "tiene toda la razón", "nuestro error"). Mantén a la tienda y al empleado 100% libres de culpa; limítate a observar la emoción del cliente.
     5. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
@@ -434,10 +434,10 @@ elif menu_selection == "Simulador HEART":
     5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Usa EXACTAMENTE esta terminología oficial y corrígelos si usan la equivocada: 'Disculpa Operativa' (para errores de tienda/producto), 'Disculpa de Experiencia' (SOLO para quejas de actitud de empleados), 'Disculpa de Cortesía', o 'Cero Disculpas / Empatía Neutral'. ¡PENALIZA si usan 'Disculpa de Experiencia' para un error de producto equivocado!
     6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' o 'El Escudo del Sistema' al evaluar sus soluciones. Explica la psicología.
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Evalúa el cierre usando: 'Reenfoque de Retroalimentación', 'Refuerzo de Paciencia', o 'Despedida Firme'. Corrígelos explicando la psicología si dan un gracias genérico.
-    8. CERO DESCUENTOS POR ERRORES MENORES: CORRIGE SEVERAMENTE al gerente si ofrece un descuento porcentual por un error operativo de mostrador. 
+    8. RENTABILIDAD SUPREMA Y TIME TAX: Penaliza severamente si el gerente da un descuento porcentual o regala artículos de alto valor (como pasteles o carne). Si el cliente tuvo que regresar a la tienda por un error nuestro (doble vuelta), felicita al gerente SOLO si ofrece una 'Cortesía de bajo costo' (agua fresca/bolillo). Si el error fue en mostrador y no han salido, PENALIZA si regalan cualquier cosa.
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
     10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
-    11. EL ENFOQUE POSITIVO (TIEMPO Y PRISA): Si el cliente expresa prisa o ansiedad por el tiempo, penaliza levemente si el gerente refleja esa ansiedad (ej. "veo que tiene prisa"). Elogia o sugiere encarecidamente el uso del "Enfoque Positivo", que centra la frase en el alivio (ej. "para que pueda seguir con su día" o "para no quitarle más tiempo").
+    11. EL ENFOQUE POSITIVO (ALIVIO VS ESTRÉS): Si el gerente refleja la ansiedad del cliente repitiendo el problema (ej. "veo que tiene prisa", "sé que es molesto dar doble vuelta"), penaliza levemente. Elogia o sugiere el uso del "Enfoque Positivo", que centra la frase en el alivio y la meta del cliente (ej. "para que pueda seguir con su día" o "para que su evento sea un éxito").
 
     AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
@@ -613,11 +613,11 @@ elif menu_selection == "Preguntas al Asesor":
     5. TRAMPA DE MERCHANDISING EN EL 'EGO SAVE': Advierte explícitamente a los gerentes que NUNCA culpen a la tienda, los empaques o los letreros cuando intentan salvar el ego del cliente. Sugiere usar la humanidad compartida ("a mí también me pasa").
     6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Aconseja usar 'La Ilusión de Control' (dar opciones) y 'El Escudo del Sistema' (culpar al sistema) para mantener el control. Explica la psicología.
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
-    8. CERO DESCUENTOS POR ERRORES MENORES: Si el gerente pregunta sobre dar descuentos por un error operativo que se arregla rápido en el mostrador, aconseja estrictamente EN CONTRA. 
+    8. RENTABILIDAD Y TIME TAX: Aconseja estrictamente EN CONTRA de dar descuentos o productos gratis por errores menores en el mostrador. Aclara que las 'Cortesías de bajo costo' (agua fresca) SOLO se usan cuando el cliente sufre una pérdida de tiempo comprobable (ej. tuvo que manejar de regreso a la tienda por un error nuestro).
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
-    10. REGLA DE NEUTRALIDAD AL EMPATIZAR: ESTÁ ESTRICTAMENTE PROHIBIDO usar palabras absolutas como "definitivamente" o "absolutamente". Nunca aconsejes darle la razón al cliente sobre los hechos ("tiene la razón") ni admitir culpa de la tienda prematuramente. La empatía solo debe validar la emoción, el tiempo o la prioridad ("Entiendo la molestia de la vuelta extra").
-    11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción y pivotar hacia NUEVAS opciones de resolución.
-    12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo tratar a clientes con prisa, aconséjale que NUNCA diga "veo que tiene prisa" porque aumenta la ansiedad. Sugiérele usar frases enfocadas en el alivio como "para que pueda seguir con su día".
+    10. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado al enseñar a empatizar. Aconseja validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente. NO uses NINGUNA frase que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "es inaceptable", "tiene toda la razón", "nuestro error").
+    11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción neutralmente y pivotar hacia NUEVAS opciones de resolución.
+    12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
     """
 
     if "asesor_history" not in st.session_state:
