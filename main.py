@@ -3,6 +3,7 @@ from google import genai
 from google.genai import types
 import os
 import random
+import time
 
 # --- CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(
@@ -83,6 +84,34 @@ pesadillas_la_vaquita = [
 ]
 
 departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
+
+diccionario_la_vaquita = """
+¡ALERTA DE DICCIONARIO CORPORATIVO PROPIO!
+La Vaquita tiene definiciones ESTRICTAS y PROPIAS. NO uses definiciones genéricas de servicio al cliente. DEBES basar tu evaluación en este glosario exacto:
+
+1. El 'Micro-Loop' (Micro-Bucle):
+   - QUÉ ES: Cuando el cliente rechaza tu primera solución, NO repites lo mismo. Debes hacer dos cosas: 1) Micro-Empatía (validar su nueva objeción neutralmente) y 2) Ilusión de Control (pivotar ofreciendo inmediatamente un nuevo set de opciones a elegir).
+   - QUÉ NO ES: NO es simplemente investigar el problema (eso es Giro de Investigación), NO es pedir que esperen, y NO es culpar al sistema (eso es Escudo del Sistema). Un Micro-Loop requiere ofrecer OPCIONES tras un rechazo.
+
+2. El Límite de Empatía (Regla de Responsabilidad):
+   - QUÉ ES: Validar SOLO la emoción del cliente ("Entiendo su frustración", "Lamento que haya pasado un mal rato").
+   - QUÉ NO ES: JAMÁS debes darle la razón sobre los HECHOS si no se ha investigado ("Tiene toda la razón, ese empleado fue grosero", "Es inaceptable que la carne esté mala"). La tienda no asume culpa sobre hechos no verificados.
+
+3. El Impuesto de Tiempo (Time Tax):
+   - QUÉ ES: Es la ÚNICA excepción donde está permitido regalar una cortesía de bajo costo (ej. agua fresca o pan dulce). Solo se aplica si el cliente TUVO QUE REGRESAR a la tienda (gastó su gasolina/tiempo adicional) por un error comprobado nuestro.
+   - QUÉ NO ES: NO se regala NADA si el error se detecta en el mostrador antes de que el cliente salga de la tienda. (Rentabilidad Suprema).
+
+4. El Escudo del Sistema (System Shield):
+   - QUÉ ES: Culpar a "el sistema", "el proceso", "el lote" o "la regla de inventario" para despersonalizar una negativa. Posiciona al gerente y al cliente del mismo lado contra "la máquina".
+   - QUÉ NO ES: NO es culpar a un empleado específico (ej. "Juan se equivocó al cobrarle").
+
+5. Enfoque Positivo:
+   - QUÉ ES: Si el cliente tiene prisa, se debe ofrecer alivio de la carga ("Para que pueda seguir con su día").
+   - QUÉ NO ES: NO se debe reflejar o validar la ansiedad de tiempo ("Veo que tiene mucha prisa / Entiendo que va tarde" está prohibido).
+
+6. Regla Cero:
+   - QUÉ ES: Tolerancia cero a insultos o agresiones graves. El gerente DEBE establecer un límite firme.
+"""
 
 # --- MENÚ DE NAVEGACIÓN ---
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empty.png/120px-Empty.png", use_container_width=True) 
@@ -260,7 +289,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
     st.subheader("🎓 Tutor Paso a Paso")
     st.write("Es hora de practicar. El Tutor Virtual te presentará un escenario y te guiará letra por letra. Deberás responder correctamente cada paso antes de avanzar al siguiente.")
 
-    tutor_instrucciones = """
+    tutor_instrucciones = f"""
     Eres el Tutor Maestro de La Vaquita Meat Market. 
     
     CONTEXTO DE LA TIENDA: La Vaquita es un mercado hispano de alto volumen. Los márgenes de supermercado son estrechos.
@@ -286,6 +315,8 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
     9. RENTABILIDAD Y TIME TAX: Enseña que NUNCA se regala nada si el error se detectó en el mostrador. Si el cliente tuvo que regresar de su casa (doble vuelta), enseña que SOLO se permite una 'Cortesía de Bajo Costo' (agua fresca/pan dulce), NUNCA productos caros (pastel/carnes) ni descuentos porcentuales.
     10. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
     11. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
+    
+    {diccionario_la_vaquita}
     """
 
     if "tutor_history" not in st.session_state:
@@ -307,14 +338,25 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
                     pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                     descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
-                chat = client.chats.create(
-                    model="gemini-2.5-pro",
-                    config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
-                )
                 hidden_prompt = f"Hola. Genera el escenario inicial usando esta premisa: {descripcion_problema}. Asegúrate de incluir la pista física en tercera persona. Preséntamelo. Dado que la etapa H (Hear) es solo silencio, pídeme que comience mi respuesta escrita directamente con el paso Empatía (E). No me des las respuestas. Código aleatorio: {random.randint(1,10000)}"
-                response = chat.send_message(hidden_prompt)
                 
-            texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
+                exito = False
+                for intento in range(3):
+                    try:
+                        chat = client.chats.create(
+                            model="gemini-2.5-pro",
+                            config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
+                        )
+                        response = chat.send_message(hidden_prompt)
+                        texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta. Por favor, reinicia el tutorial.*"
+                        exito = True
+                        break
+                    except Exception as e:
+                        time.sleep(2)
+                
+                if not exito:
+                    texto_seguro = "⚠️ *El servidor está inusualmente ocupado. Por favor, reinicia el tutorial.*"
+
             st.session_state.tutor_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
             st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
             st.rerun()
@@ -337,20 +379,27 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
             
             st.session_state.tutor_history.append({"role": "user", "content": tutor_input, "hidden": False})
 
-            chat = client.chats.create(
-                model="gemini-2.5-pro",
-                config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
-                history=formatted_tutor_history
-            )
-
             with st.chat_message("assistant"):
                 with st.spinner("El tutor está revisando tu respuesta..."):
-                    try:
-                        response = chat.send_message(tutor_input)
-                        texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
-                    except Exception as e:
+                    exito = False
+                    for intento in range(3):
+                        try:
+                            chat = client.chats.create(
+                                model="gemini-2.5-pro",
+                                config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
+                                history=formatted_tutor_history
+                            )
+                            response = chat.send_message(tutor_input)
+                            texto_seguro = response.text if response.text else "⚠️ *El filtro de seguridad bloqueó la respuesta.*"
+                            exito = True
+                            break
+                        except Exception as e:
+                            time.sleep(2)
+                            
+                    if not exito:
                         texto_seguro = "⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a enviar tu respuesta.*"
                         st.session_state.tutor_history.pop()
+
                 st.markdown(texto_seguro)
                 
             if "⚠️" not in texto_seguro:
@@ -411,7 +460,7 @@ elif menu_selection == "Simulador HEART":
     No des retroalimentación al terminar.
     """
 
-    coach_instrucciones = """
+    coach_instrucciones = f"""
     Eres el Coach Evaluador Maestro de La Vaquita Meat Market. 
     
     CONTEXTO DE LA TIENDA: Somos un mercado hispano con carnicería y taquería. Los márgenes son estrechos. Comprendes perfectamente la diferencia entre un error genuino de la tienda y un cliente que intenta aprovecharse.
@@ -441,6 +490,8 @@ elif menu_selection == "Simulador HEART":
 
     AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
+    
+    {diccionario_la_vaquita}
     """
 
     if "simulador_history" not in st.session_state:
@@ -477,17 +528,25 @@ elif menu_selection == "Simulador HEART":
             hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} REGLA FÍSICA: Si el cliente ya pagó y regresa a la tienda con un reclamo post-compra, el escenario DEBE ocurrir en Cajas Principales o Servicio al Cliente. RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
             
             with st.spinner("El cliente se está acercando..."):
-                try:
-                    chat = client.chats.create(
-                        model="gemini-2.5-flash",
-                        config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
-                    )
-                    response = chat.send_message(hidden_prompt)
-                    texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** Filtros de seguridad activados."
+                exito = False
+                for intento in range(3):
+                    try:
+                        chat = client.chats.create(
+                            model="gemini-2.5-flash",
+                            config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
+                        )
+                        response = chat.send_message(hidden_prompt)
+                        texto_seguro = response.text if response.text else "⚠️ **Aviso del Sistema:** Filtros de seguridad activados."
+                        exito = True
+                        break
+                    except Exception as e:
+                        time.sleep(2)
+                        
+                if exito:
                     st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
                     st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
                     st.rerun()
-                except Exception as e:
+                else:
                     st.error("⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a presionar el botón.*")
 
     elif not st.session_state.scenario_concluido:
@@ -509,20 +568,27 @@ elif menu_selection == "Simulador HEART":
             
             st.session_state.simulador_history.append({"role": "user", "content": user_input, "hidden": False})
 
-            chat_actor = client.chats.create(
-                model="gemini-2.5-flash", 
-                config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
-                history=formatted_history
-            )
-
             with st.chat_message("assistant"):
                 with st.spinner("El cliente está respondiendo..."):
-                    try:
-                        response_actor = chat_actor.send_message(user_input)
-                        texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** Filtros de seguridad activados."
-                    except Exception as e:
+                    exito = False
+                    for intento in range(3):
+                        try:
+                            chat_actor = client.chats.create(
+                                model="gemini-2.5-flash", 
+                                config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
+                                history=formatted_history
+                            )
+                            response_actor = chat_actor.send_message(user_input)
+                            texto_actor = response_actor.text if response_actor.text else "⚠️ **Aviso del Sistema:** Filtros de seguridad activados."
+                            exito = True
+                            break
+                        except Exception as e:
+                            time.sleep(2)
+                            
+                    if not exito:
                         texto_actor = "⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a enviar tu mensaje.*"
                         st.session_state.simulador_history.pop()
+                
                 st.markdown(texto_actor)
             
             if "⚠️" not in texto_actor:
@@ -557,14 +623,21 @@ elif menu_selection == "Simulador HEART":
                 
                 prompt_coach = f"La simulación ha terminado. Aquí está la transcripción:\n\n{transcripcion}\n\nPor favor, proporciona tu evaluación detallada, profunda. Asegúrate de dar ejemplos exactos de guiones Y explica la psicología de por qué funcionan mejor, basándote en tus instrucciones."
                 
-                try:
-                    coach_response = client.models.generate_content(
-                        model="gemini-2.5-pro",
-                        contents=prompt_coach,
-                        config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
-                    )
-                    st.session_state.coach_feedback = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
-                except Exception as e:
+                exito_eval = False
+                for intento in range(3):
+                    try:
+                        coach_response = client.models.generate_content(
+                            model="gemini-2.5-pro",
+                            contents=prompt_coach,
+                            config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
+                        )
+                        st.session_state.coach_feedback = coach_response.text if coach_response.text else "⚠️ *Evaluación bloqueada por filtros de seguridad.*"
+                        exito_eval = True
+                        break
+                    except Exception as e:
+                        time.sleep(2)
+                
+                if not exito_eval:
                     st.error("⚠️ *Ups, el servidor del Coach está un poco saturado debido a alta demanda. No recargues la página.*")
         
         if st.session_state.coach_feedback:
@@ -597,7 +670,7 @@ elif menu_selection == "Preguntas al Asesor":
     st.title("🧠 Asesoría para Gerentes")
     st.write("¿Tienes dudas sobre cómo manejar una situación específica en la tienda? Pregúntale al asesor experto de La Vaquita.")
     
-    asesor_instrucciones = """
+    asesor_instrucciones = f"""
     Eres el Consultor Experto en Operaciones de Retail y Mentor Senior de La Vaquita Meat Market.
     
     CONTEXTO DE LA TIENDA (TU BIBLIA): 
@@ -618,6 +691,8 @@ elif menu_selection == "Preguntas al Asesor":
     10. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado al enseñar a empatizar. Aconseja validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente. NO uses NINGUNA frase que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "es inaceptable", "tiene toda la razón", "nuestro error").
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción neutralmente y pivotar hacia NUEVAS opciones de resolución.
     12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
+    
+    {diccionario_la_vaquita}
     """
 
     if "asesor_history" not in st.session_state:
@@ -638,20 +713,27 @@ elif menu_selection == "Preguntas al Asesor":
 
         formatted_asesor_history = [{"role": m["role"], "parts": [{"text": m["content"]}]} for m in st.session_state.asesor_history[:-1]]
 
-        chat = client.chats.create(
-            model="gemini-2.5-pro",
-            config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
-            history=formatted_asesor_history
-        )
-
         with st.chat_message("assistant"):
             with st.spinner("Buscando la mejor solución..."):
-                try:
-                    response = chat.send_message(pregunta_usuario)
-                    texto_asesor = response.text
-                except Exception as e:
+                exito = False
+                for intento in range(3):
+                    try:
+                        chat = client.chats.create(
+                            model="gemini-2.5-pro",
+                            config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
+                            history=formatted_asesor_history
+                        )
+                        response = chat.send_message(pregunta_usuario)
+                        texto_asesor = response.text
+                        exito = True
+                        break
+                    except Exception as e:
+                        time.sleep(2)
+                
+                if not exito:
                     texto_asesor = "⚠️ *Ups, el servidor de Google tuvo un pequeño hipo de conexión (ServerError). Por favor, intenta preguntar de nuevo en unos segundos.*"
                     st.session_state.asesor_history.pop()
+            
             st.markdown(texto_asesor)
             
         if "⚠️" not in texto_asesor:
