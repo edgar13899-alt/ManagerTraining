@@ -344,7 +344,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
                 for intento in range(3):
                     try:
                         chat = client.chats.create(
-                            model="gemini-2.5-pro",
+                            model="gemini-1.5-pro",
                             config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
                         )
                         response = chat.send_message(hidden_prompt)
@@ -385,7 +385,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
                     for intento in range(3):
                         try:
                             chat = client.chats.create(
-                                model="gemini-2.5-pro",
+                                model="gemini-1.5-pro",
                                 config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
                                 history=formatted_tutor_history
                             )
@@ -532,7 +532,7 @@ elif menu_selection == "Simulador HEART":
                 for intento in range(3):
                     try:
                         chat = client.chats.create(
-                            model="gemini-2.5-flash",
+                            model="gemini-1.5-flash",
                             config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
                         )
                         response = chat.send_message(hidden_prompt)
@@ -574,7 +574,7 @@ elif menu_selection == "Simulador HEART":
                     for intento in range(3):
                         try:
                             chat_actor = client.chats.create(
-                                model="gemini-2.5-flash", 
+                                model="gemini-1.5-flash", 
                                 config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
                                 history=formatted_history
                             )
@@ -627,7 +627,7 @@ elif menu_selection == "Simulador HEART":
                 for intento in range(3):
                     try:
                         coach_response = client.models.generate_content(
-                            model="gemini-2.5-pro",
+                            model="gemini-1.5-pro",
                             contents=prompt_coach,
                             config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
                         )
@@ -719,7 +719,7 @@ elif menu_selection == "Preguntas al Asesor":
                 for intento in range(3):
                     try:
                         chat = client.chats.create(
-                            model="gemini-2.5-pro",
+                            model="gemini-1.5-pro",
                             config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
                             history=formatted_asesor_history
                         )
