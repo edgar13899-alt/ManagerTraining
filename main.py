@@ -315,6 +315,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
     9. RENTABILIDAD Y TIME TAX: Enseña que NUNCA se regala nada si el error se detectó en el mostrador. Si el cliente tuvo que regresar de su casa (doble vuelta), enseña que SOLO se permite una 'Cortesía de Bajo Costo' (agua fresca/pan dulce), NUNCA productos caros (pastel/carnes) ni descuentos porcentuales.
     10. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
     11. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
+    12. REGLA DE DIÁLOGO NATURAL: Cuando des ejemplos exactos de guiones sobre cómo pedir perdón o empatizar, ESTÁ ESTRICTAMENTE PROHIBIDO usar los nombres técnicos de la rúbrica (ej. "Disculpa Operativa" o "Disculpa de Experiencia") dentro del diálogo sugerido. Los guiones deben sonar 100% humanos y naturales.
     
     {diccionario_la_vaquita}
     """
@@ -344,7 +345,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
                 for intento in range(3):
                     try:
                         chat = client.chats.create(
-                            model="gemini-1.5-pro",
+                            model="gemini-2.5-pro",
                             config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja)
                         )
                         response = chat.send_message(hidden_prompt)
@@ -385,7 +386,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
                     for intento in range(3):
                         try:
                             chat = client.chats.create(
-                                model="gemini-1.5-pro",
+                                model="gemini-2.5-pro",
                                 config=types.GenerateContentConfig(system_instruction=tutor_instrucciones, safety_settings=seguridad_baja),
                                 history=formatted_tutor_history
                             )
@@ -474,6 +475,7 @@ elif menu_selection == "Simulador HEART":
     3. LÍMITE ESTRICTO PARA TUS EJEMPLOS: Cuando des un ejemplo sugerido de cómo Empatizar (E) o Disculparse (A), ESTÁ ESTRICTAMENTE PROHIBIDO añadir una frase de Resolución al final de tu ejemplo (ej. NUNCA añadas "Permítame ayudarle a arreglar esto" al final de un guion de empatía). Mantén tu ejemplo estrictamente enfocado en la emoción o la disculpa.
     4. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado durante la etapa de Empatía. Tu objetivo es validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente (ej. "Entiendo la tremenda frustración", "Comprendo que su plan se complicó"). NO uses NINGUNA frase, sinónimo o expresión que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "qué terrible", "es inaceptable", "tiene toda la razón", "nuestro error"). Mantén a la tienda y al empleado 100% libres de culpa; limítate a observar la emoción del cliente.
     5. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
+    6. REGLA DE DIÁLOGO NATURAL: ESTÁ ESTRICTAMENTE PROHIBIDO usar los nombres técnicos de la rúbrica (ej. "Disculpa Operativa" o "Disculpa de Experiencia") dentro de los guiones hablados que sugieras. Los guiones deben sonar como un ser humano real y profesional.
 
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Empieza a evaluar directamente en "E - Empathize". ESTÁ PROHIBIDO penalizar por no hacer preguntas en Hear.
@@ -532,7 +534,7 @@ elif menu_selection == "Simulador HEART":
                 for intento in range(3):
                     try:
                         chat = client.chats.create(
-                            model="gemini-1.5-flash",
+                            model="gemini-2.5-flash",
                             config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja)
                         )
                         response = chat.send_message(hidden_prompt)
@@ -574,7 +576,7 @@ elif menu_selection == "Simulador HEART":
                     for intento in range(3):
                         try:
                             chat_actor = client.chats.create(
-                                model="gemini-1.5-flash", 
+                                model="gemini-2.5-flash", 
                                 config=types.GenerateContentConfig(system_instruction=actor_instrucciones, safety_settings=seguridad_baja),
                                 history=formatted_history
                             )
@@ -627,7 +629,7 @@ elif menu_selection == "Simulador HEART":
                 for intento in range(3):
                     try:
                         coach_response = client.models.generate_content(
-                            model="gemini-1.5-pro",
+                            model="gemini-2.5-pro",
                             contents=prompt_coach,
                             config=types.GenerateContentConfig(system_instruction=coach_instrucciones, safety_settings=seguridad_baja)
                         )
@@ -691,6 +693,7 @@ elif menu_selection == "Preguntas al Asesor":
     10. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado al enseñar a empatizar. Aconseja validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente. NO uses NINGUNA frase que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "es inaceptable", "tiene toda la razón", "nuestro error").
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción neutralmente y pivotar hacia NUEVAS opciones de resolución.
     12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
+    13. REGLA DE DIÁLOGO NATURAL: Nunca uses nombres técnicos como "Disculpa Operativa" o "Disculpa de Experiencia" DENTRO de los guiones hablados que le sugieras al gerente. Úsalos solo para la explicación teórica, pero los ejemplos hablados deben ser naturales.
     
     {diccionario_la_vaquita}
     """
@@ -719,7 +722,7 @@ elif menu_selection == "Preguntas al Asesor":
                 for intento in range(3):
                     try:
                         chat = client.chats.create(
-                            model="gemini-1.5-pro",
+                            model="gemini-2.5-pro",
                             config=types.GenerateContentConfig(system_instruction=asesor_instrucciones, safety_settings=seguridad_baja),
                             history=formatted_asesor_history
                         )
