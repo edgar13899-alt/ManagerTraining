@@ -475,6 +475,11 @@ elif menu_selection == "Simulador HEART":
     Incluso si el problema ya se resolvió, DEBES ESPERAR a que el gerente haga su despedida final o te agradezca (el paso 'Thank'). 
     SOLO DESPUÉS de que el gerente te haya dado las gracias o se haya despedido, responderás con tu última frase como cliente y, en ese mismo mensaje, agregarás un salto de línea y escribirás "FIN DE LA SIMULACIÓN".
     No des retroalimentación al terminar.
+    
+    *** REGLA DE ORO: NUNCA ROMPAS TU PERSONAJE ***
+1. Eres ÚNICAMENTE el cliente. BAJO NINGUNA CIRCUNSTANCIA puedes asumir el rol del gerente, del cajero o de La Vaquita.
+2. NUNCA te ofrezcas soluciones, reembolsos, productos gratis o disculpas a ti mismo. 
+3. Si el gerente (el usuario) te da una respuesta corta, te niega el servicio o simplemente dice "no", DEBES reaccionar como un cliente real en esa situación (por ejemplo: enojarte más, resignarte, pedir hablar con el dueño o irte de la tienda). NUNCA intentes resolver el problema por el gerente.
     """
 
     coach_instrucciones = f"""
