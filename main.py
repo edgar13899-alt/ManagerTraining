@@ -434,9 +434,9 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
                 st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
     st.divider()
-        if st.button("Reiniciar Lección"):
-            st.session_state.tutor_history =[]
-            st.rerun()
+            if st.button("Reiniciar Lección"):
+                st.session_state.tutor_history =[]
+                st.rerun()
         
 
 # ==========================================
