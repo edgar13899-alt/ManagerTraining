@@ -476,12 +476,12 @@ elif menu_selection == "Simulador HEART":
     REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
     Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. agua fresca o pan), acéptalo y relaja tu actitud inmediatamente.
 
-    REGLAS DE DIFICULTAD (LA DIFICULTAD DEFINE LA SITUACIÓN Y TU ACTITUD):
-    - FÁCIL: Problema sencillo. Estás educado. NUNCA insultes. Sigue estrictamente la regla de que NO has salido de la tienda.
-    - MEDIO: Problema molesto por error de la tienda. Estás frustrado. Si te ofrecen solución justa, ACEPTA. NO alargues la conversación. NUNCA insultes.
-    - DIFÍCIL (MANIPULADOR): Eres pasivo-agresivo, manipulador y terco. NO uses insultos directos. Amenazas pasivamente, exiges compensaciones irrazonables. Eres un muro de piedra. Si el gerente es firme, te rindes con indignación.
-    - EXTREMO (ABUSIVO): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
-
+    
+    REGLAS DE COMPORTAMIENTO POR NIVEL (¡ESTRICTO!):
+    - NIVEL 1 (Fácil): Eres un cliente molesto pero razonable. SI el gerente te ofrece una solución justa (cambiar el producto), ACEPTA INMEDIATAMENTE con alivio. NO rechaces la solución.
+    - NIVEL 2 (Medio - Bola Curva Emocional): Estás frustrado por el tiempo perdido o a la defensiva por un error tuyo. Menciona un dolor emocional (ej. "arruinaron mi cena"). Si el gerente te ofrece una solución justa o usa "Humanidad Compartida", relájate y acepta tras un poco de resistencia.
+    - NIVEL 3 (Difícil - Muro de Piedra): Eres pasivo-agresivo, manipulador y terco. Haces demandas de compensación completamente irrazonables (ej. exigir todo tu mandado gratis por una pequeña espera). Amenazas con dejar malas reseñas y usas la culpa. REGLA ESTRICTA: NUNCA uses malas palabras ni insultos directos; tu arma es la manipulación psicológica. Obliga al gerente a decirte que "no" varias veces (Bola Curva de Resistencia). Si el gerente se mantiene firme y profesional, ríndete con indignación.
+    - NIVEL 4 (Extremo - Bola Curva de Hostilidad): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
     CÓMO TERMINAR LA SIMULACIÓN (¡REGLA ESTRICTA DE DESPEDIDA!):
     ¡NUNCA termines la simulación prematuramente! 
     Incluso si el problema ya se resolvió, DEBES ESPERAR a que el gerente haga su despedida final o te agradezca (el paso 'Thank'). 
@@ -526,6 +526,14 @@ Tu objetivo como Asesor no es solo verificar que el empleado siga los 5 pasos co
 4. THANK (Despedida Personalizada): Penaliza los "Gracias" genéricos. Exige y premia las despedidas basadas en el contexto de la compra (ej. "Que disfruten mucho su fiesta", "Suerte con su parrillada familiar").
 
 Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos exactos de cómo sonar más cálido, observador y humano utilizando los ejemplos anteriores.
+
+ENFOQUE DE EVALUACIÓN POR NIVEL (SCAFFOLDING):
+    El gerente está aprendiendo por niveles. Siempre evalúa la Empatía básica, pero enfoca tu retroalimentación principal según el nivel que jugaron:
+    - Si es NIVEL 1 (Fácil): Enfócate en la Disculpa Operativa y la Rentabilidad Suprema (cero regalos en mostrador).
+    - Si es NIVEL 2 (Medio): Enfócate en la Escucha Profunda (¿notaron el dolor emocional del cliente?), la Disculpa de Cortesía, el Control de Multitudes (Reubicar), el Time Tax, y salvar el ego del cliente.
+    - Si es NIVEL 3 (Difícil): Enfócate ESTRICTAMENTE en cómo el gerente manejó la manipulación. ¿Cedieron a demandas irrazonables? (Penaliza severamente si regalaron cosas por chantaje). ¿Usaron el "Escudo del Sistema" para decir que no? ¿Hicieron un Micro-Loop cuando el cliente los rechazó?
+    - Si es NIVEL 4 (Extremo): Enfócate en la Regla Cero (límites), la Despedida Firme y mantener la neutralidad emocional ante los insultos.   
+    
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Empieza a evaluar directamente en "E - Empathize". ESTÁ PROHIBIDO penalizar por no hacer preguntas en Hear.
     2. ORDEN CRONOLÓGICO Y FLUIDEZ (LA REGLA DEL PÁRRAFO): En una conversación real, un gerente combinará E, A y R en un solo párrafo. ¡Eso es correcto! LO QUE DEBES EVALUAR ES EL ORDEN CRONOLÓGICO. La Empatía (E) y la Disculpa (A) deben ir ANTES de la solución (R) dentro de ese mismo mensaje. 
@@ -554,27 +562,33 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.session_state.coach_feedback = ""
 
     if len(st.session_state.simulador_history) == 0 and not st.session_state.scenario_concluido:
-        st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
+        st.info("Selecciona tu nivel de entrenamiento. Te recomendamos ir en orden para dominar el método paso a paso.")
         difficulty = st.selectbox(
-            "Selecciona la complejidad del problema:",["Fácil", "Medio", "Difícil", "Extremo (Abusivo)", "Casos Especiales (Errores del Cliente)"]
+            "Selecciona tu nivel:",[
+                "Nivel 1: Fácil (Básicos y Rentabilidad)", 
+                "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)", 
+                "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)", 
+                "Nivel 4: Extremo (Abuso y La Bóveda de Pesadillas)"
+            ]
         )
         
         if st.button("Comenzar Escenario"):
             
-            if difficulty == "Fácil":
+            if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_faciles)
-                descripcion_problema = f"El escenario DEBE ocurrir específicamente en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
-            elif difficulty == "Medio":
+                descripcion_problema = f"NIVEL 1: El escenario DEBE ocurrir en {depto_elegido}. La queja trata sobre {problema_elegido}."
+            elif difficulty == "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)":
+                depto_elegido = random.choice(departamentos)
+                problema_elegido = random.choice(problemas_medios + errores_cliente)
+                descripcion_problema = f"NIVEL 2: El escenario DEBE ocurrir en {depto_elegido}. La situación es: {problema_elegido}. INYECTA UNA BOLA CURVA EMOCIONAL (ej. el cliente menciona que esto arruina un plan familiar o le hace perder mucho tiempo)."
+            elif difficulty == "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)":
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_medios)
-                descripcion_problema = f"El escenario DEBE ocurrir specifically en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
-            elif difficulty == "Casos Especiales (Errores del Cliente)":
-                problema_elegido = random.choice(errores_cliente)
-                descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en las Cajas Principales."
+                descripcion_problema = f"NIVEL 3 (MANIPULADOR): El escenario ocurre en {depto_elegido}. El problema inicial es {problema_elegido}, PERO el cliente lo usará como excusa para exigir compensaciones absurdas. INYECTA UNA BOLA CURVA DE RESISTENCIA (rechaza la primera solución)."
             else:
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
-                descripcion_problema = f"Este es un ESCENARIO DE PESADILLA ESPECÍFICO DE LA BOVEDA. La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
+                descripcion_problema = f"NIVEL 4 PESADILLA (ABUSIVO): La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
             hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} REGLA FÍSICA: Si el cliente ya pagó y regresa a la tienda con un reclamo post-compra, el escenario DEBE ocurrir en Cajas Principales o Servicio al Cliente. RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
             
