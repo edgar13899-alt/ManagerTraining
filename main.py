@@ -824,4 +824,4 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.divider()
         if st.button("Limpiar Conversación"):
             st.session_state.asesor_history =[]
-                st.rerun()
+            st.rerun()
