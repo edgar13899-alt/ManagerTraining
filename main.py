@@ -401,7 +401,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
 
         tutor_input = st.chat_input("Escribe tu respuesta para el paso actual...")
 
-        if tutor_input:
+       if tutor_input:
             with st.chat_message("user"):
                 st.markdown(tutor_input)
             
@@ -430,13 +430,13 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
 
                 st.markdown(texto_seguro)
                 
-          if "⚠️" not in texto_seguro:
+            if "⚠️" not in texto_seguro:
                 st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
-        st.divider()
-        if st.button("Reiniciar Lección"):
-            st.session_state.tutor_history = []
-            st.rerun()
+            st.divider()
+            if st.button("Reiniciar Lección"):
+                st.session_state.tutor_history = []
+                st.rerun()
         
 
 # ==========================================
