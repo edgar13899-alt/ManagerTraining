@@ -819,7 +819,8 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         if "⚠️" not in texto_asesor:
             st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
         
-    if len(st.session_state.asesor_history) > 0:
+   if len(st.session_state.asesor_history) > 0:
         st.divider()
         if st.button("Limpiar Conversación"):
-            st.session_state.asesor_history =
+            st.session_state.asesor_history =[]
+            st.rerun()
