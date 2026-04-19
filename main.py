@@ -85,11 +85,16 @@ errores_cliente = [
     "un cliente que exige un descuento porque leyó mal un letrero de oferta que estaba claramente marcado para otro producto diferente, sintiéndose frustrado"
 ]
 
-pesadilla_taqueria = [
-    "Eres un cliente en la taquería. La fila es larguísima y acabas de ver que el sistema de cobro (POS) de las cajeras se apagó por completo. Tu comida ya está servida en la barra y se está enfriando. Estás muy frustrado y le dices al gerente: '¡Llevo 20 minutos esperando, mi comida se está haciendo hielo! O me la dan gratis por las molestias o me voy sin pagar, ¡no voy a seguir esperando a que arreglen su maquinita!'"
+boveda_de_pesadillas = [
+    # Pesadilla 1: El Sistema de la Taquería
+    "Eres un cliente en la taquería. La fila es larguísima y acabas de ver que el sistema de cobro (POS) de las cajeras se apagó por completo. Tu comida ya está servida en la barra y se está enfriando. Estás muy frustrado y le dices al gerente: '¡Llevo 20 minutos esperando, mi comida se está haciendo hielo! O me la dan gratis por las molestias o me voy sin pagar, ¡no voy a seguir esperando a que arreglen su maquinita!'",
+    
+    # ¡Puedes agregar más pesadillas aquí en el futuro!
+    # "Pesadilla 2: (Escribe otra locura de la Carnicería aquí)...",
+    # "Pesadilla 3: (Escribe otra locura de la Paletería aquí)..."
 ]
 if difficulty == "Pesadilla (Nightmare)":
-            escenario = random.choice(pesadilla_taqueria)
+            escenario = random.choice(boveda_de_pesadillas)
 
 # EXTREMO/DIFÍCIL: Alta tensión, Regla Cero.
 pesadillas_la_vaquita = [
@@ -103,6 +108,8 @@ pesadillas_la_vaquita = [
     "un cliente se queja furioso de que un empleado fue grosero al pedirle ayuda (lo ignoró, no hizo contacto visual y solo señaló con el dedo). El cliente exige que lo despidan o lo castiguen frente a él, PERO el gerente sabe que el familiar de ese empleado acaba de fallecer, está pasando por un duelo terrible, y solo vino a trabajar porque necesitaba el dinero.",
     "un cliente acusa a una cajera de darle un pésimo servicio y aventarle el recibo, exigiendo hablar con el gerente para que la regañe frente a todos, PERO el gerente sabe que la cajera acaba de ser insultada cruelmente por el cliente anterior y está al borde de las lágrimas tratando de mantener la compostura.",
     "un cliente que llega con $50 dólares en cortes caros de carne, no tiene ningún recibo de compra, y exige agresivamente un reembolso en efectivo, amenazando con hacer un escándalo monumental si el gerente se niega a darle el dinero."
+    "Eres un cliente en la taquería. La fila es larguísima y acabas de ver que el sistema de cobro (POS) de las cajeras se apagó por completo. Tu comida ya está servida en la barra y se está enfriando. Estás muy frustrado y le dices al gerente: '¡Llevo 20 minutos esperando, mi comida se está haciendo hielo! O me la dan gratis por las molestias o me voy sin pagar, ¡no voy a seguir esperando a que arreglen su maquinita!'",
+    
 ]
 
 departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
