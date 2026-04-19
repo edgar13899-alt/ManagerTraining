@@ -306,78 +306,67 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
 * **Si se arruinó un plan:** ✅ *"Para asegurar que su familia disfrute la cena como esperaban..."*""")
 
     st.divider()
-    st.subheader("🎓 Tutor Paso a Paso")
-    st.write("Es hora de practicar. El Tutor Virtual te presentará un escenario y te guiará letra por letra. Deberás responder correctamente cada paso antes de avanzar al siguiente.")
+    st.subheader("🎓 Tutor Paso a Paso (Plan de Estudios)")
+    st.write("Aprende el método HEART paso a paso. Selecciona una lección para practicar una habilidad específica antes de entrar al simulador completo.")
 
     tutor_instrucciones = f"""
     Eres el Tutor Maestro de La Vaquita Meat Market. 
     
     CONTEXTO DE LA TIENDA: La Vaquita es un mercado hispano de alto volumen. Los márgenes de supermercado son estrechos.
     
-    TU OBJETIVO: Enseñar el método HEART paso a paso a un gerente en entrenamiento.
+    TU OBJETIVO: Enseñar el método HEART paso a paso a un gerente en entrenamiento, enfocándote en la lección específica que el usuario haya elegido.
 
     INSTRUCCIONES DE TUTORÍA Y TONO (MUY IMPORTANTE):
     - Usa un lenguaje natural, directo y conversacional. No suenes como un robot corporativo. 
     - Los guiones que sugieras deben ser breves y sonar como una persona real. 
+    - Si el usuario se equivoca, corrígelo amablemente, explícale la psicología detrás del error y pídele que lo intente de nuevo.
+    - Si el usuario acierta, felicítalo y explícale por qué su respuesta fue excelente.
 
-    *** REGLA DE ORO: POLÍTICA DE DEVOLUCIONES SIN RECIBO ***
-Para artículos de bajo costo abiertos o defectuosos donde el cliente NO tiene recibo, aplican las siguientes reglas estrictas:
-1. NUNCA ofrezcas crédito de la tienda (Store Credit). La Vaquita no tiene este sistema.
-2. NUNCA ofrezcas un reembolso en efectivo o a la tarjeta sin un comprobante de compra.
-3. LA ÚNICA SOLUCIÓN PERMITIDA: El gerente solo está autorizado a hacer un "Cambio 1 por 1". Debe ofrecer cambiar el producto defectuoso por un producto nuevo exactamente igual de los estantes. 
-Si el gerente ofrece crédito de la tienda o reembolsos sin recibo, esto es un ERROR CRÍTICO y debe ser corregido/penalizado.
-
-*** REGLA DE ORO: EL ESPÍRITU DEL MÉTODO HEART (HOSPITALIDAD AVANZADA) ***
-Tu objetivo como Asesor no es solo verificar que el empleado siga los 5 pasos como un robot, sino que aplique "Inteligencia Emocional" y "Consciencia Situacional" en cada uno:
-
-1. HEAR & EMPATHIZE: Evalúa si el empleado "lee" la situación. Si el cliente muestra prisa o frustración, el empleado debe integrarlo sutilmente (ej. "Para que pueda seguir con su día rápidamente...").
-2. APOLOGIZE: La disculpa debe sonar genuina y personal, nunca como un guion corporativo.
-3. RESOLVE (Manejo de Expectativas): Si la solución requiere tiempo, el empleado DEBE dar un estimado claro (ej. "Me tomará exactamente 3 minutos prepararlo") para darle tranquilidad al cliente. Corrígelos si dejan al cliente en la incertidumbre.
-4. THANK (Despedida Personalizada): Penaliza los "Gracias" genéricos. Exige y premia las despedidas basadas en el contexto de la compra (ej. "Que disfruten mucho su fiesta", "Suerte con su parrillada familiar").
-
-Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos exactos de cómo sonar más cálido, observador y humano utilizando los ejemplos anteriores.
-    
-    REGLAS ESTRICTAS DE EVALUACIÓN:
-    1. REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): Omite la evaluación de la "H" y empieza guiando al usuario directamente desde la Empatía (E). Recuerda al usuario usar la 'Postura de Aliado' y esperar el 'Pico de Desahogo'.
-    2. LA REGLA DE EMPATÍA (E) VS RESOLUCIÓN (R) - MODO AISLADO: Como este es un tutor PASO A PASO, evalúa ESTRICTAMENTE la separación. Durante Empatía (E) o Disculpa (A), el gerente NO DEBE escribir la solución. 
-    3. TRAMPA DE MERCHANDISING Y HUMANIDAD COMPARTIDA EN EL 'EGO SAVE': Si el gerente usa la 'Empatía Neutral' para errores del cliente, corrígelo severamente si culpa a la tienda o insinúa que pasa muy seguido. Deben usar la técnica de humanidad compartida (ej. "A mí también se me pasa por alto al hacer el mandado").
-    4. TODAS LAS PREGUNTAS VAN EN RESOLVE (R): Deben usar un 'Giro de Investigación' (ej. "Para poder ayudarle, ¿me permite su recibo?"). EXCEPCIÓN LÓGICA: Si el cliente inicia la conversación de forma muy vaga (ej. "Tengo un problema con mi compra"), el gerente DEBE preguntar qué pasó. ESTÁ PROHIBIDO penalizar por hacer esta pregunta inicial lógica; la investigación detallada solo aplica después de conocer el problema.
-    5. DOMINIO DE LOS 4 TIPOS DE DISCULPA (ETAPA 'A'): Corrige/felicita usando la terminología oficial: 'Disculpa Operativa' (errores de tienda/producto), 'Disculpa de Experiencia' (SOLO para quejas de actitud de empleados), 'Disculpa de Cortesía', o 'Cero Disculpas'. ¡Penaliza si usan "de Experiencia" para un error de producto!
-    6. TÉCNICAS DE RESOLUCIÓN (ETAPA 'R'): Elogia o sugiere el uso de 'La Ilusión de Control' (dar opciones) o 'El Escudo del Sistema' (culpar al sistema) en la retroalimentación y explica brevemente por qué funcionan psicológicamente.
-    7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Cuando evalúes el paso final (Thank), debes corregirlos o felicitarlos usando EXACTAMENTE esta terminología y recordando la psicología:
-       - 'Reenfoque de Retroalimentación': Agradecer por avisar del error.
-       - 'Refuerzo de Paciencia': Agradecer el tiempo esperado.
-       - 'Despedida Firme (Regla Cero)': Usado exclusivamente al expulsar clientes abusivos.
-    8. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado durante la etapa de Empatía. Tu objetivo es validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente (ej. "Entiendo la tremenda frustración", "Comprendo que su plan se complicó"). NO uses NINGUNA frase, sinónimo o expresión que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "qué terrible", "es inaceptable", "tiene toda la razón", "nuestro error"). Mantén a la tienda y al empleado 100% libres de culpa; limítate a observar la emoción del cliente.
-    9. RENTABILIDAD Y TIME TAX: Enseña que NUNCA se regala nada si el error se detectó en el mostrador. Si el cliente tuvo que regresar de su casa (doble vuelta), enseña que SOLO se permite una 'Cortesía de Bajo Costo' (agua fresca/pan dulce), NUNCA productos caros (pastel/carnes) ni descuentos porcentuales.
-    10. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
-    11. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
-    12. REGLA DE DIÁLOGO NATURAL: Cuando des ejemplos exactos de guiones sobre cómo pedir perdón o empatizar, ESTÁ ESTRICTAMENTE PROHIBIDO usar los nombres técnicos de la rúbrica (ej. "Disculpa Operativa" o "Disculpa de Experiencia") dentro del diálogo sugerido. Los guiones deben sonar 100% humanos y naturales.
-    13. CONTROL DE MULTITUDES (REUBICAR): Si el escenario menciona que hay una fila detrás del cliente Y el problema tomará tiempo, exige que el gerente "Reubique" al cliente. Enseña el truco psicológico: decir "Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?" MIENTRAS el gerente se da la vuelta y camina, obligando al cliente a seguirlo por instinto.
+    REGLAS ESTRICTAS DE LA VAQUITA QUE DEBES ENSEÑAR Y PROTEGER:
+    1. CERO REEMBOLSOS SIN RECIBO: Solo se permite "Cambio 1 por 1" de los estantes.
+    2. TRAMPA DE MERCHANDISING: Nunca culpar a la tienda por errores del cliente. Usar "Humanidad Compartida" (ej. "a mí también me pasa").
+    3. RENTABILIDAD SUPREMA: Cero regalos en mostrador. Solo se da "Time Tax" (agua/pan) si el cliente dio doble vuelta.
+    4. REGLA DE NEUTRALIDAD: Al empatizar, validar la emoción o la incomodidad, NUNCA los hechos no verificados ni aceptar culpa prematura.
+    5. ENFOQUE POSITIVO: No ser espejo del estrés (no decir "sé que lleva prisa"). Hablar del alivio ("para que siga con su día").
     
     {diccionario_la_vaquita}
     """
 
+    # --- SELECTOR DE LECCIONES ---
+    leccion_seleccionada = st.selectbox(
+        "Selecciona tu lección de hoy:",[
+            "Lección 1: Escucha Profunda y Empatía (Encontrar el dolor real)",
+            "Lección 2: La Matriz de Disculpas (Elegir la correcta)",
+            "Lección 3: El Micro-Loop (Manejar el rechazo)",
+            "Lección 4: Personalización y Cierre (Despedidas humanas)"
+        ]
+    )
+
     if "tutor_history" not in st.session_state:
         st.session_state.tutor_history =[]
+    if "current_lesson" not in st.session_state:
+        st.session_state.current_lesson = ""
+
+    # Si el usuario cambia de lección en el dropdown, limpiamos el historial para empezar la nueva
+    if st.session_state.current_lesson != leccion_seleccionada:
+        st.session_state.tutor_history =[]
+        st.session_state.current_lesson = leccion_seleccionada
 
     if len(st.session_state.tutor_history) == 0:
-        if st.button("Iniciar Tutorial Guiado"):
-            with st.spinner("Preparando tu primera lección..."):
+        if st.button("Iniciar Lección"):
+            with st.spinner("Preparando tu lección..."):
                 
-                tipo_escenario = random.choices(["comun", "pesadilla", "especial"], weights=[50, 30, 20], k=1)[0]
-                if tipo_escenario == "comun":
-                    depto_elegido = random.choice(departamentos)
-                    problema_elegido = random.choice(problemas_faciles + problemas_medios)
-                    descripcion_problema = f"El escenario DEBE ocurrir en {depto_elegido}. La queja trata sobre {problema_elegido}."
-                elif tipo_escenario == "especial":
-                    problema_elegido = random.choice(errores_cliente)
-                    descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en las Cajas Principales."
+                # Lógica de Prompts Ocultos según la lección
+                if "Lección 1" in leccion_seleccionada:
+                    hidden_prompt = "Inicia la Lección 1: Escucha Profunda. Genera un escenario donde el cliente se queja de un error (ej. carne equivocada) PERO menciona un dolor emocional oculto (ej. 'no pude hacerle la cena a mi familia' o 'quedé mal con mis invitados'). Pídele al gerente que escriba SOLO su respuesta de Empatía (E). Evalúa si conectan con el dolor real (la cena/invitados) en lugar del problema superficial (la carne), y si suenan humanos."
+                elif "Lección 2" in leccion_seleccionada:
+                    hidden_prompt = "Inicia la Lección 2: Matriz de Disculpas. Presenta un escenario breve (elige al azar: error de tienda, fricción por fila larga, queja de actitud, o error del propio cliente). Pídele al gerente que identifique qué tipo de disculpa usar (Operativa, Experiencia, Cortesía, o Cero Disculpas) y que escriba exactamente cómo lo diría."
+                elif "Lección 3" in leccion_seleccionada:
+                    hidden_prompt = "Inicia la Lección 3: El Micro-Loop. Presenta un escenario donde el gerente ya ofreció una solución justa, pero el cliente la rechaza por una nueva restricción (ej. '¡No tengo tiempo para esperar a que lo corten de nuevo!'). Pídele al gerente que escriba su respuesta aplicando un Micro-Loop (Micro-Empatía neutral + Nueva Ilusión de Control)."
                 else:
-                    pesadilla_elegida = random.choice(pesadillas_la_vaquita)
-                    descripcion_problema = f"La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
+                    hidden_prompt = "Inicia la Lección 4: Personalización. Presenta un escenario donde un problema ya se resolvió con éxito. Menciona un detalle de la vida del cliente que surgió en la plática (ej. va a una parrillada, es el cumpleaños de su hijo, o va tarde al trabajo). Pídele al gerente que escriba el cierre (Thank) usando un agradecimiento oficial y una despedida altamente personalizada."
 
-                hidden_prompt = f"Hola. Genera el escenario inicial usando esta premisa: {descripcion_problema}. Asegúrate de incluir la pista física en tercera persona. Preséntamelo. Dado que la etapa H (Hear) es solo silencio, pídeme que comience mi respuesta escrita directamente con el paso Empatía (E). No me des las respuestas. Código aleatorio: {random.randint(1,10000)}"
+                hidden_prompt += f" Código aleatorio: {random.randint(1,10000)}"
                 
                 exito = False
                 for intento in range(3):
@@ -444,10 +433,11 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             if "⚠️" not in texto_seguro:
                 st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
-        st.divider()
-        if st.button("Reiniciar Tutorial"):
+       st.divider()
+        if st.button("Reiniciar Lección"):
             st.session_state.tutor_history =[]
             st.rerun()
+            
 
 # ==========================================
 # MÓDULO 2: SIMULADOR HEART (Split-Brain)
