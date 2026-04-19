@@ -45,7 +45,7 @@ except Exception as e:
     st.stop()
     
 # Reducimos los filtros de seguridad para permitir simulaciones de clientes enojados
-seguridad_baja = [
+seguridad_baja =[
     types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_ONLY_HIGH"),
     types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_ONLY_HIGH"),
     types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
@@ -54,14 +54,14 @@ seguridad_baja = [
 # --- BÓVEDA DE ESCENARIOS SEPARADA POR DIFICULTAD ---
 
 # FÁCIL: Errores indiscutibles de la tienda EN EL MOSTRADOR.
-problemas_faciles = [
+problemas_faciles =[
     "un cliente en la carnicería que pidió 2 libras de fajita, pero el carnicero se equivocó y le empaquetó bistec regular. El cliente sigue frente a la vitrina, apenas revisó el paquete y está molesto por el descuido. REGLA ESTRICTA: El cliente NO ha pagado ni ha salido de la tienda.",
     "un cliente en la taquería que está comiendo en las mesas de la tienda y se levanta molesto al mostrador porque sus tacos se los acaban de entregar fríos por un descuido de la cocina. REGLA ESTRICTA: El cliente NO ha salido de la tienda, está consumiendo en el lugar.",
     "un cliente en la panadería que acaba de recibir su café en el mostrador, da un sorbo ahí mismo, y nota que la máquina estaba mal calibrada (le sirvieron agua manchada). Exige que se lo cambien. REGLA ESTRICTA: El cliente sigue frente al mostrador y acaba de recibir el producto."
 ]
 
 # MEDIO: Requiere investigación, recibos, o manejar fricciones de tienda (filas/agotados).
-problemas_medios = [
+problemas_medios =[
     "un cliente que se queja porque la fila para pagar en la caja principal está muy larga y lleva esperando 15 minutos",
     "un cliente que está molesto porque llegó a buscar su corte de carne o pan dulce favorito y ya se agotó por el día",
     "un cliente frustrado que intenta devolver un producto básico (como pan o fruta) argumentando que salió de mala calidad o echado a perder",
@@ -79,14 +79,14 @@ problemas_medios = [
 ]
 
 # CASOS ESPECIALES: Trampa de la Disculpa
-errores_cliente = [
+errores_cliente =[
     "un cliente que por error agarró el producto equivocado (ej. papas picantes en lugar de regulares) y quiere cambiarlo, sintiéndose un poco a la defensiva o avergonzado por su propio error",
     "un cliente que accidentalmente tiró y rompió un frasco de vidrio que ya había pagado antes de salir de la tienda, y pregunta un poco apenado si le pueden dar otro gratis",
     "un cliente que exige un descuento porque leyó mal un letrero de oferta que estaba claramente marcado para otro producto diferente, sintiéndose frustrado"
 ]
 
 # EXTREMO/DIFÍCIL: Alta tensión, Regla Cero.
-pesadillas_la_vaquita = [
+pesadillas_la_vaquita =[
     "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
     "un cliente que recoge un pastel de cumpleaños personalizado en la panadería y exige un reembolso completo más el pastel gratis porque el nombre está mal escrito, a pesar de que el gerente tiene la hoja de pedido donde el cliente mismo escribió mal el nombre",
     "un cliente furioso que, después de recibir su pedido en el mostrador de la carnicería, hace un escándalo al enterarse de que no hay caja registradora ahí y se niega a hacer una segunda fila en las cajas principales para pagar",
@@ -99,7 +99,7 @@ pesadillas_la_vaquita = [
     "un cliente que llega con $50 dólares en cortes caros de carne, no tiene ningún recibo de compra, y exige agresivamente un reembolso en efectivo, amenazando con hacer un escándalo monumental si el gerente se niega a darle el dinero."
 ]
 
-departamentos = ["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
+departamentos =["la Carnicería", "la Taquería", "la Panadería", "la Paletería", "las Cajas Principales", "el Pasillo de Abarrotes", "el área de Frutas y Verduras"]
 
 diccionario_la_vaquita = """
 ¡ALERTA DE DICCIONARIO CORPORATIVO PROPIO!
@@ -134,8 +134,7 @@ st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Empt
 st.sidebar.title("Menú Principal")
 
 menu_selection = st.sidebar.radio(
-    "Selecciona un módulo:",
-    ["Inicio", "Aprender HEART", "Simulador HEART", "Preguntas al Asesor"]
+    "Selecciona un módulo:",["Inicio", "Aprender HEART", "Simulador HEART", "Preguntas al Asesor"]
 )
 
 # ==========================================
@@ -233,7 +232,7 @@ elif menu_selection == "Aprender HEART":
 
     with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
         st.markdown("""
-        Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema. No recites guiones como robot; entiende la **psicología** de estas 3 técnicas clave:
+        Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema. No recites guiones como robot; entiende la **psicología** de estas 4 técnicas clave:
         
         **1. El Giro de Investigación (The Investigative Pivot)**
         * **Qué es:** Cómo hacer preguntas de investigación sin sonar como un interrogador.
@@ -249,11 +248,11 @@ elif menu_selection == "Aprender HEART":
         * **Qué es:** Cómo negar un reembolso o petición irracional sin crear conflicto personal.
         * **Cómo hacerlo:** *"Revisé minuciosamente en el sistema, y al no aparecer la transacción, el sistema no me permite autorizar el reembolso en efectivo."*
         * **🧠 Por qué funciona:** Despersonaliza el rechazo. En lugar de ser "tú contra el cliente", se convierte en "tú y el cliente contra la computadora". Evita que te vean como el villano.
-
+        
         **4. Reubicar (Control de Multitudes y Escenas)**
-        * **Qué es:** Mover físicamente al cliente a un área más tranquila (ej. Servicio al Cliente o a un costado del mostrador) si hay fila o si está alterado.
-        * **Cómo hacerlo:** *"Para no hacerle esperar aquí en la fila y poder revisarlo con calma, acompáñeme de este lado por favor."*
-        * **🧠 Por qué funciona:** Un cliente agresivo a menudo hace una "actuación" para las personas que lo observan. Al moverlo, le quitas su "público" y su poder, reduces la tensión y permites que la tienda siga operando y cobrando a las demás familias.
+        * **Cuándo usarlo:** SOLO es necesario si hay personas esperando en la fila detrás del cliente **Y** el problema tomará tiempo en resolverse (ej. un problema con la tarjeta, o un error que no se arregla en 10 segundos).
+        * **Cómo hacerlo:** *"Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?"*
+        * **🧠 El Truco Psicológico (Liderazgo Físico):** Di esta frase *mientras* te das la vuelta y comienzas a caminar hacia la otra caja. ¡No te quedes parado esperando su permiso! El cerebro humano está programado socialmente para seguir a alguien que toma el liderazgo físico. Esto los obliga instintivamente a moverse contigo, liberando la caja principal para que la tienda siga cobrando, y quitándole al cliente su "público".
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
@@ -354,13 +353,13 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     10. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
     11. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
     12. REGLA DE DIÁLOGO NATURAL: Cuando des ejemplos exactos de guiones sobre cómo pedir perdón o empatizar, ESTÁ ESTRICTAMENTE PROHIBIDO usar los nombres técnicos de la rúbrica (ej. "Disculpa Operativa" o "Disculpa de Experiencia") dentro del diálogo sugerido. Los guiones deben sonar 100% humanos y naturales.
-    13. CONTROL DE MULTITUDES (REUBICAR): Si el escenario menciona que hay una fila o el cliente está haciendo una escena, exige que el gerente "Reubique" al cliente (ej. moverlo a Servicio al Cliente o a un lado). Explica que esto quita el "público" al cliente y mantiene la tienda operando.
-   
+    13. CONTROL DE MULTITUDES (REUBICAR): Si el escenario menciona que hay una fila detrás del cliente Y el problema tomará tiempo, exige que el gerente "Reubique" al cliente. Enseña el truco psicológico: decir "Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?" MIENTRAS el gerente se da la vuelta y camina, obligando al cliente a seguirlo por instinto.
+    
     {diccionario_la_vaquita}
     """
 
     if "tutor_history" not in st.session_state:
-        st.session_state.tutor_history = []
+        st.session_state.tutor_history =[]
 
     if len(st.session_state.tutor_history) == 0:
         if st.button("Iniciar Tutorial Guiado"):
@@ -401,7 +400,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
             st.rerun()
     else:
-        formatted_tutor_history = []
+        formatted_tutor_history =[]
         for msg in st.session_state.tutor_history:
             formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
 
@@ -447,7 +446,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         
         st.divider()
         if st.button("Reiniciar Tutorial"):
-            st.session_state.tutor_history = []
+            st.session_state.tutor_history =[]
             st.rerun()
 
 # ==========================================
@@ -463,7 +462,7 @@ elif menu_selection == "Simulador HEART":
     REGLAS DE FORMATO Y UBICACIÓN FÍSICA (MUY IMPORTANTE):
     1. Para tu PRIMER mensaje, debes separar el contexto objetivo de lo que dices en voz alta. DEBE HABER UN SALTO DE LÍNEA entre los dos. Usa este formato exacto:
     
-    **Escenario:** [Describe tu lenguaje corporal estrictamente en TERCERA PERSONA como un narrador objetivo. DEBES mencionar explícitamente el entorno].
+    **Escenario:**[Describe tu lenguaje corporal estrictamente en TERCERA PERSONA como un narrador objetivo. DEBES mencionar explícitamente el entorno].
 
     **Cliente:** "[Escribe tu queja inicial en voz alta, en primera persona]".
     
@@ -549,7 +548,8 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
     10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
     11. EL ENFOQUE POSITIVO (ALIVIO VS ESTRÉS): Si el gerente refleja la ansiedad del cliente repitiendo el problema (ej. "veo que tiene prisa", "sé que es molesto dar doble vuelta"), penaliza levemente. Elogia o sugiere el uso del "Enfoque Positivo", que centra la frase en el alivio y la meta del cliente (ej. "para que pueda seguir con su día" o "para que su evento sea un éxito").
-    12. CONTROL DE MULTITUDES (REUBICAR): Si el escenario implicaba una fila o un cliente alterado en público, evalúa si el gerente intentó mover al cliente a un área más tranquila. Penaliza si el gerente se quedó discutiendo en la caja principal bloqueando la fila, y explica la psicología de "quitarle el público" al cliente.
+    12. CONTROL DE MULTITUDES (REUBICAR): Si el escenario implicaba una fila detenida y un problema tardado, evalúa si el gerente intentó mover al cliente. Elogia si usan el truco psicológico de invitar al cliente a otra caja MIENTRAS se dan la vuelta y caminan para obligarlo a seguirlos. Penaliza si bloquean la fila principal innecesariamente.
+
     AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
     
@@ -557,7 +557,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     """
 
     if "simulador_history" not in st.session_state:
-        st.session_state.simulador_history = []
+        st.session_state.simulador_history =[]
     if "scenario_concluido" not in st.session_state:
         st.session_state.scenario_concluido = False
     if "coach_feedback" not in st.session_state:
@@ -566,8 +566,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     if len(st.session_state.simulador_history) == 0 and not st.session_state.scenario_concluido:
         st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
         difficulty = st.selectbox(
-            "Selecciona la complejidad del problema:",
-            ["Fácil", "Medio", "Difícil", "Extremo (Abusivo)", "Casos Especiales (Errores del Cliente)"]
+            "Selecciona la complejidad del problema:",["Fácil", "Medio", "Difícil", "Extremo (Abusivo)", "Casos Especiales (Errores del Cliente)"]
         )
         
         if st.button("Comenzar Escenario"):
@@ -612,7 +611,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                     st.error("⚠️ *Ups, el servidor de Google está un poco saturado en este momento. Por favor, espera 10 segundos y vuelve a presionar el botón.*")
 
     elif not st.session_state.scenario_concluido:
-        formatted_history = []
+        formatted_history =[]
         for msg in st.session_state.simulador_history:
             formatted_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
 
@@ -711,13 +710,13 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             col1, col2 = st.columns(2)
             with col1:
                 if st.button("🔄 Intentar Otro Escenario"):
-                    st.session_state.simulador_history = []
+                    st.session_state.simulador_history =[]
                     st.session_state.scenario_concluido = False
                     st.session_state.coach_feedback = ""
                     st.rerun()
             with col2:
                 if st.button("🏠 Limpiar y Terminar"):
-                    st.session_state.simulador_history = []
+                    st.session_state.simulador_history =[]
                     st.session_state.scenario_concluido = False
                     st.session_state.coach_feedback = ""
                     st.rerun()
@@ -771,12 +770,13 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción neutralmente y pivotar hacia NUEVAS opciones de resolución.
     12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
     13. REGLA DE DIÁLOGO NATURAL: Nunca uses nombres técnicos como "Disculpa Operativa" o "Disculpa de Experiencia" DENTRO de los guiones hablados que le sugieras al gerente. Úsalos solo para la explicación teórica, pero los ejemplos hablados deben ser naturales.
-    14. CONTROL DE MULTITUDES Y ESCENAS: Si el gerente pregunta sobre clientes alterados o filas detenidas, aconséjale SIEMPRE "Reubicar" al cliente (moverlo a un costado o a Servicio al Cliente). Explica que esto elimina el "público" del cliente, reduce su agresividad y permite que la tienda siga operando.
+    14. CONTROL DE MULTITUDES Y ESCENAS: Si el gerente pregunta sobre filas detenidas por un problema tardado, aconséjale "Reubicar" al cliente. Explica el truco psicológico: decir "Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?" MIENTRAS se da la vuelta y camina. Esto obliga al cliente a seguirlo por instinto, liberando la fila y quitándole su "público".
+    
     {diccionario_la_vaquita}
     """
 
     if "asesor_history" not in st.session_state:
-        st.session_state.asesor_history = []
+        st.session_state.asesor_history =[]
 
     for msg in st.session_state.asesor_history:
         ui_role = "assistant" if msg["role"] == "model" else "user"
@@ -822,5 +822,4 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     if len(st.session_state.asesor_history) > 0:
         st.divider()
         if st.button("Limpiar Conversación"):
-            st.session_state.asesor_history = []
-            st.rerun()
+            st.session_state.asesor_history =
