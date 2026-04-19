@@ -85,6 +85,12 @@ errores_cliente = [
     "un cliente que exige un descuento porque leyó mal un letrero de oferta que estaba claramente marcado para otro producto diferente, sintiéndose frustrado"
 ]
 
+pesadilla_taqueria = [
+    "Eres un cliente en la taquería. La fila es larguísima y acabas de ver que el sistema de cobro (POS) de las cajeras se apagó por completo. Tu comida ya está servida en la barra y se está enfriando. Estás muy frustrado y le dices al gerente: '¡Llevo 20 minutos esperando, mi comida se está haciendo hielo! O me la dan gratis por las molestias o me voy sin pagar, ¡no voy a seguir esperando a que arreglen su maquinita!'"
+]
+if difficulty == "Pesadilla (Nightmare)":
+            escenario = random.choice(pesadilla_taqueria)
+
 # EXTREMO/DIFÍCIL: Alta tensión, Regla Cero.
 pesadillas_la_vaquita = [
     "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
