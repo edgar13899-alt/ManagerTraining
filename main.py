@@ -433,10 +433,10 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
             if "⚠️" not in texto_seguro:
                 st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
-    st.divider()
-            if st.button("Reiniciar Lección"):
-                st.session_state.tutor_history =[]
-                st.rerun()
+                st.divider()
+                    if st.button("Reiniciar Lección"):
+                        st.session_state.tutor_history =[]
+                        st.rerun()
         
 
 # ==========================================
