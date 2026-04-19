@@ -573,7 +573,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             ["Fácil", "Medio", "Difícil", "Pesadilla (Nightmare)"]
         )
         
-        if st.button("Comenzar Escenario"):
+    if st.button("Comenzar Escenario"):
             
             if difficulty == "Fácil":
                 depto_elegido = random.choice(departamentos)
