@@ -87,8 +87,6 @@ errores_cliente = [
 
 # EXTREMO/DIFÍCIL: Alta tensión, Regla Cero.
 pesadillas_la_vaquita = [
-    "Eres un cliente en la taquería. La fila es larguísima y acabas de ver que el sistema de cobro (POS) se apagó por completo. Tu comida se enfría. Le dices al gerente: '¡Llevo 20 minutos, mi comida se hace hielo! O me la dan gratis o me voy sin pagar, ¡no esperaré a su maquinita!'",
-    "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló...",
     "un pago que aparece como 'pendiente' en la app del banco del cliente porque la terminal falló, y el cliente se niega rotundamente a volver a pasar la tarjeta por miedo a que se le cobre doble",
     "un cliente que recoge un pastel de cumpleaños personalizado en la panadería y exige un reembolso completo más el pastel gratis porque el nombre está mal escrito, a pesar de que el gerente tiene la hoja de pedido donde el cliente mismo escribió mal el nombre",
     "un cliente furioso que, después de recibir su pedido en el mostrador de la carnicería, hace un escándalo al enterarse de que no hay caja registradora ahí y se niega a hacer una segunda fila en las cajas principales para pagar",
@@ -549,13 +547,6 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
     
-    *** REGLAS ESTRICTAS DE EVALUACIÓN SEGÚN LA DIFICULTAD ***
-    Si el empleado te pregunta por un nivel de dificultad específico, usa estas reglas:
-    1. DIFICULTAD FÁCIL: Evalúa que el empleado siga los 5 pasos de HEART. NO exijas, ni penalices la falta de "Ego Save" o "Micro-Loop".
-    2. DIFICULTAD MEDIO: Exige los 5 pasos de HEART, pero ADEMÁS es OBLIGATORIO usar "Micro-Loop" o "Ego Save". Penaliza si no los usan.
-    3. DIFICULTAD DIFÍCIL: Exige lo anterior, pero evalúa FIRMEZA. Aplica la "Política de Devoluciones Sin Recibo".
-    4. DIFICULTAD PESADILLA: Caos total. Si el escenario es la caída del POS de la taquería, fállalos críticamente si regalan la comida o dicen "coman y cobramos después". La ÚNICA solución aceptable es usar calculadoras y cobrar en efectivo o usar el escáner porque el internet sigue activo.
-    
     {diccionario_la_vaquita}
     """
 
@@ -567,13 +558,13 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.session_state.coach_feedback = ""
 
     if len(st.session_state.simulador_history) == 0 and not st.session_state.scenario_concluido:
-       st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
-       difficulty = st.selectbox(
+        st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
+        difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
-            ["Fácil", "Medio", "Difícil", "Pesadilla (Nightmare)"]
+            ["Fácil", "Medio", "Difícil", "Extremo (Abusivo)", "Casos Especiales (Errores del Cliente)"]
         )
         
-    if st.button("Comenzar Escenario"):
+        if st.button("Comenzar Escenario"):
             
             if difficulty == "Fácil":
                 depto_elegido = random.choice(departamentos)
@@ -583,14 +574,15 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                 depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_medios)
                 descripcion_problema = f"El escenario DEBE ocurrir specifically en {depto_elegido}. La queja principal DEBE tratar sobre {problema_elegido}."
-            elif difficulty == "Difícil":
+            elif difficulty == "Casos Especiales (Errores del Cliente)":
                 problema_elegido = random.choice(errores_cliente)
-                descripcion_problema = f"ESTE ES UN CASO DE ALTA TENSIÓN O ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en las Cajas Principales."
-            elif difficulty == "Pesadilla (Nightmare)":
+                descripcion_problema = f"ESTE ES UN CASO ESPECIAL DE ERROR DEL CLIENTE. La situación es: {problema_elegido}. FÍSICAMENTE: El cliente se acerca a ti en las Cajas Principales."
+            else:
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                 descripcion_problema = f"Este es un ESCENARIO DE PESADILLA ESPECÍFICO DE LA BOVEDA. La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
             hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} REGLA FÍSICA: Si el cliente ya pagó y regresa a la tienda con un reclamo post-compra, el escenario DEBE ocurrir en Cajas Principales o Servicio al Cliente. RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
+            
             with st.spinner("El cliente se está acercando..."):
                 exito = False
                 for intento in range(3):
