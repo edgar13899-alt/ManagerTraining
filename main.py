@@ -44,11 +44,12 @@ except Exception as e:
     st.error(f"Error de conexión a Vertex AI: {e}. Revisa los Secrets de Streamlit.")
     st.stop()
     
-# Reducimos los filtros de seguridad para permitir simulaciones de clientes enojados
+# Reducimos los filtros de seguridad para permitir simulaciones de clientes enojados y roleplay
 seguridad_baja =[
     types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_ONLY_HIGH"),
     types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_ONLY_HIGH"),
     types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
+    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_ONLY_HIGH"),
 ]
 
 # --- BÓVEDA DE ESCENARIOS SEPARADA POR DIFICULTAD ---
@@ -230,7 +231,7 @@ elif menu_selection == "Aprender HEART":
         * **Cuándo usarla:** El cliente causó el problema (ej. leyó mal un letrero). Si dices "Lo siento", accidentalmente asumes la culpa por su error y pierdes autoridad. Apóyate únicamente en la "Empatía Neutral para Salvar el Ego" del paso anterior.
         """)
 
-    with st.expander("🛠️ R - Resolve (Resolver)", expanded=False):
+    with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
         st.markdown("""
         Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema. No recites guiones como robot; entiende la **psicología** de estas 4 técnicas clave:
         
@@ -252,7 +253,7 @@ elif menu_selection == "Aprender HEART":
         **4. Reubicar (Control de Multitudes y Escenas)**
         * **Cuándo usarlo:** SOLO es necesario si hay personas esperando en la fila detrás del cliente **Y** el problema tomará tiempo en resolverse (ej. un problema con la tarjeta, o un error que no se arregla en 10 segundos).
         * **Cómo hacerlo:** *"Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?"*
-        * **🧠 El Truco Psicológico (Liderazgo Físico):** Un cliente agresivo a menudo hace una "actuación" para las personas que lo observan. Al moverlo, le quitas su "público" y su poder, reduces la tensión y permites que la tienda siga operando y cobrando a las demás familias. Di esta frase *mientras* te das la vuelta y comienzas a caminar hacia la otra caja. ¡No te quedes parado esperando su permiso! El cerebro humano está programado socialmente para seguir a alguien que toma el liderazgo físico.".
+        * **🧠 El Truco Psicológico (Liderazgo Físico):** Di esta frase *mientras* te das la vuelta y comienzas a caminar hacia la otra caja. ¡No te quedes parado esperando su permiso! El cerebro humano está programado socialmente para seguir a alguien que toma el liderazgo físico. Esto los obliga instintivamente a moverse contigo, liberando la caja principal para que la tienda siga cobrando, y quitándole al cliente su "público".
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
@@ -328,6 +329,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
     3. RENTABILIDAD SUPREMA: Cero regalos en mostrador. Solo se da "Time Tax" (agua/pan) si el cliente dio doble vuelta.
     4. REGLA DE NEUTRALIDAD: Al empatizar, validar la emoción o la incomodidad, NUNCA los hechos no verificados ni aceptar culpa prematura.
     5. ENFOQUE POSITIVO: No ser espejo del estrés (no decir "sé que lleva prisa"). Hablar del alivio ("para que siga con su día").
+    6. CONTROL DE MULTITUDES (REUBICAR): Enseña el truco psicológico: decir "Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?" MIENTRAS el gerente se da la vuelta y camina.
     
     {diccionario_la_vaquita}
     """
@@ -433,11 +435,10 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
             if "⚠️" not in texto_seguro:
                 st.session_state.tutor_history.append({"role": "model", "content": texto_seguro, "hidden": False})
         
-            st.divider()
-            if st.button("Reiniciar Lección"):
-                st.session_state.tutor_history = []
-                st.rerun()
-        
+        st.divider()
+        if st.button("Reiniciar Lección"):
+            st.session_state.tutor_history =[]
+            st.rerun()
 
 # ==========================================
 # MÓDULO 2: SIMULADOR HEART (Split-Brain)
@@ -461,8 +462,7 @@ elif menu_selection == "Simulador HEART":
     REGLA DEL GAME MASTER (ENTREGA VISUAL AUTOMÁTICA) - ¡NUEVA REGLA ESTRICTA!: 
     Si en tu diálogo le entregas físicamente un recibo, un producto defectuoso, o le muestras tu teléfono al gerente, DEBES anexar INMEDIATAMENTE al final de tu mensaje la confirmación visual de lo que el gerente está viendo. NO esperes a que el gerente escriba que lo va a leer.
     Ejemplo de tu mensaje:
-    "Aquí está mi recibo, revíselo."
-    [Sistema: El gerente mira el recibo y confirma que el cliente dice la verdad].
+    "Aquí está mi recibo, revíselo."[Sistema: El gerente mira el recibo y confirma que el cliente dice la verdad].
 
     REGLA DEL GAME MASTER (BÚSQUEDAS DEL GERENTE): 
     Si el gerente te dice que va a ir a revisar las cámaras, o a buscar en la computadora POS, DEBES salir brevemente de tu personaje EN ESE MISMO TURNO para darle el resultado con el formato: "[Sistema: Revisas las cámaras/sistema y...]". Luego, responde como cliente. ¡NUNCA congeles la conversación esperando a que ellos revisen!
@@ -476,12 +476,12 @@ elif menu_selection == "Simulador HEART":
     REGLA DE SENTIDO COMÚN (TIEMPO Y LÓGICA): 
     Si el gerente ofrece arreglar tu problema rápido o te da la solución justa, acéptalo con alivio. Si el gerente te ofrece una "Cortesía de bajo costo" (ej. agua fresca o pan), acéptalo y relaja tu actitud inmediatamente.
 
-    
     REGLAS DE COMPORTAMIENTO POR NIVEL (¡ESTRICTO!):
     - NIVEL 1 (Fácil): Eres un cliente molesto pero razonable. SI el gerente te ofrece una solución justa (cambiar el producto), ACEPTA INMEDIATAMENTE con alivio. NO rechaces la solución.
     - NIVEL 2 (Medio - Bola Curva Emocional): Estás frustrado por el tiempo perdido o a la defensiva por un error tuyo. Menciona un dolor emocional (ej. "arruinaron mi cena"). Si el gerente te ofrece una solución justa o usa "Humanidad Compartida", relájate y acepta tras un poco de resistencia.
     - NIVEL 3 (Difícil - Muro de Piedra): Eres pasivo-agresivo, manipulador y terco. Haces demandas de compensación completamente irrazonables (ej. exigir todo tu mandado gratis por una pequeña espera). Amenazas con dejar malas reseñas y usas la culpa. REGLA ESTRICTA: NUNCA uses malas palabras ni insultos directos; tu arma es la manipulación psicológica. Obliga al gerente a decirte que "no" varias veces (Bola Curva de Resistencia). Si el gerente se mantiene firme y profesional, ríndete con indignación.
     - NIVEL 4 (Extremo - Bola Curva de Hostilidad): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
+
     CÓMO TERMINAR LA SIMULACIÓN (¡REGLA ESTRICTA DE DESPEDIDA!):
     ¡NUNCA termines la simulación prematuramente! 
     Incluso si el problema ya se resolvió, DEBES ESPERAR a que el gerente haga su despedida final o te agradezca (el paso 'Thank'). 
@@ -527,13 +527,13 @@ Tu objetivo como Asesor no es solo verificar que el empleado siga los 5 pasos co
 
 Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos exactos de cómo sonar más cálido, observador y humano utilizando los ejemplos anteriores.
 
-ENFOQUE DE EVALUACIÓN POR NIVEL (SCAFFOLDING):
+    ENFOQUE DE EVALUACIÓN POR NIVEL (SCAFFOLDING):
     El gerente está aprendiendo por niveles. Siempre evalúa la Empatía básica, pero enfoca tu retroalimentación principal según el nivel que jugaron:
     - Si es NIVEL 1 (Fácil): Enfócate en la Disculpa Operativa y la Rentabilidad Suprema (cero regalos en mostrador).
     - Si es NIVEL 2 (Medio): Enfócate en la Escucha Profunda (¿notaron el dolor emocional del cliente?), la Disculpa de Cortesía, el Control de Multitudes (Reubicar), el Time Tax, y salvar el ego del cliente.
     - Si es NIVEL 3 (Difícil): Enfócate ESTRICTAMENTE en cómo el gerente manejó la manipulación. ¿Cedieron a demandas irrazonables? (Penaliza severamente si regalaron cosas por chantaje). ¿Usaron el "Escudo del Sistema" para decir que no? ¿Hicieron un Micro-Loop cuando el cliente los rechazó?
-    - Si es NIVEL 4 (Extremo): Enfócate en la Regla Cero (límites), la Despedida Firme y mantener la neutralidad emocional ante los insultos.   
-    
+    - Si es NIVEL 4 (Extremo): Enfócate en la Regla Cero (límites), la Despedida Firme y mantener la neutralidad emocional ante los insultos.
+
     CRITERIOS DE EVALUACIÓN ESTRICTOS:
     1. LA REGLA DEL SIMULADOR DE TEXTO Y SILENCIO (ETAPA 'HEAR'): La etapa H (Hear) es siempre escucha silenciosa. Empieza a evaluar directamente en "E - Empathize". ESTÁ PROHIBIDO penalizar por no hacer preguntas en Hear.
     2. ORDEN CRONOLÓGICO Y FLUIDEZ (LA REGLA DEL PÁRRAFO): En una conversación real, un gerente combinará E, A y R en un solo párrafo. ¡Eso es correcto! LO QUE DEBES EVALUAR ES EL ORDEN CRONOLÓGICO. La Empatía (E) y la Disculpa (A) deben ir ANTES de la solución (R) dentro de ese mismo mensaje. 
@@ -575,17 +575,14 @@ ENFOQUE DE EVALUACIÓN POR NIVEL (SCAFFOLDING):
         if st.button("Comenzar Escenario"):
             
             if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
-                depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_faciles)
-                descripcion_problema = f"NIVEL 1: El escenario DEBE ocurrir en {depto_elegido}. La queja trata sobre {problema_elegido}."
+                descripcion_problema = f"NIVEL 1: La queja trata sobre {problema_elegido}."
             elif difficulty == "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)":
-                depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_medios + errores_cliente)
-                descripcion_problema = f"NIVEL 2: El escenario DEBE ocurrir en {depto_elegido}. La situación es: {problema_elegido}. INYECTA UNA BOLA CURVA EMOCIONAL (ej. el cliente menciona que esto arruina un plan familiar o le hace perder mucho tiempo)."
+                descripcion_problema = f"NIVEL 2: La situación es: {problema_elegido}. INYECTA UNA BOLA CURVA EMOCIONAL (ej. el cliente menciona que esto arruina un plan familiar o le hace perder mucho tiempo)."
             elif difficulty == "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)":
-                depto_elegido = random.choice(departamentos)
                 problema_elegido = random.choice(problemas_medios)
-                descripcion_problema = f"NIVEL 3 (MANIPULADOR): El escenario ocurre en {depto_elegido}. El problema inicial es {problema_elegido}, PERO el cliente lo usará como excusa para exigir compensaciones absurdas. INYECTA UNA BOLA CURVA DE RESISTENCIA (rechaza la primera solución)."
+                descripcion_problema = f"NIVEL 3 (MANIPULADOR): El problema inicial es {problema_elegido}, PERO el cliente lo usará como excusa para exigir compensaciones absurdas. INYECTA UNA BOLA CURVA DE RESISTENCIA (rechaza la primera solución)."
             else:
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                 descripcion_problema = f"NIVEL 4 PESADILLA (ABUSIVO): La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
@@ -823,8 +820,8 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         if "⚠️" not in texto_asesor:
             st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
         
-        if len(st.session_state.asesor_history) > 0:
-            st.divider()
-            if st.button("Limpiar Conversación"):
-                st.session_state.asesor_history =[]
+    if len(st.session_state.asesor_history) > 0:
+        st.divider()
+        if st.button("Limpiar Conversación"):
+            st.session_state.asesor_history =[]
                 st.rerun()
