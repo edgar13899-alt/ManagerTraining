@@ -230,7 +230,7 @@ elif menu_selection == "Aprender HEART":
         * **Cuándo usarla:** El cliente causó el problema (ej. leyó mal un letrero). Si dices "Lo siento", accidentalmente asumes la culpa por su error y pierdes autoridad. Apóyate únicamente en la "Empatía Neutral para Salvar el Ego" del paso anterior.
         """)
 
-    with st.expander("🛠️ R - Resolve (Resolver y Reubicar)", expanded=False):
+    with st.expander("🛠️ R - Resolve (Resolver)", expanded=False):
         st.markdown("""
         Después de escuchar, empatizar y disculparse, es el momento de proteger a la tienda y solucionar el problema. No recites guiones como robot; entiende la **psicología** de estas 4 técnicas clave:
         
@@ -252,7 +252,7 @@ elif menu_selection == "Aprender HEART":
         **4. Reubicar (Control de Multitudes y Escenas)**
         * **Cuándo usarlo:** SOLO es necesario si hay personas esperando en la fila detrás del cliente **Y** el problema tomará tiempo en resolverse (ej. un problema con la tarjeta, o un error que no se arregla en 10 segundos).
         * **Cómo hacerlo:** *"Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?"*
-        * **🧠 El Truco Psicológico (Liderazgo Físico):** Di esta frase *mientras* te das la vuelta y comienzas a caminar hacia la otra caja. ¡No te quedes parado esperando su permiso! El cerebro humano está programado socialmente para seguir a alguien que toma el liderazgo físico. Esto los obliga instintivamente a moverse contigo, liberando la caja principal para que la tienda siga cobrando, y quitándole al cliente su "público".
+        * **🧠 El Truco Psicológico (Liderazgo Físico):** Un cliente agresivo a menudo hace una "actuación" para las personas que lo observan. Al moverlo, le quitas su "público" y su poder, reduces la tensión y permites que la tienda siga operando y cobrando a las demás familias. Di esta frase *mientras* te das la vuelta y comienzas a caminar hacia la otra caja. ¡No te quedes parado esperando su permiso! El cerebro humano está programado socialmente para seguir a alguien que toma el liderazgo físico.".
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
