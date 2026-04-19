@@ -580,7 +580,13 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
         difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
-            ["Fácil", "Medio", "Difícil", "Extremo (Abusivo)", "Casos Especiales (Errores del Cliente)"]
+            [
+                "Fácil", 
+                "Medio", 
+                "Difícil", 
+                "Pesadilla (Nightmare)", 
+                "Extremo (Abusivo)"
+            ]
         )
         
         if st.button("Comenzar Escenario"):
