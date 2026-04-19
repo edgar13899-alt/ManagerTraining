@@ -567,7 +567,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.session_state.coach_feedback = ""
 
     if len(st.session_state.simulador_history) == 0 and not st.session_state.scenario_concluido:
-        st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
+       st.info("Selecciona la dificultad de la situación para comenzar la simulación de rol.")
        difficulty = st.selectbox(
             "Selecciona la complejidad del problema:",
             ["Fácil", "Medio", "Difícil", "Pesadilla (Nightmare)"]
