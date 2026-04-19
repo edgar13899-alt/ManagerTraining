@@ -401,7 +401,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
 
         tutor_input = st.chat_input("Escribe tu respuesta para el paso actual...")
 
-       if tutor_input:
+        if tutor_input:
             with st.chat_message("user"):
                 st.markdown(tutor_input)
             
