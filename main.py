@@ -249,6 +249,11 @@ elif menu_selection == "Aprender HEART":
         * **Qué es:** Cómo negar un reembolso o petición irracional sin crear conflicto personal.
         * **Cómo hacerlo:** *"Revisé minuciosamente en el sistema, y al no aparecer la transacción, el sistema no me permite autorizar el reembolso en efectivo."*
         * **🧠 Por qué funciona:** Despersonaliza el rechazo. En lugar de ser "tú contra el cliente", se convierte en "tú y el cliente contra la computadora". Evita que te vean como el villano.
+
+        **4. Reubicar (Control de Multitudes y Escenas)**
+        * **Qué es:** Mover físicamente al cliente a un área más tranquila (ej. Servicio al Cliente o a un costado del mostrador) si hay fila o si está alterado.
+        * **Cómo hacerlo:** *"Para no hacerle esperar aquí en la fila y poder revisarlo con calma, acompáñeme de este lado por favor."*
+        * **🧠 Por qué funciona:** Un cliente agresivo a menudo hace una "actuación" para las personas que lo observan. Al moverlo, le quitas su "público" y su poder, reduces la tensión y permites que la tienda siga operando y cobrando a las demás familias.
         """)
 
     with st.expander("💖 T - Thank (Agradecer)", expanded=False):
@@ -349,7 +354,8 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     10. EL MICRO-LOOP: Si el cliente rechaza una solución o vuelve a expresar emoción, enseña al gerente a hacer un "Micro-Loop": Validar la nueva restricción neutralmente e inmediatamente pivotar ofreciendo NUEVAS opciones ('Ilusión de Control').
     11. EL ENFOQUE POSITIVO: Enseña al gerente a NO ser un espejo del estrés del cliente (ej. no decir "sé que está apurado" o "arruinamos su cena"). En su lugar, guíalos a usar un "Enfoque Positivo" centrado en la meta o el alivio (ej. "para que pueda seguir con su día" o "para que disfrute su evento").
     12. REGLA DE DIÁLOGO NATURAL: Cuando des ejemplos exactos de guiones sobre cómo pedir perdón o empatizar, ESTÁ ESTRICTAMENTE PROHIBIDO usar los nombres técnicos de la rúbrica (ej. "Disculpa Operativa" o "Disculpa de Experiencia") dentro del diálogo sugerido. Los guiones deben sonar 100% humanos y naturales.
-    
+    13. CONTROL DE MULTITUDES (REUBICAR): Si el escenario menciona que hay una fila o el cliente está haciendo una escena, exige que el gerente "Reubique" al cliente (ej. moverlo a Servicio al Cliente o a un lado). Explica que esto quita el "público" al cliente y mantiene la tienda operando.
+   
     {diccionario_la_vaquita}
     """
 
@@ -543,7 +549,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     9. LÍMITES: En escenarios Extremos con insultos, el gerente DEBE aplicar la Regla Cero.
     10. EL MICRO-LOOP (BUCLES DE RESISTENCIA): Si el cliente rechaza una solución y expresa nuevas frustraciones, exige al gerente usar un 'Micro-Loop': 1) Validar la nueva restricción neutralmente y 2) Pivotar hacia NUEVAS opciones ('Ilusión de Control'). Penaliza fuertemente si el gerente repite mecánicamente la misma solución rechazada.
     11. EL ENFOQUE POSITIVO (ALIVIO VS ESTRÉS): Si el gerente refleja la ansiedad del cliente repitiendo el problema (ej. "veo que tiene prisa", "sé que es molesto dar doble vuelta"), penaliza levemente. Elogia o sugiere el uso del "Enfoque Positivo", que centra la frase en el alivio y la meta del cliente (ej. "para que pueda seguir con su día" o "para que su evento sea un éxito").
-
+    12. CONTROL DE MULTITUDES (REUBICAR): Si el escenario implicaba una fila o un cliente alterado en público, evalúa si el gerente intentó mover al cliente a un área más tranquila. Penaliza si el gerente se quedó discutiendo en la caja principal bloqueando la fila, y explica la psicología de "quitarle el público" al cliente.
     AL FINAL DE TU EVALUACIÓN:
     Despídete con una frase motivadora y dile al usuario que use los botones en pantalla para continuar o salir. NO hagas preguntas abiertas, NO pidas que escriban nada, y NO uses corchetes para dibujar botones en tu texto.
     
@@ -765,7 +771,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción neutralmente y pivotar hacia NUEVAS opciones de resolución.
     12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
     13. REGLA DE DIÁLOGO NATURAL: Nunca uses nombres técnicos como "Disculpa Operativa" o "Disculpa de Experiencia" DENTRO de los guiones hablados que le sugieras al gerente. Úsalos solo para la explicación teórica, pero los ejemplos hablados deben ser naturales.
-    
+    14. CONTROL DE MULTITUDES Y ESCENAS: Si el gerente pregunta sobre clientes alterados o filas detenidas, aconséjale SIEMPRE "Reubicar" al cliente (moverlo a un costado o a Servicio al Cliente). Explica que esto elimina el "público" del cliente, reduce su agresividad y permite que la tienda siga operando.
     {diccionario_la_vaquita}
     """
 
