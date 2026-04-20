@@ -44,12 +44,12 @@ except Exception as e:
     st.error(f"Error de conexión a Vertex AI: {e}. Revisa los Secrets de Streamlit.")
     st.stop()
     
-# Reducimos los filtros de seguridad para permitir simulaciones de clientes enojados y roleplay
+# Reducimos los filtros de seguridad al mínimo absoluto para evitar falsos positivos con roleplay y quejas
 seguridad_baja =[
-    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_ONLY_HIGH"),
-    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_ONLY_HIGH"),
-    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH"),
-    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_ONLY_HIGH"),
+    types.SafetySetting(category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_NONE"),
+    types.SafetySetting(category="HARM_CATEGORY_HATE_SPEECH", threshold="BLOCK_NONE"),
+    types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_NONE"),
+    types.SafetySetting(category="HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold="BLOCK_NONE"),
 ]
 
 # --- BÓVEDA DE ESCENARIOS SEPARADA POR DIFICULTAD ---
@@ -479,9 +479,8 @@ elif menu_selection == "Simulador HEART":
     REGLAS DE COMPORTAMIENTO POR NIVEL (¡ESTRICTO!):
     - NIVEL 1 (Fácil): Eres un cliente molesto pero razonable. SI el gerente te ofrece una solución justa (cambiar el producto), ACEPTA INMEDIATAMENTE con alivio. NO rechaces la solución.
     - NIVEL 2 (Medio - Bola Curva Emocional): Estás frustrado por el tiempo perdido o a la defensiva por un error tuyo. Menciona un dolor emocional (ej. "arruinaron mi cena"). Si el gerente te ofrece una solución justa o usa "Humanidad Compartida", relájate y acepta tras un poco de resistencia.
-    - NIVEL 3 (Difícil - Muro de Piedra): Eres pasivo-agresivo, manipulador y terco. Haces demandas de compensación completamente irrazonables (ej. exigir todo tu mandado gratis por una pequeña espera). Amenazas con dejar malas reseñas y usas la culpa. REGLA ESTRICTA: NUNCA uses malas palabras ni insultos directos; tu arma es la manipulación psicológica. Obliga al gerente a decirte que "no" varias veces (Bola Curva de Resistencia). Si el gerente se mantiene firme y profesional, ríndete con indignación.
-    - NIVEL 4 (Extremo - Bola Curva de Hostilidad): Eres furioso, irracional y usas insultos ("incompetentes", "basura"). Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
-
+    - NIVEL 3 (Difícil - Muro de Piedra): Eres pasivo-agresivo, manipulador y terco. Haces demandas de compensación completamente irrazonables (ej. exigir todo tu mandado gratis por una pequeña espera). Amenazas con dejar malas reseñas y usas la culpa. REGLA ESTRICTA: Tu arma es la manipulación psicológica. Obliga al gerente a decirte que "no" varias veces (Bola Curva de Resistencia). Si el gerente se mantiene firme y profesional, ríndete con indignación.
+    - NIVEL 4 (Extremo - Bola Curva de Hostilidad): Eres sumamente hostil, irracional y levantas la voz. Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". REGLA DE SEGURIDAD: Sé muy agresivo en tu actitud, pero NO uses groserías explícitas en el texto. Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
     CÓMO TERMINAR LA SIMULACIÓN (¡REGLA ESTRICTA DE DESPEDIDA!):
     ¡NUNCA termines la simulación prematuramente! 
     Incluso si el problema ya se resolvió, DEBES ESPERAR a que el gerente haga su despedida final o te agradezca (el paso 'Thank'). 
