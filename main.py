@@ -667,8 +667,16 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                 st.rerun()
         with col2:
             if st.button("⏭️ Saltar a Otro Escenario"):
-                # This completely resets the simulator without triggering the Coach
+                # 1. Borra la conversación actual
                 st.session_state.simulador_history = []
+                
+                # 2. Borra el escenario actual guardado para forzar uno nuevo
+                # (Asegúrate de que este nombre coincida con tu variable de estado)
+                if "descripcion_problema" in st.session_state:
+                    del st.session_state.descripcion_problema
+                
+                # 3. Recarga la página. Como 'scenario_activo' sigue siendo True, 
+                # se quedará en esta pantalla pero generará un nuevo cliente.
                 st.rerun()
 
     elif st.session_state.scenario_concluido:
