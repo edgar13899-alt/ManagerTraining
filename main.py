@@ -620,7 +620,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         
         iniciar = st.button("Comenzar Escenario", key="btn_comenzar_principal")
             
-            if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
+              if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
                 problema_elegido = random.choice(problemas_faciles)
                 descripcion_problema = f"NIVEL 1: La queja trata sobre {problema_elegido}."
             elif difficulty == "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)":
