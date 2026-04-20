@@ -618,7 +618,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             # Recargar la página para entrar a la pantalla del chat
             st.rerun()
         
-        if st.button("Comenzar Escenario"):
+        iniciar = st.button("Comenzar Escenario", key="btn_comenzar_principal")
             
             if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
                 problema_elegido = random.choice(problemas_faciles)
