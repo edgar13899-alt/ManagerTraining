@@ -559,17 +559,64 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.session_state.scenario_concluido = False
     if "coach_feedback" not in st.session_state:
         st.session_state.coach_feedback = ""
+    if "current_difficulty" not in st.session_state:
+        st.session_state.current_difficulty = "Nivel 1: Fácil (Básicos y Rentabilidad)"
+    if "auto_start" not in st.session_state:
+        st.session_state.auto_start = False
 
     if len(st.session_state.simulador_history) == 0 and not st.session_state.scenario_concluido:
-        st.info("Selecciona tu nivel de entrenamiento. Te recomendamos ir en orden para dominar el método paso a paso.")
-        difficulty = st.selectbox(
-            "Selecciona tu nivel:",[
-                "Nivel 1", 
-                "Nivel 2", 
-                "Nivel 3", 
-                "Nivel 4"
-            ]
-        )
+        opciones_dificultad =[
+            "Nivel 1: Fácil (Básicos y Rentabilidad)", 
+            "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)", 
+            "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)", 
+            "Nivel 4: Extremo (Abuso y La Bóveda de Pesadillas)"
+        ]
+        
+        if not st.session_state.auto_start:
+            st.info("Selecciona tu nivel de entrenamiento. Te recomendamos ir en orden para dominar el método paso a paso.")
+            # Keeps the last used difficulty selected in the dropdown
+            idx = opciones_dificultad.index(st.session_state.current_difficulty) if st.session_state.current_difficulty in opciones_dificultad else 0
+            difficulty = st.selectbox("Selecciona tu nivel:", opciones_dificultad, index=idx)
+            
+            iniciar = st.button("Comenzar Escenario")
+            if iniciar:
+                st.session_state.current_difficulty = difficulty
+        else:
+            # If they pressed "Skip", we bypass the menu and auto-start with the saved difficulty
+            difficulty = st.session_state.current_difficulty
+            iniciar = True
+            st.session_state.auto_start = False # Turn off auto-start for the next time
+
+        if iniciar:
+            
+            if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
+                problema_elegido = random.choice(problemas_faciles)
+                descripcion_problema = f"NIVEL 1: La queja trata sobre {problema_elegido}."
+                
+            elif difficulty == "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)":
+                problema_elegido = random.choice(problemas_medios)
+                descripcion_problema = f"NIVEL 2: La queja trata sobre {problema_elegido}."
+                
+            elif difficulty == "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)":
+                problema_elegido = random.choice(problemas_dificiles)
+                descripcion_problema = f"NIVEL 3: La queja trata sobre {problema_elegido}."
+                
+            elif difficulty == "Nivel 4: Extremo (Abuso y La Bóveda de Pesadillas)":
+                # Asegúrate de que el nombre de esta lista coincida con tu código (ej. pesadillas_la_vaquita)
+                problema_elegido = random.choice(pesadillas_la_vaquita) 
+                descripcion_problema = f"NIVEL 4: La queja trata sobre {problema_elegido}."
+
+            # Guardar el escenario elegido en la memoria
+            st.session_state.descripcion_problema = descripcion_problema
+            
+            # Insertar el escenario oculto en el historial para que el modelo sepa cómo actuar
+            st.session_state.simulador_history.append({
+                "role": "user", 
+                "content": f"**INSTRUCCIÓN DEL SISTEMA:** Inicia el juego de roles ahora. Eres el cliente. {descripcion_problema} Genera tu primera queja para que el gerente responda. Solo habla como el cliente, no expliques nada."
+            })
+            
+            # Recargar la página para entrar a la pantalla del chat
+            st.rerun()
         
         if st.button("Comenzar Escenario"):
             
@@ -670,13 +717,18 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                 # 1. Borra la conversación actual
                 st.session_state.simulador_history = []
                 
-                # 2. Borra el escenario actual guardado para forzar uno nuevo
-                # (Asegúrate de que este nombre coincida con tu variable de estado)
+                # 2. Borra el escenario actual guardado
                 if "descripcion_problema" in st.session_state:
                     del st.session_state.descripcion_problema
                 
-                # 3. Recarga la página. Como 'scenario_activo' sigue siendo True, 
-                # se quedará en esta pantalla pero generará un nuevo cliente.
+                # 3. Fuerza a que Streamlit sepa que necesitamos generar un escenario nuevo
+                # usando la dificultad que ya tenemos guardada.
+                st.session_state.auto_start = True 
+                
+                # 4. Apaga temporalmente la bandera del simulador para que el código
+                # vuelva a pasar por la lógica de selección (pero auto_start lo saltará)
+                st.session_state.scenario_activo = False 
+                
                 st.rerun()
 
     elif st.session_state.scenario_concluido:
