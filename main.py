@@ -588,51 +588,6 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             st.session_state.auto_start = False # Turn off auto-start for the next time
 
         if iniciar:
-            
-            if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
-                problema_elegido = random.choice(problemas_faciles)
-                descripcion_problema = f"NIVEL 1: La queja trata sobre {problema_elegido}."
-                
-            elif difficulty == "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)":
-                problema_elegido = random.choice(problemas_medios)
-                descripcion_problema = f"NIVEL 2: La queja trata sobre {problema_elegido}."
-                
-            elif difficulty == "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)":
-                problema_elegido = random.choice(problemas_dificiles)
-                descripcion_problema = f"NIVEL 3: La queja trata sobre {problema_elegido}."
-                
-            elif difficulty == "Nivel 4: Extremo (Abuso y La Bóveda de Pesadillas)":
-                # Asegúrate de que el nombre de esta lista coincida con tu código (ej. pesadillas_la_vaquita)
-                problema_elegido = random.choice(pesadillas_la_vaquita) 
-                descripcion_problema = f"NIVEL 4: La queja trata sobre {problema_elegido}."
-
-            # Guardar el escenario elegido en la memoria
-            st.session_state.descripcion_problema = descripcion_problema
-            
-            # Insertar el escenario oculto en el historial para que el modelo sepa cómo actuar
-            st.session_state.simulador_history.append({
-                "role": "user", 
-                "content": f"**INSTRUCCIÓN DEL SISTEMA:** Inicia el juego de roles ahora. Eres el cliente. {descripcion_problema} Genera tu primera queja para que el gerente responda. Solo habla como el cliente, no expliques nada."
-            })
-            
-            # Recargar la página para entrar a la pantalla del chat
-            st.rerun()
-        
-        # 1. Creamos el botón (con su key única para evitar el error de Streamlit)
-            iniciar = st.button("Comenzar Escenario", key="btn_comenzar_principal")
-            
-            # Guardamos la dificultad elegida si hicieron clic
-            if iniciar:
-                st.session_state.current_difficulty = difficulty
-                
-        else:
-            # Si presionaron "Saltar a Otro Escenario", evitamos el menú e iniciamos automáticamente
-            difficulty = st.session_state.current_difficulty
-            iniciar = True
-            st.session_state.auto_start = False # Apagamos el auto-inicio para la próxima vez
-
-        # 2. AHORA SÍ, si el botón fue presionado (o si venimos de "Saltar Escenario")...
-        if iniciar:
             if difficulty == "Nivel 1: Fácil (Básicos y Rentabilidad)":
                 problema_elegido = random.choice(problemas_faciles)
                 descripcion_problema = f"NIVEL 1: La queja trata sobre {problema_elegido}."
@@ -649,17 +604,6 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                 pesadilla_elegida = random.choice(pesadillas_la_vaquita)
                 descripcion_problema = f"NIVEL 4 PESADILLA (ABUSIVO): La queja principal DEBE ser exactamente esta: {pesadilla_elegida}."
 
-            # Guardamos el problema para que el sistema lo recuerde
-            st.session_state.descripcion_problema = descripcion_problema
-            
-            # Insertamos el primer mensaje oculto en el historial
-            st.session_state.simulador_history.append({
-                "role": "user", 
-                "content": f"**INSTRUCCIÓN DEL SISTEMA:** Inicia el juego de roles ahora. Eres el cliente. {descripcion_problema} Genera tu primera queja para que el gerente responda. Solo habla como el cliente, no expliques nada."
-            })
-            
-            # Recargamos la página para entrar al chat
-            st.rerun()
             hidden_prompt = f"Inicia la simulación. Entra en personaje generando un problema de complejidad {difficulty}. {descripcion_problema} REGLA FÍSICA: Si el cliente ya pagó y regresa a la tienda con un reclamo post-compra, el escenario DEBE ocurrir en Cajas Principales o Servicio al Cliente. RECUERDA: La dificultad define la gravedad inicial y tu actitud. ASEGÚRATE de incluir la pista de lenguaje corporal en TERCERA PERSONA en la sección Escenario, mencionando explícitamente si hay otros clientes cerca o no, y DEJAR UN SALTO DE LÍNEA ANTES DEL CLIENTE."
             
             with st.spinner("El cliente se está acercando..."):
@@ -678,6 +622,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                         time.sleep(2)
                         
                 if exito:
+                    # Here we ensure the prompt is hidden, and the AI's response is visible
                     st.session_state.simulador_history.append({"role": "user", "content": hidden_prompt, "hidden": True})
                     st.session_state.simulador_history.append({"role": "model", "content": texto_seguro, "hidden": False})
                     st.rerun()
