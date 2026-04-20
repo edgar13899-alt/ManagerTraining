@@ -660,9 +660,17 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
                 st.rerun()
 
         st.divider()
-        if st.button("Terminar Interacción Manualmente"):
-            st.session_state.scenario_concluido = True
-            st.rerun()
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🛑 Terminar y Evaluar"):
+                st.session_state.scenario_concluido = True
+                st.rerun()
+        with col2:
+            if st.button("⏭️ Saltar a Otro Escenario"):
+                # This completely resets the simulator without triggering the Coach
+                st.session_state.simulador_history = []
+                st.session_state.scenario_activo = False
+                st.rerun()
 
     elif st.session_state.scenario_concluido:
         for message in st.session_state.simulador_history:
