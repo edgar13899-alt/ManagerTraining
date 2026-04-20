@@ -669,7 +669,6 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             if st.button("⏭️ Saltar a Otro Escenario"):
                 # This completely resets the simulator without triggering the Coach
                 st.session_state.simulador_history = []
-                st.session_state.scenario_activo = False
                 st.rerun()
 
     elif st.session_state.scenario_concluido:
