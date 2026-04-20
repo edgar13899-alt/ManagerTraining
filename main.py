@@ -564,10 +564,10 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         st.info("Selecciona tu nivel de entrenamiento. Te recomendamos ir en orden para dominar el método paso a paso.")
         difficulty = st.selectbox(
             "Selecciona tu nivel:",[
-                "Nivel 1: Fácil (Básicos y Rentabilidad)", 
-                "Nivel 2: Medio (Fricciones, Tiempo y Errores del Cliente)", 
-                "Nivel 3: Difícil (Manipulación, Chantaje y Muro de Piedra)", 
-                "Nivel 4: Extremo (Abuso y La Bóveda de Pesadillas)"
+                "Nivel 1", 
+                "Nivel 2", 
+                "Nivel 3", 
+                "Nivel 4"
             ]
         )
         
