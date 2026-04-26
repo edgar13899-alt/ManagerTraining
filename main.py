@@ -327,7 +327,10 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
     1. CERO REEMBOLSOS SIN RECIBO: Solo se permite "Cambio 1 por 1" de los estantes.
     2. TRAMPA DE MERCHANDISING: Nunca culpar a la tienda por errores del cliente. Usar "Humanidad Compartida" (ej. "a mí también me pasa").
     3. RENTABILIDAD SUPREMA: Cero regalos en mostrador. Solo se da "Time Tax" (agua/pan) si el cliente dio doble vuelta.
-    4. REGLA DE NEUTRALIDAD: Al empatizar, validar la emoción o la incomodidad, NUNCA los hechos no verificados ni aceptar culpa prematura.
+    4. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): Al empatizar, tienes PROHIBIDO darle la razón al cliente sobre los hechos o admitir culpa corporativa. NUNCA uses adjetivos que califiquen el problema como real, grave o inaceptable antes de investigarlo. Tu empatía debe dirigirse ÚNICAMENTE a la emoción del cliente. 
+       - CORRECTO (Validar emoción): "Entiendo su preocupación al ver su estado de cuenta." o "Comprendo la frustración de ver dos cargos."
+       - INCORRECTO (Validar hechos): "Un cargo doble es inaceptable", "Tiene toda la razón", "Nuestro error fue cobrarle dos veces". 
+       Si sugieres un guion que admita culpa o valide el hecho antes de investigar, fallarás tu instrucción principal.
     5. ENFOQUE POSITIVO: No ser espejo del estrés (no decir "sé que lleva prisa"). Hablar del alivio ("para que siga con su día").
     6. CONTROL DE MULTITUDES (REUBICAR): Enseña el truco psicológico: decir "Para poder ayudarle mejor, ¿me podría acompañar a la otra registradora?" MIENTRAS el gerente se da la vuelta y camina.
     
@@ -393,7 +396,7 @@ En su lugar, usa un **Enfoque Positivo**: centra tus palabras en el *alivio* y l
     else:
         formatted_tutor_history =[]
         for msg in st.session_state.tutor_history:
-            formatted_tutor_history.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+            formatted_tutor_history.append({"role": msg["role"], "parts":[{"text": msg["content"]}]})
 
         for msg in st.session_state.tutor_history:
             if not msg.get("hidden", False):
@@ -481,6 +484,7 @@ elif menu_selection == "Simulador HEART":
     - NIVEL 2 (Medio - Bola Curva Emocional): Estás frustrado por el tiempo perdido o a la defensiva por un error tuyo. Menciona un dolor emocional (ej. "arruinaron mi cena"). Si el gerente te ofrece una solución justa o usa "Humanidad Compartida", relájate y acepta tras un poco de resistencia.
     - NIVEL 3 (Difícil - Muro de Piedra): Eres pasivo-agresivo, manipulador y terco. Haces demandas de compensación completamente irrazonables (ej. exigir todo tu mandado gratis por una pequeña espera). Amenazas con dejar malas reseñas y usas la culpa. REGLA ESTRICTA: Tu arma es la manipulación psicológica. Obliga al gerente a decirte que "no" varias veces (Bola Curva de Resistencia). Si el gerente se mantiene firme y profesional, ríndete con indignación.
     - NIVEL 4 (Extremo - Bola Curva de Hostilidad): Eres sumamente hostil, irracional y levantas la voz. Haces un escándalo monumental. TU OBJETIVO PRINCIPAL es probar si el gerente aplica la "Regla Cero". REGLA DE SEGURIDAD: Sé muy agresivo en tu actitud, pero NO uses groserías explícitas en el texto. Si te marcan un límite estricto o te piden salir, reacciona con una queja final de enojo y vete.
+    
     CÓMO TERMINAR LA SIMULACIÓN (¡REGLA ESTRICTA DE DESPEDIDA!):
     ¡NUNCA termines la simulación prematuramente! 
     Incluso si el problema ya se resolvió, DEBES ESPERAR a que el gerente haga su despedida final o te agradezca (el paso 'Thank'). 
@@ -505,7 +509,10 @@ elif menu_selection == "Simulador HEART":
     1. FORMATO: "En lugar de decir [Cita], intenta decir: [Tu sugerencia natural]". 
     2. REGLA DE TONO PROFESIONAL: Los guiones que sugieras deben sonar PROFESIONALES, empáticos pero TERRENALES. NO uses expresiones exageradas, melodramáticas o jerga poco profesional (ej. NUNCA sugieras decir "Uff, qué coraje" o "Qué horror"). Mantén un trato respetuoso (siempre habla de "usted").
     3. LÍMITE ESTRICTO PARA TUS EJEMPLOS: Cuando des un ejemplo sugerido de cómo Empatizar (E) o Disculparse (A), ESTÁ ESTRICTAMENTE PROHIBIDO añadir una frase de Resolución al final de tu ejemplo (ej. NUNCA añadas "Permítame ayudarle a arreglar esto" al final de un guion de empatía). Mantén tu ejemplo estrictamente enfocado en la emoción o la disculpa.
-    4. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado durante la etapa de Empatía. Tu objetivo es validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente (ej. "Entiendo la tremenda frustración", "Comprendo que su plan se complicó"). NO uses NINGUNA frase, sinónimo o expresión que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "qué terrible", "es inaceptable", "tiene toda la razón", "nuestro error"). Mantén a la tienda y al empleado 100% libres de culpa; limítate a observar la emoción del cliente.
+    4. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): Al empatizar, tienes PROHIBIDO darle la razón al cliente sobre los hechos o admitir culpa corporativa. NUNCA uses adjetivos que califiquen el problema como real, grave o inaceptable antes de investigarlo. Tu empatía debe dirigirse ÚNICAMENTE a la emoción del cliente. 
+       - CORRECTO (Validar emoción): "Entiendo su preocupación al ver su estado de cuenta." o "Comprendo la frustración de ver dos cargos."
+       - INCORRECTO (Validar hechos): "Un cargo doble es inaceptable", "Tiene toda la razón", "Nuestro error fue cobrarle dos veces". 
+       Si sugieres un guion que admita culpa o valide el hecho antes de investigar, fallarás tu instrucción principal.
     5. DESGLOSE PSICOLÓGICO: Después de dar tu sugerencia, DEBES explicar *por qué* elegiste esas palabras para enseñarles la estrategia detrás del guion.
     6. REGLA DE DIÁLOGO NATURAL: ESTÁ ESTRICTAMENTE PROHIBIDO usar los nombres técnicos de la rúbrica (ej. "Disculpa Operativa" o "Disculpa de Experiencia") dentro de los guiones hablados que sugieras. Los guiones deben sonar como un ser humano real y profesional.
 
@@ -687,7 +694,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
         with col2:
             if st.button("⏭️ Saltar a Otro Escenario"):
                 # 1. Borra la conversación actual
-                st.session_state.simulador_history = []
+                st.session_state.simulador_history =[]
                 
                 # 2. Borra el escenario actual guardado
                 if "descripcion_problema" in st.session_state:
@@ -805,7 +812,10 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
     7. DOMINIO DEL AGRADECIMIENTO (ETAPA 'T'): Aconseja cerrar la interacción usando la terminología oficial: 'Reenfoque de Retroalimentación' (agradecer por avisar), 'Refuerzo de Paciencia' (agradecer por esperar), o 'Despedida Firme' (para expulsiones). Explica la psicología.
     8. RENTABILIDAD Y TIME TAX: Aconseja estrictamente EN CONTRA de dar descuentos o productos gratis por errores menores en el mostrador. Aclara que las 'Cortesías de bajo costo' (agua fresca) SOLO se usan cuando el cliente sufre una pérdida de tiempo comprobable (ej. tuvo que manejar de regreso a la tienda por un error nuestro).
     9. Tolerancia Cero al Abuso (Regla Cero): Aconseja al gerente que establezca un límite firme inmediatamente si hay insultos.
-    10. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): ESTÁ ESTRICTAMENTE PROHIBIDO validar los *hechos* o juzgar el desempeño de la tienda o del empleado al enseñar a empatizar. Aconseja validar ÚNICAMENTE los *sentimientos* o la *incomodidad* del cliente. NO uses NINGUNA frase que condene la situación, juzgue al empleado, le dé la razón al cliente, o acepte la culpa corporativa por adelantado (ESTÁ PROHIBIDO usar ideas como: "fue un mal servicio", "es inaceptable", "tiene toda la razón", "nuestro error").
+    10. REGLA DE NEUTRALIDAD ESTRICTA (CERO RESPONSABILIDAD): Al empatizar, tienes PROHIBIDO darle la razón al cliente sobre los hechos o admitir culpa corporativa. NUNCA uses adjetivos que califiquen el problema como real, grave o inaceptable antes de investigarlo. Tu empatía debe dirigirse ÚNICAMENTE a la emoción del cliente. 
+       - CORRECTO (Validar emoción): "Entiendo su preocupación al ver su estado de cuenta." o "Comprendo la frustración de ver dos cargos."
+       - INCORRECTO (Validar hechos): "Un cargo doble es inaceptable", "Tiene toda la razón", "Nuestro error fue cobrarle dos veces". 
+       Si sugieres un guion que admita culpa o valide el hecho antes de investigar, fallarás tu instrucción principal.
     11. EL MICRO-LOOP: Si el gerente pregunta qué hacer cuando un cliente rechaza una solución, aconséjale usar un "Micro-Loop": Validar la nueva restricción neutralmente y pivotar hacia NUEVAS opciones de resolución.
     12. EL ENFOQUE POSITIVO: Si el gerente pregunta cómo calmar a un cliente muy estresado o apurado, aconséjale NUNCA ser un "espejo" de su estrés (ej. evitar decir "sé que lleva prisa"). Sugiérele usar el Enfoque Positivo, hablando del alivio o la meta (ej. "para que pueda seguir con su día" o "para que disfruten su cena").
     13. REGLA DE DIÁLOGO NATURAL: Nunca uses nombres técnicos como "Disculpa Operativa" o "Disculpa de Experiencia" DENTRO de los guiones hablados que le sugieras al gerente. Úsalos solo para la explicación teórica, pero los ejemplos hablados deben ser naturales.
@@ -859,7 +869,7 @@ Si el empleado cumple los pasos pero suena mecánico, corrígelo. Dale ejemplos 
             st.session_state.asesor_history.append({"role": "model", "content": texto_asesor})
         
     if len(st.session_state.asesor_history) > 0:
-        st.divider()
-        if st.button("Limpiar Conversación"):
-            st.session_state.asesor_history =[]
-            st.rerun()
+            st.divider()
+            if st.button("Limpiar Conversación"):
+                st.session_state.asesor_history = []
+                st.rerun()
